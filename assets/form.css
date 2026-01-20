@@ -1,0 +1,331 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap');
+
+:root {
+    --heading-font: "Unbounded", sans-serif;
+    --text-font: "Montserrat", system-ui;
+
+    --black: #0B0E14;
+    --mid-night: #111827;
+
+    --button-1: #a68af9;
+    --button-2: #3ABEFF;
+
+    --cyan: #22d3ee;
+
+    --white: #E5E7EB;
+    --gray: #9CA3AF;
+
+    --detail-text: 14px;
+}
+.join-section {
+    padding: 140px 8%;
+    background: var(--black);
+    text-align: center;
+}
+.join-section h2{
+    margin-bottom: 50px;
+}
+
+.join-subtitle {
+    color: var(--gray);
+    margin-bottom: 60px;
+}
+
+.join-form {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--gray);
+}
+
+.form-group input,
+.form-group select {
+    padding: 14px 16px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(77,255,243,0.25);
+    color: var(--white);
+    font-size: 15px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--cyan);
+}
+
+.timezone-message {
+    margin: 18px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    background: rgba(77,255,243,0.08);
+    border: 1px solid rgba(77,255,243,0.25);
+    color: var(--white);
+    font-size: 14px;
+    display: none;
+}
+
+
+.form-checkbox {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin: 30px 0;
+    font-size: 14px;
+    color: var(--gray);
+}
+
+.form-checkbox input {
+    margin-top: 4px;
+}
+
+.join-btn.full {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+}
+
+
+
+/* ================= INFO TOOLTIP (GLOBAL) ================= */
+
+.info-trigger {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .info-trigger i {
+    font-size: 14px;
+    color: var(--gray);
+    transition: color 0.2s ease;
+  }
+  
+  .info-trigger:hover i {
+    color: var(--cyan);
+  }
+  
+  /* Tooltip bubble */
+  .tooltip-box {
+    position: absolute;
+    bottom: 140%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px;
+    padding: 12px 14px;
+  
+    background: rgba(11, 14, 20, 0.95);
+    border: 1px solid rgba(166, 138, 249, 0.35);
+    border-radius: 10px;
+  
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--gray);
+    text-align: center;
+  
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  
+    z-index: 20;
+  }
+  
+  /* Arrow */
+  .tooltip-box::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: rgba(166, 138, 249, 0.35) transparent transparent transparent;
+  }
+  
+  /* Show on hover */
+  .info-trigger:hover .tooltip-box {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-6px);
+  }
+  /* ================= FORM SUCCESS STATE ================= */
+.form-success {
+    display: none;
+    margin-top: 80px;
+    text-align: center;
+  }
+  
+  .success-card {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 50px 40px;
+  
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(166,138,249,0.35);
+    border-radius: 18px;
+  
+    animation: fadeUp 0.6s ease forwards;
+  }
+  
+  .success-card i {
+    font-size: 56px;
+    color: var(--cyan);
+    margin-bottom: 18px;
+  }
+  
+  .success-card h3 {
+    font-family: var(--heading-font);
+    font-size: 1.6rem;
+    margin-bottom: 14px;
+  }
+  
+  .success-card p {
+    font-size: 0.95rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+  
+  .success-sub {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    opacity: 0.85;
+  }
+  
+  .success-card .join-btn {
+    display: inline-block;
+    margin-top: 28px;
+  }
+  
+  /* Animation */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+
+
+  /* ================= EVENT TYPE SELECT ================= */
+.event-type-selector {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.event-option {
+  position: relative;
+  cursor: pointer;
+}
+
+.event-option input {
+  display: none;
+}
+
+.event-option span {
+  display: block;
+  padding: 14px 28px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.04);
+  color: var(--gray);
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.event-option input:checked + span {
+  background: linear-gradient(90deg, #7c6de8, #4DFFF3);
+  color: #000;
+  font-weight: 600;
+}
+
+
+/* ================= LABEL + INFO FIX ================= */
+
+.label-with-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+
+/* Ensure selects look identical to inputs */
+.form-group select {
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--gray) 50%),
+    linear-gradient(135deg, var(--gray) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) calc(50% - 4px),
+    calc(100% - 12px) calc(50% - 4px);
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+}
+
+/* Fix select hover/focus consistency */
+.form-group select:hover {
+  border-color: rgba(77,255,243,0.45);
+}
+
+/* Tooltip spacing fix */
+.info-trigger {
+  margin-left: 4px;
+}
+/* ================= FORM LAYOUT FIX ================= */
+
+/* Force every label to occupy full width */
+.form-group > label {
+  display: block;
+  width: 100%;
+}
+
+/* Fix labels that contain info icons */
+.label-with-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+/* Ensure inputs & selects always drop BELOW labels */
+.form-group input,
+.form-group select {
+  width: 100%;
+  margin-top: 6px;
+}
+
+/* Explicitly fix committee + portfolio groups */
+.committee-group,
+.form-group {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Tooltip must NOT affect layout */
+.info-trigger {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+/* Prevent any accidental horizontal collapsing */
+.form-group * {
+  box-sizing: border-box;
+}
