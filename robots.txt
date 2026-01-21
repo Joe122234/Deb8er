@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://deb8er.netlify.app/sitemap.xml
