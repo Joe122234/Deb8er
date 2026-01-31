@@ -67,6 +67,50 @@ main::before {
     transparent 68%
   );
 }
+/* ================= MAIN BACKGROUND ATMOSPHERE ================= */
+section.debate-wrapper {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--black);
+  background: radial-gradient(
+  circle closest-side at center,
+  rgba(58, 190, 255, 0.14) 0%,
+  rgba(58, 190, 255, 0.08) 9%,
+  rgba(58, 190, 255, 0.03) 20%,
+  rgba(11, 14, 20, 1) 60%
+);
+
+}
+
+section.debate-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.22;
+
+  background-image:
+  linear-gradient(rgba(58, 190, 255, 0.25) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(58, 190, 255, 0.25) 1px, transparent 1px);
+
+  background-size: 36px 36px;
+
+  mask-image: radial-gradient(
+    circle at center,
+    black 0%,
+    rgba(0,0,0,0.85) 20%,
+    rgba(0,0,0,0.4) 40%,
+    transparent 68%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    black 0%,
+    rgba(0,0,0,0.85) 20%,
+    rgba(0,0,0,0.4) 40%,
+    transparent 68%
+  );
+}
 
 /* ================= HEADER ================= */
 .conference-header {

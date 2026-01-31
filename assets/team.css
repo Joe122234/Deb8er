@@ -1,4 +1,23 @@
-/* ================= MAIN BACKGROUND ================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap');
+
+:root {
+    --heading-font: "Unbounded", sans-serif;
+    --text-font: "Montserrat", system-ui;
+
+    --black: #0B0E14;
+    --mid-night: #111827;
+
+    --button-1: #7c6de8;
+    --button-2: #3ABEFF;
+
+    --cyan: #4DFFF3;
+
+    --white: #E5E7EB;
+    --gray: #9CA3AF;
+
+    --detail-text: 14px;
+}/* ================= MAIN BACKGROUND ================= */
 main {
   position: relative;
   overflow: hidden;
@@ -218,14 +237,14 @@ main::before {
 }
 
 .member-meta i {
-  color: var(--cyan);
+  color: var(--button-2);
   font-size: 0.75rem;
 }
 
 /* ================= ROLE & BIO ================= */
 .team-card .role {
   font-size: 0.85rem;
-  color: var(--cyan);
+  color: var(--button-2);
   margin-bottom: 12px;
 }
 

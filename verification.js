@@ -4,7 +4,7 @@ const input = document.getElementById("certificateInput");
 const resultBox = document.getElementById("verificationResult");
 
 // Ensure this URL is your latest DEPLOYED Web App URL
-const API_URL = "https://script.google.com/macros/s/AKfycby-EUMArruQllL51xArnNiECiiIcF2D3GUk_SnlJFUmq4csk4pEkGS64B1nc86fSoy0/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbyAM2mRfTYJQL5PPDw8_kryjYw72cTQfzoi23j3wKVgtd9chEFqoJqrGVsFjptvvk6r/exec";
 
 // --- 2. THE LOGIC ---
 verifyBtn.addEventListener("click", async () => {

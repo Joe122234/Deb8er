@@ -19,10 +19,11 @@
 }
 
 .join-section {
-    padding: 140px 8%;
-    background: var(--black);
-    text-align: center;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* This centers the form horizontally */
+  width: 100%;
+  margin-top: 200px;
 }
 
 .join-section h2{
@@ -35,9 +36,9 @@
 }
 
 .join-form {
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: left;
+  width: 100%;        /* Forces the form to take up available space */
+  max-width: 700px;   /* ...but stops it at your desired max width */
+  margin: 0 auto;
 }
 
 .form-group {
@@ -434,4 +435,78 @@
 .dropdown-options::-webkit-scrollbar-thumb {
   background: rgba(166, 138, 249, 0.3);
   border-radius: 3px;
+}
+
+/* ================= INPUT WIDTH FIX ================= */
+.form-group input,
+.form-group .custom-dropdown,
+.timezone-message {
+    width: 100% !important; /* Ensures every element fills the form width */
+    box-sizing: border-box; /* Prevents padding from breaking the width */
+}
+
+#timezoneMessage {
+  display: none; /* Keep it hidden initially */
+  width: 100%;
+}
+
+/* ================= RESPONSIVE ADJUSTMENTS ================= */
+
+@media screen and (max-width: 768px) {
+  .join-section {
+      /* Reduce the massive top margin on mobile */
+      margin-top: 120px; 
+      padding: 0 20px; /* Add side padding so form doesn't touch screen edges */
+  }
+
+  .join-section h2 {
+      font-size: 1.8rem; /* Slightly smaller heading for mobile */
+      margin-bottom: 30px;
+      text-align: center;
+  }
+
+  .event-type-selector {
+      flex-direction: column; /* Stack MUN/Debate buttons vertically */
+      gap: 12px;
+      width: 100%;
+      max-width: 400px;
+  }
+
+  .event-option span {
+      text-align: center;
+      padding: 12px 20px;
+  }
+
+  .join-form {
+      max-width: 100%; /* Ensure form takes full width of its container */
+  }
+
+  .success-card {
+      padding: 40px 20px; /* Less padding inside the success box on mobile */
+      width: 100%;
+  }
+
+  .tooltip-box {
+      /* Tooltips can break layouts on mobile; we make them wider/center-aligned */
+      width: 200px;
+      left: 50%;
+      transform: translateX(-50%);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .join-section h2 {
+      font-size: 1.5rem;
+  }
+
+  .form-group input, 
+  .form-group select, 
+  .dropdown-selected {
+      font-size: 14px; /* Better readability on small phones */
+      padding: 12px;
+  }
+
+  .success-card h3 {
+      font-size: 1.3rem;
+  }
 }
