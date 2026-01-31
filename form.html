@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form | Deb8er</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/form.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon1.png" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+      <!--            Navigation Bar                  -->
+
+      <nav class="navbar">
+        <div class="navbar-container">
+          <a href="#landing-page" class="logo">
+            <img src="assets/images/Deb9erfinallogo.png" alt="">
+          </a>
+      
+          <!-- Hamburger -->
+          <div class="nav-toggle" id="navToggle">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+      
+          <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="conferences.html">Conferences</a></li>
+            <li><a href="verification.html">Verification</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="form.html" class="join-btn">Join Us</a></li>
+          </ul>
+        </div>
+      </nav>
+      <section class="join-section" id="join">
+        <h2 class="section-title">
+            Join a <span class="span1">Deb</span><span class="span2">8</span>er MUN
+        </h2>
+    
+        <div class="event-type-selector">
+            <label class="event-option">
+                <input type="radio" name="eventType" value="mun" checked>
+                <span>MUN Conference</span>
+            </label>
+    
+            <label class="event-option">
+                <input type="radio" name="eventType" value="debate">
+                <span>Debate Conference</span>
+            </label>
+        </div>
+    
+        <form class="join-form" id="munForm">
+            <div class="form-group">
+                <label>Full Legal Name</label>
+                <input type="text" name="fullName" required placeholder="Your full legal name">
+            </div>
+    
+            <div class="form-group">
+                <label>Nick Name</label>
+                <input type="text" name="nickName" required placeholder="Name you would like to use (If none, fill in first name)">
+            </div>
+    
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" name="email" required placeholder="you@example.com">
+            </div>
+    
+            <div class="form-group">
+                <label>Age</label>
+                <input type="number" name="age" min="10" max="20" required>
+            </div>
+    
+            <div class="form-group">
+                <label>Country</label>
+                <input type="text" id="countryInput" list="countryList" name="country" placeholder="Start typing your residential country..." autocomplete="off" required />
+                <datalist id="countryList"></datalist>
+            </div>
+    
+            <div class="timezone-message" id="timezoneMessage"></div>
+    
+            <div class="form-group mun-only">
+                <label>Country You Prefer to Represent (Portfolio)</label>
+                <input type="text" name="preferredCountry" placeholder="Country you want to represent (Portfolio)">
+            </div>
+    
+            <div class="form-group committee-group mun-only">
+                <label>
+                    Committee
+                    <span class="info-trigger">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="tooltip-box">
+                            Although you select a committee, it is not guaranteed.
+                            This serves as practice for future MUNs and final allocations will be made later.
+                        </span>
+                    </span>
+                </label>
+    
+                <div class="custom-dropdown" data-name="committee">
+                    <div class="dropdown-selected">
+                        <span class="selected-text">Select a committee</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="dropdown-options">
+                        <div class="dropdown-option" data-value="">Select a committee</div>
+                        <div class="dropdown-option" data-value="UNGA">UNGA</div>
+                        <div class="dropdown-option" data-value="UNSC">UNSC</div>
+                        <div class="dropdown-option" data-value="WHO">WHO</div>
+                        <div class="dropdown-option" data-value="ECOSOC">ECOSOC</div>
+                    </div>
+                    <input type="hidden" name="committee" value="">
+                </div>
+            </div> <div class="form-group">
+                <label class="label-with-info">
+                    Debate Region
+                    <span class="info-trigger">
+                        <i class="fas fa-info-circle"></i>
+                        <span class="tooltip-box">
+                            You may still select other regions if you are available during their scheduled time.
+                        </span>
+                    </span>
+                </label>
+    
+                <div class="custom-dropdown" data-name="debateRegion">
+                    <div class="dropdown-selected">
+                        <span class="selected-text">Select region</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="dropdown-options">
+                        <div class="dropdown-option" data-value="">Select region</div>
+                        <div class="dropdown-option" data-value="asia">Asian Debate</div>
+                        <div class="dropdown-option" data-value="america">American Debate</div>
+                        <div class="dropdown-option" data-value="europe">European Debate</div>
+                        <div class="dropdown-option" data-value="africa">African Debate</div>
+                    </div>
+                    <input type="hidden" id="debateRegion" name="debateRegion" value="">
+                </div>
+            </div> <div class="form-checkbox">
+                <input type="checkbox" id="timezoneAgree" required>
+                <label for="timezoneAgree">
+                    I understand this debate may take place outside of my local timezone and confirm this time works for me.
+                </label>
+            </div>
+    
+            <button type="submit" class="join-btn full">Submit Application</button>
+        </form>
+    
+        <div class="form-success" id="formSuccess" style="display: none;">
+            <div class="success-card">
+                <i class="fas fa-check-circle"></i>
+                <h3>Application Submitted</h3>
+                <p>Thank you for applying to <strong>Deb8er</strong>. Your application has been received and is under review.</p>
+                <p class="success-sub">You’ll receive further instructions via email.</p>
+                <a href="conferences.html" class="join-btn">View Conferences</a>
+            </div>
+        </div>
+    </section>
+  
+      <script src="script.js"></script>
+    <!-- Include D3.js -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<!-- Include TopoJSON for world map -->
+<script src="https://d3js.org/topojson.v3.min.js"></script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<!-- Moment.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+
+<!-- Moment Timezone -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.43/moment-timezone-with-data.min.js"></script>
+<script>
+  /* ================= CUSTOM DROPDOWN ================= */
+  document.querySelectorAll(".custom-dropdown").forEach((dropdown) => {
+    const selected = dropdown.querySelector(".dropdown-selected");
+    const selectedText = dropdown.querySelector(".selected-text");
+    const options = dropdown.querySelectorAll(".dropdown-option");
+    const hiddenInput = dropdown.querySelector('input[type="hidden"]');
+
+    selected.addEventListener("click", () => {
+      dropdown.classList.toggle("active");
+      document.querySelectorAll(".custom-dropdown").forEach((other) => {
+        if (other !== dropdown) other.classList.remove("active");
+      });
+    });
+
+    options.forEach((option) => {
+      option.addEventListener("click", () => {
+        const value = option.dataset.value;
+        const text = option.textContent;
+
+        selectedText.textContent = text;
+        if (hiddenInput) hiddenInput.value = value;
+
+        options.forEach((opt) => opt.classList.remove("selected"));
+        option.classList.add("selected");
+
+        dropdown.classList.remove("active");
+
+        // 🔥 trigger change event on real select if exists
+        const selectId = dropdown.getAttribute("data-name");
+        if (selectId) {
+          const realSelect = document.getElementById(selectId);
+          if (realSelect) {
+            realSelect.value = value;
+            realSelect.dispatchEvent(new Event("change", { bubbles: true }));
+          }
+        }
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!dropdown.contains(e.target)) dropdown.classList.remove("active");
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    /* ================= EVENT TYPE TOGGLE ================= */
+    const eventRadios = document.querySelectorAll('input[name="eventType"]');
+    const munOnly = document.querySelectorAll(".mun-only");
+    const debateOnly = document.querySelectorAll(".debate-only");
+    const title = document.querySelector(".section-title");
+
+    /* ================= CORE ELEMENTS ================= */
+    const countryInput = document.getElementById("countryInput");
+    const countryList = document.getElementById("countryList");
+    const debateRegionSelect = document.getElementById("debateRegion");
+    const timezoneMessage = document.getElementById("timezoneMessage");
+    const form = document.getElementById("munForm");
+    const successBox = document.getElementById("formSuccess");
+
+    let countryMap = {};
+    let regionAutoSet = false;
+
+    /* ================= REGION TIME SLOTS ================= */
+    const REGION_SLOTS = {
+      mun: {
+        asia: {
+          label: "Asia",
+          timezone: "America/Denver",
+          date: "2026-01-20",
+          start: "02:30",
+          end: "07:30",
+        },
+        europe: {
+          label: "Europe",
+          timezone: "America/Denver",
+          date: "2026-01-20",
+          start: "08:00",
+          end: "13:00",
+        },
+        america: {
+          label: "Americas",
+          timezone: "America/Denver",
+          date: "2026-01-20",
+          start: "08:00",
+          end: "13:00",
+        },
+        africa: {
+          label: "Africa–Oceania",
+          timezone: "America/Denver",
+          date: "2026-01-20",
+          start: "00:30",
+          end: "05:30",
+        },
+      },
+
+      debate: {
+        asia: { 
+          label: "Asia", 
+          timezone: "America/Denver", 
+          date: "2026-02-07", 
+          start: "03:00",
+          end: "06:00" 
+        },
+        europe: { 
+          label: "Europe", 
+          timezone: "America/Denver", 
+          date: "2026-02-06", 
+          start: "09:00",
+          end: "12:00" 
+        },
+        america: { 
+          label: "Americas", 
+          timezone: "America/Denver", 
+          date: "2026-02-06", // Updated to Feb 6
+          start: "16:00",     // 4:00 PM
+          end: "19:00"        // 7:00 PM
+        },
+        africa: { 
+          label: "Africa–Oceania", 
+          timezone: "America/Denver", 
+          date: "2026-02-08", // Updated to Feb 8
+          start: "23:30",     // 11:30 PM
+          end: "02:30"        // 2:30 AM (Wraps to Feb 9)
+        }
+      }
+    };
+
+    /* ================= HELPERS ================= */
+
+    function getEventType() {
+      return (
+        document.querySelector('input[name="eventType"]:checked')?.value || "mun"
+      );
+    }
+
+    function updateEventType(type) {
+      if (type === "mun") {
+        munOnly.forEach((el) => (el.style.display = "flex"));
+        debateOnly.forEach((el) => (el.style.display = "none"));
+        title.innerHTML = `Join a <span class="span1">Deb</span><span class="span2">8</span>er MUN`;
+      } else {
+        munOnly.forEach((el) => (el.style.display = "none"));
+        debateOnly.forEach((el) => (el.style.display = "flex"));
+        title.innerHTML = `Join a <span class="span1">Deb</span><span class="span2">8</span>er Debate`;
+      }
+    }
+
+    // Choose best timezone from a country (most populated)
+    function getBestTimezoneForCountry(countryCode) {
+      const zones = moment.tz.zonesForCountry(countryCode, true);
+      if (!zones || zones.length === 0) return null;
+
+      zones.sort((a, b) => (b.population || 0) - (a.population || 0));
+      return zones[0].name;
+    }
+
+    function autoSelectRegionByCountry(countryCode) {
+      const tz = getBestTimezoneForCountry(countryCode);
+      if (!tz) return;
+
+      let suggested = "asia";
+      if (tz.startsWith("Europe")) suggested = "europe";
+      else if (tz.startsWith("America")) suggested = "america";
+      else if (tz.startsWith("Africa")) suggested = "africa";
+      else if (tz.startsWith("Australia") || tz.startsWith("Pacific"))
+        suggested = "africa"; // your Africa–Oceania bucket
+
+      if (!regionAutoSet) {
+        debateRegionSelect.value = suggested;
+
+        // update custom dropdown UI text too
+        const customDropdown = document.querySelector(
+          '.custom-dropdown[data-name="debateRegion"]'
+        );
+        if (customDropdown) {
+          const selectedText = customDropdown.querySelector(".selected-text");
+          const option = customDropdown.querySelector(
+            `.dropdown-option[data-value="${suggested}"]`
+          );
+          if (option && selectedText) selectedText.textContent = option.textContent;
+        }
+
+        regionAutoSet = true;
+      }
+    }
+
+    /* ================= TIME DISPLAY ================= */
+    function updateLocalTime() {
+      const countryName = countryInput.value.trim();
+      const regionKey = debateRegionSelect.value;
+      const eventType = getEventType();
+
+      // validate
+      if (
+        !countryMap[countryName] ||
+        !REGION_SLOTS[eventType] ||
+        !REGION_SLOTS[eventType][regionKey]
+      ) {
+        timezoneMessage.style.display = "none";
+        return;
+      }
+
+      const userTZ = getBestTimezoneForCountry(countryMap[countryName]);
+      if (!userTZ) {
+        timezoneMessage.style.display = "none";
+        return;
+      }
+
+      const region = REGION_SLOTS[eventType][regionKey];
+
+      // Create start/end in region timezone (America/Denver)
+      const start = moment.tz(
+        `${region.date} ${region.start}`,
+        "YYYY-MM-DD HH:mm",
+        region.timezone
+      );
+
+      let end = moment.tz(
+        `${region.date} ${region.end}`,
+        "YYYY-MM-DD HH:mm",
+        region.timezone
+      );
+
+      // ✅ fix wrap over midnight
+      if (end.isSameOrBefore(start)) end.add(1, "day");
+
+      const localStart = start.clone().tz(userTZ);
+      const localEnd = end.clone().tz(userTZ);
+
+      timezoneMessage.innerHTML = `
+        <strong>${region.label} ${eventType.toUpperCase()} Session</strong><br>
+        Official time: ${start.format("MMM D, YYYY hh:mm A")} – ${end.format(
+          "MMM D, YYYY hh:mm A"
+        )} (${region.timezone})<br>
+        <span style="color:#22d3ee;">
+          Your local time: ${localStart.format("MMM D, YYYY hh:mm A")}
+          – ${localEnd.format("MMM D, YYYY hh:mm A")} (${userTZ})
+        </span>
+      `;
+
+      timezoneMessage.style.display = "block";
+    }
+
+    /* ================= EVENTS ================= */
+    eventRadios.forEach((radio) => {
+      radio.addEventListener("change", () => {
+        updateEventType(radio.value);
+        regionAutoSet = false;
+        updateLocalTime();
+      });
+    });
+
+    // init default
+    updateEventType("mun");
+
+    // Trigger conversion when typing/selecting a country
+    countryInput.addEventListener("input", () => {
+      const code = countryMap[countryInput.value.trim()];
+      if (!code) {
+        timezoneMessage.style.display = "none";
+        return;
+      }
+      autoSelectRegionByCountry(code);
+      updateLocalTime();
+    });
+
+    // Trigger conversion when region changes
+    debateRegionSelect.addEventListener("change", () => {
+      regionAutoSet = true;
+      updateLocalTime();
+    });
+
+    /* ================= FETCH COUNTRIES ================= */
+    fetch("https://restcountries.com/v3.1/all?fields=name,cca2")
+      .then((res) => res.json())
+      .then((data) => {
+        data.sort((a, b) => a.name.common.localeCompare(b.name.common));
+        data.forEach((c) => {
+          countryMap[c.name.common] = c.cca2;
+          const opt = document.createElement("option");
+          opt.value = c.name.common;
+          countryList.appendChild(opt);
+        });
+
+        // 🔥 if user already typed country before list finished loading
+        updateLocalTime();
+      });
+
+    /* ================= FORM SUBMISSION ================= */
+    const GOOGLE_SHEET_URL =
+      "https://script.google.com/macros/s/AKfycby-EUMArruQllL51xArnNiECiiIcF2D3GUk_SnlJFUmq4csk4pEkGS64B1nc86fSoy0/exec";
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.innerText;
+      submitBtn.innerText = "Processing...";
+      submitBtn.disabled = true;
+
+      try {
+        const eventType = getEventType();
+        const formData = new URLSearchParams();
+
+        formData.append("eventType", eventType);
+        formData.append("fullName", form.elements["fullName"].value);
+        formData.append("nickName", form.elements["nickName"].value);
+        formData.append("email", form.elements["email"].value);
+        formData.append("age", form.elements["age"].value);
+        formData.append("country", countryInput.value);
+
+        const regionValue =
+          document.querySelector('input[name="debateRegion"]')?.value ||
+          debateRegionSelect.value;
+        formData.append("debateRegion", regionValue);
+
+        if (eventType === "mun") {
+          formData.append(
+            "preferredCountry",
+            form.elements["preferredCountry"].value || "N/A"
+          );
+          const committeeValue =
+            form.querySelector('input[name="committee"]')?.value || "";
+          formData.append("committee", committeeValue || "Not Selected");
+        }
+
+        await fetch(GOOGLE_SHEET_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: formData.toString(),
+        });
+
+        showSuccessState();
+      } catch (err) {
+        console.error("Submission Error:", err);
+        alert("There was a connection error. Please try again.");
+        submitBtn.innerText = originalBtnText;
+        submitBtn.disabled = false;
+      }
+    });
+
+    function showSuccessState() {
+      const elementsToHide = [
+        form,
+        document.querySelector(".event-type-selector"),
+        document.querySelector(".section-title"),
+      ];
+
+      elementsToHide.forEach((el) => {
+        if (el) el.setAttribute("style", "display: none !important");
+      });
+
+      if (successBox) {
+        successBox.style.display = "block";
+        successBox.style.visibility = "visible";
+        successBox.style.opacity = "1";
+
+        window.scrollTo({
+          top: document.getElementById("join").offsetTop,
+          behavior: "smooth",
+        });
+      }
+    }
+  });
+</script>
+
+  
+  
+</body>
+</html>

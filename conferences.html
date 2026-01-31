@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conferences | Deb8er</title>
+    <link rel="stylesheet" href="assets/conferences.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon1.png" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+      <!--            Navigation Bar                  -->
+
+      <nav class="navbar">
+        <div class="navbar-container">
+          <a href="#landing-page" class="logo">
+            <img src="assets/images/Deb9erfinallogo.png" alt="">
+          </a>
+      
+          <!-- Hamburger -->
+          <div class="nav-toggle" id="navToggle">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+      
+          <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="conferences.html">Conferences</a></li>
+            <li><a href="verification.html">Verification</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="form.html" class="join-btn">Join Us</a></li>
+          </ul>
+        </div>
+      </nav>
+
+
+
+
+       <main>
+        <!-- Scroll Down Indicator -->
+        <div id="floating-scroll" class="scroll-indicator">
+          <span>More below</span>
+          <button class="scroll-down-btn" onclick="handleScrollClick()">
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+        </div>
+        <!-- ================= HEADER ================= -->
+<section class="conference-header">
+  <h1>Global <span>Deb8er</span> MUN Conferences</h1>
+  <p>
+    Region-based Model United Nations conferences with fixed time slots,
+    structured by age group and committee.
+  </p>
+</section>
+
+<!-- ================= REGION TABS ================= -->
+<section class="region-tabs-section">
+
+  <div class="region-tabs">
+    <button class="region-tab active" data-region="asia">Asia</button>
+    <button class="region-tab" data-region="europe">Europe</button>
+    <button class="region-tab" data-region="americas">Americas</button>
+    <button class="region-tab" data-region="africa-oceania">Africa–Oceania</button>
+  </div>
+  
+
+  <div class="region-time-slot">
+    <span id="region-time">
+      Asia — March 7, 2026 — MDT 2:30 AM
+    </span>
+    <p>All times shown in MDT (Mountain Daylight Time).</p>
+  </div>
+  
+
+</section>
+
+
+<div class="age-sections">
+
+  <section class="conference-section">
+    <h2>Ages 10–14</h2>
+  
+    <div class="committee-list">
+      <div class="committee-item">
+        <strong>UNGA</strong>
+        <span>Protecting the Freedom of Religion or Belief</span>
+      </div>
+  
+      <div class="committee-item">
+        <strong>DISEC</strong>
+        <span>The threat of nuclear weapons to global peace and stability</span>
+      </div>
+  
+      <div class="committee-item">
+        <strong>UNICEF</strong>
+        <span>Ensuring Digital Safety for Children Worldwide</span>
+      </div>
+  
+      <div class="committee-item">
+        <strong>UNHRC</strong>
+        <span>Ensuring access to education as a basic human right</span>
+      </div>
+  
+      <div class="committee-item">
+        <strong>UNSC</strong>
+        <span>Preventing Conflicts over Shared Water Resources</span>
+      </div>
+    </div>
+  </section>
+  
+  <section class="conference-section">
+    <h2>Ages 15–18</h2>
+  
+    <div class="committee-list">
+      <div class="committee-item">
+        <strong>UNGA</strong>
+        <span>Strengthening International Cooperation in Counter-Terrorism Efforts</span>
+      </div>
+  
+      <div class="committee-item">
+        <strong>DISEC</strong>
+        <span>Impact of Private Military Security Contractors on Global Security</span>
+      </div>
+  
+      <div class="committee-item">
+        <strong>UNCSW</strong>
+        <span>Rethinking the Legalization of Prostitution</span>
+      </div>
+  
+      <div class="committee-item">
+        <strong>UNHRC</strong>
+        <span>Protecting the Rights and Improving the Living Conditions of Refugees and Migrants</span>
+      </div>
+  
+      <div class="committee-item">
+        <strong>UNSC</strong>
+        <span>Addressing Arctic Militarization and Resource Claims</span>
+      </div>
+    </div>
+  </section>
+
+  
+       </main>
+  
+
+<!-- ================= DEBATE CONFERENCES ================= -->
+<section class="debate-wrapper">
+
+  <div class="debate-header">
+    <h2>Debate Conferences</h2>
+    <p>
+      Structured global debates focusing on a single high-impact motion,
+      hosted across regions with fixed time slots.
+    </p>
+  </div>
+
+  <!-- Debate Region Tabs -->
+  <div class="region-tabs debate-tabs">
+    <button class="region-tab active" data-debate-region="asia">Asia</button>
+    <button class="region-tab" data-debate-region="europe">Europe</button>
+    <button class="region-tab" data-debate-region="americas">Americas</button>
+    <button class="region-tab" data-debate-region="africa-oceania">Africa–Oceania</button>
+  </div>
+
+  <!-- Debate Time Slot -->
+  <div class="region-time-slot debate-time">
+    <span id="debate-region-time" style="color: var(--button-2)">
+      Asia — February 15, 2026 — MDT 3:00 AM
+    </span>
+    <p >All times shown in MDT (Mountain Daylight Time).</p>
+  </div>
+  
+
+  <!-- Debate Card -->
+  <div class="age-sections"> <section class="conference-section">
+    <h2>Ages 10–14</h2>
+    <div class="committee-list">
+      <div class="committee-item">
+        <strong>Global Motion</strong>
+        <span>Is competition good for students?</span>
+      </div>
+      
+      <div class="committee-item">
+        <strong>Format</strong>
+        <span>Moderated Competitive Debate</span>
+      </div>
+      
+      
+    </div>
+  </section>
+
+  <section class="conference-section">
+    <h2>Ages 15–18</h2>
+    <div class="committee-list">
+      <div class="committee-item">
+        <strong>Global Motion</strong>
+        <span>Is euthanasia morally correct?</span>
+      </div>
+
+      <div class="committee-item">
+        <strong>Format</strong>
+        <span>High-Level Ethical Debate</span>
+      </div>
+
+      
+    </div>
+  </section>
+
+</div>
+</section>
+
+
+  
+  <!--------------------Footer section --------------->
+  <footer class="site-footer">
+    <div class="footer-container">
+  
+      <!-- Brand -->
+      <div class="footer-brand">
+        <img src="assets/images/footerpng.png" alt="">
+        <p>
+          Deb8er is an global online platform where anyone from ages 10-18 can participate in debates and MUNs.
+        </p>
+      </div>
+  
+      <!-- Links -->
+      <div class="footer-links two-col">
+        <div class="footer-column">
+          <h4>Platform</h4>
+          <a href="about.html">About</a>
+          <a href="conferences.html">Conferences</a>
+          <a href="team.html">Team</a>
+        </div>
+  
+        <div class="footer-column">
+          <h4>Connect</h4>
+        
+          <a href="https://www.instagram.com/deb8er_official" target="_blank" rel="noopener noreferrer">
+            Instagram
+          </a>
+        
+          <a href="https://discord.gg/7dWD7Xebsj" target="_blank" rel="noopener noreferrer">
+            Discord
+          </a>
+        
+          <a href="#" id="copy-email">Email</a>
+
+        </div>
+        
+      </div>
+  
+    </div>
+  
+    <div class="footer-bottom">
+      <span>© 2025 Deb8er. All rights reserved.</span>
+    </div>
+  </footer>
+  
+  <script src="conferences.js"></script>
+  <script src="script.js"></script>
+  
+  <!-- Include D3.js -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<!-- Include TopoJSON for world map -->
+<script src="https://d3js.org/topojson.v3.min.js"></script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</body>
+</html>

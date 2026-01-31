@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap');
+
+:root {
+    --heading-font: "Unbounded", sans-serif;
+    --text-font: "Montserrat", system-ui;
+
+    --black: #0B0E14;
+    --mid-night: #111827;
+
+    --button-1: #7c6de8;
+    --button-2: #3ABEFF;
+
+    --cyan: #4DFFF3;
+
+    --white: #E5E7EB;
+    --gray: #9CA3AF;
+
+    --detail-text: 14px;
+}
+.about-section {
+  padding: 140px 8%;
+  position: relative;
+  overflow: hidden;
+  color: var(--white);
+
+  /* Linear ambient gradient */
+  background:
+      linear-gradient(
+          180deg, /* top to bottom */
+          rgba(58, 190, 255, 0.12) 0%,
+          rgba(58, 190, 255, 0.06) 25%,
+          rgba(58, 190, 255, 0.02) 50%,
+          rgba(11, 14, 20, 1) 100%
+      ),
+      var(--black);
+}
+
+
+
+
+
+
+
+
+@keyframes ambient-drift {
+  0%, 100% {
+      background-position: center;
+  }
+  50% {
+      background-position: center 55%;
+  }
+}
+
+
+
+.about-intro {
+  max-width: 900px;
+  margin: 0 auto 80px;
+  text-align: center;
+}
+
+.about-statement {
+  font-size: 2.4rem;
+  font-family: var(--heading-font);
+  margin-bottom: 20px;
+}
+
+.about-support {
+  font-size: 1.2rem;
+  color: var(--gray);
+}
+
+.about-heading {
+  text-align: center;
+  font-family: var(--heading-font);
+  font-size: 2rem;
+  margin-bottom: 60px;
+}
+
+.about-points {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  margin-top: 50px;
+}
+
+.about-point {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+.about-point i {
+  font-size: 18px;
+  margin-top: 4px;
+
+  /* Gradient icon */
+  background: linear-gradient(135deg, #7c6de8, var(--button-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+
+  /* Neon glow matching gradient */
+  text-shadow:
+    0 0 8px rgba(58, 190, 255, 0.4),
+    0 0 12px rgba(124, 109, 232, 0.25);
+
+  transition: transform 0.25s ease, text-shadow 0.25s ease;
+}
+
+.about-point:hover i {
+  transform: translateY(-2px);
+
+  /* slightly stronger glow on hover */
+  text-shadow:
+    0 0 12px rgba(58, 190, 255, 0.4),
+    0 0 18px rgba(124, 109, 232, 0.45);
+}
+
+
+
+.about-point p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--white);
+  opacity: 0.85;
+}
+
+/* ================= ABOUT CENTER GRID EFFECT ================= */
+/* Grid overlay effect */
+.about-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.22;
+
+  /* Grid pattern */
+  background-image:
+      linear-gradient(rgba(255, 255, 255, 0.366) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.157)1px, transparent 1px);
+  background-size: 32px 32px;
+
+  /* Fade effect now vertical with linear mask */
+  mask-image: linear-gradient(to bottom, black 0%, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0.4) 60%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, rgba(0,0,0,0.85) 20%, rgba(0,0,0,0.4) 60%, transparent 100%);
+}
+.section-divider1 {
+  width: 100%;
+  max-width: 1200px;
+  height: 1.5px;
+  margin: 120px auto; /* ← this centers it */
+
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #7c6de8 25%,
+    var(--button-2) 50%,
+    #7c6de8 75%,
+    transparent 100%
+  );
+
+  opacity: 0.85;
+  position: relative;
+}
+.section-divider1 {
+  width: min(100%, 1200px);
+}
+
+
+/* subtle glow to match neon theme */
+.section-divider1::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  filter: blur(6px);
+  opacity: 0.4;
+  pointer-events: none;
+}

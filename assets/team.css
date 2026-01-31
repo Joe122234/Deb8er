@@ -1,0 +1,265 @@
+/* ================= MAIN BACKGROUND ================= */
+main {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(
+    circle closest-side at center,
+    rgba(166, 138, 249, 0.14) 0%,
+    rgba(166, 138, 249, 0.08) 9%,
+    rgba(166, 138, 249, 0.03) 20%,
+    rgba(11, 14, 20, 1) 60%
+  );
+  margin-bottom: 105px;
+}
+
+main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.22;
+
+  background-image:
+    linear-gradient(rgba(166, 138, 249, 0.25) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(166, 138, 249, 0.25) 1px, transparent 1px);
+  background-size: 36px 36px;
+
+  mask-image: radial-gradient(
+    circle at center,
+    black 0%,
+    rgba(0,0,0,0.85) 20%,
+    rgba(0,0,0,0.4) 40%,
+    transparent 68%
+  );
+}
+
+/* ================= TEAM HEADER ================= */
+.team-header {
+  padding: 160px 8% 80px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.team-header h1 {
+  font-family: var(--heading-font);
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.team-header h1 span {
+  background: linear-gradient(90deg, var(--button-1), var(--button-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.team-header p {
+  max-width: 720px;
+  margin: 0 auto;
+  color: var(--gray);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ================= TEAM GRID ================= */
+.team-section {
+  padding: 0 8% 120px;
+  position: relative;
+  z-index: 1;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  justify-items: center;
+}
+
+
+/* ================= TEAM CARD ================= */
+.team-card {
+  position: relative;
+  padding: 32px 26px;
+
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(12px);
+  border-radius: 18px;
+
+  transition: transform 0.3s ease;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+  z-index: 2;
+}
+
+/* Make sure content is ABOVE the animated effects */
+.team-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ANIMATED GRADIENT INSIDE ON HOVER */
+.team-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--button-2), var(--black), var(--mid-night));
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+
+.team-card:hover::after {
+  opacity: 1;
+  animation: moveGradient 5s linear infinite;
+}
+
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* NEON BORDER */
+.team-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 3px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--button-1), var(--button-2));
+  background-size: 200% 200%;
+  animation: borderMove 3s linear infinite;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes borderMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ================= ROLE BADGE ================= */
+.role-badge {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 6px 12px;
+
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  border-radius: 999px;
+
+  background: rgba(166,138,249,0.15);
+  color: var(--white);
+}
+
+/* ================= NAME BLOCK ================= */
+.name-wrap {
+  display: block;
+  min-height: 44px; /* prevents layout shift */
+  margin-bottom: 8px;
+}
+
+.nickname {
+  font-family: var(--heading-font);
+  font-size: 1.4rem;
+  line-height: 1.2;
+
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.legal-name {
+  font-size: 0.75rem;
+  letter-spacing: 0.4px;
+  color: var(--gray);
+
+  opacity: 0;
+  transform: translateY(-4px);
+
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* CARD hover reveals legal name */
+.team-card:hover .nickname {
+  opacity: 0.45;
+  transform: translateY(-1px);
+}
+
+.team-card:hover .legal-name {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================= META INFO ================= */
+.member-meta {
+  display: flex;
+  gap: 14px;
+  font-size: 0.8rem;
+  margin: 2px 0 10px;
+  color: var(--gray);
+}
+
+.member-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.member-meta i {
+  color: var(--cyan);
+  font-size: 0.75rem;
+}
+
+/* ================= ROLE & BIO ================= */
+.team-card .role {
+  font-size: 0.85rem;
+  color: var(--cyan);
+  margin-bottom: 12px;
+}
+
+.team-card .bio {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--gray);
+  max-width: 95%;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1100px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .team-header h1 {
+    font-size: 2.4rem;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Always show legal names on mobile (no hover) */
+  .legal-name {
+    opacity: 1;
+    transform: none;
+  }
+
+  .nickname {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -1,0 +1,477 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap');
+
+:root {
+    --heading-font: "Unbounded", sans-serif;
+    --text-font: "Montserrat", system-ui;
+
+    --black: #0B0E14;
+    --mid-night: #111827;
+
+    --button-1: #a68af9;
+    --button-2: #3ABEFF;
+
+    --cyan: #22d3ee;
+
+    --white: #E5E7EB;
+    --gray: #9CA3AF;
+
+    --detail-text: 14px;
+}
+
+/* ================= BASE ================= */
+body {
+  background: var(--black);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ================= MAIN BACKGROUND ATMOSPHERE ================= */
+main {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--black);
+  background: radial-gradient(
+    circle closest-side at center,
+    rgba(166, 138, 249, 0.14) 0%,
+    rgba(166, 138, 249, 0.08) 9%,
+    rgba(166, 138, 249, 0.03) 20%,
+    rgba(11, 14, 20, 1) 60%
+  );
+}
+
+main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.22;
+
+  background-image:
+    linear-gradient(rgba(166, 138, 249, 0.25) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(166, 138, 249, 0.25) 1px, transparent 1px);
+  background-size: 36px 36px;
+
+  mask-image: radial-gradient(
+    circle at center,
+    black 0%,
+    rgba(0,0,0,0.85) 20%,
+    rgba(0,0,0,0.4) 40%,
+    transparent 68%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle at center,
+    black 0%,
+    rgba(0,0,0,0.85) 20%,
+    rgba(0,0,0,0.4) 40%,
+    transparent 68%
+  );
+}
+
+/* ================= HEADER ================= */
+.conference-header {
+  padding: 120px 8% 60px;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.conference-header h1 {
+  font-family: var(--heading-font);
+  font-size: 3rem;
+}
+
+.conference-header h1 span {
+  background: linear-gradient(90deg, #7c6de8, var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.conference-header p {
+  max-width: 720px;
+  margin: 18px auto 0;
+  color: var(--gray);
+}
+
+/* ================= REGION TABS ================= */
+.region-tabs-section {
+  padding: 0 8% 30px;
+  text-align: center;
+}
+
+.region-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  padding: 6px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.02);
+  width: fit-content;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.region-tab {
+  background: transparent;
+  border: none;
+  color: var(--gray);
+  padding: 10px 36px;
+  font-size: .95rem;
+  cursor: pointer;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: background .25s ease, color .25s ease;
+}
+
+.region-tab.active {
+  background: linear-gradient(90deg, var(--button-1), var(--button-2));
+  color: #000;
+  font-weight: 600;
+}
+
+.region-time-slot {
+  margin-top: 20px;
+  font-size: .95rem;
+  color: var(--button-2);
+}
+
+.region-time-slot p{
+  margin-top: 5px;
+  color: grey;
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* ================= RESPONSIVE TABS (SAFE) ================= */
+@media (max-width: 768px) {
+  .region-tabs-section {
+    padding: 0 4% 30px;
+  }
+
+  .region-tabs {
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 10px;
+
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    width: 320px;
+  }
+
+  .region-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .region-tab {
+    padding: 10px 24px;
+    font-size: .9rem;
+  }
+}
+
+/* ================= AGE SECTIONS ================= */
+.age-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding: 0 8%;
+  margin-bottom: 100px;
+}
+
+.conference-section {
+  padding: 0;
+}
+
+@media (max-width: 900px) {
+  .age-sections {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+}
+
+/* ================= COMMITTEES ================= */
+.conference-section {
+  padding: 80px 8%;
+}
+
+.conference-section h2 {
+  font-family: var(--heading-font);
+  margin-bottom: 36px;
+}
+
+.committee-list {
+  max-width: 900px;
+}
+
+.committee-item {
+  margin-bottom: 26px;
+  padding-left: 16px;
+  border-left: 2px solid transparent;
+  border-image: linear-gradient(#7c6de8, var(--button-2)) 1;
+}
+
+.committee-item strong {
+  display: block;
+  color: var(--white);
+}
+
+.committee-item span {
+  font-size: .95rem;
+  color: var(--gray);
+}
+
+/* ================= FIXED SCROLL BUTTON ================= */
+.scroll-indicator {
+  position: fixed; /* Fixes it to the viewport */
+  bottom: 30px;    /* Distance from bottom */
+  right: 30px;     /* Distance from right */
+  z-index: 1000;   /* Ensures it stays above other elements */
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.4s ease;
+  animation: fadeInBounce 1.5s ease-in-out infinite;
+}
+.scroll-indicator.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px); /* Slides down slightly as it disappears */
+  pointer-events: none;
+}
+.scroll-indicator span {
+  color: var(--gray);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  background: rgba(11, 14, 20, 0.7); /* Dark bg to make text readable over content */
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.scroll-down-btn {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--button-1), var(--button-2));
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(58, 190, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+/* Make it slightly smaller on mobile so it doesn't block content */
+@media (max-width: 768px) {
+  .scroll-indicator {
+    bottom: 20px;
+    right: 20px;
+  }
+  .scroll-down-btn {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes fadeInBounce {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ================= DEBATE SECTION ================= */
+.debate-wrapper {
+  padding: 120px 8% 140px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.debate-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.debate-header h2 {
+  font-family: var(--heading-font);
+  font-size: 2.4rem;
+}
+
+.debate-header p {
+  max-width: 680px;
+  margin: 14px auto 0;
+  color: var(--gray);
+  font-size: 0.95rem;
+}
+
+.debate-tabs {
+  margin: 0 auto;
+}
+
+.debate-card {
+  margin-top: 50px;
+  padding: 40px 36px;
+
+  background: rgba(2, 107, 159, 0.08);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.debate-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(58, 190, 255, 0.08),
+    rgba(34, 211, 238, 0.08)
+  );
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.debate-label {
+  display: inline-block;
+  padding: 6px 14px;
+  font-size: 12px;
+  border-radius: 999px;
+  background: rgba(34,211,238,0.15);
+  color: var(--button-2);
+  margin-bottom: 18px;
+}
+
+.debate-card h3 {
+  font-family: var(--heading-font);
+  font-size: 1.8rem;
+  margin-bottom: 18px;
+}
+
+.debate-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center; /* ✅ Centers the text within the column */
+  margin-top: 15px;    /* Adds consistent spacing from the tabs above */
+}
+
+.debate-time span {
+  color: var(--cyan);
+  font-size: 0.95rem;
+  font-weight: 500;    /* Optional: helps visibility */
+}
+
+.debate-time p {
+  color: grey;
+  font-size: 13px;
+  font-style: italic;
+  margin: 5px 0 0 0;   /* Adds slight breathing room above the subtext */
+}
+.debate-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 0.85rem;
+  color: var(--gray);
+  margin-bottom: 18px;
+}
+
+.debate-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.debate-meta i {
+  color: var(--cyan);
+}
+
+.debate-desc {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--white);
+  max-width: 800px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .scroll-indicator {
+    padding: 30px 0;
+  }
+  
+  .scroll-down-btn {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .debate-card {
+    padding: 30px 24px;
+  }
+
+  .debate-card h3 {
+    font-size: 1.5rem;
+  }
+}/* New Grid Wrapper for Debate Cards */
+.debate-age-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 50px;
+}
+
+/* Modify existing debate-card to remove the top margin since the grid handles it */
+.debate-card {
+  margin-top: 0; 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Ensure consistent card heights */
+.debate-card h3 {
+  min-height: 3.6rem; /* Keeps titles aligned if one wraps to two lines */
+}
+
+/* Responsive adjustment */
+@media (max-width: 900px) {
+  .debate-age-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .debate-card h3 {
+    min-height: auto;
+  }
+}
+
+/* Ensure the debate section age-grid doesn't have extra side padding */
+.debate-wrapper .age-sections {
+  padding: 0; 
+  margin-top: 60px;
+}
+
+/* Optional: Make the debate titles stand out slightly more than the sub-info */
+.debate-wrapper .committee-item span {
+  font-size: 1.1rem;
+  color: var(--white);
+  display: block;
+  margin-top: 4px;
+}

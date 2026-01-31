@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Deb8er </title>
+    <link rel="stylesheet" href="assets/about.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon1.png" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+        <!--            Navigation Bar                  -->
+
+        <nav class="navbar">
+          <div class="navbar-container">
+            <a href="#landing-page" class="logo">
+              <img src="assets/images/Deb9erfinallogo.png" alt="">
+            </a>
+        
+            <!-- Hamburger -->
+            <div class="nav-toggle" id="navToggle">
+              <i class="fa-solid fa-bars"></i>
+            </div>
+        
+            <ul class="nav-links" id="navLinks">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="conferences.html">Conferences</a></li>
+              <li><a href="verification.html">Verification</a></li>
+              <li><a href="team.html">Team</a></li>
+              <li><a href="form.html" class="join-btn">Join Us</a></li>
+            </ul>
+          </div>
+        </nav>
+
+       <!-- ================= ABOUT HERO ================= -->
+  <main>
+    <section class="about-section">
+
+      <!-- STATEMENT -->
+      <div class="about-intro">
+        <p class="about-statement">
+          At Deb8er, every voice matters.
+        </p>
+    
+        <p class="about-support">
+          Whether you’re a beginner or a pro, Deb8er is your space to debate, grow, and learn.
+        </p>
+      </div>
+    
+      <!-- DIVIDER -->
+      <div class="section-divider1"></div>
+    
+      <!-- WHAT WE DO -->
+      <div class="about-work">
+        <h2 class="about-heading">What We Do</h2>
+    
+        <div class="about-points">
+          <div class="about-point">
+            <i class="fas fa-trophy"></i>
+            <p>Organize competitions and interactive debates.</p>
+          </div>
+        
+          <div class="about-point">
+            <i class="fas fa-lightbulb"></i>
+            <p>Give advice, pointers, and resources to help people become better debaters.</p>
+          </div>
+        
+          <div class="about-point">
+            <i class="fas fa-users"></i>
+            <p>Create a community where ideas are valued and opinions are respected.</p>
+          </div>
+        </div>
+        
+      </div>
+    
+    </section>
+    
+
+    <!--------------------Footer section --------------->
+    <!--------------------Footer section --------------->
+    <footer class="site-footer">
+      <div class="footer-container">
+    
+        <!-- Brand -->
+        <div class="footer-brand">
+          <img src="assets/images/footerpng.png" alt="">
+          <p>
+            Deb8er is an global online platform where anyone from ages 10-18 can participate in debates and MUNs.
+          </p>
+        </div>
+    
+        <!-- Links -->
+        <div class="footer-links two-col">
+          <div class="footer-column">
+            <h4>Platform</h4>
+            <a href="about.html">About</a>
+            <a href="conferences.html">Conferences</a>
+            <a href="team.html">Team</a>
+          </div>
+    
+          <div class="footer-column">
+            <h4>Connect</h4>
+          
+            <a href="https://www.instagram.com/deb8er_official" target="_blank" rel="noopener noreferrer">
+              Instagram
+            </a>
+          
+            <a href="https://discord.gg/7dWD7Xebsj" target="_blank" rel="noopener noreferrer">
+              Discord
+            </a>
+          
+            <a href="#" id="copy-email">Email</a>
+
+          </div>
+          
+        </div>
+    
+      </div>
+    
+      <div class="footer-bottom">
+        <span>© 2025 Deb8er. All rights reserved.</span>
+      </div>
+    </footer>
+    
+    
+  </main>
+
+  <script src="script.js"></script>
+    <!-- Include D3.js -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<!-- Include TopoJSON for world map -->
+<script src="https://d3js.org/topojson.v3.min.js"></script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 900,       // animation length
+    easing: "ease-out-cubic",
+    once: true,          // animate only once
+    offset: 120          // trigger slightly before visible
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const emailLink = document.getElementById("copy-email");
+    if (!emailLink) return; // ← THIS is why it only worked on index.html
+  
+    emailLink.addEventListener("click", (e) => {
+      e.preventDefault();
+  
+      navigator.clipboard.writeText("hello.deb8er@gmail.com");
+  
+      const original = emailLink.textContent;
+      emailLink.textContent = "Copied!";
+      emailLink.style.color = "var(--cyan)";
+  
+      setTimeout(() => {
+        emailLink.textContent = original;
+        emailLink.style.color = "";
+      }, 1500);
+    });
+  });
+</script>
+</body>
+</html>

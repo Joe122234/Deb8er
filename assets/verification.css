@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap');
+
+:root {
+    --heading-font: "Unbounded", sans-serif;
+    --text-font: "Montserrat", system-ui;
+
+    --black: #0B0E14;
+    --mid-night: #111827;
+
+    --button-1: #a68af9;
+    --button-2: #3ABEFF;
+
+    --cyan: #22d3ee;
+
+    --white: #E5E7EB;
+    --gray: #9CA3AF;
+
+    --detail-text: 14px;
+}
+
+/* ================= MAIN BACKGROUND ================= */
+main {
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(
+      circle closest-side at center,
+      rgba(166, 138, 249, 0.14) 0%,
+      rgba(166, 138, 249, 0.08) 9%,
+      rgba(166, 138, 249, 0.03) 20%,
+      rgba(11, 14, 20, 1) 60%
+    );
+    max-height: 100vh;
+  }
+  
+  main::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.22;
+  
+    background-image:
+      linear-gradient(rgba(166, 138, 249, 0.25) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(166, 138, 249, 0.25) 1px, transparent 1px);
+    background-size: 36px 36px;
+  
+    mask-image: radial-gradient(
+      circle at center,
+      black 0%,
+      rgba(0,0,0,0.85) 20%,
+      rgba(0,0,0,0.4) 40%,
+      transparent 68%
+    );
+  }
+  
+.verify-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(
+      circle at center,
+      rgba(124, 109, 232, 0.15),
+      #0B0E14 65%
+    );
+  }
+  
+  .verify-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 40px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+  }
+  
+  .verify-card h1 {
+    font-family: var(--heading-font);
+    margin-bottom: 10px;
+  }
+  
+  .subtitle {
+    font-size: 14px;
+    color: var(--gray);
+    margin-bottom: 25px;
+  }
+  
+  .verify-card input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background: #111827;
+    color: white;
+    margin-bottom: 15px;
+    font-size: 15px;
+  }
+  
+  .verify-card button {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    background: linear-gradient(90deg, var(--button-1), var(--button-2));
+        color: #000;
+  }
+  
+  .result {
+    margin-top: 25px;
+    text-align: left;
+    font-size: 14px;
+  }
+  
+  .result.valid {
+    color: #22d3ee;
+  }
+  
+  .result.invalid {
+    color: #ef4444;
+  }
+  
+  .award {
+    margin-top: 10px;
+    color: gold;
+    font-weight: 600;
+  }
+  
+  .download-btn {
+    margin-top: 15px;
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, var(--button-1), var(--button-2));
+        color: #000;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .hidden {
+    display: none;
+  }
+
+  
+  .info {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--gray);
+  font-style: italic;
+}
