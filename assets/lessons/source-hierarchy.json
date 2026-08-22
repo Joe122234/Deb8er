@@ -1,0 +1,103 @@
+{
+  "title": "Source Hierarchy",
+  "unit": "evidence-research",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "All Evidence is Not Equal",
+      "content": "In debate, the quality of your evidence matters as much as the argument itself. Judges are trained to evaluate source credibility. The source hierarchy ranks evidence types by reliability.",
+      "bullets": [
+        "Level 1 — Peer-reviewed academic studies and government reports",
+        "Level 2 — Major news organizations with editorial standards",
+        "Level 3 — Expert opinions and think tank reports",
+        "Level 4 — Opinion pieces and blogs",
+        "Level 5 — Social media and anonymous sources"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "When to Use Each Level",
+      "content": "Higher-level sources are always preferable, but sometimes you need lower-level sources for timeliness or specific data. Learn to cite the highest level available and be transparent about limitations.",
+      "bullets": [
+        "Academic studies carry the most weight with judges",
+        "Government data is considered highly reliable",
+        "News articles are good for recent events",
+        "Blogs should only support, never prove, a claim"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "Evaluating Sources",
+      "content": "Compare three citations on the same topic:",
+      "good": "A 2024 meta-analysis in Nature (peer-reviewed) found a 15% reduction in carbon emissions from the policy. — High quality.",
+      "bad": "A Reddit post claims the policy reduced emissions. — Low quality, anonymous.",
+      "explanation": "In a debate, the first citation would outweigh the second. Always ask: Who published this? What is their methodology? When was it published?"
+    },
+    {
+      "type": "order",
+      "instruction": "Rank these sources from highest to lowest credibility.",
+      "steps": [
+        "Peer-reviewed study in a scientific journal",
+        "Government report from an official agency",
+        "Major newspaper investigation",
+        "Opinion blog",
+        "Anonymous social media post"
+      ],
+      "feedback": "Academic > Government > News > Opinion > Social Media"
+    },
+    {
+      "type": "quiz",
+      "q": "Why do peer-reviewed studies rank highest in the source hierarchy?",
+      "options": [
+        "They are always correct",
+        "They undergo expert review and methodological scrutiny before publication",
+        "They are longer than other sources",
+        "They are harder to find"
+      ],
+      "correct": 1,
+      "explain": "Peer review means independent experts have evaluated the methodology and conclusions before publication.",
+      "timeLimit": 30
+    },
+    {
+      "type": "true-false",
+      "statement": "A recent news article should always be preferred over an academic study from 5 years ago.",
+      "answer": false,
+      "feedback": "Timeliness matters but does not override quality. A peer-reviewed study from 5 years ago is often more reliable than a breaking news report.",
+      "timeLimit": 30
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "In the source hierarchy, {0}-reviewed studies and government reports are the most credible.",
+      "answers": [
+        "peer"
+      ],
+      "distractors": [
+        "peer",
+        "expert",
+        "news",
+        "online"
+      ],
+      "instruction": "Fill in the missing word.",
+      "feedback": "Peer-reviewed studies undergo expert scrutiny before publication."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "quiz",
+          "q": "What question should you ask first when evaluating a source?",
+          "options": [
+            "How long is it?",
+            "Who published this and what are their credentials?",
+            "Does it support my argument?",
+            "How recent is it?"
+          ],
+          "correct": 1,
+          "feedback": "Source credibility begins with the publisher's expertise and methodology.",
+          "timeLimit": 30
+        }
+      ]
+    }
+  ]
+}

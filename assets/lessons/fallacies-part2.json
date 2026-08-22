@@ -1,0 +1,120 @@
+{
+  "title": "Spotting Fallacies — Part 2",
+  "unit": "fallacies",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "More Fallacies to Master",
+      "content": "Let's examine Slippery Slope, Appeal to Authority, and Circular Reasoning.",
+      "bullets": [
+        "Slippery Slope — Assuming a small step leads to extreme outcomes",
+        "Appeal to Authority — Citing unqualified experts as proof",
+        "Circular Reasoning — The conclusion is assumed in the premise"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "Why These Matter",
+      "content": "Slippery Slope exaggerates consequences. Appeal to Authority uses irrelevant expertise. Circular Reasoning assumes what it tries to prove.",
+      "bullets": [
+        "Slippery Slope: 'Allow X, then Y will happen' — missing causal evidence",
+        "Appeal to Authority: 'This celebrity says it' — fame ≠ expertise",
+        "Circular Reasoning: 'It is true because it is true' — no external proof"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "Circular Reasoning",
+      "content": "'The Bible is true because it is the word of God. How do we know? Because the Bible says so.'",
+      "explanation": "The premise assumes the conclusion. No external evidence is provided."
+    },
+    {
+      "type": "practice",
+      "instruction": "'If we let students choose books, soon they won't read at all.' This is:",
+      "options": [
+        "Straw Man",
+        "Slippery Slope",
+        "Red Herring",
+        "False Dilemma"
+      ],
+      "correct": 1,
+      "feedback": "Slippery Slope — assumes book choice leads to not reading, without evidence.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "q": "An Appeal to Authority is fallacious when:",
+      "options": [
+        "All authorities are untrustworthy",
+        "The authority is not an expert on this specific topic",
+        "Authorities should never be cited",
+        "The authority is alive"
+      ],
+      "correct": 1,
+      "explain": "Expertise in one field does not transfer. A physicist's opinion on economics is not automatically valid.",
+      "timeLimit": 30
+    },
+    {
+      "type": "match",
+      "instruction": "Match each fallacy to its example.",
+      "pairs": [
+        {
+          "id": "ss",
+          "left": "Slippery Slope",
+          "right": "Legalizing marijuana leads to societal collapse"
+        },
+        {
+          "id": "aa",
+          "left": "Appeal to Authority",
+          "right": "My singer says this investment is safe"
+        },
+        {
+          "id": "cr",
+          "left": "Circular Reasoning",
+          "right": "This law is just because it is fair"
+        }
+      ],
+      "feedback": "Each fallacy distorts reasoning differently."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "A {0} {1} fallacy assumes one small change inevitably leads to extreme outcomes.",
+      "answers": [
+        "Slippery",
+        "Slope"
+      ],
+      "distractors": [
+        "Slippery",
+        "Slope",
+        "Circular",
+        "Reasoning"
+      ],
+      "instruction": "Fill in the two-word name.",
+      "feedback": "Slippery Slope arguments need evidence for each causal step."
+    },
+    {
+      "type": "true-false",
+      "statement": "A \"slippery slope\" argument is always fallacious and should never be used in debate.",
+      "answer": false,
+      "feedback": "Slippery slope is only fallacious when the causal chain is unsupported. A well-evidenced slippery slope can be a valid argument.",
+      "timeLimit": 30
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "spot-mistake",
+          "argument": "Dr. Smith, a Nobel physicist, says the economic stimulus will fail. The fallacy?",
+          "options": [
+            "None",
+            "Appeal to Authority",
+            "Slippery Slope"
+          ],
+          "correct": 1,
+          "feedback": "Physics expertise does not qualify one as an economics authority."
+        }
+      ]
+    }
+  ]
+}

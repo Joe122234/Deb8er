@@ -1,0 +1,110 @@
+{
+  "title": "Operative Clauses",
+  "unit": "draft-resolutions",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "What Are Operative Clauses?",
+      "content": "Operative clauses are the actionable part of a MUN resolution. Each clause begins with a strong action verb (Decides, Urges, Recommends, Calls upon) and ends with a semicolon. The final clause ends with a period.",
+      "bullets": [
+        "Each clause should propose one specific action",
+        "Use strong, actionable verbs",
+        "Clauses should be numbered and progress logically"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "Writing Strong Operative Clauses",
+      "content": "Good operative clauses are specific, actionable, and realistic. They include implementation details like timelines, funding mechanisms, and responsible bodies.",
+      "bullets": [
+        "Specify WHO will implement, WHAT they will do, and HOW it will be funded",
+        "Avoid vague language like 'support' or 'encourage' without details",
+        "Number your clauses and group related ideas together"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "Operative Clause Example",
+      "content": "'1. Calls upon all member states to allocate at least 0.5% of their annual GDP to climate adaptation programs, to be administered through the Green Climate Fund;'",
+      "explanation": "This clause is specific: who (member states), what (allocate 0.5% GDP), how (Green Climate Fund), why (climate adaptation). It is actionable and verifiable."
+    },
+    {
+      "type": "practice",
+      "instruction": "Which verb is appropriate for a strong operative clause?",
+      "options": [
+        "Thinks",
+        "Believes",
+        "Urges",
+        "Hopes"
+      ],
+      "correct": 2,
+      "feedback": "'Urges' is a strong operative verb. 'Thinks', 'Believes', and 'Hopes' are too weak for operative clauses.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "q": "How should operative clauses end (except the final one)?",
+      "options": [
+        "With a period",
+        "With a comma",
+        "With a semicolon",
+        "With 'and'"
+      ],
+      "correct": 2,
+      "explain": "Each operative clause except the last ends with a semicolon. The final clause ends with a period.",
+      "timeLimit": 30
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "An operative clause should specify {0} will implement the action, {1} they will do, and how it will be funded.",
+      "answers": [
+        "who",
+        "what"
+      ],
+      "distractors": [
+        "who",
+        "what",
+        "when",
+        "where"
+      ],
+      "instruction": "Fill in the missing planning questions.",
+      "feedback": "Good operative clauses answer who, what, and how."
+    },
+    {
+      "type": "order",
+      "instruction": "Put these steps for writing operative clauses in logical order.",
+      "steps": [
+        "Identify the specific action needed",
+        "Choose a strong operative verb",
+        "Assign responsibility to a body or member states",
+        "Include implementation details"
+      ],
+      "feedback": "Action → Verb → Responsibility → Details"
+    },
+    {
+      "type": "true-false",
+      "statement": "Operative clauses in a resolution must be numbered sequentially, with each clause ending with a semicolon except the final one which ends with a period.",
+      "answer": true,
+      "feedback": "Correct. Operative clauses are numbered and punctuated this way in formal resolutions.",
+      "timeLimit": 30
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "spot-mistake",
+          "argument": "Operative clause: 'Thinks that climate change is bad.' What is wrong?",
+          "options": [
+            "Nothing",
+            "Weak verb and no actionable detail",
+            "Too long",
+            "Wrong topic"
+          ],
+          "correct": 1,
+          "feedback": "'Thinks' is too weak and there is no specific action. Use 'Urges' or 'Decides' with concrete steps."
+        }
+      ]
+    }
+  ]
+}

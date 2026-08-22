@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net https://d3js.org https://apis.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firestore.googleapis.com https://www.googleapis.com https://script.google.com https://script.googleusercontent.com https://www.gstatic.com https://cdn.jsdelivr.net wss://*.firebaseio.com; img-src 'self' data: https:; frame-src 'self' https://*.firebaseapp.com;">
+  <meta name="description" content="Join a Deb8er MUN or Debate conference. Sign up to debate global issues, represent committees, and earn certificates.">
+  <meta name="keywords" content="Join MUN conference, debate registration, Model UN sign up, student debate, Deb8er conference">
+  <meta property="og:title" content="Join a MUN or Debate Conference | Deb8er">
+  <meta property="og:description" content="Sign up for Deb8er MUN and Debate conferences. Choose your committee, portfolio, and region to start debating.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://deb8erglobal.com/join-conference.html">
+  <meta property="og:image" content="https://deb8erglobal.com/assets/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Deb8er">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Join a MUN or Debate Conference | Deb8er">
+  <meta name="twitter:description" content="Sign up to debate at a Deb8er MUN or Debate conference. Earn certificates and build your global profile.">
+  <meta name="twitter:image" content="https://deb8erglobal.com/assets/images/og-image.png">
+
+  <title>Join a MUN or Debate Conference | Deb8er</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.min.css">
+  <link rel="stylesheet" href="assets/form.css">
+  <link rel="stylesheet" href="assets/auth.css">
+  <link rel="canonical" href="https://deb8erglobal.com/join-conference.html">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon1.png" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Join a MUN or Debate Conference | Deb8er",
+    "description": "Sign up for Deb8er MUN and Debate conferences.",
+    "publisher": {
+      "@type": "EducationalOrganization",
+      "name": "Deb8er",
+      "url": "https://deb8erglobal.com"
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/Deb9erfinallogo.webp" width="200" height="auto"
+          alt="Deb8er - Global MUN & Debate Platform">
+      </a>
+      <div class="nav-toggle" id="navToggle" role="button" tabindex="0" aria-label="Toggle navigation">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="conferences.html">Conferences</a></li>
+        <li><a href="verification.html">Verification</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="leaderboard.html">Leaderboard</a></li>
+        <li id="nav-auth-item"><a href="dashboard.html" class="nav-account-btn"><i class="fas fa-user"></i> My Account</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Auth loading gate -->
+  <div class="dashboard-loading" id="auth-loading">
+    <div class="spinner"></div>
+    <span>Verifying your account…</span>
+  </div>
+
+  <section class="join-section" id="join" style="display:none; margin-bottom: 150px;">
+
+    <!-- Greeting banner -->
+    <div style="text-align:center; margin-bottom:16px; color:#9CA3AF; font-size:14px;" id="greeting-banner">
+      Signing up as: <strong id="greeting-name" style="color:#3ABEFF;"></strong>
+    </div>
+
+    <h1 class="section-title">
+      Join a <span class="span1">Deb</span><span class="span2">8</span>er Debate
+    </h1>
+
+    <div class="form-wrapper">
+      <form class="join-form" id="munForm">
+
+        <!-- Region Dropdown -->
+        <div class="form-group">
+          <label class="label-with-info">
+            <span><i class="fas fa-map-marker-alt"></i> Debate Region</span>
+            <span class="info-trigger">
+              <i class="fas fa-info-circle"></i>
+              <span class="tooltip-box">
+                You may still select other regions if available.
+              </span>
+            </span>
+          </label>
+
+          <div class="custom-dropdown" data-name="region">
+            <div class="dropdown-selected">
+              <span class="selected-text">Select region</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="dropdown-options">
+              <div class="dropdown-option" data-value="">Select region</div>
+              <div class="dropdown-option" data-value="asia">Asian Debate</div>
+              <div class="dropdown-option" data-value="america">American Debate</div>
+              <div class="dropdown-option" data-value="europe">European Debate</div>
+              <div class="dropdown-option" data-value="africa">African-Oceania Debate</div>
+            </div>
+            <input type="hidden" name="region" value="">
+          </div>
+        </div>
+
+        <div class="timezone-message" id="timezoneMessage"></div>
+
+        <div class="form-checkbox">
+          <input type="checkbox" id="timezoneAgree" required>
+          <label for="timezoneAgree">
+            I understand this debate may take place outside of my local timezone.
+          </label>
+        </div>
+
+        <button type="submit" class="join-btn full">Submit Application <i class="fas fa-paper-plane"
+            style="margin-left:8px;"></i></button>
+      </form>
+    </div>
+
+    <div id="formSuccess" class="success-card" style="display: none;">
+      <i class="fas fa-check-circle"></i>
+      <h3>Application Received!</h3>
+      <p>Thank you for applying to Deb8er. We have received your information and will contact you via email soon.</p>
+      <div class="success-sub">A confirmation message has been sent to your inbox.</div>
+      <a href="dashboard.html" class="join-btn">View My Account</a>
+    </div>
+
+    <div id="formError" class="success-card" style="display: none;">
+      <i class="fas fa-exclamation-circle" style="color:#F87171;"></i>
+      <h3 style="color:#FCA5A5;">Submission Failed</h3>
+      <p>We couldn't reach the server. Please check your connection and try again.</p>
+      <button onclick="location.reload()" class="join-btn">Try Again</button>
+    </div>
+
+    <div id="duplicateError" class="success-card" style="display: none;">
+      <i class="fas fa-exclamation-circle" style="color:#F87171;"></i>
+      <h3 style="color:#FCA5A5;">Already Registered</h3>
+      <p>You've already registered for this conference. Each conference session can only be joined once.</p>
+      <a href="dashboard.html" class="join-btn">View My Account</a>
+    </div>
+
+    <div id="noConference" class="success-card" style="display: none;">
+      <i class="fas fa-calendar-times" style="color:#FBBF24;"></i>
+      <h3 id="noConfTitle" style="color:#FCD34D;">No Active Conference</h3>
+      <p id="noConfSub">There is no active conference for this month yet. Please check back soon.</p>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="assets/images/footerpng.webp" width="160" height="40" alt="Deb8er - Global MUN & Debate Platform">
+        <p>Deb8er is a global online platform where anyone from ages 10-18 can participate in debates and MUNs.</p>
+      </div>
+      <div class="footer-links two-col">
+        <div class="footer-column">
+          <h4>Platform</h4>
+          <a href="about.html">About</a>
+          <a href="conferences.html">Conferences</a>
+          <a href="team.html">Team</a>
+        </div>
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <a href="https://www.instagram.com/deb8er_official" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://discord.gg/7dWD7Xebsj" target="_blank" rel="noopener noreferrer">Discord</a>
+          <a href="https://www.tiktok.com/@deb8er4" target="_blank" rel="noopener noreferrer">TikTok</a>
+          <a href="https://www.youtube.com/@Deb8er_official" target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a href="#" id="copy-email">Email</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Deb8er. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="script.min.js" defer></script>
+  <script src="conferences.js"></script>
+  <script type="module" src="navbar-auth.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.43/moment-timezone-with-data.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+
+  <!-- Firebase -->
+  <script type="module">
+    import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+    import {
+      getAuth,
+      onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
+    import {
+      getFirestore,
+      doc,
+      getDoc,
+      updateDoc,
+      arrayUnion
+    } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+
+    const DEBUG = false;
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDGEGLVwVQfi8YgG0oZthSTr7YNbfW5wwo",
+      authDomain: "deb8ersignup-4b9e1.firebaseapp.com",
+      projectId: "deb8ersignup-4b9e1",
+      storageBucket: "deb8ersignup-4b9e1.firebasestorage.app",
+      messagingSenderId: "498995453154",
+      appId: "1:498995453154:web:de1836f0b8cd764c8292bb"
+    };
+
+    const app  = getApps().length ? getApp() : initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db   = getFirestore(app);
+
+    let currentUser = null;
+    let userProfile = null;
+
+    // Conference base id from URL (?id=conf-YYYY-MM), else current month
+    const CONFERENCE_ID = new URLSearchParams(window.location.search).get("id");
+
+    // ---- Auth gate ----
+    onAuthStateChanged(auth, async user => {
+      if (!user) {
+        window.location.href = "auth.html?tab=signin";
+        return;
+      }
+      currentUser = user;
+
+      // Load profile
+      const snap = await getDoc(doc(db, "users", user.uid));
+      if (!snap.exists()) {
+        window.location.href = "auth.html";
+        return;
+      }
+      userProfile = snap.data();
+
+      // Show greeting
+      document.getElementById("greeting-name").textContent =
+        userProfile.nickName || userProfile.fullName || user.email;
+
+      // Show form
+      document.getElementById("auth-loading").style.display = "none";
+      document.getElementById("join").style.display = "flex";
+    });
+
+    // ---- Conference session resolution ----
+    // Conference base id from URL (?id=conf-YYYY-MM), else CONFERENCE_CONFIG.id, else current month
+    function currentMonthBase() {
+      const now = new Date();
+      const yyyy = now.getFullYear();
+      const mm = String(now.getMonth() + 1).padStart(2, "0");
+      return `conf-${yyyy}-${mm}`;
+    }
+
+    function getConferenceId(eventType) {
+      const base = CONFERENCE_ID || (window.CONFERENCE_CONFIG && window.CONFERENCE_CONFIG.id) || currentMonthBase();
+      return `${base}-${eventType}`;
+    }
+
+    // Resolve a conference session from the static config (never async).
+    // Returns { id, exists, registrationOpen, name, eventDate, regions, committees, motions }
+    function getConference(eventType) {
+      const confId = getConferenceId(eventType);
+      const conf = window.CONFERENCE_CONFIG || {};
+      const data = conf[eventType];
+      if (!data) return { id: confId, exists: false, registrationOpen: false };
+      return {
+        id: confId,
+        exists: true,
+        name: data.name || "",
+        eventDate: data.eventDate || "",
+        registrationOpen: data.registrationOpen !== false,
+        regions: data.regions || {},
+        committees: data.committees || [],
+        motions: data.motions || []
+      };
+    }
+
+    // ---- Make submit handler accessible from module scope ----
+    // We expose it via window for the inline script below
+    window._firebaseReady = {
+      auth,
+      db,
+      getUser: () => currentUser,
+      getProfile: () => userProfile,
+      getConference,
+      getConferenceId,
+      currentMonthBase
+    };
+  </script>
+
+    <script>
+    /* ================= CUSTOM DROPDOWN ================= */
+    document.querySelectorAll(".custom-dropdown").forEach((dropdown) => {
+      const selected     = dropdown.querySelector(".dropdown-selected");
+      const selectedText = dropdown.querySelector(".selected-text");
+      const options      = dropdown.querySelectorAll(".dropdown-option");
+      const hiddenInput  = dropdown.querySelector('input[type="hidden"]');
+
+      selected.addEventListener("click", () => {
+        dropdown.classList.toggle("active");
+        document.querySelectorAll(".custom-dropdown").forEach((other) => {
+          if (other !== dropdown) other.classList.remove("active");
+        });
+      });
+
+      options.forEach((option) => {
+        option.addEventListener("click", () => {
+          const value = option.dataset.value;
+          const text  = option.textContent;
+          selectedText.textContent = text;
+          if (hiddenInput) {
+            hiddenInput.value = value;
+            hiddenInput.dispatchEvent(new Event("change", { bubbles: true }));
+          }
+          options.forEach((opt) => opt.classList.remove("selected"));
+          option.classList.add("selected");
+          dropdown.classList.remove("active");
+        });
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!dropdown.contains(e.target)) dropdown.classList.remove("active");
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const title            = document.querySelector(".section-title");
+      const regionHidden     = document.querySelector('input[name="region"]');
+      const timezoneMessage  = document.getElementById("timezoneMessage");
+      const form             = document.getElementById("munForm");
+      const successBox       = document.getElementById("formSuccess");
+      const errorBox         = document.getElementById("formError");
+
+      let activeConf    = null;
+
+      function esc(str) {
+        return String(str == null ? "" : str)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      // ---- Active conference state helpers ----
+      function loadActiveConference() {
+        const eventType = getEventType();
+        const conf = window._firebaseReady?.getConference(eventType);
+        activeConf = conf;
+        updateLocalTime();
+        updateFormVisibility();
+      }
+
+      function updateFormVisibility() {
+        const formBox = document.querySelector(".form-wrapper");
+        const noConfCard = document.getElementById("noConference");
+        if (!formBox) return;
+
+        const open = activeConf && activeConf.exists && activeConf.registrationOpen !== false;
+        if (noConfCard) {
+          noConfCard.style.display = open ? "none" : "block";
+          if (noConfCard && !open) {
+            const titleEl = document.getElementById("noConfTitle");
+            const subEl = document.getElementById("noConfSub");
+            if (activeConf && activeConf.exists && activeConf.registrationOpen === false) {
+              titleEl.textContent = "Registration Closed";
+              subEl.textContent = `This conference session (${activeConf.id}) is no longer accepting registrations. Check back for the next session.`;
+            } else {
+              titleEl.textContent = "No Active Conference";
+              subEl.textContent = "There is no active conference for this month yet. Please check back soon or contact us for the next session date.";
+            }
+          }
+        }
+        formBox.style.setProperty("display", open ? "flex" : "none", "important");
+        if (noConfCard) {
+          noConfCard.style.setProperty("display", open ? "none" : "block", "important");
+        }
+      }
+
+      function getEventType() {
+        return "debate";
+      }
+
+      function updateLocalTime() {
+        const regionKey = regionHidden ? regionHidden.value : "";
+        const regions = (activeConf && activeConf.regions) || {};
+        if (!regionKey || !regions[regionKey]) {
+          timezoneMessage.style.display = "none";
+          return;
+        }
+
+        let userTZ;
+        try {
+          userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        } catch (_) {
+          timezoneMessage.style.display = "none";
+          return;
+        }
+
+        const region = regions[regionKey];
+        const startDate = activeConf.eventDate || moment().format("YYYY-MM-DD");
+        const start      = moment.tz(`${startDate} ${region.start}`, "YYYY-MM-DD HH:mm", region.timezone);
+        let   end        = moment.tz(`${startDate} ${region.end}`,   "YYYY-MM-DD HH:mm", region.timezone);
+        if (end.isSameOrBefore(start)) end.add(1, "day");
+        const localStart = start.clone().tz(userTZ);
+        const localEnd   = end.clone().tz(userTZ);
+
+        timezoneMessage.innerHTML = `
+          <strong>${region.label} Debate Session</strong><br>
+          Official time: ${start.format("MMM D, YYYY hh:mm A")} – ${end.format("MMM D, YYYY hh:mm A")} (${region.timezone})<br>
+          <span style="color:#22d3ee;">
+            Your local time: ${localStart.format("MMM D, YYYY hh:mm A")} – ${localEnd.format("MMM D, YYYY hh:mm A")} (${userTZ})
+          </span>
+        `;
+        timezoneMessage.style.display = "block";
+      }
+
+      /* ---- Events ---- */
+      if (regionHidden) {
+        regionHidden.addEventListener("change", () => {
+          updateLocalTime();
+        });
+      }
+
+      /* ---- Auto-suggest region by browser timezone ---- */
+      (function() {
+        let userTZ;
+        try { userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (_) { return; }
+        if (!userTZ) return;
+        let suggested = "asia";
+        if (userTZ.startsWith("Europe"))    suggested = "europe";
+        else if (userTZ.startsWith("America")) suggested = "america";
+        else if (userTZ.startsWith("Africa"))  suggested = "africa";
+        else if (userTZ.startsWith("Australia") || userTZ.startsWith("Pacific")) suggested = "africa";
+        if (regionHidden) {
+          regionHidden.value = suggested;
+          const customDropdown = regionHidden.closest(".custom-dropdown");
+          if (customDropdown) {
+            const selText = customDropdown.querySelector(".selected-text");
+            const opt     = customDropdown.querySelector(`.dropdown-option[data-value="${suggested}"]`);
+            if (opt && selText) selText.textContent = opt.textContent;
+          }
+          updateLocalTime();
+        }
+      })();
+
+      /* ---- Form submit ---- */
+      const GOOGLE_SHEET_URL =
+        "https://script.google.com/macros/s/AKfycbx_YlVpMbjm4qCWlrs6gphHRyRmQWrOpYwD8M35vKF7b2R7_nGdbeDOQJtHaVl0dTwZ/exec";
+
+      // Conference id derived from resolved session (module-scope helper).
+      function getConferenceId(eventType) {
+        return window._firebaseReady?.getConferenceId(eventType) || "";
+      }
+
+      function showCard(cardId, msg) {
+        const card = document.getElementById(cardId);
+        if (!card) return;
+        const msgEl = card.querySelector("p");
+        if (msgEl && msg) msgEl.textContent = msg;
+        card.style.setProperty("display", "block", "important");
+        document.querySelector(".form-wrapper")?.style.setProperty("display", "none", "important");
+        document.querySelector(".section-title")?.style.setProperty("display", "none", "important");
+        if (document.getElementById("greeting-banner"))
+          document.getElementById("greeting-banner").style.display = "none";
+        window.scrollTo({ top: document.getElementById("join").offsetTop, behavior: "smooth" });
+      }
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.innerText = "Processing…";
+        submitBtn.disabled  = true;
+
+        try {
+          const profile   = window._firebaseReady?.getProfile();
+          const user      = window._firebaseReady?.getUser();
+          const eventType = getEventType();
+          const conferenceId = getConferenceId(eventType);
+
+          if (!conferenceId) {
+            showCard("formError", "Could not resolve the conference session. Please try again.");
+            submitBtn.disabled = false;
+            return;
+          }
+
+          // Dedup check #1 (client-side, Firestore): already registered for this session?
+          if (user && window._firebaseReady?.db) {
+            try {
+              const { doc, getDoc } = await import(
+                "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js"
+              ).catch(() => null) || {};
+              if (doc && getDoc) {
+                const snap = await getDoc(doc(window._firebaseReady.db, "users", user.uid));
+                if (snap.exists()) {
+                  const existing = snap.data().conferences || [];
+                  if (existing.some(c => c.conferenceId === conferenceId)) {
+                    if (DEBUG) console.log("DEDUP BLOCKED:", conferenceId, "existing:", existing.map(c => c.conferenceId));
+                    submitBtn.disabled = false;
+                    showCard("duplicateError", `You've already registered for this conference (${conferenceId}). Each conference session can only be joined once.`);
+                    return;
+                  }
+                }
+              }
+            } catch (dedupErr) {
+              console.warn("Firestore dedup check failed, continuing:", dedupErr);
+            }
+          }
+
+          const formData  = new URLSearchParams();
+
+          // Pre-fill from profile
+          formData.append("eventType",  eventType);
+          formData.append("fullName",   profile?.fullName   || "");
+          formData.append("nickName",   profile?.nickName   || "");
+          formData.append("email",      profile?.email      || user?.email || "");
+          formData.append("phoneNumber",profile?.phone      || "");
+          formData.append("age",        profile?.age        || "");
+          formData.append("country",    profile?.country    || "");
+          formData.append("region",     regionHidden?.value || "");
+          formData.append("conferenceId", conferenceId);
+          formData.append("eventName",   activeConf?.name   || "");
+          formData.append("eventDate",   activeConf?.eventDate || "");
+
+          // 1. Submit to Google Sheets
+          const generatedCertId = "DEB8-" + Math.random().toString(36).substr(2, 6).toUpperCase();
+          formData.append("certificateId", generatedCertId);
+
+          const sheetResp = await fetch(GOOGLE_SHEET_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body:   formData.toString()
+          });
+
+          // Parse response — honor server-side dedup (exists:true)
+          let certificateId = generatedCertId;
+          let sheetBlocked  = false;
+          if (!sheetResp.ok) {
+            // 502/500/etc from Apps Script — can't parse JSON, block to be safe
+            if (DEBUG) console.warn("Sheet POST returned", sheetResp.status, "— treating as potential duplicate");
+            sheetBlocked = true;
+          } else {
+            try {
+              const result = await sheetResp.json();
+              if (result.certificateId) certificateId = result.certificateId;
+              if (result.exists === true) {
+                sheetBlocked = true;
+                if (DEBUG) console.log("SHEET DEDUP BLOCKED:", conferenceId);
+              }
+            } catch (e) {
+              // Response was OK but body isn't JSON — treat as potential duplicate
+              if (DEBUG) console.warn("Sheet response not JSON, treating as potential duplicate");
+              sheetBlocked = true;
+            }
+          }
+
+          if (sheetBlocked) {
+            submitBtn.disabled = false;
+            // If the sheet was unreachable (502/500), show a different message
+            if (!sheetResp.ok) {
+              showCard("formError", "We couldn't verify your registration with our server. If you've already registered, please check your Dashboard. If not, please try again in a moment.");
+            } else {
+              showCard("duplicateError", `You've already registered for this conference (${conferenceId}). Each conference session can only be joined once.`);
+            }
+            return;
+          }
+
+          // 2. Log this conference to Firestore user profile
+          if (user && window._firebaseReady) {
+            const { db, getFirestore, doc, updateDoc, arrayUnion } = await import(
+              "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js"
+            ).catch(() => null) || {};
+            const confEntry = {
+              type:      eventType,
+              name:      activeConf?.name || "Debate Conference",
+              region:    regionHidden?.value || "",
+              date:      activeConf?.eventDate || new Date().toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" }),
+              certificateId: certificateId
+            };
+            if (conferenceId) confEntry.conferenceId = conferenceId;
+            // Dispatch event so module script can pick it up
+            document.dispatchEvent(new CustomEvent("deb8er:logConference", { detail: { uid: user.uid, entry: confEntry } }));
+          }
+
+          // Show success
+          document.querySelector(".form-wrapper")?.style.setProperty("display", "none", "important");
+          form.style.setProperty("display", "none", "important");
+          document.querySelector(".section-title")?.style.setProperty("display", "none", "important");
+          if (document.getElementById("greeting-banner"))
+            document.getElementById("greeting-banner").style.display = "none";
+          successBox.style.display = "block";
+          window.scrollTo({ top: document.getElementById("join").offsetTop, behavior: "smooth" });
+        } catch (err) {
+          document.querySelector(".form-wrapper")?.style.setProperty("display", "none", "important");
+          form.style.setProperty("display", "none", "important");
+          document.querySelector(".section-title")?.style.setProperty("display", "none", "important");
+          if (document.getElementById("greeting-banner"))
+            document.getElementById("greeting-banner").style.display = "none";
+          errorBox.style.display = "block";
+          window.scrollTo({ top: document.getElementById("join").offsetTop, behavior: "smooth" });
+        }
+      });
+
+      loadActiveConference();
+    });
+
+    AOS.init({ duration: 900, easing: "ease-out-cubic", once: true, offset: 120 });
+  </script>
+
+  <!-- Module script to handle conference logging -->
+  <script type="module">
+    import {
+      doc,
+      getDoc,
+      updateDoc,
+      arrayUnion
+    } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+    import { syncLeaderboard, CONF_POINTS } from "./assets/leaderboard-sync.js";
+    import { checkBadgesFromLearning, makeHistoryEntry } from "./assets/gamification.js";
+
+    // Reuse the Firestore instance created by the first module script above
+    // (calling initializeApp again would throw "DEFAULT app already exists").
+    const db = window._firebaseReady && window._firebaseReady.db;
+
+    document.addEventListener("deb8er:logConference", async (e) => {
+      const { uid, entry } = e.detail;
+      try {
+        const confEntry = makeHistoryEntry(CONF_POINTS, "conference", `Attended: ${entry.name || entry.type || "Conference"}`);
+        // Read existing data first, then write
+        const prevSnap = await getDoc(doc(db, "users", uid));
+        await updateDoc(doc(db, "users", uid), {
+          conferences: arrayUnion(entry),
+          pointHistory: arrayUnion(confEntry)
+        });
+        // Sync from merged local data — no re-read needed
+        const prevData = prevSnap.exists() ? prevSnap.data() : {};
+        const mergedConferences = [...(prevData.conferences || []), entry];
+        const mergedHistory = [...(prevData.pointHistory || []), confEntry];
+        syncLeaderboard(db, uid, { ...prevData, conferences: mergedConferences, pointHistory: mergedHistory }).catch(() => {});
+        // Check for newly earned badges
+        const learning = prevData.learning || {};
+        const newBadges = checkBadgesFromLearning(learning, mergedConferences, prevData.awards || [], {
+          referrals: prevData.referrals || [],
+          fullName: prevData.fullName,
+          activityPoints: prevData.activityPoints || 0,
+          allLessonIds: []
+        });
+        if (newBadges.length > 0) {
+          await updateDoc(doc(db, "users", uid), {
+            "learning.achievements": learning.achievements || []
+          });
+        }
+      } catch (err) {
+        console.warn("Could not log conference to Firestore:", err);
+      }
+    });
+  </script>
+
+</body>
+</html>

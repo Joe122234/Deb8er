@@ -1,0 +1,143 @@
+{
+  "title": "The AREST Structure",
+  "unit": "building-arguments",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "What Makes a Strong Argument?",
+      "content": "A strong argument is more than just an opinion — it is a structured claim supported by reasoning and evidence. The AREST framework gives you a five-component formula for building arguments that hold up under scrutiny.",
+      "bullets": [
+        "A — Assertion: Your main claim or position",
+        "R — Reasoning: Why your assertion is true",
+        "E — Evidence: The facts or data that support your reasoning",
+        "S — Significance: Why this argument matters in the bigger picture",
+        "T — Tie-back: How this connects back to the overall debate motion"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "Breaking Down Each Component",
+      "content": "Let's examine each part of AREST in detail. The Assertion is your one-sentence claim — clear and debatable. Reasoning explains the logic connecting your evidence to your claim. Evidence provides concrete support — statistics, examples, expert testimony. Significance tells the audience why this point matters. The Tie-back explicitly connects your argument back to the debate motion.",
+      "bullets": [
+        "Assertion: 'Schools should start at 9 AM' — specific and debatable",
+        "Reasoning: 'Teenagers have biological sleep cycles that make early starts counterproductive'",
+        "Evidence: 'A 2023 study in the Journal of Adolescent Health found a 15% GPA increase in schools starting at 9 AM'",
+        "Significance: 'This affects millions of students' academic performance and wellbeing'",
+        "Tie-back: 'Therefore, this motion to reform school hours is supported by both science and outcomes'"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "AREST in Action",
+      "content": "Let's break down a full argument using AREST.",
+      "good": "Assertion: Social media companies should be held legally responsible for misinformation on their platforms.\nReasoning: Current moderation practices are reactive, not preventive, allowing viral falsehoods to spread before they are removed.\nEvidence: A Stanford study found false news spreads six times faster than true news on Twitter.\nSignificance: Misinformation erodes democratic processes and public health — the cost of inaction is unacceptable.\nTie-back: This directly supports the motion that tech companies must be regulated for content accuracy.",
+      "bad": "Social media is bad and should be stopped because there is too much fake news.",
+      "explanation": "The good argument uses all five AREST components to build a complete, persuasive case. The bad argument makes an assertion without reasoning, evidence, or significance — it is just an opinion."
+    },
+    {
+      "type": "practice",
+      "instruction": "Which component of AREST answers the question 'So what?'",
+      "options": [
+        "Assertion",
+        "Reasoning",
+        "Evidence",
+        "Significance"
+      ],
+      "correct": 3,
+      "feedback": "Significance explains why your argument matters and why the audience should care — it answers 'So what?'",
+      "timeLimit": 30
+    },
+    {
+      "type": "match",
+      "instruction": "Match each AREST component to its correct description.",
+      "pairs": [
+        {
+          "id": "a",
+          "left": "Assertion",
+          "right": "Your main claim or position"
+        },
+        {
+          "id": "r",
+          "left": "Reasoning",
+          "right": "Explains why your assertion is true"
+        },
+        {
+          "id": "e",
+          "left": "Evidence",
+          "right": "Facts or data supporting your reasoning"
+        },
+        {
+          "id": "s",
+          "left": "Significance",
+          "right": "Why this argument matters broadly"
+        },
+        {
+          "id": "t",
+          "left": "Tie-back",
+          "right": "Connects back to the debate motion"
+        }
+      ],
+      "feedback": "AREST builds a complete argument: start with your claim, justify it with logic, prove it with facts, explain its importance, and connect it to the big picture."
+    },
+    {
+      "type": "quiz",
+      "q": "What is the difference between Reasoning and Evidence in AREST?",
+      "options": [
+        "They are the same thing expressed differently",
+        "Reasoning is the logical explanation; Evidence is the factual proof",
+        "Reasoning comes after Evidence in the structure",
+        "Evidence is optional but Reasoning is required"
+      ],
+      "correct": 1,
+      "explain": "Reasoning is the 'why' — the logical connection. Evidence is the 'proof' — the concrete facts that back up your reasoning.",
+      "timeLimit": 30
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "In the AREST framework, the {0} component explains why your argument matters in the broader context.",
+      "answers": [
+        "Significance"
+      ],
+      "distractors": [
+        "Significance",
+        "Assertion",
+        "Evidence",
+        "Reasoning",
+        "Tie-back"
+      ],
+      "instruction": "Fill in the missing AREST component.",
+      "feedback": "Significance is where you tell the audience why they should care about your point."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "spot-mistake",
+          "argument": "'The government should ban single-use plastics because they are bad for the environment.' This argument is missing:",
+          "options": [
+            "Evidence only",
+            "Both Evidence and Significance",
+            "The Tie-back",
+            "Everything — it's just an Assertion"
+          ],
+          "correct": 3,
+          "feedback": "This statement makes an assertion but provides no reasoning, evidence, significance, or tie-back — it is an unsupported opinion."
+        },
+        {
+          "type": "quiz",
+          "q": "Which AREST component directly answers the question 'How does this connect to our debate?'",
+          "options": [
+            "Assertion",
+            "Reasoning",
+            "Significance",
+            "Tie-back"
+          ],
+          "correct": 3,
+          "feedback": "The Tie-back explicitly links your argument to the debate motion or your team's overall case.",
+          "timeLimit": 30
+        }
+      ]
+    }
+  ]
+}

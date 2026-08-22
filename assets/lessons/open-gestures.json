@@ -1,0 +1,99 @@
+{
+  "title": "Open Gestures vs. Closed Armor",
+  "unit": "body-language",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "Your Body Speaks First",
+      "content": "Before you utter a single word, your body has already sent a message. Open body language signals confidence, honesty, and authority. Closed body language signals defensiveness and nervousness.",
+      "bullets": [
+        "Crossed arms signal defensiveness",
+        "Open palms signal honesty and engagement",
+        "Your gestures should match and amplify your words"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "The Speaker's Box",
+      "content": "The Speaker's Box is an imaginary rectangle from your waist to your chest and roughly shoulder-width apart. Keep your hands within this box during your speech for controlled, confident gestures.",
+      "bullets": [
+        "Hands above the chest look frantic or aggressive",
+        "Hands below the waist look weak or uncertain",
+        "Inside the box = confident and controlled"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "Open vs. Closed",
+      "content": "Compare these two debaters:",
+      "good": "Speaker A stands with feet shoulder-width apart, hands resting at the Speaker's Box, using open palm gestures toward the audience when making key points.",
+      "bad": "Speaker B stands with arms crossed, hands in pockets, shifting weight from foot to foot.",
+      "explanation": "Speaker A projects confidence. Speaker B looks defensive and uncomfortable."
+    },
+    {
+      "type": "practice",
+      "instruction": "Putting your hands in your pockets during a speech signals relaxation to the audience.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correct": 1,
+      "feedback": "Hands in pockets signals nervousness or disinterest. It also restricts gesturing.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "q": "What is the 'Speaker's Box' in public speaking?",
+      "options": [
+        "The podium you stand behind",
+        "The area from your waist to your chest where controlled gestures should occur",
+        "The space on stage you are allowed to walk",
+        "The volume range of your voice"
+      ],
+      "correct": 1,
+      "explain": "The Speaker's Box is the optimal zone for gestures between waist and chest.",
+      "timeLimit": 30
+    },
+    {
+      "type": "true-false",
+      "statement": "Crossed arms show you are thinking deeply about the argument.",
+      "answer": false,
+      "feedback": "Crossed arms are read as defensive or closed off, regardless of your actual mental state.",
+      "timeLimit": 30
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "The optimal zone for hand gestures during a speech is between your {0} and {1}.",
+      "answers": [
+        "waist",
+        "chest"
+      ],
+      "distractors": [
+        "waist",
+        "chest",
+        "head",
+        "shoulders"
+      ],
+      "instruction": "Fill in the two body landmarks that define the Speaker's Box.",
+      "feedback": "Keep gestures between waist and chest for controlled delivery."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "quiz",
+          "q": "Why do open palm gestures build trust with an audience?",
+          "options": [
+            "They are evolutionarily associated with honesty",
+            "They look more dramatic",
+            "They help you project your voice",
+            "They make you look taller"
+          ],
+          "correct": 0,
+          "feedback": "Open palms are an ancient signal of 'I am holding no weapon.'"
+        }
+      ]
+    }
+  ]
+}

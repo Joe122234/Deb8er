@@ -1,0 +1,139 @@
+{
+  "title": "The 60-Second GSL Speech",
+  "unit": "speeches-papers",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "Structure of a GSL Speech",
+      "content": "A General Speakers List speech is your first impression in committee. You have 60-90 seconds to state your country's position. The optimal structure: Hook + Stance + Policy + Call to Action.",
+      "bullets": [
+        "Hook — Open with a compelling fact, quote, or question",
+        "Stance — Clearly state your country's position on the topic",
+        "Policy — Outline 1-2 specific policy solutions your country supports",
+        "Call to Action — End with what you want the committee to do"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "What to Avoid",
+      "content": "Many delegates waste their GSL by reading from a paper, speaking too fast, or being too vague. Your GSL should sound natural and conversational even though it is prepared.",
+      "bullets": [
+        "Do not read word-for-word from a script",
+        "Do not try to cover every aspect of the topic",
+        "Do not use jargon without explanation",
+        "Do make eye contact with the chair and other delegates"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "Sample GSL Speech",
+      "content": "Topic: Cybersecurity"
+    },
+    {
+      "type": "practice",
+      "instruction": "What is the first element of a strong GSL speech?",
+      "options": [
+        "A detailed policy proposal",
+        "A hook that grabs attention",
+        "Your country's name",
+        "A vote appeal"
+      ],
+      "correct": 1,
+      "feedback": "Start with a hook — a compelling fact, quote, or question that makes the committee want to listen.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "q": "Why should you avoid reading your GSL speech word-for-word?",
+      "options": [
+        "It takes too long",
+        "It sounds robotic and reduces your perceived confidence",
+        "The rules prohibit it",
+        "The chair will stop you"
+      ],
+      "correct": 1,
+      "explain": "Reading sounds unprepared and reduces eye contact. Know your key points and speak naturally.",
+      "timeLimit": 30
+    },
+    {
+      "type": "true-false",
+      "statement": "A GSL speech should cover every aspect of the committee topic in detail.",
+      "answer": false,
+      "feedback": "A GSL is a broad overview, not a detailed analysis. Focus on 1-2 key points.",
+      "timeLimit": 30
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "The four elements of a GSL speech are: Hook, {0}, Policy, and Call to Action.",
+      "answers": [
+        "Stance"
+      ],
+      "distractors": [
+        "Stance",
+        "Reason",
+        "Evidence",
+        "Conclusion"
+      ],
+      "instruction": "Fill in the missing element.",
+      "feedback": "Hook → Stance → Policy → Call to Action"
+    },
+    {
+      "type": "build-argument",
+      "instruction": "Double-click or tap each card to place it in the correct section of the GSL speech.",
+      "categories": [
+        {
+          "id": "hook",
+          "label": "Hook"
+        },
+        {
+          "id": "stance",
+          "label": "Stance"
+        },
+        {
+          "id": "policy",
+          "label": "Policy"
+        },
+        {
+          "id": "cta",
+          "label": "Call to Action"
+        }
+      ],
+      "cards": [
+        {
+          "text": "\"Every 39 seconds, a cyberattack happens somewhere in the world.\"",
+          "category": "hook"
+        },
+        {
+          "text": "\"Japan believes that cybersecurity is a shared responsibility requiring international cooperation.\"",
+          "category": "stance"
+        },
+        {
+          "text": "\"We propose a global cyber-incident reporting framework based on the Budapest Convention model.\"",
+          "category": "policy"
+        },
+        {
+          "text": "\"I urge every delegate here to co-sponsor our working paper on cross-border cyber cooperation.\"",
+          "category": "cta"
+        }
+      ],
+      "feedback": "Great job! A strong GSL speech flows: Hook → Stance → Policy → Call to Action."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "order",
+          "instruction": "Put the four GSL speech elements in order.",
+          "steps": [
+            "Hook",
+            "Stance",
+            "Policy",
+            "Call to Action"
+          ],
+          "feedback": "Hook attracts attention, Stance states your position, Policy offers solutions, Call to Action drives action."
+        }
+      ]
+    }
+  ]
+}

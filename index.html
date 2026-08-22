@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net https://d3js.org https://apis.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firestore.googleapis.com https://www.googleapis.com https://script.google.com https://script.googleusercontent.com https://www.gstatic.com https://cdn.jsdelivr.net wss://*.firebaseio.com https://deb8er-chat.henryaungmyintmyat09.workers.dev; img-src 'self' data: https:; frame-src 'self' https://*.firebaseapp.com;">
+  <meta name="description"
+    content="Deb8er is a global online MUN and debate platform for students ages 10-18. Build debate skills, compete in Model UN conferences, earn awards, and climb the leaderboard.">
+  <meta name="keywords"
+    content="Deb8er, MUN experience, Debate experience, Model UN, online debates, youth leadership, student debates, Model United Nations">
+
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="Deb8er | Global MUN & Debate Platform for Students Ages 10-18">
+  <meta property="og:description"
+    content="Deb8er is a global online MUN and debate platform for students ages 10-18. Build debate skills, compete in Model UN conferences, earn awards, and climb the leaderboard.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://deb8erglobal.com/">
+  <meta property="og:site_name" content="Deb8er">
+  <meta property="og:image" content="https://deb8erglobal.com/assets/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Deb8er | Global MUN & Debate Platform for Students Ages 10-18">
+  <meta name="twitter:description" content="Deb8er is a global online MUN and debate platform for students ages 10-18. Build debate skills, compete in Model UN conferences, earn awards, and climb the leaderboard.">
+  <meta name="twitter:image" content="https://deb8erglobal.com/assets/images/og-image.png">
+
+  <title>Deb8er | Global MUN & Debate Platform for Students Ages 10-18</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="preconnect" href="https://d3js.org" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.min.css">
+  <link rel="stylesheet" href="assets/home.css">
+  <link rel="stylesheet" href="assets/chat-widget.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon1.png" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+  <link rel="canonical" href="https://deb8erglobal.com/">
+
+  <!-- JSON-LD SEO Schema -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "Deb8er",
+      "url": "https://deb8erglobal.com/",
+      "logo": "https://deb8erglobal.com/assets/images/Deb9erfinallogo.webp",
+      "description": "Global MUN and Debate platform for students ages 10-18."
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Deb8er | Global MUN & Debate Platform for Students Ages 10-18",
+      "description": "Deb8er is a global online MUN and debate platform for students ages 10-18. Build debate skills, compete in Model UN conferences, earn awards, and climb the leaderboard.",
+      "publisher": {
+        "@type": "EducationalOrganization",
+        "name": "Deb8er",
+        "url": "https://deb8erglobal.com"
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <!-- LOADER OVERLAY -->
+  <div id="page-loader">
+    <div class="warp-loader">
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="core-glow"></div>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="#landing-page" class="logo">
+        <img src="assets/images/Deb9erfinallogo.webp" width="200" height="auto"
+          alt="Deb8er - Global MUN & Debate Platform">
+      </a>
+
+      <div class="nav-toggle" id="navToggle" role="button" tabindex="0" aria-label="Toggle navigation">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="conferences.html">Conferences</a></li>
+        <li><a href="verification.html">Verification</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="leaderboard.html">Leaderboard</a></li>
+        <li id="nav-auth-item"><a href="auth.html" class="join-btn">Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+
+    <!-- ═══ HERO ═══ -->
+    <section id="landing-page" class="landing-hero">
+      <div class="hero-grid-top"></div>
+
+      <div class="hero-content">
+        <h1 class="hero-animate hero-title">
+          STRONG <span class="span1">VOICES</span> BUILD STRONG
+          <span class="span2">LEADERS</span>
+        </h1>
+
+        <p class="hero-animate hero-text">
+          Deb8er is where the world's next leaders find their voice. 
+        </p>
+
+        <div class="hero-animate hero-ctas">
+          <a href="auth.html" class="join-btn">Start Your Journey</a>
+          <a href="conferences.html" class="secondary-btn">Explore Conferences</a>
+        </div>
+
+        <div class="hero-animate hero-metrics" data-counter-group>
+          <div class="h-metric">
+            <span class="h-metric-num" data-count>25+</span>
+            <span class="h-metric-label">Countries</span>
+          </div>
+          <div class="h-metric">
+            <span class="h-metric-num" data-count>28+</span>
+            <span class="h-metric-label">Lessons</span>
+          </div>
+          <div class="h-metric free-badge">
+            <span class="h-metric-num" data-count>100%</span>
+            <span class="h-metric-label">Free & Open-Source</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="map-container" class="hero-animate hero-map"></div>
+      <span class="hero-grid-bottom"></span>
+    </section>
+
+    <div id="map-tooltip"></div>
+
+    <!-- ═══ THE JOURNEY ═══ -->
+    <section class="journey-section" data-aos="fade-up">
+      <p class="section-label">Start Anywhere in the World</p>
+      <h2 class="section-title">Your <em>Three-Step</em> Rise</h2>
+      <p class="section-sub">
+        From your first argument to your first certificate — the path is the same whether you're in Mumbai, Manila, or Miami.
+      </p>
+
+      <div class="journey-steps">
+        <div class="journey-card" data-aos="fade-up" data-aos-delay="0" data-tilt>
+          <div class="journey-icon"><i class="fas fa-book-open"></i></div>
+          <div class="journey-step-num">01</div>
+          <h3>Learn the Craft</h3>
+          <p>Work through our structured curriculum — from foundation arguments to advanced strategy. Earn Gems with every lesson and unlock new levels as you grow.</p>
+        </div>
+
+        <div class="journey-card" data-aos="fade-up" data-aos-delay="150" data-tilt>
+          <div class="journey-icon"><i class="fas fa-gavel"></i></div>
+          <div class="journey-step-num">02</div>
+          <h3>Compete Globally</h3>
+          <p>Put your skills to the test in live MUN committees and debate tournaments. Choose your region, step into the chamber, and argue your position.</p>
+        </div>
+
+        <div class="journey-card" data-aos="fade-up" data-aos-delay="300" data-tilt>
+          <div class="journey-icon"><i class="fas fa-trophy"></i></div>
+          <div class="journey-step-num">03</div>
+          <h3>Earn & Rise</h3>
+          <p>Collect certificates, unlock badges, earn awards, and climb the global leaderboard. Every conference, every lesson, every win pushes you higher.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ TESTIMONIALS ═══ -->
+    <section class="testimonials-section" data-aos="fade-up">
+      <p class="section-label">What People Say</p>
+      <h2 class="section-title">Hear From Our <em>Community</em></h2>
+      <p class="section-sub">Real stories from delegates and chairs who've experienced Deb8er firsthand.</p>
+
+      <div class="testi-list">
+        <div class="testi-item" data-aos="fade-up">
+          <div class="testi-quote">"</div>
+          <div class="testi-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testi-text">Deb8er never misses and has honestly been a core memory!! Every MUN and debate event has such a fun vibe while still being super competitive and well-organized. I've met amazing people, learned a ton, and genuinely enjoyed every conference. If you're into debating or MUNs, Deb8er is definitely a platform you don't want to miss.</p>
+          <span class="testi-name">— Hassnat Ahmed</span>
+        </div>
+
+        <div class="testi-divider"></div>
+
+        <div class="testi-item" data-aos="fade-up">
+          <div class="testi-quote">"</div>
+          <div class="testi-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testi-text">I had an amazing time with Deb8er, the debates were fun and engaging. The management team is cooperative and hardworking, the website interface is also smooth and hassle free. Best part was the interaction with delegates globally and the experience, knowledge and connections I've gained. I would gladly participate every time I get the chance to, and would advise others to try it for themselves at least once.</p>
+          <span class="testi-name">— Jahanvi Chaudhary</span>
+        </div>
+
+        <div class="testi-divider"></div>
+
+        <div class="testi-item" data-aos="fade-up">
+          <div class="testi-quote">"</div>
+          <div class="testi-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testi-text">Deb8er is one of the best platforms if you want to learn and debate, irrespective of whether you're a beginner or an advanced delegate. Chairing their first edition taught me facets of debating I never knew existed and exposed me to perspectives I had never thought to explore. It is truly one of the best platforms I have had the opportunity to chair at, and I would recommend it to anyone without batting an eyelash.</p>
+          <span class="testi-name">— Hassini K</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FEATURES ═══ -->
+    <section class="features-section" data-aos="fade-up">
+      <h2 class="section-title">Everything You <span>Need to Rise</span></h2>
+      <p class="section-sub">
+        One platform. Full toolkit. No fluff.
+      </p>
+
+      <div class="feature-list">
+        <div class="f-item" data-aos="fade-up">
+          <div class="f-icon-wrap">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <div class="f-body">
+            <h3>Interactive Curriculum</h3>
+            <p>Structured lessons with exercises, quizzes, and real-time feedback. Build your skills step by step, at your own pace.</p>
+          </div>
+        </div>
+
+        <div class="f-item" data-aos="fade-up">
+          <div class="f-icon-wrap purple">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <div class="f-body">
+            <h3>Levels & Badges</h3>
+            <p>Earn Gems from lessons and conferences. Level up from Novice to Grandmaster. Unlock achievement badges and show them off on your profile.</p>
+          </div>
+        </div>
+
+        <div class="f-item" data-aos="fade-up">
+          <div class="f-icon-wrap">
+            <i class="fas fa-ranking-star"></i>
+          </div>
+          <div class="f-body">
+            <h3>Global Leaderboard</h3>
+            <p>See where you stand against debaters from 50+ countries. Gems update in real time. The top spots are always in reach.</p>
+          </div>
+        </div>
+
+        <div class="f-item" data-aos="fade-up">
+          <div class="f-icon-wrap purple">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <div class="f-body">
+            <h3>Certificates & Awards</h3>
+            <p>Earn official certificates for every conference. Awards like Best Delegate carry extra prestige — and extra Gems.</p>
+          </div>
+        </div>
+
+        <div class="f-item" data-aos="fade-up">
+          <div class="f-icon-wrap">
+            <i class="fas fa-fire"></i>
+          </div>
+          <div class="f-body">
+            <h3>Streaks & Quests</h3>
+            <p>Stay consistent. Daily lessons build streaks. Complete quests for bonus Gems. The longer you show up, the faster you rise.</p>
+          </div>
+        </div>
+
+        <div class="f-item" data-aos="fade-up">
+          <div class="f-icon-wrap purple">
+            <i class="fas fa-link"></i>
+          </div>
+          <div class="f-body">
+            <h3>Referral Rewards</h3>
+            <p>Invite friends and earn bonus Gems when they join. Build a network of debaters and climb together.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ FAQ ═══ -->
+    <section class="faq-section" data-aos="fade-up">
+      <p class="section-label">Got Questions?</p>
+      <h2 class="section-title">Frequently Asked <em>Questions</em></h2>
+
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary class="faq-q">
+            <span>Is Deb8er really free?</span>
+            <i class="fas fa-chevron-down"></i>
+          </summary>
+          <div class="faq-a">
+            <p>Yes — 100% free and open-source. Every lesson, conference, and certificate costs nothing. No hidden tiers, no premium plans.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span>Who can join?</span>
+            <i class="fas fa-chevron-down"></i>
+          </summary>
+          <div class="faq-a">
+            <p>Any student ages 10–18, anywhere in the world. No prior debate or MUN experience needed — the curriculum starts from the ground up.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span>How do I get started?</span>
+            <i class="fas fa-chevron-down"></i>
+          </summary>
+          <div class="faq-a">
+            <p>Create a free account, then dive into the <strong>Learn</strong> section to work through the curriculum. When you're ready, join a conference from the <strong>Conferences</strong> page. Every step earns you Gems and brings you closer to the top of the leaderboard.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span>How do I get a certificate?</span>
+            <i class="fas fa-chevron-down"></i>
+          </summary>
+          <div class="faq-a">
+            <p>Every conference you participate in earns you a unique certificate. You can view and download all your certificates from your dashboard. Each has a unique ID so employers or schools can verify it.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span>What's the difference between Debates and MUN?</span>
+            <i class="fas fa-chevron-down"></i>
+          </summary>
+          <div class="faq-a">
+            <p><strong>Debates</strong> are head-to-head arguments on a motion — you're for or against. <strong>MUN</strong> (Model United Nations) simulates UN committees where delegates represent countries and negotiate resolutions. Both are available on Deb8er.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══ GLOBAL REACH ═══ -->
+    <section class="global-section" data-aos="fade-up">
+      <div class="global-content">
+        <h2>Debaters in <span>25+ Countries</span></h2>
+        <p>
+          From Asia to the Americas, students are logging in, stepping up to the podium, and earning their place on the leaderboard. The world is debating — and you're invited.
+        </p>
+        <div class="global-ctas">
+          <a href="auth.html" class="join-btn">Create Your Account</a>
+          <a href="leaderboard.html" class="secondary-btn">
+            <i class="fas fa-ranking-star"></i> View Leaderboard
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+
+      <div class="footer-brand">
+        <img src="assets/images/footerpng.webp" width="160" height="40"
+          alt="Deb8er - Global MUN & Debate Platform">
+        <p>
+          Deb8er is a global online platform where anyone from ages 10-18 can participate in debates and MUNs.
+        </p>
+      </div>
+
+      <div class="footer-links two-col">
+        <div class="footer-column">
+          <h4>Platform</h4>
+          <a href="about.html">About</a>
+          <a href="conferences.html">Conferences</a>
+          <a href="learn.html">Learn</a>
+          <a href="leaderboard.html">Leaderboard</a>
+          <a href="team.html">Team</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <a href="https://www.instagram.com/deb8er_official" target="_blank" rel="noopener noreferrer">
+            Instagram
+          </a>
+          <a href="https://discord.gg/7dWD7Xebsj" target="_blank" rel="noopener noreferrer">
+            Discord
+          </a>
+          <a href="https://www.tiktok.com/@deb8er4" target="_blank" rel="noopener noreferrer">
+            TikTok
+          </a>
+          <a href="https://www.youtube.com/@Deb8er_official" target="_blank" rel="noopener noreferrer">
+            YouTube
+          </a>
+          <a href="#" id="copy-email">Email</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Deb8er. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="script.min.js" defer></script>
+  <script type="module" src="navbar-auth.js"></script>
+  <script src="assets/ui-effects.js"></script>
+  <!-- Include D3.js -->
+  <script src="https://d3js.org/d3.v7.min.js" defer></script>
+  <!-- Include TopoJSON for world map -->
+  <script src="https://d3js.org/topojson.v3.min.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+  <script>
+    AOS.init({
+      duration: 900,
+      easing: "ease-out-cubic",
+      once: true,
+      offset: 120
+    });
+
+
+  </script>
+  <script src="assets/db8-facts.js" defer></script>
+  <script src="assets/chat-widget.js" defer></script>
+</body>
+
+</html>

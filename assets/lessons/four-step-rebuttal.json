@@ -1,0 +1,112 @@
+{
+  "title": "The 4-Step Rebuttal Formula",
+  "unit": "rebuttals",
+  "xp": 25,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "What is a Rebuttal?",
+      "content": "A rebuttal is a direct response to an opponent's argument that demonstrates why it is wrong, weak, or irrelevant. The best rebuttals follow a structured formula — not emotional reactions — to systematically dismantle the other side's case.",
+      "bullets": [
+        "Rebuttals show the judge you are listening and engaging, not just reciting",
+        "A structured rebuttal is more persuasive than a passionate denial",
+        "The 4-Step Formula gives you a repeatable framework for any argument"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "The 4-Step Rebuttal Formula",
+      "content": "The formula is simple: They Say — But — Because — Therefore.",
+      "bullets": [
+        "Step 1 — They Say: State your opponent's argument fairly (show you understand it)",
+        "Step 2 — But: Identify the flaw — weak evidence, faulty logic, missing context",
+        "Step 3 — Because: Explain why the flaw matters using reasoning and evidence",
+        "Step 4 — Therefore: Conclude why your side's position is stronger as a result"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "A Complete Rebuttal",
+      "content": "Let's see the 4-Step Formula applied to a real argument.",
+      "good": "They Say: 'Social media companies should not be regulated because it would violate free speech.'\nBut: Free speech protections apply to government censorship, not private platform policies.\nBecause: The First Amendment restricts the government, not private companies. A restaurant can refuse service; a platform can set content rules.\nTherefore: Regulation of misinformation does not violate free speech — it simply requires platforms to meet basic standards of accuracy, just like newspapers already do.",
+      "explanation": "Each step builds on the previous one. The rebuttal doesn't just disagree — it explains WHY the opponent's argument is flawed and WHY your position is stronger."
+    },
+    {
+      "type": "practice",
+      "instruction": "In the 4-Step Rebuttal Formula, what is the purpose of the 'Because' step?",
+      "options": [
+        "To repeat your own opening argument",
+        "To explain why the flaw matters using reasoning and evidence",
+        "To introduce a completely new argument",
+        "To apologize for disagreeing"
+      ],
+      "correct": 1,
+      "feedback": "The 'Because' step is where you provide the reasoning and evidence that proves why the flaw you identified actually matters.",
+      "timeLimit": 30
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "In the 4-Step Rebuttal, the '{0}' step means you identify the weakness in your opponent's argument.",
+      "answers": [
+        "But"
+      ],
+      "distractors": [
+        "But",
+        "They Say",
+        "Because",
+        "Therefore",
+        "However"
+      ],
+      "instruction": "Fill in the correct step name.",
+      "feedback": "The 'But' step is where you point out the specific flaw — weak evidence, bad logic, or missing context."
+    },
+    {
+      "type": "quiz",
+      "q": "Why is it important to state your opponent's argument fairly in step one?",
+      "options": [
+        "It gives you time to think of a response",
+        "It shows the judge you understand their position before attacking it",
+        "It makes your opponent less likely to interrupt you",
+        "It is required by debate rules"
+      ],
+      "correct": 1,
+      "explain": "Fairly representing the opposing argument builds credibility with the judge and shows you are engaging with the actual debate, not a straw man.",
+      "timeLimit": 30
+    },
+    {
+      "type": "true-false",
+      "statement": "A good rebuttal should introduce an entirely new argument that the opponent cannot respond to.",
+      "answer": false,
+      "feedback": "A rebuttal responds to and undermines the opponent's argument — it does not change the subject. Introducing new arguments is a separate strategy.",
+      "timeLimit": 30
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "order",
+          "instruction": "Put the four steps of the Rebuttal Formula in the correct order.",
+          "steps": [
+            "They Say",
+            "But",
+            "Because",
+            "Therefore"
+          ],
+          "feedback": "State → Identify Flaw → Explain → Conclude"
+        },
+        {
+          "type": "quiz",
+          "q": "What does 'Therefore' accomplish in a rebuttal?",
+          "options": [
+            "It signals that your speech is ending",
+            "It shows why your side's position is stronger based on the flaw you identified",
+            "It asks the audience a rhetorical question",
+            "It summarizes the opponent's entire case"
+          ],
+          "correct": 1,
+          "feedback": "'Therefore' is the conclusion — it explains why, given the flaw, your position is stronger."
+        }
+      ]
+    }
+  ]
+}

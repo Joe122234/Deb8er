@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net https://d3js.org https://apis.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firestore.googleapis.com https://www.googleapis.com https://script.google.com https://script.googleusercontent.com https://www.gstatic.com https://cdn.jsdelivr.net wss://*.firebaseio.com; img-src 'self' data: https:; frame-src 'self' https://*.firebaseapp.com;">
+  <meta name="description" content="Deb8er Global Leaderboard — top debaters and MUN participants ranked weekly. See who leads, claim your spot, and earn the weekly champion badge.">
+  <meta name="keywords" content="Deb8er leaderboard, MUN rankings, debate rankings, top debaters, student rankings">
+  <meta property="og:title" content="Global Leaderboard | Weekly Rankings | Deb8er">
+  <meta property="og:description" content="Deb8er Global Leaderboard — top debaters and MUN participants ranked weekly. See who leads, claim your spot, and earn the weekly champion badge.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://deb8erglobal.com/leaderboard.html">
+  <meta property="og:image" content="https://deb8erglobal.com/assets/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Deb8er">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Global Leaderboard | Weekly Rankings | Deb8er">
+  <meta name="twitter:description" content="Deb8er Global Leaderboard — top debaters and MUN participants ranked weekly. See who leads, claim your spot, and earn the weekly champion badge.">
+  <meta name="twitter:image" content="https://deb8erglobal.com/assets/images/og-image.png">
+  <title>Global Leaderboard | Weekly Rankings | Deb8er</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.min.css">
+  <link rel="stylesheet" href="assets/leaderboard.css">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon1.png" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <link rel="canonical" href="https://deb8erglobal.com/leaderboard.html">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Global Leaderboard | Weekly Rankings | Deb8er",
+    "description": "Deb8er Global Leaderboard — weekly resets keep the competition fresh. Top debaters ranked by conference participation and awards.",
+    "publisher": {
+      "@type": "EducationalOrganization",
+      "name": "Deb8er",
+      "url": "https://deb8erglobal.com"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/Deb9erfinallogo.webp" width="200" height="auto" alt="Deb8er - Global MUN & Debate Platform">
+      </a>
+      <div class="nav-toggle" id="navToggle" role="button" tabindex="0" aria-label="Toggle navigation">
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="conferences.html">Conferences</a></li>
+        <li><a href="verification.html">Verification</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="leaderboard.html">Leaderboard</a></li>
+        <li id="nav-auth-item"><a href="auth.html" class="join-btn">Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="lb-section">
+      <div class="lb-header" data-aos="fade-up">
+        <p class="lb-sublabel" id="lb-week-label">Loading...</p>
+        <h1>Global <span>Leaderboard</span></h1>
+        <p class="lb-countdown" id="lb-countdown"></p>
+      </div>
+
+      <div id="lb-loading" class="lb-loading">
+        <i class="fas fa-spinner fa-spin"></i> Loading rankings...
+      </div>
+
+      <div id="lb-error" class="lb-error" style="display:none;">
+        <p>Could not load the leaderboard.</p>
+        <button onclick="location.reload()">Try Again</button>
+      </div>
+
+      <div id="lb-content" style="display:none;" data-aos="fade-up">
+
+        <div class="lb-tabs" id="lb-tabs">
+          <button class="lb-tab" data-tab="weekly"><i class="fas fa-clock"></i> This Week</button>
+          <button class="lb-tab active" data-tab="alltime"><i class="fas fa-infinity"></i> All Time</button>
+          <button class="lb-tab" data-tab="champions"><i class="fas fa-crown"></i> Champions</button>
+        </div>
+
+        <div class="lb-community-gems" id="lb-community-gems">
+          <div class="lb-community-gems-inner">
+            <div class="lb-community-gems-icon"><i class="fas fa-gem"></i></div>
+            <div class="lb-community-gems-body">
+              <div class="lb-community-gems-count" id="lb-community-gems-count">0</div>
+              <div class="lb-community-gems-label">Gems collected today by all Deb8ers</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lb-toolbar">
+          <div class="lb-pagesize">
+            <i class="fas fa-list"></i>
+            <select id="lb-pagesize" onchange="LB.setPageSize(this.value)">
+              <option value="25">25</option>
+              <option value="50" selected>50</option>
+              <option value="100">100</option>
+              <option value="0">All</option>
+            </select>
+          </div>
+          <span class="lb-page-info" id="lb-page-info"></span>
+        </div>
+
+        <div id="lb-tab-weekly" class="lb-tab-content">
+          <p class="lb-tab-subtitle"><span class="gem-icon gem-icon--sm gem-icon--inline"></span> reset every Monday. Fresh competition, every week.</p>
+
+          <div class="podium" id="podium-weekly">
+            <div class="p-slot p-2" >
+              <div class="p-bg"></div>
+              <div class="p-rank-badge">2</div>
+              <div class="p-crown-wrap"><i class="fas fa-medal"></i></div>
+              <div class="p-avatar" id="w-p2-avatar">?</div>
+              <div class="p-name" id="w-p2-name">—</div>
+              <div class="p-bar"><span class="p-pts" id="w-p2-pts">0</span></div>
+            </div>
+            <div class="p-slot p-1" >
+              <div class="p-bg"></div>
+              <div class="p-rank-badge">1</div>
+              <div class="p-crown-wrap"><i class="fas fa-crown"></i></div>
+              <div class="p-avatar" id="w-p1-avatar">?</div>
+              <div class="p-name" id="w-p1-name">—</div>
+              <div class="p-bar"><span class="p-pts" id="w-p1-pts">0</span></div>
+            </div>
+            <div class="p-slot p-3" >
+              <div class="p-bg"></div>
+              <div class="p-rank-badge">3</div>
+              <div class="p-crown-wrap"><i class="fas fa-medal"></i></div>
+              <div class="p-avatar" id="w-p3-avatar">?</div>
+              <div class="p-name" id="w-p3-name">—</div>
+              <div class="p-bar"><span class="p-pts" id="w-p3-pts">0</span></div>
+            </div>
+          </div>
+          <div class="lb-rank-card" id="lb-rank-card-w" style="display:none;">
+            <div class="lb-rank-avatar" id="rank-avatar-w">
+              <span class="lb-rank-avatar-text" id="rank-avatar-text-w">?</span>
+            </div>
+            <div class="lb-rank-body">
+              <div class="lb-rank-top">
+                <span class="lb-rank-label"><i class="fas fa-flag-checkered"></i> Your Rank</span>
+                <span class="lb-rank-pos" id="rank-pos-w">—</span>
+              </div>
+              <div class="lb-rank-detail" id="rank-detail-w"></div>
+              <div class="lb-rank-bar-wrap">
+                <div class="lb-rank-bar">
+                  <div class="lb-rank-bar-fill" id="rank-bar-fill-w" style="width:0%"></div>
+                </div>
+                <div class="lb-rank-bar-text" id="rank-bar-text-w"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lb-controls">
+            <div class="lb-search">
+              <i class="fas fa-search"></i>
+              <input type="text" id="lb-search-input" placeholder="Search by name or country..." oninput="LB.filter()">
+            </div>
+            <div class="lb-filter">
+              <i class="fas fa-globe"></i>
+              <select id="lb-country-filter" onchange="LB.filter()">
+                <option value="">All Countries</option>
+              </select>
+            </div>
+            <div class="lb-stats">
+              <span id="lb-player-count">0</span> participants
+            </div>
+          </div>
+
+          <div class="lb-table-wrap">
+            <table class="lb-table" id="lb-table">
+              <thead>
+                <tr>
+                  <th class="c-rank">Rank</th>
+                  <th class="c-player">Player</th>
+                  <th class="c-country">Country</th>
+                  <th class="c-confs">Confs</th>
+                  <th class="c-awards">Awards</th>
+                  <th class="c-pts"><span class="gem-icon gem-icon--sm"></span></th>
+                </tr>
+              </thead>
+              <tbody id="lb-body"></tbody>
+            </table>
+          </div>
+          <div class="lb-pagination" id="lb-pagination-w" style="display:none;">
+            <button class="lb-page-btn" onclick="LB.goToPage(currentPage - 1)"><i class="fas fa-chevron-left"></i></button>
+            <div class="lb-page-numbers" id="lb-page-numbers-w"></div>
+            <button class="lb-page-btn" onclick="LB.goToPage(currentPage + 1)"><i class="fas fa-chevron-right"></i></button>
+          </div>
+
+          <div id="lb-empty" class="lb-empty" style="display:none;">
+            <i class="fas fa-trophy"></i>
+            <p>No ranked participants yet. Be the first to <a href="join-conference.html">join a conference</a>!</p>
+          </div>
+        </div>
+
+        <div id="lb-tab-alltime" class="lb-tab-content active">
+          <p class="lb-tab-subtitle">All-time rankings — lifetime <span class="gem-icon gem-icon--sm gem-icon--inline"></span> never reset.</p>
+
+          <div class="podium podium--at" id="podium-alltime">
+            <div class="p-slot p-2" >
+              <div class="p-bg"></div>
+              <div class="p-rank-badge">2</div>
+              <div class="p-crown-wrap"><i class="fas fa-star"></i></div>
+              <div class="p-avatar" id="a-p2-avatar">?</div>
+              <div class="p-name" id="a-p2-name">—</div>
+              <div class="p-bar"><span class="p-pts" id="a-p2-pts">0</span></div>
+            </div>
+            <div class="p-slot p-1" >
+              <div class="p-bg"></div>
+              <div class="p-rank-badge">1</div>
+              <div class="p-crown-wrap"><i class="fas fa-star"></i></div>
+              <div class="p-avatar" id="a-p1-avatar">?</div>
+              <div class="p-name" id="a-p1-name">—</div>
+              <div class="p-bar"><span class="p-pts" id="a-p1-pts">0</span></div>
+            </div>
+            <div class="p-slot p-3" >
+              <div class="p-bg"></div>
+              <div class="p-rank-badge">3</div>
+              <div class="p-crown-wrap"><i class="fas fa-star"></i></div>
+              <div class="p-avatar" id="a-p3-avatar">?</div>
+              <div class="p-name" id="a-p3-name">—</div>
+              <div class="p-bar"><span class="p-pts" id="a-p3-pts">0</span></div>
+            </div>
+          </div>
+
+          <div class="lb-rank-card" id="lb-rank-card-at" style="display:none;">
+            <div class="lb-rank-avatar" id="rank-avatar-at">
+              <span class="lb-rank-avatar-text" id="rank-avatar-text-at">?</span>
+            </div>
+            <div class="lb-rank-body">
+              <div class="lb-rank-top">
+                <span class="lb-rank-label"><i class="fas fa-flag-checkered"></i> Your Rank</span>
+                <span class="lb-rank-pos" id="rank-pos-at">—</span>
+              </div>
+              <div class="lb-rank-detail" id="rank-detail-at"></div>
+              <div class="lb-rank-bar-wrap">
+                <div class="lb-rank-bar">
+                  <div class="lb-rank-bar-fill" id="rank-bar-fill-at" style="width:0%"></div>
+                </div>
+                <div class="lb-rank-bar-text" id="rank-bar-text-at"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lb-controls">
+            <div class="lb-search">
+              <i class="fas fa-search"></i>
+              <input type="text" id="lb-search-alltime" placeholder="Search by name or country..." oninput="LB.filter()">
+            </div>
+            <div class="lb-filter">
+              <i class="fas fa-globe"></i>
+              <select id="lb-country-filter-at" onchange="LB.filter()">
+                <option value="">All Countries</option>
+              </select>
+            </div>
+            <div class="lb-stats">
+              <span id="lb-player-count-at">0</span> participants
+            </div>
+          </div>
+          <div class="lb-table-wrap">
+            <table class="lb-table" id="lb-table-alltime">
+              <thead>
+                <tr>
+                  <th class="c-rank">Rank</th>
+                  <th class="c-player">Player</th>
+                  <th class="c-country">Country</th>
+                  <th class="c-confs">Confs</th>
+                  <th class="c-awards">Awards</th>
+                  <th class="c-pts"><span class="gem-icon gem-icon--sm"></span></th>
+                </tr>
+              </thead>
+              <tbody id="lb-body-alltime"></tbody>
+            </table>
+          </div>
+          <div class="lb-pagination" id="lb-pagination-at" style="display:none;">
+            <button class="lb-page-btn" onclick="LB.goToPage(currentPage - 1)"><i class="fas fa-chevron-left"></i></button>
+            <div class="lb-page-numbers" id="lb-page-numbers-at"></div>
+            <button class="lb-page-btn" onclick="LB.goToPage(currentPage + 1)"><i class="fas fa-chevron-right"></i></button>
+          </div>
+        </div>
+
+        <div id="lb-tab-champions" class="lb-tab-content">
+          <p class="lb-tab-subtitle" style="color:#FBBF24;"><i class="fas fa-crown" style="margin-right:6px;"></i>Previous weekly champions — the debaters who topped the leaderboard.</p>
+          <div id="lb-champions-grid" class="lb-champions-grid"></div>
+          <div class="lb-empty" id="lb-champs-empty" style="display:none;">
+            <i class="fas fa-crown"></i>
+            <p>No champions yet. The first week's winner will appear here.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+    <!-- ─── Profile Modal (outside <main> to avoid containing-block issues) ─── -->
+    <div class="profile-modal-overlay" id="profile-modal" style="display:none;" onclick="closeProfileModal(event)">
+      <div class="profile-modal" onclick="event.stopPropagation()">
+        <button class="profile-modal-close" onclick="closeProfileModal()"><i class="fas fa-times"></i></button>
+        <div class="profile-modal-loading" id="pm-loading"><i class="fas fa-spinner fa-spin"></i></div>
+        <div class="profile-modal-error" id="pm-error" style="display:none;"></div>
+        <div class="profile-modal-body" id="pm-body" style="display:none;">
+          <div class="pm-hero">
+            <div class="pm-avatar" id="pm-avatar">?</div>
+            <div class="pm-info">
+              <h2 class="pm-name" id="pm-name">—</h2>
+              <div class="pm-nick" id="pm-nick"></div>
+              <div class="pm-country" id="pm-country"></div>
+            </div>
+            <div class="pm-points">
+              <span class="pm-points-num" id="pm-points">0</span>
+              <span class="pm-points-label"><span class="gem-icon gem-icon--sm"></span></span>
+            </div>
+          </div>
+          <div class="pm-stats">
+            <div class="pm-stat"><i class="fas fa-crown"></i><span class="pm-stat-val" id="pm-level">—</span><span class="pm-stat-lbl">Level</span></div>
+            <div class="pm-stat"><i class="fas fa-calendar-check"></i><span class="pm-stat-val" id="pm-confs">0</span><span class="pm-stat-lbl">Confs</span></div>
+            <div class="pm-stat"><i class="fas fa-medal"></i><span class="pm-stat-val" id="pm-awards">0</span><span class="pm-stat-lbl">Awards</span></div>
+            <div class="pm-stat"><i class="fas fa-fire"></i><span class="pm-stat-val" id="pm-streak">0</span><span class="pm-stat-lbl">Streak</span></div>
+            <div class="pm-stat"><i class="fas fa-book-open"></i><span class="pm-stat-val" id="pm-lessons">0</span><span class="pm-stat-lbl">Lessons</span></div>
+          </div>
+          <div class="pm-badges" id="pm-badges" style="display:none;">
+            <div class="pm-badges-header"><i class="fas fa-shield-halved"></i> Badges</div>
+            <div class="pm-badges-grid" id="pm-badges-grid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ─── /Profile Modal ─── -->
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="assets/images/footerpng.webp" width="160" height="40" alt="Deb8er - Global MUN & Debate Platform">
+        <p>Deb8er is a global online platform where anyone from ages 10-18 can participate in debates and MUNs.</p>
+      </div>
+      <div class="footer-links two-col">
+        <div class="footer-column">
+          <h4>Platform</h4>
+          <a href="about.html">About</a>
+          <a href="conferences.html">Conferences</a>
+          <a href="learn.html">Learn</a>
+          <a href="leaderboard.html">Leaderboard</a>
+          <a href="team.html">Team</a>
+        </div>
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <a href="https://www.instagram.com/deb8er_official" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://discord.gg/7dWD7Xebsj" target="_blank" rel="noopener noreferrer">Discord</a>
+          <a href="https://www.tiktok.com/@deb8er4" target="_blank" rel="noopener noreferrer">TikTok</a>
+          <a href="https://www.youtube.com/@Deb8er_official" target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a href="#" id="copy-email">Email</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Deb8er. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="script.min.js" defer></script>
+  <script type="module" src="navbar-auth.js"></script>
+
+  <script type="module">
+    import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
+    import {
+      getFirestore,
+      collection,
+      getDocs,
+      doc,
+      getDoc,
+      setDoc,
+      query,
+      where,
+      orderBy,
+      limit
+    } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
+    import {
+      syncLeaderboard,
+      getCurrentWeekId,
+      getWeekLabel
+    } from "./assets/leaderboard-sync.js";
+    import { getLevelBadgeHTML, getLevelFromPoints, getLevelName } from "./assets/gamification.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDGEGLVwVQfi8YgG0oZthSTr7YNbfW5wwo",
+      authDomain: "deb8ersignup-4b9e1.firebaseapp.com",
+      projectId: "deb8ersignup-4b9e1",
+      storageBucket: "deb8ersignup-4b9e1.firebasestorage.app",
+      messagingSenderId: "498995453154",
+      appId: "1:498995453154:web:de1836f0b8cd764c8292bb"
+    };
+
+    const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    let currentUserUid = null;
+    let allPlayers = [];
+    let currentWeek = "";
+
+    const ESC = s => String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");
+    const INITIALS = n => (n||"?").split(" ").map(w=>w[0]).join("").toUpperCase().slice(0,2);
+
+    const MEDALS = [null, "🥇", "🥈", "🥉"];
+
+    const WEEKLY = "weekly", ALLTIME = "alltime", CHAMPIONS = "champions";
+    let activeTab = ALLTIME;
+    let pageSize = 50;
+    let currentPage = 1;
+
+    const BADGE_DEFS = [
+      { id: "perfect-score", name: "Perfect Score", icon: "fa-check-circle" },
+      { id: "lesson-master", name: "Lesson Master", icon: "fa-trophy" },
+      { id: "first-lesson", name: "First Lesson", icon: "fa-star" },
+      { id: "first-steps", name: "First Steps", icon: "fa-flag" },
+      { id: "streak-7", name: "7 Day Streak", icon: "fa-fire" },
+      { id: "streak-30", name: "30 Day Streak", icon: "fa-crown" },
+      { id: "debate-beginner", name: "Debate Beginner", icon: "fa-gavel" },
+      { id: "rebuttal-master", name: "Rebuttal Master", icon: "fa-hand-fist" },
+      { id: "logic-master", name: "Logic Master", icon: "fa-brain" },
+      { id: "quick-thinker", name: "Quick Thinker", icon: "fa-bolt" },
+      { id: "accuracy-ace", name: "Accuracy Ace", icon: "fa-bullseye" },
+      { id: "research-expert", name: "Research Expert", icon: "fa-book" },
+      { id: "quiz-conqueror", name: "Quiz Conqueror", icon: "fa-layer-group" },
+      { id: "global-debater", name: "Global Debater", icon: "fa-globe" },
+      { id: "top-10", name: "Top 10", icon: "fa-medal" },
+      { id: "top-1", name: "Top 1%", icon: "fa-trophy" },
+      { id: "coin-collector", name: "Coin Collector", icon: "fa-gem" },
+      { id: "speed-demon", name: "Speed Demon", icon: "fa-rocket" },
+      { id: "referral-star", name: "Referral Star", icon: "fa-user-plus" },
+      { id: "viral-ambassador", name: "Viral Ambassador", icon: "fa-share-alt" },
+      { id: "level-25", name: "Level 25", icon: "fa-arrow-up" },
+      { id: "shard-collector", name: "Shard Collector", icon: "fa-dragon" }
+    ];
+
+    function getPtsField() {
+      return activeTab === ALLTIME ? "allTimePoints" : "points";
+    }
+
+    function getPrevWeekId(weekId) {
+      const m = weekId.match(/^(\d+)-W(\d+)$/);
+      if (!m) return "";
+      const year = parseInt(m[1], 10), week = parseInt(m[2], 10);
+      if (week > 1) return `${year}-W${String(week - 1).padStart(2, "0")}`;
+      return `${year - 1}-W52`;
+    }
+
+    currentWeek = getCurrentWeekId();
+
+    function getNextWeekStart() {
+      const now = new Date();
+      const day = now.getDay();
+      const isoDay = day === 0 ? 7 : day;
+      const next = new Date(now);
+      next.setDate(now.getDate() + (8 - isoDay));
+      next.setHours(0, 0, 0, 0);
+      return next;
+    }
+
+    function updateCountdown() {
+      const el = document.getElementById("lb-countdown");
+      if (!el) return;
+      const next = getNextWeekStart();
+      const diff = next - new Date();
+      if (diff <= 0) { el.textContent = "Resetting soon..."; return; }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      el.textContent = `Resets in ${d}d ${h}h ${m}m`;
+    }
+
+    function setWeekLabel() {
+      const el = document.getElementById("lb-week-label");
+      if (el) el.textContent = `${getWeekLabel(currentWeek)}`;
+    }
+
+    function updateCommunityGems() {
+      const total = allPlayers.reduce((sum, p) => sum + (p.gemsToday || 0), 0);
+      const el = document.getElementById("lb-community-gems-count");
+      if (el) {
+        const current = parseInt(el.textContent) || 0;
+        if (current !== total) animateCounter(el, current, total, 600);
+      }
+    }
+
+    function animateCounter(el, from, to, duration) {
+      const start = performance.now();
+      const diff = to - from;
+      function tick(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(from + diff * eased).toLocaleString();
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+
+    onAuthStateChanged(auth, user => {
+      if (user) {
+        currentUserUid = user.uid;
+        (async () => {
+          try {
+            const snap = await getDoc(doc(db, "users", user.uid));
+            if (snap.exists()) {
+              await syncLeaderboard(db, user.uid, snap.data()).catch(() => {});
+            }
+          } catch (_) {}
+          refreshChampions();
+        })();
+      }
+    });
+
+    async function refreshChampions() {
+      try {
+        const [champsSnap, lbSnap, adminUids] = await Promise.all([
+          getDocs(collection(db, "leaderboard_champions")),
+          getDocs(collection(db, "leaderboard")),
+          getAdminUids()
+        ]);
+        const champions = [];
+        const champWeeks = new Set();
+        champsSnap.forEach(d => {
+          if (adminUids.has(d.data().uid)) return;
+          champions.push({ id: d.id, ...d.data() });
+          champWeeks.add(d.id);
+        });
+
+        // Compute missing champions from current leaderboard data
+        const prevWeek = getPrevWeekId(currentWeek);
+        const playersByWeek = {};
+        const lastWeekCandidates = [];
+        lbSnap.forEach(d => {
+          if (adminUids.has(d.id)) return;
+          const data = d.data();
+          if (!data.fullName) return;
+          if (data.lastWeekPoints > 0) lastWeekCandidates.push({ uid: d.id, fullName: data.fullName, nickName: data.nickName || "", country: data.country || "", points: data.lastWeekPoints });
+          const week = data.currentWeek;
+          if (!week || week === currentWeek || champWeeks.has(week)) return;
+          if (!playersByWeek[week]) playersByWeek[week] = [];
+          playersByWeek[week].push({ uid: d.id, fullName: data.fullName, nickName: data.nickName || "", country: data.country || "", points: data.points || 0 });
+        });
+        for (const [week, players] of Object.entries(playersByWeek)) {
+          const top = players.reduce((a, b) => (a.points || 0) >= (b.points || 0) ? a : b);
+          if (top && (top.points || 0) > 0) champions.push({ id: week, weekId: week, ...top });
+        }
+        // Fallback: compute champions for past weeks from lastWeekPoints (up to 4 weeks back)
+        let checkWeek = getPrevWeekId(currentWeek);
+        for (let i = 0; i < 4 && checkWeek && !champWeeks.has(checkWeek); i++) {
+          if (!champions.find(c => c.weekId === checkWeek) && lastWeekCandidates.length > 0) {
+            const top = lastWeekCandidates.reduce((a, b) => (a.points || 0) >= (b.points || 0) ? a : b);
+            if (top && top.points > 0) champions.push({ id: checkWeek, weekId: checkWeek, ...top });
+          }
+          checkWeek = getPrevWeekId(checkWeek);
+        }
+        champions.sort((a, b) => (b.weekId || "").localeCompare(a.weekId || ""));
+        window.__champions = champions;
+        const tab = document.querySelector(".lb-tab-content.active");
+        if (tab && tab.id === "lb-tab-champions") renderChampions();
+      } catch (e) {
+        console.warn("refreshChampions error:", e);
+      }
+    }
+
+    async function getAdminUids() {
+      try {
+        const q = query(collection(db, "users"), where("role", "==", "admin"));
+        const snap = await getDocs(q);
+        const uids = new Set();
+        snap.forEach(d => uids.add(d.id));
+        return uids;
+      } catch (_) { return new Set(); }
+    }
+
+    async function loadLeaderboard() {
+      const loadingEl = document.getElementById("lb-loading");
+      const errorEl = document.getElementById("lb-error");
+      const contentEl = document.getElementById("lb-content");
+
+      try {
+        const [weeklySnap, adminUids] = await Promise.all([
+          getDocs(collection(db, "leaderboard")),
+          getAdminUids()
+        ]);
+
+        let champions = [];
+        try {
+          const champsSnap = await getDocs(collection(db, "leaderboard_champions"));
+          champsSnap.forEach(d => { champions.push({ id: d.id, ...d.data() }); });
+          champions = champions.filter(c => !adminUids.has(c.uid));
+          champions.sort((a, b) => (b.weekId || "").localeCompare(a.weekId || ""));
+        } catch (_) {}
+
+        allPlayers = [];
+        weeklySnap.forEach(d => {
+          if (adminUids.has(d.id)) return;
+          const data = d.data();
+          if (!data.fullName) return;
+          const today = new Date().toISOString().split('T')[0];
+          allPlayers.push({
+            uid: d.id,
+            fullName: data.fullName,
+            nickName: data.nickName || "",
+            country: data.country || "",
+            conferenceCount: data.conferenceCount || 0,
+            awardCount: data.awardCount || 0,
+            points: data.points || 0,
+            allTimePoints: data.allTimePoints || data.points || 0,
+            level: data.level || 1,
+            currentWeek: data.currentWeek || "",
+            lastWeekPoints: data.lastWeekPoints || 0,
+            gemsToday: (data.gemsTodayDate === today) ? (data.gemsToday || 0) : 0
+          });
+        });
+
+        // Compute champions for past weeks from current leaderboard data
+        const existingChampWeeks = new Set(champions.map(c => c.weekId));
+        const prevWeek = getPrevWeekId(currentWeek);
+
+        // 1. From leftover docs still on an old currentWeek
+        const playersByWeek = {};
+        for (const p of allPlayers) {
+          if (!p.currentWeek || p.currentWeek === currentWeek || existingChampWeeks.has(p.currentWeek)) continue;
+          if (!playersByWeek[p.currentWeek]) playersByWeek[p.currentWeek] = [];
+          playersByWeek[p.currentWeek].push(p);
+        }
+        for (const [week, players] of Object.entries(playersByWeek)) {
+          const top = players.reduce((a, b) => (a.points || 0) >= (b.points || 0) ? a : b);
+          if (top && (top.points || 0) > 0) {
+            champions.push({ id: week, weekId: week, uid: top.uid, fullName: top.fullName, nickName: top.nickName, country: top.country, points: top.points });
+          }
+        }
+
+        // 2. From lastWeekPoints (persists even after users sync to new week, up to 4 weeks back)
+        let checkWeek = getPrevWeekId(currentWeek);
+        for (let i = 0; i < 4 && checkWeek && !existingChampWeeks.has(checkWeek); i++) {
+          if (!champions.find(c => c.weekId === checkWeek)) {
+            const candidates = allPlayers.filter(p => p.lastWeekPoints > 0);
+            if (candidates.length > 0) {
+              const top = candidates.reduce((a, b) => (a.lastWeekPoints || 0) >= (b.lastWeekPoints || 0) ? a : b);
+              if (top && top.lastWeekPoints > 0) {
+                champions.push({ id: checkWeek, weekId: checkWeek, uid: top.uid, fullName: top.fullName, nickName: top.nickName, country: top.country, points: top.lastWeekPoints });
+              }
+            }
+          }
+          checkWeek = getPrevWeekId(checkWeek);
+        }
+
+        champions.sort((a, b) => (b.weekId || "").localeCompare(a.weekId || ""));
+
+        loadingEl.style.display = "none";
+
+        if (allPlayers.length === 0) {
+          document.getElementById("lb-empty").style.display = "block";
+          contentEl.style.display = "block";
+          document.getElementById("lb-player-count").textContent = "0";
+          document.getElementById("lb-player-count-at").textContent = "0";
+          document.getElementById("lb-page-info").textContent = "";
+          return;
+        }
+
+        window.__champions = champions;
+        window.__allPlayers = allPlayers;
+        renderAll();
+        updateCommunityGems();
+        contentEl.style.display = "block";
+        updateCountdown();
+        setWeekLabel();
+        setInterval(updateCountdown, 60000);
+
+        // Live refresh gems today every 30s
+        setInterval(async () => {
+          try {
+            const snap = await getDocs(collection(db, "leaderboard"));
+            const today = new Date().toISOString().split('T')[0];
+            snap.forEach(d => {
+              const data = d.data();
+              const player = allPlayers.find(p => p.uid === d.id);
+              if (player) {
+                player.gemsToday = (data.gemsTodayDate === today) ? (data.gemsToday || 0) : 0;
+              }
+            });
+            renderAll();
+            updateCommunityGems();
+          } catch (_) {}
+        }, 30000);
+
+      } catch (err) {
+        console.error("Leaderboard load error:", err);
+        loadingEl.style.display = "none";
+        errorEl.style.display = "block";
+      }
+    }
+
+    function renderAll() {
+      renderWeekly();
+      renderAllTime();
+      renderChampions();
+      populateCountryFilter();
+    }
+
+    function populateCountryFilter() {
+      const countries = [...new Set(allPlayers.map(p => p.country).filter(Boolean))].sort();
+      const selects = [
+        document.getElementById("lb-country-filter"),
+        document.getElementById("lb-country-filter-at")
+      ];
+      selects.forEach(sel => {
+        if (!sel) return;
+        const prev = sel.value;
+        sel.innerHTML = '<option value="">All Countries</option>';
+        countries.forEach(c => {
+          const opt = document.createElement("option");
+          opt.value = c;
+          opt.textContent = c;
+          sel.appendChild(opt);
+        });
+        sel.value = prev;
+      });
+    }
+
+    function getFiltered(field) {
+      const input = activeTab === WEEKLY
+        ? document.getElementById("lb-search-input")
+        : document.getElementById("lb-search-alltime");
+      const countrySelect = activeTab === WEEKLY
+        ? document.getElementById("lb-country-filter")
+        : document.getElementById("lb-country-filter-at");
+      const q = (input ? input.value : "").toLowerCase().trim();
+      const country = countrySelect ? countrySelect.value : "";
+      return allPlayers.filter(p => {
+        const matchesSearch = !q ||
+          p.fullName.toLowerCase().includes(q) ||
+          p.nickName.toLowerCase().includes(q) ||
+          p.country.toLowerCase().includes(q);
+        const matchesCountry = !country || p.country === country;
+        return matchesSearch && matchesCountry;
+      });
+    }
+
+    function sortByField(players, field) {
+      return [...players].sort((a, b) => (b[field] || 0) - (a[field] || 0) || a.fullName.localeCompare(b.fullName));
+    }
+
+    function renderTable(bodyId, emptyId, countId, field, filtered) {
+      const body = document.getElementById(bodyId);
+      const empty = document.getElementById(emptyId);
+      const countEl = document.getElementById(countId);
+      const sorted = sortByField(filtered, field);
+      const total = sorted.length;
+      countEl.textContent = total;
+
+      const suffix = bodyId === "lb-body" ? "w" : "at";
+      const paginationEl = document.getElementById(`lb-pagination-${suffix}`);
+      const numbersEl = document.getElementById(`lb-page-numbers-${suffix}`);
+
+      const actualPageSize = pageSize === 0 ? total : pageSize;
+      const maxPage = Math.ceil(total / actualPageSize) || 1;
+      currentPage = Math.max(1, Math.min(currentPage, maxPage));
+
+      const start = (currentPage - 1) * actualPageSize;
+      const end = Math.min(start + actualPageSize, total);
+      const pageItems = actualPageSize >= total ? sorted : sorted.slice(start, end);
+
+      const pageInfoEl = document.getElementById("lb-page-info");
+      if (pageInfoEl) {
+        pageInfoEl.textContent = total > 0 ? `${start + 1}–${end} of ${total}` : "";
+      }
+
+      if (paginationEl) {
+        paginationEl.style.display = (total > actualPageSize && pageSize !== 0) ? "flex" : "none";
+        if (numbersEl && total > actualPageSize && pageSize !== 0) {
+          let html = "";
+          for (let i = 1; i <= maxPage; i++) {
+            html += `<button class="lb-page-num${i === currentPage ? ' active' : ''}" onclick="LB.goToPage(${i})">${i}</button>`;
+          }
+          numbersEl.innerHTML = html;
+        }
+      }
+
+      if (total === 0) {
+        body.innerHTML = "";
+        if (empty) empty.style.display = "block";
+        return;
+      }
+      if (empty) empty.style.display = "none";
+
+      body.innerHTML = pageItems.map((p, i) => {
+        const rank = start + i + 1;
+        return `<tr class="lb-row${p.uid === currentUserUid ? " lb-row--me" : ""}">
+          <td class="c-rank" data-label="Rank">${getMedalOrRank(rank)}</td>
+          <td class="c-player" data-label="Player">
+            <div class="p-info">
+              <div class="p-avatar" style="${rank <= 3 ? `border-color: ${['#fbbf24','#9ca3af','#d97706'][rank-1]}` : ''}">${INITIALS(p.fullName)}</div>
+              <div class="p-details">
+                <div class="p-name"><a href="javascript:void(0)" onclick="openProfileModal('${p.uid}')" class="p-name-link">${ESC(p.fullName)}</a>${p.uid === currentUserUid ? '<span class="p-me">You</span>' : ''}</div>
+                <div class="p-meta">
+                  ${p.nickName ? `<span class="p-nick">@${ESC(p.nickName)}</span>` : ""}
+                  ${getLevelBadgeHTML(p.level, { size: 'sm' })}
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="c-country" data-label="Country">${p.country ? ESC(p.country) : '<span class="no-data">—</span>'}</td>
+          <td class="c-confs" data-label="Confs">${p.conferenceCount}</td>
+          <td class="c-awards" data-label="Awards">${p.awardCount}</td>
+          <td class="c-pts" data-label="Gems"><span class="pts-pill">${p[field] || 0}</span></td>
+        </tr>`;
+      }).join("");
+    }
+
+    function getMedalOrRank(rank) {
+      if (rank <= 3) return `<span class="medal-cell">${MEDALS[rank]} <span class="rank-val">${rank}</span></span>`;
+      return `<span class="rank-val rank-val--plain">${rank}</span>`;
+    }
+
+    function renderWeekly() {
+      renderTable("lb-body", "lb-empty", "lb-player-count", "points", allPlayers);
+      renderPodium(allPlayers, "points", "w");
+      renderRankCard(allPlayers, "points", "w");
+    }
+
+    function renderAllTime() {
+      renderTable("lb-body-alltime", null, "lb-player-count-at", "allTimePoints", allPlayers);
+      renderPodium(allPlayers, "allTimePoints", "a");
+      renderRankCard(allPlayers, "allTimePoints", "at");
+    }
+
+    function renderPodium(players, field, prefix) {
+      const top3 = sortByField(players, field).slice(0, 3);
+      const ids = [1, 2, 3];
+      const podium = document.getElementById(`podium-${prefix === "w" ? "weekly" : "alltime"}`);
+      if (!podium) return;
+      if (players.length === 0 || top3.length === 0) { podium.style.display = "none"; return; }
+      podium.style.display = "";
+
+      podium.querySelectorAll(".p-slot").forEach(s => s.classList.remove("p-slot--visible"));
+
+      const order = [2, 1, 3];
+      order.forEach(rank => {
+        const p = top3[rank - 1];
+        const el = (id) => document.getElementById(`${prefix}-p${rank}-${id}`);
+        if (p) {
+          if (el("avatar")) {
+            el("avatar").textContent = INITIALS(p.fullName);
+            el("avatar").style.cursor = "pointer";
+          }
+          const nameEl = el("name");
+          if (nameEl) {
+            nameEl.innerHTML = `<a href="javascript:void(0)" onclick="openProfileModal('${p.uid}')" style="color:inherit;text-decoration:none;">${ESC(p.fullName.split(" ")[0])}</a>`;
+          }
+          if (el("pts")) el("pts").textContent = p[field] || 0;
+        } else {
+          if (el("avatar")) el("avatar").textContent = "?";
+          if (el("name")) el("name").textContent = "—";
+          if (el("pts")) el("pts").textContent = "0";
+        }
+      });
+
+      requestAnimationFrame(() => {
+        podium.querySelectorAll(".p-slot").forEach(slot => {
+          slot.classList.add("p-slot--visible");
+        });
+      });
+    }
+
+    function renderRankCard(players, field, prefix) {
+      const card = document.getElementById(`lb-rank-card-${prefix}`);
+      if (!card) return;
+      const uid = currentUserUid;
+      if (!uid || players.length === 0) { card.style.display = "none"; return; }
+      const sorted = sortByField(players, field);
+      const idx = sorted.findIndex(p => p.uid === uid);
+      if (idx === -1) { card.style.display = "none"; return; }
+      card.style.display = "flex";
+      const me = sorted[idx];
+      const rank = idx + 1;
+      const total = sorted.length;
+      const pts = me[field] || 0;
+      document.getElementById(`rank-avatar-text-${prefix}`).textContent = INITIALS(me.fullName);
+      document.getElementById(`rank-pos-${prefix}`).textContent = `#${rank} of ${total}`;
+      document.getElementById(`rank-detail-${prefix}`).innerHTML = `${pts.toLocaleString()} <span class="gem-icon gem-icon--sm"></span>`;
+      let progressText, progressPct;
+      if (rank === 1) {
+        progressText = "You're #1 — Lead the leaderboard";
+        progressPct = 100;
+      } else if (rank <= 10) {
+        const topPts = sorted[0][field] || 0;
+        progressText = `${(topPts - pts).toLocaleString()} <span class="gem-icon gem-icon--sm"></span> from #1`;
+        progressPct = Math.min((pts / Math.max(topPts, 1)) * 100, 100);
+      } else {
+        const spotsAway = rank - 10;
+        const tenthPts = sorted[9][field] || 0;
+        progressText = `${spotsAway} spot${spotsAway > 1 ? 's' : ''} from Top 10`;
+        progressPct = Math.min((pts / Math.max(tenthPts, 1)) * 100, 100);
+      }
+      document.getElementById(`rank-bar-text-${prefix}`).innerHTML = progressText;
+      document.getElementById(`rank-bar-fill-${prefix}`).style.width = `${Math.round(progressPct)}%`;
+    }
+
+    function renderChampions() {
+      const champs = window.__champions || [];
+      const grid = document.getElementById("lb-champions-grid");
+      const empty = document.getElementById("lb-champs-empty");
+      if (champs.length === 0) {
+        grid.innerHTML = "";
+        empty.style.display = "block";
+        return;
+      }
+      empty.style.display = "none";
+
+      const sorted = [...champs].sort((a, b) => (b.points || 0) - (a.points || 0));
+      const podium = sorted.slice(0, 3);
+      const rest = sorted.slice(3);
+
+      const podiumOrder = [];
+      if (podium[1]) podiumOrder.push({ ...podium[1], place: 2 });
+      if (podium[0]) podiumOrder.push({ ...podium[0], place: 1 });
+      if (podium[2]) podiumOrder.push({ ...podium[2], place: 3 });
+
+      let html = '';
+
+      if (podiumOrder.length > 0) {
+        html += `<div class="champ-stage">`;
+        html += `<div class="champ-stage-spotlights">
+          <div class="spotlight spotlight--left"></div>
+          <div class="spotlight spotlight--center"></div>
+          <div class="spotlight spotlight--right"></div>
+        </div>`;
+
+        for (const c of podiumOrder) {
+          const medal = c.place === 1 ? 'fa-crown' : c.place === 2 ? 'fa-medal' : 'fa-award';
+          const tier = c.place === 1 ? 'first' : c.place === 2 ? 'second' : 'third';
+          html += `
+          <div class="champ-podium-item ${tier}" style="--delay:${podiumOrder.indexOf(c) * 0.15}s">
+            <div class="champ-podium-spotlight"></div>
+            <div class="champ-podium-ring"></div>
+            <div class="champ-podium-crown"><i class="fas ${medal}"></i></div>
+            <div class="champ-podium-avatar">${INITIALS(c.fullName)}</div>
+            <div class="champ-podium-name"><a href="javascript:void(0)" onclick="openProfileModal('${c.uid}')" style="color:inherit;text-decoration:none;">${ESC(c.fullName)}</a></div>
+            ${c.nickName ? `<div class="champ-podium-nick">@${ESC(c.nickName)}</div>` : ''}
+            <div class="champ-podium-country">${c.country ? ESC(c.country) : ''}</div>
+            <div class="champ-podium-week">${getWeekLabel(c.weekId)}</div>
+            <div class="champ-podium-pts"><span class="gem-icon gem-icon--sm"></span> ${c.points}</div>
+            <div class="champ-podium-bar">
+              <div class="champ-podium-bar-shine"></div>
+            </div>
+          </div>`;
+        }
+        html += `</div>`;
+      }
+
+      if (rest.length > 0) {
+        html += `<div class="champ-past-header"><i class="fas fa-history"></i> Previous Champions</div>`;
+        html += `<div class="lb-champions-grid">`;
+        for (const c of rest) {
+          html += `
+          <div class="champ-card">
+            <div class="champ-crown"><i class="fas fa-crown"></i></div>
+            <div class="champ-week">${getWeekLabel(c.weekId)}</div>
+            <div class="champ-avatar">${INITIALS(c.fullName)}</div>
+            <div class="champ-name"><a href="javascript:void(0)" onclick="openProfileModal('${c.uid}')" style="color:inherit;text-decoration:none;">${ESC(c.fullName)}</a></div>
+            ${c.nickName ? `<div class="champ-nick">@${ESC(c.nickName)}</div>` : ""}
+            <div class="champ-country">${c.country ? ESC(c.country) : ''}</div>
+            <div class="champ-pts"><span class="gem-icon gem-icon--sm"></span> ${c.points}</div>
+          </div>`;
+        }
+        html += `</div>`;
+      }
+
+      grid.innerHTML = html;
+    }
+
+    function switchTab(tab) {
+      activeTab = tab;
+      document.querySelectorAll(".lb-tab").forEach(t => t.classList.toggle("active", t.dataset.tab === tab));
+      document.querySelectorAll(".lb-tab-content").forEach(c => c.classList.toggle("active", c.id === `lb-tab-${tab}`));
+      if (tab === CHAMPIONS) {
+        refreshChampions().then(() => renderChampions()).catch(() => renderChampions());
+      }
+      else LB.filter();
+    }
+
+    function closeProfileModal(e) {
+      if (e && e.target !== e.currentTarget) return;
+      document.getElementById("profile-modal").style.display = "none";
+      const scrollY = parseInt(document.body.dataset.scrollLock || "0");
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+      document.body.style.overflowY = "";
+      if (scrollY) window.scrollTo(0, scrollY);
+      delete document.body.dataset.scrollLock;
+    }
+
+    window.closeProfileModal = closeProfileModal;
+
+    async function openProfileModal(uid) {
+      if (!uid) return;
+      const modal = document.getElementById("profile-modal");
+      const loading = document.getElementById("pm-loading");
+      const error = document.getElementById("pm-error");
+      const body = document.getElementById("pm-body");
+      const badgesSection = document.getElementById("pm-badges");
+      const badgesGrid = document.getElementById("pm-badges-grid");
+      modal.style.display = "flex";
+      const scrollY = window.scrollY;
+      document.body.dataset.scrollLock = scrollY;
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = "100%";
+      document.body.style.overflowY = "scroll";
+      loading.style.display = "block";
+      error.style.display = "none";
+      body.style.display = "none";
+      badgesSection.style.display = "none";
+      try {
+        const lbSnap = await getDoc(doc(db, "leaderboard", uid));
+        if (!lbSnap.exists()) {
+          loading.style.display = "none";
+          error.style.display = "block";
+          error.textContent = "User not found.";
+          return;
+        }
+        const d = lbSnap.data();
+        const lvl = getLevelFromPoints(d.allTimePoints || d.points || 0);
+        const lvlName = getLevelName(lvl);
+        const initial = (d.fullName || "?")[0].toUpperCase();
+        document.getElementById("pm-avatar").textContent = initial;
+        document.getElementById("pm-name").textContent = d.fullName || "—";
+        document.getElementById("pm-nick").textContent = d.nickName ? `@${d.nickName}` : "";
+        document.getElementById("pm-country").textContent = d.country || "";
+        document.getElementById("pm-points").textContent = d.allTimePoints ?? d.points ?? 0;
+        document.getElementById("pm-level").innerHTML = `<span>${lvl}</span><span style="font-size:0.5rem;color:#6B7280;font-weight:400;display:block;text-transform:uppercase;letter-spacing:0.03em;">${lvlName}</span>`;
+        document.getElementById("pm-confs").textContent = d.conferenceCount ?? 0;
+        document.getElementById("pm-awards").textContent = d.awardCount ?? 0;
+        document.getElementById("pm-streak").textContent = d.streak ?? 0;
+        document.getElementById("pm-lessons").textContent = d.completedLessons ?? 0;
+
+        // Badges — now read from leaderboard doc (synced during profile sync)
+        const earnedIds = new Set(d.achievements || []);
+        if (earnedIds.size > 0) {
+          badgesGrid.innerHTML = BADGE_DEFS.filter(b => earnedIds.has(b.id)).map(b =>
+            `<div class="badge-item earned" data-tip="${ESC(b.name)}">
+              <div class="badge-item-icon"><i class="fas ${b.icon}"></i></div>
+              <div class="badge-item-label">${ESC(b.name)}</div>
+            </div>`
+          ).join("");
+          badgesSection.style.display = "block";
+        }
+
+        loading.style.display = "none";
+        body.style.display = "block";
+      } catch (err) {
+        console.error("Profile modal error:", err);
+        loading.style.display = "none";
+        error.style.display = "block";
+        error.textContent = "Could not load profile.";
+      }
+    }
+    window.openProfileModal = openProfileModal;
+
+    window.LB = {
+      filter() {
+        const field = getPtsField();
+        const isWeekly = activeTab === WEEKLY;
+        const bodyId = isWeekly ? "lb-body" : "lb-body-alltime";
+        const suffix = isWeekly ? "w" : "at";
+        const emptyId = isWeekly ? "lb-empty" : null;
+        const countId = isWeekly ? "lb-player-count" : "lb-player-count-at";
+        currentPage = 1;
+        renderTable(bodyId, emptyId, countId, field, getFiltered(field));
+        const pf = isWeekly ? "points" : "allTimePoints";
+        renderPodium(getFiltered(field), pf, suffix);
+        renderRankCard(allPlayers, pf, suffix);
+      },
+      setPageSize(size) {
+        pageSize = parseInt(size);
+        currentPage = 1;
+        document.getElementById("lb-pagesize").value = size;
+        LB.filter();
+      },
+      goToPage(page) {
+        const field = getPtsField();
+        const sorted = sortByField(getFiltered(field), field);
+        const actualPageSize = pageSize === 0 ? sorted.length : pageSize;
+        const maxPage = Math.ceil(sorted.length / actualPageSize) || 1;
+        currentPage = Math.max(1, Math.min(page, maxPage));
+        LB.filter();
+      }
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadLeaderboard();
+
+      document.getElementById("lb-tabs").addEventListener("click", e => {
+        const btn = e.target.closest(".lb-tab");
+        if (btn) switchTab(btn.dataset.tab);
+      });
+
+      const emailLink = document.getElementById("copy-email");
+      if (emailLink) {
+        emailLink.addEventListener("click", e => {
+          e.preventDefault();
+          navigator.clipboard.writeText("hello.deb8er@gmail.com");
+          const orig = emailLink.textContent;
+          emailLink.textContent = "Copied!";
+          emailLink.style.color = "var(--cyan)";
+          setTimeout(() => { emailLink.textContent = orig; emailLink.style.color = ""; }, 1500);
+        });
+      }
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+  <script>
+    AOS.init({ duration: 900, easing: "ease-out-cubic", once: true, offset: 120 });
+  </script>
+</body>
+</html>

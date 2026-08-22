@@ -1,0 +1,104 @@
+{
+  "title": "Misinformation vs. Disinformation",
+  "unit": "fake-news",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "The Key Difference",
+      "content": "Misinformation is false information shared without intent to harm. Disinformation is false information deliberately created and spread to deceive. The difference is intent — and intent matters for how we respond.",
+      "bullets": [
+        "Misinformation: Someone shares a false headline because they believe it is true",
+        "Disinformation: A state actor creates a fake news site to influence an election",
+        "Malinformation: True information shared with intent to harm (doxing, leaks)"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "Why the Distinction Matters",
+      "content": "Misinformation requires education and fact-checking. Disinformation requires regulation, platform accountability, and legal consequences. Treating them the same leads to ineffective solutions.",
+      "bullets": [
+        "Misinformation is fixed by teaching SIFT and media literacy",
+        "Disinformation requires platform policies and sometimes legal action",
+        "Knowing the difference helps you diagnose and respond correctly"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "Classifying Information",
+      "content": "Three scenarios:"
+    },
+    {
+      "type": "practice",
+      "instruction": "A bot network creates fake social media accounts to spread false voting information. This is:",
+      "options": [
+        "Misinformation",
+        "Disinformation",
+        "Malinformation",
+        "Satire"
+      ],
+      "correct": 1,
+      "feedback": "Disinformation — deliberately created and spread to deceive.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "q": "What distinguishes disinformation from misinformation?",
+      "options": [
+        "The platform it spreads on",
+        "The intent to deceive",
+        "The number of shares",
+        "The topic"
+      ],
+      "correct": 1,
+      "explain": "Disinformation is intentional deception. Misinformation is unintentional.",
+      "timeLimit": 30
+    },
+    {
+      "type": "true-false",
+      "statement": "Sharing a false news article because you thought it was true is an example of disinformation.",
+      "answer": false,
+      "feedback": "Without intent to deceive, it is misinformation, not disinformation.",
+      "timeLimit": 30
+    },
+    {
+      "type": "match",
+      "instruction": "Match each scenario to the correct category.",
+      "pairs": [
+        {
+          "id": "mi",
+          "left": "Misinformation",
+          "right": "Accidentally sharing a fake quote"
+        },
+        {
+          "id": "di",
+          "left": "Disinformation",
+          "right": "Creating a fake news site to influence voters"
+        },
+        {
+          "id": "ma",
+          "left": "Malinformation",
+          "right": "Publishing someone's private address to harass them"
+        }
+      ],
+      "feedback": "Intent and harm determine the category."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "spot-mistake",
+          "argument": "'All false information online should be treated as disinformation.' Identify the issue:",
+          "options": [
+            "This is correct",
+            "It ignores the difference between intentional and unintentional falsehoods",
+            "False information is always illegal",
+            "Only social media is disinformation"
+          ],
+          "correct": 1,
+          "feedback": "Misinformation (unintentional) and disinformation (intentional) require different responses."
+        }
+      ]
+    }
+  ]
+}

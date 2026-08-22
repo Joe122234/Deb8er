@@ -1,0 +1,118 @@
+{
+  "title": "Second-Order Decision Making",
+  "unit": "reasoning",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "First-Order vs. Second-Order Thinking",
+      "content": "First-order thinking is simple and immediate: 'X will lead to Y.' Second-order thinking asks 'And then what?' — tracing the chain of consequences beyond the obvious first effect. Great debaters and decision-makers distinguish themselves by thinking in second-order terms.",
+      "bullets": [
+        "First-order: 'We lower taxes, so people have more money.'",
+        "Second-order: 'People have more money, which increases demand, which causes inflation, which erodes the value of their money.'",
+        "The best arguments anticipate second and third-order effects"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "The 'And Then What?' Framework",
+      "content": "Second-order thinking is a simple habit: after identifying an outcome, ask 'And then what happens?' Repeat this 2-3 times to uncover hidden consequences that your opponent probably hasn't considered.",
+      "bullets": [
+        "Every policy has intended effects (first-order) and unintended effects (second-order+)",
+        "Opponents usually argue only about first-order effects",
+        "Second-order arguments show deeper analysis and win judge credibility"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "Second-Order Thinking in Action",
+      "content": "Motion: 'This house would implement rent control.'",
+      "good": "First-order: Rent control keeps housing affordable.\nSecond-order: Landlords earn less profit, so they build fewer new units, which reduces housing supply, which increases competition for existing units, which drives UP prices for non-controlled units.\nThird-order: The overall housing shortage worsens, hurting the very people rent control was designed to help.",
+      "explanation": "The second and third-order analysis reveals that a well-intentioned policy can backfire. This depth of analysis is far more persuasive than simply debating the first-order effect."
+    },
+    {
+      "type": "practice",
+      "instruction": "A city builds a new highway to reduce traffic congestion. What is a likely second-order effect?",
+      "options": [
+        "Traffic decreases immediately",
+        "People move further from the city, increasing total driving distance and eventually refilling the highway",
+        "The highway pays for itself in tolls",
+        "Public transit usage increases"
+      ],
+      "correct": 1,
+      "feedback": "The second-order effect is induced demand — easier driving encourages more driving and suburban sprawl, eventually leading to the same congestion levels.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "q": "What distinguishes second-order thinking from first-order thinking?",
+      "options": [
+        "Second-order thinking is more complicated",
+        "Second-order thinking traces the chain of consequences beyond the obvious first effect",
+        "Second-order thinking only applies to economics",
+        "Second-order thinking ignores short-term effects"
+      ],
+      "correct": 1,
+      "explain": "Second-order thinking asks 'And then what?' repeatedly to uncover hidden consequences that simple first-order analysis misses.",
+      "timeLimit": 30
+    },
+    {
+      "type": "true-false",
+      "statement": "First-order effects are always more important than second-order effects when evaluating a policy.",
+      "answer": false,
+      "feedback": "Second-order effects are often larger and more important than first-order effects. The most significant consequence of a policy is frequently an unintended one.",
+      "timeLimit": 30
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "The key question for second-order thinking is: '{0} {1} {2}?'",
+      "answers": [
+        "And",
+        "then",
+        "what"
+      ],
+      "distractors": [
+        "And",
+        "then",
+        "what",
+        "Why",
+        "does",
+        "this",
+        "Who",
+        "cares"
+      ],
+      "instruction": "Fill in the three-word question.",
+      "feedback": "Keep asking 'And then what?' to trace the chain of consequences deeper."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "scenario",
+          "scenario": "A government introduces a subsidy for electric vehicles to reduce emissions.",
+          "question": "What is a second-order consequence the government should consider?",
+          "options": [
+            "Electric vehicle sales will increase",
+            "Increased electricity demand may require more power plants, potentially increasing overall emissions if the grid uses fossil fuels",
+            "Gas stations will go out of business",
+            "Oil companies will lose profits"
+          ],
+          "correct": 1,
+          "feedback": "The second-order effect is that EV subsidies shift emissions from tailpipes to power plants. If the grid runs on coal, total emissions might not decrease."
+        },
+        {
+          "type": "quiz",
+          "q": "Why do skilled debaters use second-order arguments?",
+          "options": [
+            "They sound more intelligent",
+            "They reveal hidden consequences that opponents haven't considered, giving a strategic advantage",
+            "They are required by debate rules",
+            "They are easier to prove"
+          ],
+          "correct": 1,
+          "feedback": "Second-order arguments show deeper analysis and catch opponents off guard because they typically only prepare first-order responses."
+        }
+      ]
+    }
+  ]
+}

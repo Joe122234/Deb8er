@@ -1,0 +1,11 @@
+name = "deb8er-chat"
+main = "src/index.js"
+compatibility_date = "2025-08-03"
+usage_model = "bundled"
+
+[[kv_namespaces]]
+binding = "DEB8ER_KV"
+id = "31c38cd021de451f9406b00a6a14013a"
+
+[observability]
+enabled = true

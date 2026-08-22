@@ -1,0 +1,101 @@
+{
+  "title": "Country Persona vs. Personal Bias",
+  "unit": "what-is-mun",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "Representing a Country",
+      "content": "In MUN, you do not represent yourself — you represent an assigned country. This means advocating for positions that may differ from your personal beliefs. This is the core skill of diplomatic roleplay.",
+      "bullets": [
+        "Your personal opinion does not matter — your country's policy does",
+        "Research your country's actual UN voting record and foreign policy",
+        "You must argue positions you may personally disagree with"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "Separating Persona from Bias",
+      "content": "The ability to separate your identity from your country persona is what distinguishes excellent delegates. It requires research, empathy, and intellectual discipline.",
+      "bullets": [
+        "Understand WHY your country holds its position — history, economics, security",
+        "Use the third person: 'My country believes...' not 'I think...'",
+        "A good delegate can argue any position persuasively"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "Persona in Action",
+      "content": "You personally support strong climate action. Your assigned country is a major oil producer that opposes emission caps.",
+      "good": "'My country recognizes the importance of economic development for our population. We propose a phased transition that protects livelihoods while addressing environmental concerns.'",
+      "bad": "'I personally think we need to reduce emissions, but my country says no.'",
+      "explanation": "The good response advocates the country's position constructively. The bad response reveals personal bias and undermines the country's stance."
+    },
+    {
+      "type": "practice",
+      "instruction": "If your assigned country opposes a treaty you personally support, how must you act?",
+      "options": [
+        "Express your personal support during speeches",
+        "Represent the country's position faithfully while working within its policy to find solutions",
+        "Ask the chair to reassign your country",
+        "Remain silent during the debate"
+      ],
+      "correct": 1,
+      "feedback": "Your duty is to represent your country's position. Find creative solutions within your policy constraints.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "q": "Why is it important to use 'My country believes' instead of 'I think' in MUN?",
+      "options": [
+        "It sounds more formal",
+        "It reinforces that you are representing a national position, not your personal view",
+        "It is required by the rules of procedure",
+        "It makes your speeches longer"
+      ],
+      "correct": 1,
+      "explain": "Using 'my country' language maintains the diplomatic roleplay and reminds everyone that you represent a nation.",
+      "timeLimit": 30
+    },
+    {
+      "type": "true-false",
+      "statement": "Good MUN delegates only accept committee assignments for countries whose policies they personally agree with.",
+      "answer": false,
+      "feedback": "The best delegates can represent any country. The skill is understanding and advocating for positions, not agreeing with them.",
+      "timeLimit": 30
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "Separating your personal views from your assigned country's position is called maintaining your {0}.",
+      "answers": [
+        "persona"
+      ],
+      "distractors": [
+        "persona",
+        "role",
+        "character",
+        "identity"
+      ],
+      "instruction": "Fill in the term for staying in character as your assigned country.",
+      "feedback": "Your persona is the diplomatic character you maintain throughout the conference."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "scenario",
+          "scenario": "You are assigned China in a committee on internet freedom. China supports strict internet regulations. You personally believe in free internet access.",
+          "question": "What is the best approach?",
+          "options": [
+            "Argue for free internet despite your assignment",
+            "Research China's position on digital sovereignty and present their policy persuasively",
+            "Skip the committee session",
+            "Tell the committee your personal view"
+          ],
+          "correct": 1,
+          "feedback": "Research and present your country's position professionally. This is the essence of MUN."
+        }
+      ]
+    }
+  ]
+}

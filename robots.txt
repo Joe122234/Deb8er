@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://deb8erglobal.com/sitemap.xml

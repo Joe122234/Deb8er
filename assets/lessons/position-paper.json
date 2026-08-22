@@ -1,0 +1,119 @@
+{
+  "title": "Structuring a Position Paper",
+  "unit": "speeches-papers",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "What is a Position Paper?",
+      "content": "A position paper is a document that outlines your country's policy on the committee topic. It is submitted before the conference and helps chairs understand your stance. It also serves as your reference during debate.",
+      "bullets": [
+        "Background on the topic from your country's perspective",
+        "Past UN actions your country supports or opposes",
+        "Your country's specific policy and proposed solutions",
+        "A conclusion reiterating your position"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "The Structure",
+      "content": "A strong position paper has four sections: Topic Background (context from your country's view), UN Action (relevant resolutions and treaties), Country Policy (your country's specific stance and actions), and Proposed Solutions (concrete recommendations).",
+      "bullets": [
+        "Research your country's actual voting record on the topic",
+        "Cite specific UN resolutions your country supports",
+        "Propose solutions that align with your country's foreign policy",
+        "Keep it to one page"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "Position Paper Excerpt",
+      "content": "Sample on cybersecurity: 'As a nation that has experienced significant cyberattacks, Estonia believes that international cooperation is essential. We support the UN Group of Governmental Experts (GGE) framework and urge all member states to adopt norms of responsible state behavior in cyberspace.'",
+      "explanation": "This excerpt shows country-specific context, references actual UN mechanisms, and proposes a clear position."
+    },
+    {
+      "type": "practice",
+      "instruction": "What is the primary purpose of a position paper?",
+      "options": [
+        "To win an award",
+        "To communicate your country's stance to the chair and other delegates",
+        "To replace your GSL speech",
+        "To critique other countries"
+      ],
+      "correct": 1,
+      "feedback": "Position papers communicate your country's policy and prepare you for debate.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "q": "Which section of a position paper describes your country's specific stance?",
+      "options": [
+        "Topic Background",
+        "UN Action",
+        "Country Policy",
+        "Closing"
+      ],
+      "correct": 2,
+      "explain": "Country Policy is where you detail your nation's specific position and actions on the topic.",
+      "timeLimit": 30
+    },
+    {
+      "type": "true-false",
+      "statement": "Position papers should primarily express your personal opinions.",
+      "answer": false,
+      "feedback": "Position papers represent your assigned country's policy, not your personal views.",
+      "timeLimit": 30
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "A position paper should cite relevant {0} {1} that your country supports or opposes.",
+      "answers": [
+        "UN",
+        "resolutions"
+      ],
+      "distractors": [
+        "UN",
+        "resolutions",
+        "treaties",
+        "laws"
+      ],
+      "instruction": "Fill in the two missing words.",
+      "feedback": "Referencing actual UN resolutions shows research and grounds your position in international action."
+    },
+    {
+      "type": "highlight",
+      "instruction": "Click on the part of this position paper excerpt that states the country's POLICY (what it proposes to do).",
+      "segments": [
+        {
+          "text": "\"The Republic of Korea recognizes that plastic pollution is a transboundary crisis.\"",
+          "type": "wrong"
+        },
+        {
+          "text": "\"We have supported UNEA Resolution 5/14 on ending plastic pollution.\"",
+          "type": "wrong"
+        },
+        {
+          "text": "\"Korea calls for the establishment of a legally binding international instrument on plastic waste management, with specific reduction targets for member states.\"",
+          "type": "correct"
+        },
+        {
+          "text": "\"Our delegation is committed to working with all parties.\"",
+          "type": "wrong"
+        }
+      ],
+      "correctType": "correct",
+      "feedback": "Correct! The policy section states the specific proposal — a binding instrument with reduction targets."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "true-false",
+          "statement": "A position paper should be submitted after the conference starts.",
+          "answer": false,
+          "feedback": "Position papers are submitted before the conference so chairs can review delegate preparation."
+        }
+      ]
+    }
+  ]
+}

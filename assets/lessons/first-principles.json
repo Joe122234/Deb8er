@@ -1,0 +1,98 @@
+{
+  "title": "First-Principles Thinking",
+  "unit": "reasoning",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "What is First-Principles Thinking?",
+      "content": "First-principles thinking means breaking down a complex problem into its most basic, undeniable truths and reasoning up from there. Instead of arguing by analogy ('this is like X'), you build your argument from fundamental facts.",
+      "bullets": [
+        "Identify the fundamental truths that everyone agrees on",
+        "Break assumptions down until you reach bedrock facts",
+        "Rebuild your argument from those facts upward"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "Why It Wins Debates",
+      "content": "Most debaters argue by analogy — comparing their case to something familiar. First-principles thinking is harder to counter because it does not rely on assumptions. It reveals hidden flaws in conventional wisdom.",
+      "bullets": [
+        "Analogy: 'Tax cuts worked in the 1980s, so they will work now'",
+        "First-principles: 'What are the actual current economic conditions? What specific mechanisms would make tax cuts effective today?'",
+        "First-principles arguments are harder to rebut because they are built on unshakeable foundations"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "First-Principles in Action",
+      "content": "Elon Musk on rocket costs:"
+    },
+    {
+      "type": "practice",
+      "instruction": "Which approach represents first-principles thinking?",
+      "options": [
+        "'This policy worked in Sweden, so it will work here'",
+        "'What are the fundamental economic forces at play, and how will this policy interact with them?'",
+        "'My opponent is wrong because experts disagree'",
+        "'This is a common-sense solution'"
+      ],
+      "correct": 1,
+      "feedback": "First-principles breaks down to fundamental truths rather than relying on analogies or authority.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "timeLimit": 30,
+      "q": "What distinguishes first-principles thinking from arguing by analogy?",
+      "options": [
+        "First-principles is harder",
+        "First-principles breaks down to basic truths; analogy compares to similar situations",
+        "Analogy is always wrong",
+        "First-principles requires math"
+      ],
+      "correct": 1,
+      "explain": "First-principles reasoning starts from fundamental truths. Analogies compare the current situation to past ones, which may not apply."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "First-principles thinking breaks problems down to their most basic, {0} truths.",
+      "answers": [
+        "undeniable"
+      ],
+      "distractors": [
+        "undeniable",
+        "complex",
+        "known",
+        "popular"
+      ],
+      "instruction": "Fill in the missing word.",
+      "feedback": "First-principles reasoning starts from truths that cannot be disputed."
+    },
+    {
+      "type": "true-false",
+      "statement": "Arguing by analogy is just as reliable as first-principles thinking.",
+      "answer": false,
+      "feedback": "Analogies can be misleading because no two situations are identical. First-principles reasoning is more rigorous.",
+      "timeLimit": 30
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "scenario",
+          "scenario": "In a debate about implementing a four-day work week, the opposition argues 'This failed in the past.'",
+          "question": "How would a first-principles response differ?",
+          "options": [
+            "Agree and move on",
+            "Analyze the specific conditions that caused past failure and whether they apply today",
+            "Cite a study showing it works now",
+            "Ignore the argument"
+          ],
+          "correct": 1,
+          "feedback": "First-principles examines the specific mechanisms and conditions rather than relying on past outcomes."
+        }
+      ]
+    }
+  ]
+}

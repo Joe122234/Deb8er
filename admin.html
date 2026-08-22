@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net https://d3js.org https://apis.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firestore.googleapis.com https://www.googleapis.com https://script.google.com https://script.googleusercontent.com https://www.gstatic.com https://cdn.jsdelivr.net wss://*.firebaseio.com; img-src 'self' data: https:; frame-src 'self' https://*.firebaseapp.com;">
+  <meta name="description" content="Deb8er admin panel — manage users, conferences, awards, and sync leaderboard data.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:title" content="Admin Panel | Deb8er">
+  <meta property="og:description" content="Deb8er admin panel — manage users, conferences, awards, and sync leaderboard data.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://deb8erglobal.com/admin.html">
+  <meta property="og:image" content="https://deb8erglobal.com/assets/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Deb8er">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Admin Panel | Deb8er">
+  <meta name="twitter:description" content="Deb8er admin panel — manage users, conferences, awards, and sync leaderboard data.">
+  <meta name="twitter:image" content="https://deb8erglobal.com/assets/images/og-image.png">
+  <title>Admin Panel | Deb8er MUN & Debate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.min.css">
+  <link rel="stylesheet" href="assets/auth.css">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon1.png" />
+  <link rel="canonical" href="https://deb8erglobal.com/admin.html">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+  <style>
+    main { padding-top: 0; }
+    * { font-family: "Inter", system-ui, -apple-system, sans-serif; }
+
+    .admin-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 24px 80px;
+    }
+
+    .admin-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+
+    .admin-header h1 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #F4F6FB;
+    }
+
+    .admin-header span {
+      font-size: 13px;
+      color: #6B7280;
+    }
+
+    .admin-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
+      color: #6B7280;
+      font-size: 14px;
+      gap: 12px;
+    }
+
+    .admin-loading .spinner {
+      width: 24px;
+      height: 24px;
+      border: 2px solid rgba(58, 190, 255, 0.1);
+      border-top-color: #3ABEFF;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .admin-error { text-align: center; padding: 60px 24px; color: #6B7280; }
+    .admin-error h2 { font-size: 18px; font-weight: 600; color: #FCA5A5; margin-bottom: 8px; }
+    .admin-error p { font-size: 14px; }
+
+    /* ---- SEARCH ---- */
+    .admin-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .admin-btn.sync-btn {
+      background: #3ABEFF;
+      border: none;
+      color: #0a0a1a;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      white-space: nowrap;
+      transition: opacity 0.2s;
+    }
+    .admin-btn.sync-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .admin-btn.sync-btn i {
+      margin-right: 5px;
+    }
+
+    .admin-search-wrap {
+      flex: 1;
+      position: relative;
+    }
+
+    .admin-search-wrap i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #4B5563;
+      font-size: 14px;
+      pointer-events: none;
+    }
+
+    .admin-search {
+      width: 100%;
+      padding: 10px 14px 10px 38px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: #E5E7EB;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+    }
+    .admin-search:focus { border-color: #3ABEFF; }
+    .admin-search::placeholder { color: #4B5563; }
+
+    /* ---- METRIC CARDS ---- */
+    .admin-stats {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .admin-stat {
+      flex: 1;
+      padding: 18px 20px;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .admin-stat-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(58, 190, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      color: #3ABEFF;
+      flex-shrink: 0;
+    }
+
+    .admin-stat-content { flex: 1; min-width: 0; }
+    .admin-stat .num { font-size: 24px; font-weight: 700; color: #F4F6FB; line-height: 1.2; }
+    .admin-stat .label { font-size: 12px; color: #6B7280; margin-top: 2px; }
+
+    /* ---- USER LIST ---- */
+    .admin-user-list { display: flex; flex-direction: column; gap: 5px; }
+
+    .admin-user-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.015);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .admin-user-row:hover {
+      border-color: rgba(58, 190, 255, 0.15);
+      background: rgba(58, 190, 255, 0.02);
+    }
+
+    .admin-user-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #a68af9, #3ABEFF);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #0B0E14;
+      flex-shrink: 0;
+    }
+
+    .admin-user-info { flex: 1; min-width: 0; }
+    .admin-user-info .name { font-size: 14px; font-weight: 500; color: #F4F6FB; }
+    .admin-user-info .email { font-size: 12px; color: #6B7280; }
+
+    .admin-user-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+      font-size: 12px;
+      color: #6B7280;
+    }
+
+    .admin-user-meta .pts { color: #3ABEFF; font-weight: 600; font-size: 13px; }
+
+    .admin-user-meta .role-badge {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: rgba(166, 138, 249, 0.1);
+      color: #C4B5FD;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .no-users { text-align: center; padding: 40px; color: #6B7280; font-size: 14px; }
+
+    /* ---- DETAIL PANEL ---- */
+    .admin-detail-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      background: rgba(6, 9, 16, 0.6);
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s;
+    }
+    .admin-detail-overlay.open { opacity: 1; visibility: visible; }
+
+    .admin-detail-panel {
+      width: 100%;
+      max-width: 500px;
+      height: 100vh;
+      overflow-y: auto;
+      background: #0F1117;
+      border-left: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 32px 28px;
+      transform: translateX(100%);
+      transition: transform 0.25s cubic-bezier(.2,.8,.2,1);
+    }
+    .admin-detail-overlay.open .admin-detail-panel { transform: translateX(0); }
+
+    .detail-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+
+    .detail-top h2 { font-size: 18px; font-weight: 600; color: #F4F6FB; margin: 0; }
+    .detail-close {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: transparent; border: 1px solid rgba(255,255,255,0.06);
+      color: #6B7280; cursor: pointer; font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+    .detail-close:hover { background: rgba(255,255,255,0.04); color: #F4F6FB; }
+
+    .detail-field { margin-bottom: 22px; }
+
+    .detail-field label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      color: #6B7280;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .detail-field .value {
+      font-size: 14px;
+      color: #F4F6FB;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 8px;
+    }
+
+    .detail-field input, .detail-field select {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: #E5E7EB;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+    }
+    .detail-field input:focus { border-color: #3ABEFF; }
+    .detail-field select:focus { border-color: #3ABEFF; }
+
+    /* ---- SECTION HEADERS ---- */
+    .detail-section-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #D1D5DB;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .detail-section-title button {
+      background: none;
+      border: none;
+      color: #3ABEFF;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 0;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .detail-section-title button i { font-size: 10px; }
+    .detail-section-title button:hover { opacity: 0.8; }
+
+    /* ---- LIST ITEMS ---- */
+    .detail-list-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.015);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 8px;
+      margin-bottom: 6px;
+    }
+
+    .detail-list-item .left { flex: 1; min-width: 0; }
+    .detail-list-item .left .title { font-size: 13px; color: #F4F6FB; font-weight: 500; }
+    .detail-list-item .left .sub { font-size: 11px; color: #6B7280; margin-top: 2px; }
+
+    .detail-list-actions {
+      display: flex;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .detail-list-item .del-btn {
+      width: 28px; height: 28px; border-radius: 6px;
+      background: none; border: none;
+      color: #6B7280; cursor: pointer; font-size: 12px;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+    .detail-list-item .del-btn:hover { background: rgba(239,68,68,0.1); color: #FCA5A5; }
+    .detail-list-item .edit-btn {
+      width: 28px; height: 28px; border-radius: 6px;
+      background: none; border: none;
+      color: #6B7280; cursor: pointer; font-size: 12px;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+    }
+    .detail-list-item .edit-btn:hover { background: rgba(58,190,255,0.1); color: #3ABEFF; }
+
+    /* ---- ADD/EDIT FORMS ---- */
+    .add-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 10px;
+      padding: 14px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(58,190,255,0.08);
+      border-radius: 10px;
+    }
+    .add-form input, .add-form select {
+      padding: 8px 10px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: #E5E7EB;
+      font-size: 12px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .add-form input:focus, .add-form select:focus { border-color: #3ABEFF; }
+    .add-form button {
+      grid-column: 1 / -1;
+      padding: 8px;
+      border-radius: 6px;
+      border: none;
+      background: rgba(58,190,255,0.08);
+      color: #3ABEFF;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .add-form button:hover { background: rgba(58,190,255,0.15); }
+
+    /* ---- SAVE BUTTON ---- */
+    .detail-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .detail-actions .save-btn {
+      flex: 1;
+      padding: 12px 20px;
+      border-radius: 100px;
+      border: none;
+      background: #3ABEFF;
+      color: #0B0E14;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .detail-actions .save-btn:hover { opacity: 0.85; }
+
+    .detail-actions .delete-btn {
+      padding: 12px 20px;
+      border-radius: 100px;
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      background: transparent;
+      color: #FCA5A5;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .detail-actions .delete-btn:hover { background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.3); }
+
+    /* ---- TOAST ---- */
+    .toast-container {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .toast {
+      padding: 12px 20px;
+      border-radius: 10px;
+      background: #1a1d28;
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #F4F6FB;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateX(120%);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(.2,.8,.2,1);
+      pointer-events: none;
+    }
+    .toast.show {
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .toast.success { border-left: 3px solid #34D399; }
+    .toast.error { border-left: 3px solid #F87171; }
+    .toast i { font-size: 16px; }
+    .toast.success i { color: #34D399; }
+    .toast.error i { color: #F87171; }
+
+    @media (max-width: 768px) {
+      .admin-section { padding: 80px 16px 60px; }
+      .admin-stats { flex-direction: column; gap: 10px; }
+      .admin-user-meta .role-badge { display: none; }
+      .admin-detail-panel { max-width: 100%; padding: 24px 18px; }
+      .add-form { grid-template-columns: 1fr; }
+      .admin-stat { padding: 14px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/Deb9erfinallogo.webp" width="200" height="auto" alt="Deb8er - Global MUN & Debate Platform">
+      </a>
+      <div class="nav-toggle" id="navToggle" role="button" tabindex="0" aria-label="Toggle navigation">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="admin.html">Admin</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="leaderboard.html">Leaderboard</a></li>
+        <li id="nav-auth-item"><a href="dashboard.html" class="nav-account-btn"><i class="fas fa-user"></i> My Account</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="admin-section" id="admin-app" style="margin-top: 100px;">
+      <div class="admin-loading" id="admin-loading">
+        <div class="spinner"></div>
+        <span>Verifying access…</span>
+      </div>
+
+      <div class="admin-error" id="admin-denied" style="display:none;">
+        <h2>Access Denied</h2>
+        <p>You need admin privileges to access this page.</p>
+        <p style="margin-top:12px;"><a href="dashboard.html" style="color:#3ABEFF;">Go to Dashboard</a></p>
+      </div>
+
+      <div id="admin-content" style="display:none;">
+        <div class="admin-header">
+          <div>
+            <h1>Admin Panel</h1>
+            <span id="admin-user-count"></span>
+          </div>
+          <span style="font-size:13px;color:#6B7280;" id="admin-signed-in"></span>
+        </div>
+
+        <div class="admin-stats">
+          <div class="admin-stat">
+            <div class="admin-stat-icon"><i class="fas fa-users"></i></div>
+            <div class="admin-stat-content">
+              <div class="num" id="stat-total">—</div>
+              <div class="label">Total Users</div>
+            </div>
+          </div>
+          <div class="admin-stat">
+            <div class="admin-stat-icon"><i class="fas fa-calendar-check"></i></div>
+            <div class="admin-stat-content">
+              <div class="num" id="stat-confs">—</div>
+              <div class="label">Total Conferences</div>
+            </div>
+          </div>
+          <div class="admin-stat">
+            <div class="admin-stat-icon"><i class="fas fa-trophy"></i></div>
+            <div class="admin-stat-content">
+              <div class="num" id="stat-awards">—</div>
+              <div class="label">Total Awards</div>
+            </div>
+          </div>
+          <div class="admin-stat">
+            <div class="admin-stat-icon"><i class="fas fa-star"></i></div>
+            <div class="admin-stat-content">
+              <div class="num" id="stat-points">—</div>
+              <div class="label">Total Gems</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-toolbar">
+          <div class="admin-search-wrap">
+            <i class="fas fa-search"></i>
+            <input class="admin-search" id="admin-search" type="text" placeholder="Search by name or email…" oninput="filterUsers()">
+          </div>
+          <button class="admin-btn sync-btn" onclick="syncAllLeaderboard()" title="Sync all users to public leaderboard">
+            <i class="fas fa-sync-alt"></i> Sync All
+          </button>
+        </div>
+
+        <div class="admin-user-list" id="admin-user-list"></div>
+      </div>
+    </section>
+
+    <!-- USER DETAIL SLIDE-OUT -->
+    <div class="admin-detail-overlay" id="detail-overlay">
+      <div class="admin-detail-panel" id="detail-panel">
+        <div class="detail-top">
+          <h2 id="detail-name">User</h2>
+          <button class="detail-close" onclick="closeDetail()"><i class="fas fa-times"></i></button>
+        </div>
+
+        <div class="detail-field">
+          <label>Email</label>
+          <div class="value" id="detail-email"></div>
+        </div>
+
+        <div class="detail-field">
+          <label>Gems</label>
+          <input type="number" id="detail-points" min="0">
+        </div>
+
+        <div class="detail-field">
+          <label>Level</label>
+          <div id="detail-level" class="value"></div>
+        </div>
+
+        <!-- CONFERENCES -->
+        <div class="detail-section-title">
+          <span>Conferences</span>
+          <button onclick="showAddConference()"><i class="fas fa-plus"></i> Add</button>
+        </div>
+        <div id="detail-conferences"></div>
+        <div class="add-form" id="add-conf-form" style="display:none;">
+          <input id="add-conf-name" placeholder="Name (e.g. MUN Conference)">
+          <select id="add-conf-type">
+            <option value="mun">MUN</option>
+            <option value="debate">Debate</option>
+          </select>
+          <input id="add-conf-portfolio" placeholder="Portfolio/Country">
+          <input id="add-conf-committee" placeholder="Committee">
+          <input id="add-conf-region" placeholder="Region">
+          <input id="add-conf-date" placeholder="Date (e.g. Jul 17, 2026)">
+          <button id="add-conf-btn" onclick="addConference()"><i class="fas fa-plus"></i> Add Conference</button>
+        </div>
+
+        <!-- AWARDS -->
+        <div class="detail-section-title">
+          <span>Awards</span>
+          <button onclick="showAddAward()"><i class="fas fa-plus"></i> Add</button>
+        </div>
+        <div id="detail-awards"></div>
+        <div class="add-form" id="add-award-form" style="display:none;">
+          <select id="add-award-title">
+            <option value="">— Select Award —</option>
+          </select>
+          <input id="add-award-conf" placeholder="Conference name">
+          <select id="add-award-cert">
+            <option value="">— Auto-generate new —</option>
+          </select>
+          <input id="add-award-date" placeholder="Event Date (e.g. Jul 17, 2026)">
+          <button id="add-award-btn" onclick="addAward()">Add Award</button>
+        </div>
+
+        <div class="detail-actions">
+          <button class="delete-btn" onclick="deleteUserAccount()"><i class="fas fa-trash"></i> Delete</button>
+          <button class="save-btn" onclick="saveDetail()">Save Changes</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast-container" id="toast-container"></div>
+  </main>
+
+  <script type="module" src="assets/admin-main.js"></script>
+
+  <script type="module" src="navbar-auth.js"></script>
+</body>
+</html>

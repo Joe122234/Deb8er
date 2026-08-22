@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, follow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net https://d3js.org https://apis.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firestore.googleapis.com https://www.googleapis.com https://script.google.com https://script.googleusercontent.com https://www.gstatic.com https://cdn.jsdelivr.net wss://*.firebaseio.com; img-src 'self' data: https:; frame-src 'self' https://*.firebaseapp.com;">
+  <meta name="description" content="Sign up for Deb8er — the free global MUN and debate platform for students ages 10-18. Join conferences, earn awards, and climb the leaderboard.">
+  <meta name="keywords" content="Deb8er sign up, Deb8er login, MUN account, debate account">
+  <meta property="og:title" content="Sign Up for Deb8er — Create Your MUN & Debate Account">
+  <meta property="og:description" content="Sign up for Deb8er — the free global MUN and debate platform for students ages 10-18. Join conferences, earn awards, and climb the leaderboard.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://deb8erglobal.com/auth.html">
+  <meta property="og:image" content="https://deb8erglobal.com/assets/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Deb8er">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sign Up for Deb8er — Create Your MUN & Debate Account">
+  <meta name="twitter:description" content="Sign up for Deb8er — the free global MUN and debate platform for students ages 10-18. Join conferences, earn awards, and climb the leaderboard.">
+  <meta name="twitter:image" content="https://deb8erglobal.com/assets/images/og-image.png">
+
+  <title>Sign Up for Deb8er — Create Your MUN & Debate Account</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.min.css">
+  <link rel="stylesheet" href="assets/auth.css">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon1.png" />
+  <link rel="canonical" href="https://deb8erglobal.com/auth.html">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Sign Up for Deb8er — Create Your MUN & Debate Account",
+    "description": "Sign up for Deb8er — the free global MUN and debate platform for students ages 10-18. Join conferences, earn awards, and climb the leaderboard.",
+    "publisher": {
+      "@type": "EducationalOrganization",
+      "name": "Deb8er",
+      "url": "https://deb8erglobal.com"
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/Deb9erfinallogo.webp" width="200" height="auto"
+          alt="Deb8er - Global MUN & Debate Platform">
+      </a>
+      <div class="nav-toggle" id="navToggle" role="button" tabindex="0" aria-label="Toggle navigation">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="conferences.html">Conferences</a></li>
+        <li><a href="verification.html">Verification</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="leaderboard.html">Leaderboard</a></li>
+        <li id="nav-auth-item"><a href="auth.html" class="join-btn">Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="auth-section">
+      <div class="auth-header">
+        <h1>Join <span style="background:linear-gradient(90deg,#a68af9,#3ABEFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Deb8er</span></h1>
+        <p>Create your account or sign in to continue your journey.</p>
+      </div>
+
+      <div class="auth-card">
+        <!-- TABS -->
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="tab-signup" onclick="switchTab('signup')">Sign Up</button>
+          <button class="auth-tab" id="tab-signin" onclick="switchTab('signin')">Sign In</button>
+        </div>
+
+        <!-- ============== SIGN UP PANEL ============== -->
+        <div class="auth-panel active" id="panel-signup">
+          <div id="signup-message" class="auth-message"></div>
+
+          <form id="signup-form" novalidate>
+            <div class="auth-form-row">
+              <div class="auth-form-group">
+                <label for="su-fullname"><i class="fas fa-user-edit"></i> Full Legal Name</label>
+                <input type="text" id="su-fullname" placeholder="Your full legal name" required>
+              </div>
+              <div class="auth-form-group">
+                <label for="su-nickname"><i class="fas fa-id-badge"></i> Nick Name</label>
+                <input type="text" id="su-nickname" placeholder="Name you'd like to use" required>
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label for="su-email"><i class="fas fa-envelope"></i> Email Address</label>
+              <input type="email" id="su-email" placeholder="you@example.com" required>
+            </div>
+
+            <div class="auth-form-row">
+              <div class="auth-form-group">
+                <label for="su-phone"><i class="fas fa-phone"></i> Phone Number</label>
+                <input type="tel" id="su-phone" placeholder="+1 234 567 890">
+              </div>
+              <div class="auth-form-group">
+                <label for="su-age"><i class="fas fa-calendar-alt"></i> Age</label>
+                <input type="number" id="su-age" min="10" max="25" placeholder="Your age" required>
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label for="su-country"><i class="fas fa-globe"></i> Country</label>
+              <input type="text" id="su-country" list="su-countryList" placeholder="Start typing your country..." autocomplete="off" required>
+              <datalist id="su-countryList"></datalist>
+            </div>
+
+            <div class="auth-form-group">
+              <label for="su-referral"><i class="fas fa-gift"></i> Referral Code <span style="color:#6B7280;font-weight:400;">(optional)</span></label>
+              <input type="text" id="su-referral" placeholder="Enter code if someone invited you">
+            </div>
+
+            <div class="auth-form-group">
+              <label for="su-password"><i class="fas fa-lock"></i> Password</label>
+              <div class="password-wrapper">
+                <input type="password" id="su-password" placeholder="At least 8 characters" required>
+                <button type="button" class="password-toggle" onclick="togglePwd('su-password', this)">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label for="su-confirm"><i class="fas fa-lock"></i> Confirm Password</label>
+              <div class="password-wrapper">
+                <input type="password" id="su-confirm" placeholder="Repeat your password" required>
+                <button type="button" class="password-toggle" onclick="togglePwd('su-confirm', this)">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="auth-terms-group">
+              <label class="auth-terms-label">
+                <input type="checkbox" id="su-terms" class="auth-terms-cb">
+                <span class="auth-terms-check"></span>
+                <span class="auth-terms-text">I have read and agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a></span>
+              </label>
+            </div>
+
+            <button type="submit" class="auth-submit-btn" id="signup-btn">
+              <i class="fas fa-user-plus" style="margin-right:8px;"></i> Create Account
+            </button>
+          </form>
+
+          <div class="auth-divider">or</div>
+
+          <button class="google-btn" id="google-signup-btn">
+            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="">
+            Continue with Google
+          </button>
+
+          <div class="auth-switch">
+            Already have an account? <button onclick="switchTab('signin')">Sign In</button>
+          </div>
+        </div>
+
+        <!-- ============== SIGN IN PANEL ============== -->
+        <div class="auth-panel" id="panel-signin">
+          <div id="signin-message" class="auth-message"></div>
+
+          <form id="signin-form" novalidate>
+            <div class="auth-form-group">
+              <label for="si-email"><i class="fas fa-envelope"></i> Email Address</label>
+              <input type="email" id="si-email" placeholder="you@example.com" required>
+            </div>
+
+            <div class="auth-form-group">
+              <label for="si-password"><i class="fas fa-lock"></i> Password</label>
+              <div class="password-wrapper">
+                <input type="password" id="si-password" placeholder="Your password" required>
+                <button type="button" class="password-toggle" onclick="togglePwd('si-password', this)">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="auth-forgot">
+              <a href="#" id="forgot-link">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="auth-submit-btn" id="signin-btn">
+              <i class="fas fa-sign-in-alt" style="margin-right:8px;"></i> Sign In
+            </button>
+          </form>
+
+          <!-- ========= FORGOT PASSWORD PANEL ========= -->
+          <div id="forgot-panel" class="auth-forgot-panel" style="display:none;">
+            <div id="forgot-message" class="auth-message"></div>
+            <div class="forgot-header">
+              <div class="forgot-icon"><i class="fas fa-lock"></i></div>
+              <h3>Reset your password</h3>
+              <p>Enter the email you used to sign up and we'll send you a reset link.</p>
+            </div>
+            <div class="auth-form-group">
+              <label for="reset-email"><i class="fas fa-envelope"></i> Email Address</label>
+              <input type="email" id="reset-email" placeholder="you@example.com" required>
+            </div>
+            <button type="button" class="auth-submit-btn" id="reset-btn">
+              <i class="fas fa-paper-plane" style="margin-right:8px;"></i> Send Reset Link
+            </button>
+            <button type="button" class="auth-back-btn" id="back-to-signin">
+              <i class="fas fa-arrow-left"></i> Back to Sign In
+            </button>
+          </div>
+
+          <div class="auth-divider">or</div>
+
+          <button class="google-btn" id="google-signin-btn">
+            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="">
+            Continue with Google
+          </button>
+
+          <div class="auth-switch">
+            Don't have an account? <button onclick="switchTab('signup')">Sign Up</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============== COMPLETE PROFILE (first-time Google) ============== -->
+      <div class="auth-panel" id="panel-complete-profile">
+        <div class="auth-header" style="margin-bottom:32px;">
+          <h2 style="font-size:1.4rem;">Almost <span style="background:linear-gradient(90deg,#a68af9,#3ABEFF);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">there!</span></h2>
+          <p>Just fill in a few more details to complete your profile.</p>
+        </div>
+
+        <div id="complete-message" class="auth-message"></div>
+
+        <form id="complete-form" novalidate>
+          <div class="auth-form-row">
+            <div class="auth-form-group">
+              <label for="cp-fullname"><i class="fas fa-user-edit"></i> Full Legal Name</label>
+              <input type="text" id="cp-fullname" placeholder="Your full legal name" required>
+            </div>
+            <div class="auth-form-group">
+              <label for="cp-nickname"><i class="fas fa-id-badge"></i> Nick Name</label>
+              <input type="text" id="cp-nickname" placeholder="Name you'd like to use" required>
+            </div>
+          </div>
+
+          <div class="auth-form-row">
+            <div class="auth-form-group">
+              <label for="cp-phone"><i class="fas fa-phone"></i> Phone Number</label>
+              <input type="tel" id="cp-phone" placeholder="+1 234 567 890">
+            </div>
+            <div class="auth-form-group">
+              <label for="cp-age"><i class="fas fa-calendar-alt"></i> Age</label>
+              <input type="number" id="cp-age" min="10" max="25" placeholder="Your age" required>
+            </div>
+          </div>
+
+          <div class="auth-form-group">
+            <label for="cp-country"><i class="fas fa-globe"></i> Country</label>
+            <input type="text" id="cp-country" list="cp-countryList" placeholder="Start typing your country..." autocomplete="off" required>
+            <datalist id="cp-countryList"></datalist>
+          </div>
+
+          <div class="auth-form-group">
+            <label for="cp-referral"><i class="fas fa-gift"></i> Referral Code <span style="color:#6B7280;font-weight:400;">(optional)</span></label>
+            <input type="text" id="cp-referral" placeholder="Enter code if someone invited you">
+          </div>
+
+          <div class="auth-terms-group">
+            <label class="auth-terms-label">
+              <input type="checkbox" id="cp-terms" class="auth-terms-cb">
+              <span class="auth-terms-check"></span>
+              <span class="auth-terms-text">I have read and agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a></span>
+            </label>
+          </div>
+
+          <button type="submit" class="auth-submit-btn" id="complete-btn">
+            <i class="fas fa-check" style="margin-right:8px;"></i> Complete Profile
+          </button>
+        </form>
+      </div>
+
+      <!-- ============== OTP VERIFICATION PANEL ============== -->
+      <div id="panel-otp" style="display:none;">
+        <div id="otp-message" class="auth-message"></div>
+        <div style="text-align:center;margin-bottom:24px;">
+          <div style="width:64px;height:64px;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:radial-gradient(circle at center,rgba(166,138,249,.15),rgba(58,190,255,.08));border:1px solid rgba(255,255,255,.06);font-size:24px;color:#3ABEFF;">
+            <i class="fas fa-envelope-open-text"></i>
+          </div>
+          <h2 style="font-family:'Unbounded',sans-serif;font-size:18px;color:#E5E7EB;margin:0 0 8px;">Check your email</h2>
+          <p style="font-size:13px;color:#9CA3AF;line-height:1.5;margin:0;">We sent a 6-digit code to<br><strong id="otpEmailDisplay" style="color:#3ABEFF;font-weight:600;"></strong></p>
+        </div>
+
+        <div id="otpInputs" style="display:flex;gap:10px;justify-content:center;margin-bottom:20px;">
+          <input type="text" maxlength="1" class="otp-digit" data-index="0" inputmode="numeric" pattern="[0-9]" autocomplete="one-time-code">
+          <input type="text" maxlength="1" class="otp-digit" data-index="1" inputmode="numeric" pattern="[0-9]">
+          <input type="text" maxlength="1" class="otp-digit" data-index="2" inputmode="numeric" pattern="[0-9]">
+          <input type="text" maxlength="1" class="otp-digit" data-index="3" inputmode="numeric" pattern="[0-9]">
+          <input type="text" maxlength="1" class="otp-digit" data-index="4" inputmode="numeric" pattern="[0-9]">
+          <input type="text" maxlength="1" class="otp-digit" data-index="5" inputmode="numeric" pattern="[0-9]">
+        </div>
+
+        <button class="auth-submit-btn" id="otp-verify-btn">Verify</button>
+
+        <div id="otpTimerWrap" style="text-align:center;margin-top:16px;font-size:12px;color:#6B7280;">
+          <span id="otpTimerText">Resend in <strong id="otpTimerCount" style="color:#9CA3AF;font-weight:600;">15:00</strong></span>
+          <button id="otpResendBtn" style="display:none;background:none;border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:8px 18px;color:#9CA3AF;font-family:'Montserrat';font-size:12px;cursor:pointer;transition:all .2s;">Resend code</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="assets/images/footerpng.webp" width="160" height="40" alt="Deb8er - Global MUN & Debate Platform">
+        <p>Deb8er is a global online platform where anyone from ages 10-18 can participate in debates and MUNs.</p>
+      </div>
+      <div class="footer-links two-col">
+        <div class="footer-column">
+          <h4>Platform</h4>
+          <a href="about.html">About</a>
+          <a href="conferences.html">Conferences</a>
+          <a href="team.html">Team</a>
+        </div>
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <a href="https://www.instagram.com/deb8er_official" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://discord.gg/7dWD7Xebsj" target="_blank" rel="noopener noreferrer">Discord</a>
+          <a href="https://www.tiktok.com/@deb8er4" target="_blank" rel="noopener noreferrer">TikTok</a>
+          <a href="https://www.youtube.com/@Deb8er_official" target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a href="#" id="copy-email">Email</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Deb8er. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <!-- Firebase (module) — NO script.min.js here, it needs map/carousel DOM that doesn't exist on this page -->
+  <script src="assets/countries.js"></script>
+  <script type="module" src="navbar-auth.js"></script>
+  <script type="module" src="assets/auth-main.js"></script>
+
+  <script>
+    // ---- TAB SWITCHER ----
+    function switchTab(tab) {
+      ["signup", "signin"].forEach(t => {
+        document.getElementById("tab-" + t).classList.toggle("active", t === tab);
+        document.getElementById("panel-" + t).classList.toggle("active", t === tab);
+      });
+      if (tab === "signin") {
+        document.getElementById("forgot-panel").style.display = "none";
+        document.getElementById("signin-form").style.display = "block";
+        document.getElementById("forgot-message").className = "auth-message";
+        document.getElementById("forgot-message").textContent = "";
+        document.getElementById("reset-email").value = "";
+      }
+    }
+
+    // ---- PASSWORD TOGGLE ----
+    function togglePwd(inputId, btn) {
+      const input = document.getElementById(inputId);
+      const icon  = btn.querySelector("i");
+      if (input.type === "password") {
+        input.type = "text";
+        icon.className = "fas fa-eye-slash";
+      } else {
+        input.type = "password";
+        icon.className = "fas fa-eye";
+      }
+    }
+
+    // ---- Default to signin tab if URL param says so ----
+    if (new URLSearchParams(window.location.search).get("tab") === "signin") {
+      switchTab("signin");
+    }
+
+    // ---- Copy email footer ----
+    document.getElementById("copy-email")?.addEventListener("click", e => {
+      e.preventDefault();
+      navigator.clipboard.writeText("hello.deb8er@gmail.com");
+      const el = e.target;
+      const orig = el.textContent;
+      el.textContent = "Copied!";
+      el.style.color = "var(--cyan)";
+      setTimeout(() => { el.textContent = orig; el.style.color = ""; }, 1500);
+    });
+  </script>
+
+</body>
+</html>

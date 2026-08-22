@@ -1,0 +1,105 @@
+{
+  "title": "Link Turns vs. Impact Turns",
+  "unit": "rebuttals",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "What is an Argument Turn?",
+      "content": "A turn is an advanced rebuttal technique where you take your opponent's argument and flip it to support your own side.",
+      "bullets": [
+        "A turn is the strongest form of rebuttal",
+        "Link turns challenge the connection between the argument and the conclusion",
+        "Impact turns accept the argument but flip what it means"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "Link Turns vs. Impact Turns",
+      "content": "A Link Turn argues that your opponent's evidence does not lead to their conclusion. An Impact Turn accepts their argument but argues the consequence is actually good for your side.",
+      "bullets": [
+        "Link Turn: 'You say higher taxes reduce growth, but the data shows growth continued'",
+        "Impact Turn: 'You say higher taxes reduce profits. We agree — that is good, it pushes efficiency'",
+        "Link turns attack the connection; Impact turns flip the outcome"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "Turning an Argument",
+      "content": "Motion: 'This house would ban plastic bags.'",
+      "good": "Opposition: 'Banning bags hurts low-income families.'\n\nLink Turn: 'Cities with bans provide free paper bags — the link to hurting families is broken.'\n\nImpact Turn: 'Even if it creates inconvenience, that is a feature — it encourages sustainable habits that benefit everyone.'",
+      "explanation": "The Link Turn breaks the causal connection. The Impact Turn re-frames the outcome as positive."
+    },
+    {
+      "type": "practice",
+      "instruction": "Opponent: 'Increasing minimum wage will cause fewer hires.' You respond: 'Studies show businesses raise prices or invest in productivity instead.' This is a:",
+      "options": [
+        "Link Turn — breaking the causal connection",
+        "Impact Turn — flipping the outcome",
+        "Direct Refutation",
+        "Not a turn at all"
+      ],
+      "correct": 0,
+      "feedback": "This is a Link Turn — you challenge the assumption that higher wages lead to fewer jobs.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "q": "What is the key difference between a Link Turn and an Impact Turn?",
+      "options": [
+        "There is no difference",
+        "A Link Turn breaks the causal connection; an Impact Turn accepts it but flips the outcome",
+        "A Link Turn uses evidence; an Impact Turn uses emotion",
+        "A Link Turn is stronger"
+      ],
+      "correct": 1,
+      "explain": "Link turns attack 'A therefore B.' Impact turns accept 'A leads to B' but argue B is actually good.",
+      "timeLimit": 30
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "A {0} Turn accepts your opponent's evidence but argues the consequence is actually positive.",
+      "answers": [
+        "Impact"
+      ],
+      "distractors": [
+        "Impact",
+        "Link",
+        "Direct"
+      ],
+      "instruction": "Fill in the type of turn.",
+      "feedback": "Impact turns flip the evaluation — 'that's actually good for our side.'"
+    },
+    {
+      "type": "scenario",
+      "scenario": "Debate about universal basic income. Opposition: 'UBI will reduce the incentive to work.'",
+      "question": "Which response is an Impact Turn?",
+      "options": [
+        "UBI does not reduce work incentive — studies show recipients found more jobs",
+        "Even if UBI reduces work hours, that is positive — it allows education and caregiving",
+        "UBI is too expensive",
+        "The opposition is wrong"
+      ],
+      "correct": 1,
+      "feedback": "This accepts the premise but re-frames it as positive — an Impact Turn."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "quiz",
+          "q": "Why are turns considered the strongest form of rebuttal?",
+          "options": [
+            "They are the hardest to execute",
+            "They turn the opponent's own argument against them",
+            "They require no evidence",
+            "They confuse the judge"
+          ],
+          "correct": 1,
+          "feedback": "Using the opponent's own argument against them is devastating — it undermines their entire position.",
+          "timeLimit": 30
+        }
+      ]
+    }
+  ]
+}

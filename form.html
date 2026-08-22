@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net https://d3js.org https://apis.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firestore.googleapis.com https://www.googleapis.com https://script.google.com https://script.googleusercontent.com https://www.gstatic.com https://cdn.jsdelivr.net wss://*.firebaseio.com; img-src 'self' data: https:; frame-src 'self' https://*.firebaseapp.com;">
+  <meta name="description"
+    content="Sign up for Deb8er MUN and Debate conferences. Join a global community of student debaters and Model UN participants aged 10-18.">
+  <meta name="keywords" content="MUN sign up, debate registration, join Model UN, student debate platform, Deb8er conference registration">
+  <meta property="og:title" content="Sign Up for MUN & Debate Conferences | Deb8er">
+  <meta property="og:description"
+    content="Sign up for Deb8er MUN and Debate conferences. Join a global community of student debaters and Model UN participants aged 10-18.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://deb8erglobal.com/form.html">
+  <meta property="og:image" content="https://deb8erglobal.com/assets/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Deb8er">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sign Up for MUN & Debate Conferences | Deb8er">
+  <meta name="twitter:description" content="Sign up for Deb8er MUN and Debate conferences. Join a global community of student debaters and Model UN participants aged 10-18.">
+  <meta name="twitter:image" content="https://deb8erglobal.com/assets/images/og-image.png">
+
+  <title>Sign Up for MUN & Debate Conferences | Deb8er</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="preconnect" href="https://d3js.org" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.min.css">
+  <link rel="stylesheet" href="assets/form.css">
+  <link rel="canonical" href="https://deb8erglobal.com/form.html">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon1.png" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Sign Up for MUN & Debate Conferences | Deb8er",
+    "description": "Register for Deb8er MUN and Debate conferences.",
+    "publisher": {
+      "@type": "EducationalOrganization",
+      "name": "Deb8er",
+      "url": "https://deb8erglobal.com"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <!--            Navigation Bar                  -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/Deb9erfinallogo.webp" width="200" height="auto"
+          alt="Deb8er - Global MUN & Debate Platform">
+      </a>
+      <div class="nav-toggle" id="navToggle" role="button" tabindex="0" aria-label="Toggle navigation">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="conferences.html">Conferences</a></li>
+        <li><a href="verification.html">Verification</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="leaderboard.html">Leaderboard</a></li>
+        <li id="nav-auth-item"><a href="auth.html" class="join-btn">Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
+  <section class="join-section" id="join">
+    <h1 class="section-title">
+      Join a <span class="span1">Deb</span><span class="span2">8</span>er Debate
+    </h1>
+    <h2 class="sr-only">Conference Registration</h2>
+
+    <div class="form-wrapper">
+      <form class="join-form" id="munForm">
+
+        <!-- ROW 1 -->
+        <div class="form-row">
+          <div class="form-group">
+            <label><i class="fas fa-user-edit"></i> Full Legal Name</label>
+            <input type="text" name="fullName" required placeholder="Your full legal name">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-id-badge"></i> Nick Name</label>
+            <input type="text" name="nickName" required placeholder="Name you would like to use">
+          </div>
+        </div>
+
+        <!-- ROW 2 -->
+        <div class="form-row">
+          <div class="form-group">
+            <label><i class="fas fa-envelope"></i> Email Address</label>
+            <input type="email" name="email" required placeholder="you@example.com">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-phone"></i> Phone Number</label>
+            <input type="tel" name="phoneNumber" required placeholder="+1 234 567 890">
+          </div>
+        </div>
+
+        <!-- ROW 3 -->
+        <div class="form-row">
+          <div class="form-group">
+            <label><i class="fas fa-calendar-alt"></i> Age</label>
+            <input type="number" name="age" min="10" max="20" required>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-globe"></i> Country</label>
+            <input type="text" id="countryInput" list="countryList" name="country"
+              placeholder="Start typing your country..." autocomplete="off" required />
+            <datalist id="countryList"></datalist>
+          </div>
+        </div>
+
+        <div class="timezone-message" id="timezoneMessage"></div>
+
+        <div class="form-group no-row">
+          <label class="label-with-info">
+            <span><i class="fas fa-map-marker-alt"></i> Debate Region</span>
+            <span class="info-trigger">
+              <i class="fas fa-info-circle"></i>
+              <span class="tooltip-box">
+                You may still select other regions if available.
+              </span>
+            </span>
+          </label>
+
+          <div class="custom-dropdown" data-name="region">
+            <div class="dropdown-selected">
+              <span class="selected-text">Select region</span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="dropdown-options">
+              <div class="dropdown-option" data-value="">Select region</div>
+              <div class="dropdown-option" data-value="asia">Asian Debate</div>
+              <div class="dropdown-option" data-value="america">American Debate</div>
+              <div class="dropdown-option" data-value="europe">European Debate</div>
+              <div class="dropdown-option" data-value="africa">African-Oceania Debate</div>
+            </div>
+            <input type="hidden" name="region" value="">
+          </div>
+        </div>
+
+        <div class="form-checkbox">
+          <input type="checkbox" id="timezoneAgree" required>
+          <label for="timezoneAgree">
+            I understand this debate may take place outside of my local timezone.
+          </label>
+        </div>
+
+        <button type="submit" class="join-btn full">Submit Application <i class="fas fa-paper-plane"
+            style="margin-left:8px;"></i></button>
+      </form>
+    </div>
+    <div id="formSuccess" class="success-card" style="display: none;">
+      <i class="fas fa-check-circle"></i>
+      <h3>Application Received!</h3>
+      <p>Thank you for applying to Deb8er. We have received your information and will contact you via email soon.</p>
+      <div class="success-sub">A confirmation message has been sent to your inbox.</div>
+      <a href="index.html" class="join-btn">Back to Home</a>
+    </div>
+
+    <!-- Duplicate Email Warning -->
+    <div id="emailExistsCard" class="exists-card" style="display: none;">
+      <i class="fas fa-user-check"></i>
+      <h3>You're Already in the System!</h3>
+      <p id="existsMessage">Records indicate you've already joined the ranks! No need to sign up again — we've already
+        got your back.</p>
+      <div class="exists-sub">Need to change something? Hit us at <strong>hello.deb8er@gmail.com</strong></div>
+      <div class="exists-actions">
+        <a href="index.html" class="join-btn">Back to Home</a>
+        <button class="secondary-btn" id="tryAnotherEmail">Try a Different Email</button>
+      </div>
+    </div>
+
+    <!-- Network Error -->
+    <div id="formError" class="exists-card" style="display: none;">
+      <i class="fas fa-exclamation-triangle"></i>
+      <h3>Connection Error</h3>
+      <p>Something went wrong while submitting your application. Please check your internet and try again.</p>
+      <div class="exists-actions">
+        <button class="secondary-btn" id="retryForm">Try Again</button>
+      </div>
+    </div>
+  </section>
+  <script src="script.min.js" defer></script>
+  <script src="conferences.js"></script>
+  <script src="assets/countries.js"></script>
+  <script type="module" src="navbar-auth.js"></script>
+  <!-- Include D3.js -->
+  <script src="https://d3js.org/d3.v7.min.js" defer></script>
+  <!-- Include TopoJSON for world map -->
+  <script src="https://d3js.org/topojson.v3.min.js" defer></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+
+  <!-- Moment.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+
+  <!-- Moment Timezone -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.43/moment-timezone-with-data.min.js"></script>
+  <script>
+    /* ================= CUSTOM DROPDOWN ================= */
+    document.querySelectorAll(".custom-dropdown").forEach((dropdown) => {
+      const selected = dropdown.querySelector(".dropdown-selected");
+      const selectedText = dropdown.querySelector(".selected-text");
+      const options = dropdown.querySelectorAll(".dropdown-option");
+      const hiddenInput = dropdown.querySelector('input[type="hidden"]');
+
+      selected.addEventListener("click", () => {
+        dropdown.classList.toggle("active");
+        document.querySelectorAll(".custom-dropdown").forEach((other) => {
+          if (other !== dropdown) other.classList.remove("active");
+        });
+      });
+
+      options.forEach((option) => {
+        option.addEventListener("click", () => {
+          const value = option.dataset.value;
+          const text = option.textContent;
+
+          selectedText.textContent = text;
+          if (hiddenInput) {
+            hiddenInput.value = value;
+            // Trigger a change event so the timezone logic sees the update
+            hiddenInput.dispatchEvent(new Event("change", { bubbles: true }));
+          }
+
+          options.forEach((opt) => opt.classList.remove("selected"));
+          option.classList.add("selected");
+          dropdown.classList.remove("active");
+        });
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!dropdown.contains(e.target)) dropdown.classList.remove("active");
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      /* ================= CORE ELEMENTS ================= */
+      const title = document.querySelector(".section-title");
+      const countryInput = document.getElementById("countryInput");
+      const countryList = document.getElementById("countryList");
+
+      const regionHiddenInput = document.querySelector('input[name="region"]');
+      const timezoneMessage = document.getElementById("timezoneMessage");
+      const form = document.getElementById("munForm");
+      const successBox = document.getElementById("formSuccess");
+
+      let countryMap = {};
+
+      const CONFERENCE_ID = new URLSearchParams(window.location.search).get("id") || "";
+
+      let activeConf = null;
+      const REGION_SLOTS = {};
+
+      function loadActiveConference() {
+        const conf = window.CONFERENCE_CONFIG || {};
+        const data = conf.debate;
+        if (data) {
+          activeConf = {
+            name: data.name || "",
+            eventDate: data.eventDate || "",
+            regions: data.regions || {}
+          };
+          REGION_SLOTS.debate = {};
+          for (const [key, r] of Object.entries(activeConf.regions)) {
+            REGION_SLOTS.debate[key] = {
+              label: r.label || key,
+              timezone: r.timezone || "Asia/Kolkata",
+              date: activeConf.eventDate || moment().format("YYYY-MM-DD"),
+              start: r.start || "",
+              end: r.end || ""
+            };
+          }
+        } else {
+          activeConf = null;
+          delete REGION_SLOTS.debate;
+        }
+        updateLocalTime();
+      }
+
+      function getBestTimezoneForCountry(countryCode) {
+        const zones = moment.tz.zonesForCountry(countryCode, true);
+        if (!zones || zones.length === 0) return null;
+        zones.sort((a, b) => (b.population || 0) - (a.population || 0));
+        return zones[0].name;
+      }
+
+      function autoSelectRegionByCountry(countryCode) {
+        // no-op — region auto-selected inline below
+      }
+
+      /* ================= TIME DISPLAY ================= */
+      function updateLocalTime() {
+        const regionKey = regionHiddenInput ? regionHiddenInput.value : "";
+
+        let userTZ;
+        try { userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (_) {}
+
+        if (!userTZ || !regionKey || !REGION_SLOTS.debate || !REGION_SLOTS.debate[regionKey]) {
+          timezoneMessage.style.display = "none";
+          return;
+        }
+
+        const region = REGION_SLOTS.debate[regionKey];
+
+        const start = moment.tz(`${region.date} ${region.start}`, "YYYY-MM-DD HH:mm", region.timezone);
+        let end = moment.tz(`${region.date} ${region.end}`, "YYYY-MM-DD HH:mm", region.timezone);
+        if (end.isSameOrBefore(start)) end.add(1, "day");
+
+        const localStart = start.clone().tz(userTZ);
+        const localEnd = end.clone().tz(userTZ);
+
+        timezoneMessage.innerHTML = `
+          <strong>${region.label} Debate Session</strong><br>
+          Official time: ${start.format("MMM D, YYYY hh:mm A")} – ${end.format("MMM D, YYYY hh:mm A")} (${region.timezone})<br>
+          <span style="color:#22d3ee;">
+            Your local time: ${localStart.format("MMM D, YYYY hh:mm A")} – ${localEnd.format("MMM D, YYYY hh:mm A")} (${userTZ})
+          </span>
+        `;
+        timezoneMessage.style.display = "block";
+      }
+
+      /* ================= EVENTS ================= */
+      countryInput.addEventListener("input", () => {
+        updateLocalTime();
+      });
+      });
+
+      if (regionHiddenInput) {
+        regionHiddenInput.addEventListener("change", () => {
+          updateLocalTime();
+        });
+      }
+
+      /* ================= FETCH COUNTRIES ================= */
+      (function() {
+        const names = window.COUNTRY_NAMES || [];
+        const codes = window.COUNTRY_CODES || {};
+        names.forEach(name => {
+          countryMap[name] = codes[name] || "";
+          const opt = document.createElement("option");
+          opt.value = name;
+          countryList.appendChild(opt);
+        });
+        // Auto-suggest region by browser timezone
+        let userTZ;
+        try { userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (_) {}
+        if (userTZ && regionHiddenInput) {
+          let suggested = "asia";
+          if (userTZ.startsWith("Europe"))    suggested = "europe";
+          else if (userTZ.startsWith("America")) suggested = "america";
+          else if (userTZ.startsWith("Africa"))  suggested = "africa";
+          else if (userTZ.startsWith("Australia") || userTZ.startsWith("Pacific")) suggested = "africa";
+          regionHiddenInput.value = suggested;
+          const customDropdown = regionHiddenInput.closest(".custom-dropdown");
+          if (customDropdown) {
+            const selText = customDropdown.querySelector(".selected-text");
+            const opt = customDropdown.querySelector(`.dropdown-option[data-value="${suggested}"]`);
+            if (opt && selText) selText.textContent = opt.textContent;
+          }
+        }
+        loadActiveConference();
+      })();
+
+      /* ================= FORM SUBMISSION ================= */
+      const GOOGLE_SHEET_URL =
+        "https://script.google.com/macros/s/AKfycbx_YlVpMbjm4qCWlrs6gphHRyRmQWrOpYwD8M35vKF7b2R7_nGdbeDOQJtHaVl0dTwZ/exec";
+
+      const emailExistsCard = document.getElementById("emailExistsCard");
+      const tryAnotherBtn = document.getElementById("tryAnotherEmail");
+
+      /* --- Check if email already exists in the sheet --- */
+      async function checkEmailExists(email, conferenceId) {
+        try {
+          let checkUrl = `${GOOGLE_SHEET_URL}?action=checkEmail&email=${encodeURIComponent(email)}`;
+          if (conferenceId) checkUrl += `&conferenceId=${encodeURIComponent(conferenceId)}`;
+          const res = await fetch(checkUrl);
+          const data = await res.json();
+          return { exists: data.exists === true, message: data.message || null };
+        } catch (err) {
+          console.warn("Email check failed, allowing submission:", err);
+          return { exists: false, message: null }; // Fail open — don't block users
+        }
+      }
+
+      /* --- Show the "already registered" state --- */
+      function showEmailExistsState(serverMessage) {
+        [form, title].forEach((el) => {
+          if (el) el.style.setProperty("display", "none", "important");
+        });
+        if (emailExistsCard) {
+          if (serverMessage) {
+            const msgEl = document.getElementById("existsMessage");
+            if (msgEl) msgEl.textContent = serverMessage;
+          }
+          emailExistsCard.style.display = "block";
+          emailExistsCard.style.opacity = "1";
+          window.scrollTo({ top: document.getElementById("join").offsetTop, behavior: "smooth" });
+        }
+      }
+
+      /* --- "Use a Different Email" button --- */
+      if (tryAnotherBtn) {
+        tryAnotherBtn.addEventListener("click", () => {
+          emailExistsCard.style.display = "none";
+          [form, title].forEach((el) => {
+            if (el) el.style.setProperty("display", "", "");
+            if (el) el.style.removeProperty("display");
+          });
+          form.elements["email"].value = "";
+          form.elements["email"].focus();
+        });
+      }
+
+      /* --- "Try Again" retry button --- */
+      const retryBtn = document.getElementById("retryForm");
+      if (retryBtn) {
+        retryBtn.addEventListener("click", () => {
+          document.getElementById("formError").style.display = "none";
+          [form, title].forEach((el) => {
+            if (el) el.style.setProperty("display", "", "");
+            if (el) el.style.removeProperty("display");
+          });
+        });
+      }
+
+      // Full conference session id = base + event type (matches join-conference.html).
+      // Fall back to CONFERENCE_CONFIG.id, then current month.
+      function getConferenceId(eventType) {
+        const base = CONFERENCE_ID || (window.CONFERENCE_CONFIG && window.CONFERENCE_CONFIG.id) || (() => {
+          const n = new Date();
+          return `conf-${n.getFullYear()}-${String(n.getMonth() + 1).padStart(2, "0")}`;
+        })();
+        return base + "-" + eventType;
+      }
+      
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.innerText = "Checking...";
+        submitBtn.disabled = true;
+
+        try {
+          const email = form.elements["email"].value.trim();
+          const conferenceId = getConferenceId("debate");
+
+          /* --- Step 1: Duplicate check (session-scoped) --- */
+          const { exists: alreadyExists, message: existsMsg } = await checkEmailExists(email, conferenceId);
+          if (alreadyExists) {
+            showEmailExistsState(existsMsg);
+            submitBtn.innerText = "Submit Application";
+            submitBtn.disabled = false;
+            return;
+          }
+
+          /* --- Step 2: Submit if email is new --- */
+          submitBtn.innerText = "Processing...";
+          const formData = new URLSearchParams();
+
+          formData.append("eventType", "debate");
+          formData.append("fullName", form.elements["fullName"].value);
+          formData.append("nickName", form.elements["nickName"].value);
+          formData.append("email", email);
+          formData.append("phoneNumber", form.elements["phoneNumber"].value);
+          formData.append("age", form.elements["age"].value);
+          formData.append("country", countryInput.value);
+          formData.append("region", regionHiddenInput.value);
+          formData.append("conferenceId", conferenceId);
+          formData.append("eventName", activeConf?.name || "");
+          formData.append("eventDate", activeConf?.eventDate || "");
+
+          const formError = document.getElementById("formError");
+          const connectTimeout = setTimeout(() => {
+            submitBtn.innerText = "Submit Application";
+            submitBtn.disabled = false;
+            formError.style.display = "block";
+            formError.style.opacity = "1";
+            window.scrollTo({ top: formError.offsetTop, behavior: "smooth" });
+          }, 15000);
+
+          await fetch(GOOGLE_SHEET_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: formData.toString(),
+          });
+
+          clearTimeout(connectTimeout);
+          showSuccessState();
+        } catch (err) {
+          submitBtn.innerText = "Submit Application";
+          submitBtn.disabled = false;
+          const formError = document.getElementById("formError");
+          if (formError) {
+            formError.style.display = "block";
+            formError.style.opacity = "1";
+            window.scrollTo({ top: formError.offsetTop, behavior: "smooth" });
+          }
+        }
+      });
+
+      function showSuccessState() {
+        [form, title].forEach((el) => {
+          if (el) el.style.setProperty("display", "none", "important");
+        });
+        if (successBox) {
+          successBox.style.display = "block";
+          successBox.style.opacity = "1";
+          window.scrollTo({ top: document.getElementById("join").offsetTop, behavior: "smooth" });
+        }
+      }
+    });
+  </script>
+
+
+
+</body>
+
+</html>

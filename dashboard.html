@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net https://d3js.org https://apis.google.com; worker-src 'self' blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firestore.googleapis.com https://www.googleapis.com https://script.google.com https://script.googleusercontent.com https://www.gstatic.com https://cdn.jsdelivr.net wss://*.firebaseio.com; img-src 'self' data: https:; frame-src 'self' https://*.firebaseapp.com;">
+  <meta name="description" content="Your Deb8er dashboard — track MUN conferences, debate awards, learning progress, and leaderboard ranking in one place.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="keywords" content="Deb8er dashboard, debate tracker, MUN awards, student progress">
+  <meta property="og:title" content="My Dashboard | Deb8er MUN & Debate">
+  <meta property="og:description" content="Your Deb8er dashboard — track MUN conferences, debate awards, learning progress, and leaderboard ranking in one place.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://deb8erglobal.com/dashboard.html">
+  <meta property="og:image" content="https://deb8erglobal.com/assets/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Deb8er">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="My Dashboard | Deb8er MUN & Debate">
+  <meta name="twitter:description" content="Your Deb8er dashboard — track MUN conferences, debate awards, learning progress, and leaderboard ranking in one place.">
+  <meta name="twitter:image" content="https://deb8erglobal.com/assets/images/og-image.png">
+  <title>My Dashboard | Deb8er MUN & Debate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.min.css">
+  <link rel="stylesheet" href="assets/auth.css">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon1.png" />
+  <link rel="canonical" href="https://deb8erglobal.com/dashboard.html">
+
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+  <style>
+    main { padding-top: 0; }
+    .profile-header { font-family: "Inter", system-ui, -apple-system, sans-serif; }
+    .dashboard-section { font-family: "Inter", system-ui, -apple-system, sans-serif; }
+    .dashboard-card { font-family: "Inter", system-ui, -apple-system, sans-serif; }
+
+    /* ─── Daily Spin Card ─── */
+    .dash-spin-card {
+      position: relative;
+      margin: 16px 0;
+      border-radius: 12px;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(166,138,249,0.08), rgba(58,190,255,0.12));
+      border: 1px solid rgba(166,138,249,0.15);
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .dash-spin-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(166,138,249,0.15);
+    }
+    .dash-spin-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(166,138,249,0.1), transparent 70%);
+      pointer-events: none;
+    }
+    .dash-spin-body {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+    }
+    .dash-spin-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      background: linear-gradient(135deg, #a68af9, #3ABEFF);
+      flex-shrink: 0;
+    }
+    .dash-spin-icon-wrap i { color: #fff; }
+    .dash-spin-info { flex: 1; min-width: 0; }
+    .dash-spin-label {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .dash-spin-sub {
+      font-size: 0.72rem;
+      color: var(--gray);
+      margin-top: 1px;
+    }
+    .dash-spin-btn {
+      flex-shrink: 0;
+      padding: 8px 18px;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: linear-gradient(135deg, #a68af9, #3ABEFF);
+      color: #fff;
+    }
+    .dash-spin-btn:hover { filter: brightness(1.15); transform: scale(1.03); }
+    .dash-spin-btn:disabled { opacity: 0.4; cursor: not-allowed; filter: none; transform: none; }
+
+    /* ─── Spin Wheel Modal ─── */
+    #spin-modal {
+      position: fixed; inset: 0; z-index: 10002;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    #spin-modal.open { opacity: 1; pointer-events: auto; }
+    .spin-backdrop {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+    }
+    .spin-modal {
+      position: relative;
+      width: 100%; max-width: 380px;
+      background: #1F2937;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 32px 24px 28px;
+      text-align: center;
+      transform: scale(0.9) translateY(20px);
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    #spin-modal.open .spin-modal { transform: scale(1) translateY(0); }
+    .spin-modal-close {
+      position: absolute; top: 12px; right: 16px;
+      background: none; border: none; color: rgba(255,255,255,0.3);
+      font-size: 24px; cursor: pointer; padding: 4px; line-height: 1;
+      transition: color 0.2s;
+    }
+    .spin-modal-close:hover { color: #fff; }
+
+    .streak-freeze-btn {
+      flex-shrink: 0;
+      padding: 6px 14px;
+      border: 1px solid rgba(45,212,191,0.3);
+      border-radius: 8px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: rgba(45,212,191,0.08);
+      color: #2DD4BF;
+      white-space: nowrap;
+    }
+    .streak-freeze-btn:hover { background: rgba(45,212,191,0.15); border-color: rgba(45,212,191,0.5); }
+    .streak-freeze-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .streak-freeze-btn i { margin-right: 4px; }
+
+    .spin-header { margin-bottom: 24px; }
+    .spin-header-icon {
+      width: 52px; height: 52px; margin: 0 auto 12px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      background: linear-gradient(135deg, #a68af9, #3ABEFF);
+      box-shadow: 0 4px 20px rgba(166,138,249,0.3);
+    }
+    .spin-header-icon i { color: #fff; }
+    .spin-header-title {
+      font-size: 1.2rem; font-weight: 800;
+      background: linear-gradient(135deg, #a68af9, #3ABEFF);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .spin-header-sub {
+      font-size: 0.75rem; color: var(--gray);
+      margin-top: 4px;
+    }
+
+    .spin-wheel-wrap {
+      position: relative;
+      width: 280px; height: 280px;
+      margin: 0 auto 20px;
+    }
+    .spin-pointer {
+      position: absolute; top: -8px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+      font-size: 32px;
+      color: #FBBF24;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+      line-height: 1;
+    }
+    .spin-wheel-rotator {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(255,255,255,0.06), 0 8px 40px rgba(0,0,0,0.4);
+    }
+    #spin-canvas { width: 100%; height: 100%; display: block; }
+    .spin-btn {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 6;
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.15);
+      background: linear-gradient(135deg, #374151, #1F2937);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    }
+    .spin-btn:not(:disabled):hover { transform: translate(-50%, -50%) scale(1.08); border-color: rgba(255,255,255,0.3); }
+    .spin-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .spin-btn i { font-size: 14px; margin-right: 2px; }
+
+    .spin-result {
+      min-height: 60px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .spin-result-inner {
+      padding: 14px 20px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      width: 100%;
+    }
+    .spin-result-icon { font-size: 22px; margin-bottom: 4px; }
+    .spin-result-icon i { color: var(--prize-color, #a68af9); }
+    .spin-result-label {
+      font-size: 0.7rem; font-weight: 600;
+      color: var(--gray); text-transform: uppercase; letter-spacing: 1px;
+    }
+    .spin-result-prize {
+      font-size: 1rem; font-weight: 700;
+      margin-top: 2px;
+    }
+
+    @media (max-width: 480px) {
+      .spin-modal { max-width: 94vw; padding: 24px 16px 20px; border-radius: 16px; }
+      .spin-wheel-wrap { width: 240px; height: 240px; }
+      .spin-header-title { font-size: 1.05rem; }
+      .dash-spin-card { margin: 12px 0; }
+      .dash-spin-body { padding: 14px; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "My Dashboard | Deb8er MUN & Debate",
+    "description": "User dashboard for tracking MUN and debate activity.",
+    "publisher": {
+      "@type": "EducationalOrganization",
+      "name": "Deb8er",
+      "url": "https://deb8erglobal.com"
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/Deb9erfinallogo.webp" width="200" height="auto"
+          alt="Deb8er - Global MUN & Debate Platform">
+      </a>
+      <div class="nav-toggle" id="navToggle" role="button" tabindex="0" aria-label="Toggle navigation">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="conferences.html">Conferences</a></li>
+        <li><a href="verification.html">Verification</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="leaderboard.html">Leaderboard</a></li>
+        <li id="nav-auth-item"><a href="dashboard.html" class="nav-account-btn"><i class="fas fa-user"></i> My Account</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Loading state -->
+    <div class="dashboard-loading" id="dashboard-loading">
+      <div class="spinner"></div>
+      <span>Loading your profile…</span>
+    </div>
+
+    <!-- Dashboard content (hidden until loaded) -->
+    <section class="dashboard-section" id="dashboard-content" style="display:none;">
+
+      <!-- ======= HERO ======= -->
+      <div class="dash-hero">
+        <div class="dash-avatar" id="profile-avatar">?</div>
+        <div class="dash-hero-meta">
+          <h1 id="profile-name">Loading…</h1>
+          <div class="dash-hero-nick" id="profile-nick"></div>
+          <div class="dash-hero-email" id="profile-email"></div>
+        </div>
+        <div class="dash-hero-points">
+          <span class="dash-hero-pts-number" id="profile-points">0</span>
+          <span class="dash-hero-pts-label"><span class="gem-icon gem-icon--sm"></span></span>
+        </div>
+        <button class="dash-hero-edit" id="profile-edit-btn" title="Edit profile" aria-label="Edit profile">
+          <i class="fas fa-pencil"></i>
+        </button>
+      </div>
+
+      <!-- ======= REFERRAL ======= -->
+      <div class="dash-referral" id="dash-referral" style="display:none;">
+        <div class="dash-referral-inner">
+          <div class="dash-referral-top">
+            <div class="dash-referral-icon"><i class="fas fa-gift"></i></div>
+            <div class="dash-referral-info">
+              <div class="dash-referral-title">Refer & Earn</div>
+              <div class="dash-referral-sub">Invite a friend to join Deb8er</div>
+            </div>
+            <div class="dash-referral-payouts">
+              <div class="dash-referral-payout">
+                <span class="payout-value">+50</span>
+                <span class="payout-label">them</span>
+              </div>
+              <div class="payout-plus">+</div>
+              <div class="dash-referral-payout">
+                <span class="payout-value">+100</span>
+                <span class="payout-label">you</span>
+              </div>
+            </div>
+          </div>
+          <div class="dash-referral-link-row">
+            <div class="dash-referral-link-wrap">
+              <input type="text" id="referral-link-input" readonly>
+              <button id="referral-copy-btn" onclick="copyReferralLink()">
+                <span id="referral-copy-text"><i class="fas fa-copy"></i> Copy</span>
+              </button>
+              <button id="referral-share-btn" onclick="shareReferralCard()" style="display:none;">
+                <i class="fas fa-share-alt"></i> Share Card
+              </button>
+            </div>
+          </div>
+          <div class="dash-referral-stats" id="referral-stats">
+            <div class="referral-stat">
+              <span class="referral-stat-value" id="ref-count">0</span>
+              <span class="referral-stat-label">friends joined</span>
+            </div>
+            <div class="referral-stat-divider"></div>
+            <div class="referral-stat">
+              <span class="referral-stat-value" id="ref-points">0</span>
+              <span class="referral-stat-label"><span class="gem-icon gem-icon--sm gem-icon--inline"></span> from referrals</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======= STATS ROW ======= -->
+      <div class="dash-stats">
+        <div class="stat-card" id="stat-card-level">
+          <div class="stat-body">
+            <div id="stat-level"></div>
+            <div class="stat-label">Level</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon purple"><i class="fas fa-calendar-check"></i></div>
+          <div class="stat-body">
+            <div class="stat-number" id="stat-conferences">0</div>
+            <div class="stat-label">Conferences</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green"><i class="fas fa-medal"></i></div>
+          <div class="stat-body">
+            <div class="stat-number" id="stat-awards">0</div>
+            <div class="stat-label">Awards</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon orange"><i class="fas fa-fire"></i></div>
+          <div class="stat-body">
+            <div class="stat-number" id="stat-streak">0</div>
+            <div class="stat-label">Day Streak</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======= STREAK ALERT ======= -->
+      <div class="streak-alert" id="streak-alert" style="display:none;">
+        <div class="streak-alert-inner">
+          <div class="streak-alert-icon"><i class="fas fa-fire"></i></div>
+          <div class="streak-alert-body">
+            <div class="streak-alert-title" id="streak-alert-title"></div>
+            <div class="streak-alert-sub" id="streak-alert-sub"></div>
+          </div>
+          <button class="streak-freeze-btn" id="freeze-btn" style="display:none;">
+            <i class="fas fa-snowflake"></i> Use Streak Freeze
+          </button>
+          <a class="streak-alert-btn" href="learn.html">
+            Do a Lesson <i class="fas fa-arrow-right"></i>
+          </a>
+          <button class="streak-alert-close" id="streak-alert-close" onclick="this.parentElement.parentElement.style.display='none'" aria-label="Dismiss">&times;</button>
+        </div>
+      </div>
+
+      <!-- ======= CONTINUE LEARNING ======= -->
+      <div class="dash-continue" id="dash-continue" style="display:none;">
+        <div class="dash-continue-icon"><i class="fas fa-play"></i></div>
+        <div class="dash-continue-body">
+          <div class="dash-continue-label">Continue Learning</div>
+          <div class="dash-continue-title" id="continue-lesson-title"></div>
+          <div class="dash-continue-sub" id="continue-lesson-unit"></div>
+        </div>
+        <a class="dash-continue-btn" id="continue-lesson-link" href="learn.html">
+          Resume <i class="fas fa-arrow-right" style="margin-left:6px;font-size:11px;"></i>
+        </a>
+      </div>
+
+      <!-- ======= DAILY SPIN ======= -->
+      <div class="dash-spin-card" id="dash-spin-card">
+        <div class="dash-spin-glow"></div>
+        <div class="dash-spin-body">
+          <div class="dash-spin-icon-wrap">
+            <i class="fas fa-gem"></i>
+          </div>
+          <div class="dash-spin-info">
+            <div class="dash-spin-label">Daily Spin</div>
+            <div class="dash-spin-sub" id="dash-spin-sub">Spin for rewards!</div>
+          </div>
+          <button class="dash-spin-btn" id="dash-spin-btn">
+            <i class="fas fa-play"></i> Spin
+          </button>
+        </div>
+      </div>
+
+      <!-- ======= PROGRESS CHART ======= -->
+      <div class="dash-chart-section" id="dash-chart-section" style="display:none;">
+        <div class="dash-chart-header">
+          <i class="fas fa-chart-line"></i>
+          <h3><span class="gem-icon gem-icon--inline"></span> Gems Over Time</h3>
+        </div>
+        <div class="dash-chart-wrap">
+          <canvas id="pointsChart" height="200"></canvas>
+        </div>
+      </div>
+
+      <!-- MAIN GRID -->
+      <div class="dashboard-grid">
+
+        <!-- ======= PAST CONFERENCES ======= -->
+        <div class="dashboard-card">
+          <div class="card-header">
+            <i class="fas fa-calendar-check"></i>
+            <h3>Past Conferences</h3>
+          </div>
+          <div class="conferences-list" id="conferences-list">
+            <div class="empty-state">
+              <i class="fas fa-calendar-times"></i>
+              <span>No conferences yet</span>
+              <a href="join-conference.html" class="empty-state-btn">Join a conference →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ======= AWARDS ======= -->
+        <div class="dashboard-card">
+          <div class="card-header">
+            <i class="fas fa-trophy"></i>
+            <h3>Awards & Achievements</h3>
+            <span class="card-badge-count" id="badgeCountDash" style="margin-left:auto;font-size:11px;color:#6B7280;"></span>
+          </div>
+          <div class="awards-list" id="awards-list">
+            <div class="empty-state">
+              <i class="fas fa-medal"></i>
+              <span>No awards yet</span>
+              <a href="join-conference.html" class="empty-state-btn">Compete to earn them →</a>
+            </div>
+          </div>
+          <div class="dash-badges-wrap" id="dashBadgesWrap" style="display:none;">
+            <div class="dash-badges-header">
+              <i class="fas fa-id-badge"></i>
+              <span>Earned Badges</span>
+            </div>
+            <div class="dash-badges-grid" id="dashBadgesGrid"></div>
+          </div>
+        </div>
+
+        <!-- ======= POINTS HISTORY ======= -->
+        <div class="dashboard-card full-width">
+          <div class="card-header">
+            <i class="fas fa-coins"></i>
+            <h3>Gem History</h3>
+            <button class="card-toggle-btn" id="points-history-toggle" onclick="togglePointsHistory()" aria-label="Toggle points history">
+              <i class="fas fa-chevron-down" id="points-history-chevron"></i>
+            </button>
+          </div>
+          <div id="points-history-body" style="display:none;">
+            <div class="points-history-list" id="points-history-list"></div>
+          </div>
+        </div>
+
+        <!-- ======= QUIZ CTA ======= -->
+        <div class="dashboard-card full-width">
+          <div class="card-header">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Skills Lab</h3>
+          </div>
+          <div class="join-conf-cta">
+            <div>
+              <h4>Sharpen Your Skills, Earn Gems</h4>
+              <p>Master MUN procedure, debate, arguments, and speaking through interactive lessons. Earn gems with every lesson completed.</p>
+            </div>
+            <a href="learn.html" class="join-btn" style="display:inline-flex;align-items:center;justify-content:center;text-align:center;">
+              Start Learning <i class="fas fa-arrow-right" style="margin-left:8px;"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- ======= JOIN CONFERENCE CTA ======= -->
+        <div class="dashboard-card full-width">
+          <div class="card-header">
+            <i class="fas fa-globe-americas"></i>
+            <h3>Ready to Compete?</h3>
+          </div>
+          <div class="join-conf-cta">
+            <div>
+              <h4>Join a Conference</h4>
+              <p>Sign up for an upcoming MUN or Debate conference using your saved profile.</p>
+            </div>
+            <a href="join-conference.html" class="join-btn" style="white-space:nowrap;">
+              Join Conference <i class="fas fa-arrow-right" style="margin-left:8px;"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="toast-container" id="toastContainer"></div>
+  </main>
+
+    <!-- ================= EDIT PROFILE MODAL ================= -->
+    <div class="profile-modal-overlay" id="profile-modal">
+      <div class="profile-modal">
+        <div class="profile-modal-header">
+          <h3>Edit Profile</h3>
+          <button class="profile-modal-close" id="profile-modal-close" aria-label="Close">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div id="profile-save-msg" class="auth-message" style="margin-bottom:16px;"></div>
+
+        <div class="edit-form-row">
+          <div class="edit-group">
+            <label>Full Legal Name</label>
+            <input type="text" id="edit-fullname" placeholder="Your full legal name">
+          </div>
+          <div class="edit-group">
+            <label>Nick Name</label>
+            <input type="text" id="edit-nickname" placeholder="Display name">
+          </div>
+        </div>
+
+        <div class="edit-form-row">
+          <div class="edit-group">
+            <label>Phone Number</label>
+            <input type="tel" id="edit-phone" placeholder="+1 234 567 890">
+          </div>
+          <div class="edit-group">
+            <label>Age</label>
+            <input type="number" id="edit-age" min="10" max="25" placeholder="Your age">
+          </div>
+        </div>
+
+        <div class="edit-form-row">
+          <div class="edit-group">
+            <label>Country</label>
+            <input type="text" id="edit-country" list="edit-countryList" placeholder="Your country" autocomplete="off">
+            <datalist id="edit-countryList"></datalist>
+          </div>
+        </div>
+
+        <div class="profile-modal-actions">
+          <button class="sign-out-btn" onclick="signOut()">
+            <i class="fas fa-sign-out-alt"></i> Sign Out
+          </button>
+          <button class="save-profile-btn" id="save-profile-btn" onclick="saveProfile()">
+            <i class="fas fa-save" style="margin-right:6px;"></i> Save Changes
+          </button>
+        </div>
+      </div>
+    </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="assets/images/footerpng.webp" width="160" height="40" alt="Deb8er - Global MUN & Debate Platform">
+        <p>Deb8er is a global online platform where anyone from ages 10-18 can participate in debates and MUNs.</p>
+      </div>
+      <div class="footer-links two-col">
+        <div class="footer-column">
+          <h4>Platform</h4>
+          <a href="about.html">About</a>
+          <a href="conferences.html">Conferences</a>
+          <a href="learn.html">Learn</a>
+          <a href="leaderboard.html">Leaderboard</a>
+          <a href="team.html">Team</a>
+        </div>
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <a href="https://www.instagram.com/deb8er_official" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://discord.gg/7dWD7Xebsj" target="_blank" rel="noopener noreferrer">Discord</a>
+          <a href="https://www.tiktok.com/@deb8er4" target="_blank" rel="noopener noreferrer">TikTok</a>
+          <a href="https://www.youtube.com/@Deb8er_official" target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a href="#" id="copy-email">Email</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Deb8er. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script defer src="assets/countries.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+  <script defer src="assets/share-card.js"></script>
+
+  <!-- Firebase -->
+  <script type="module" src="assets/dashboard-main.js"></script>
+
+  <script type="module" src="navbar-auth.js"></script>
+
+  <!-- ═══ LEVELS PROGRESSION MODAL ═══ -->
+  <div class="lvlprog-overlay" id="lvlprog-modal" style="display:none;" onclick="if(event.target===this)closeLevelsModal()">
+    <div class="lvlprog-card" id="lvlprog-card">
+      <button class="lvlprog-close" onclick="closeLevelsModal()"><i class="fas fa-times"></i></button>
+      <div class="lvlprog-header">
+        <div class="lvlprog-icon"><i class="fas fa-crown"></i></div>
+        <div class="lvlprog-title">Level Progression</div>
+        <div class="lvlprog-sub">Your journey through Deb8er</div>
+      </div>
+      <div class="lvlprog-current" id="lvlprog-current">
+        <div class="lvlprog-current-info">
+          <span class="lvlprog-current-label">Current Level</span>
+          <span class="lvlprog-current-level" id="lvlprog-current-level"></span>
+          <span class="lvlprog-current-name" id="lvlprog-current-name"></span>
+        </div>
+        <div class="lvlprog-current-progress">
+          <div class="lvlprog-bar-track">
+            <div class="lvlprog-bar-fill" id="lvlprog-bar-fill" style="width:0%"></div>
+          </div>
+          <div class="lvlprog-bar-text">
+            <span id="lvlprog-bar-current"></span>
+            <span id="lvlprog-bar-next"></span>
+          </div>
+        </div>
+      </div>
+      <div class="lvlprog-list" id="lvlprog-list"></div>
+    </div>
+  </div>
+
+  <!-- ═══ LEVEL UP CELEBRATION ═══ -->
+  <div class="lvlup-overlay" id="lvlup-modal" style="display:none;">
+    <div class="lvlup-card">
+      <div class="lvlup-confetti" id="lvlup-confetti">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="lvlup-icon"><i class="fas fa-crown"></i></div>
+      <div class="lvlup-label">Level Up!</div>
+      <div class="lvlup-name" id="lvlup-name"></div>
+      <div class="lvlup-num" id="lvlup-num"></div>
+      <button class="lvlup-btn" onclick="document.getElementById('lvlup-modal').style.display='none'">Continue</button>
+    </div>
+  </div>
+</body>
+</html>

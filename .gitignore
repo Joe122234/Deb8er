@@ -1,0 +1,34 @@
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Firebase
+firebase-debug.log
+firebase-debug.*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.iml
+
+# Build artifacts
+node_modules/
+dist/
+build/
+.cache/
+*.tmp
+*.temp
+*.swp
+
+# Wrangler
+worker/.wrangler/
+
+# Temp
+tmp-screenshots/
+*.log

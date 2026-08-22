@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com https://cdnjs.cloudflare.com https://unpkg.com https://cdn.jsdelivr.net https://d3js.org https://apis.google.com; worker-src 'self' blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firestore.googleapis.com https://www.googleapis.com https://script.google.com https://script.googleusercontent.com https://www.gstatic.com https://cdn.jsdelivr.net wss://*.firebaseio.com; img-src 'self' data: https:; frame-src 'self' https://*.firebaseapp.com;">
+  <meta name="description" content="Learn to debate and master Model United Nations with Deb8er's free gamified lessons. Build speaking, research, and leadership skills.">
+  <meta name="keywords" content="learn to debate, MUN lessons, debate curriculum, online debate practice, free debate course">
+  <meta property="og:title" content="Learn to Debate & Master MUN | Deb8er Gamified Lessons">
+  <meta property="og:description" content="Learn to debate and master Model United Nations with Deb8er's free gamified lessons. Build speaking, research, and leadership skills.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://deb8erglobal.com/learn.html">
+  <meta property="og:image" content="https://deb8erglobal.com/assets/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Deb8er">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Learn to Debate & Master MUN | Deb8er Gamified Lessons">
+  <meta name="twitter:description" content="Learn to debate and master Model United Nations with Deb8er's free gamified lessons. Build speaking, research, and leadership skills.">
+  <meta name="twitter:image" content="https://deb8erglobal.com/assets/images/og-image.png">
+  <title>Learn to Debate & Master MUN | Deb8er Gamified Lessons</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.min.css">
+  <link rel="stylesheet" href="assets/learn.css">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon1.png" />
+  <link rel="canonical" href="https://deb8erglobal.com/learn.html">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Learn to Debate & Master MUN | Deb8er Gamified Lessons",
+    "description": "Learn to debate and master Model United Nations with Deb8er's free gamified lessons. Build speaking, research, and leadership skills.",
+    "publisher": {
+      "@type": "EducationalOrganization",
+      "name": "Deb8er",
+      "url": "https://deb8erglobal.com"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="logo">
+        <img src="assets/images/Deb9erfinallogo.webp" width="200" height="auto" alt="Deb8er - Global MUN & Debate Platform">
+      </a>
+      <div class="nav-toggle" id="navToggle" role="button" tabindex="0" aria-label="Toggle navigation">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="conferences.html">Conferences</a></li>
+                <li><a href="verification.html">Verification</a></li>
+                        <li><a href="team.html">Team</a></li>
+
+        <li><a href="learn.html">Learn</a></li>
+        <li><a href="leaderboard.html">Leaderboard</a></li>
+        <li id="nav-auth-item"><a href="auth.html" class="join-btn">Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="learn-section" id="learn-section">
+
+      <!-- Page Header -->
+      <div class="learn-header" id="learnHeader">
+        <h1 class="learn-heading">Your Learning Journey</h1>
+        <p class="learn-subtitle" id="learnSubtitle">Master debate, MUN, and public speaking</p>
+      </div>
+
+      <!-- Streak Reminder -->
+      <div class="streak-reminder" id="streakReminder" style="display:none;">
+        <div class="streak-reminder-inner">
+          <span class="streak-reminder-icon"><i class="fas fa-fire"></i></span>
+          <span class="streak-reminder-text" id="streakReminderText"></span>
+          <button class="streak-reminder-close" id="streakReminderClose" aria-label="Dismiss">&times;</button>
+        </div>
+      </div>
+
+      <!-- Top Section (level card + stats + quests) -->
+      <div id="topSection" style="display:none;">
+        <h2 class="sr-only">Your Progress</h2>
+
+        <!-- Level Progress Card -->
+        <div class="level-card">
+          <div class="level-card-top">
+            <div class="level-badge">
+              <span class="level-badge-num" id="lvlNumber">0</span>
+              <span class="level-badge-title" id="lvlTitle">—</span>
+            </div>
+            <div class="level-xp-block">
+              <span class="level-xp-current" id="lvlXpCurrent">0 <span class="gem-icon gem-icon--sm"></span></span>
+              <span class="level-xp-next" id="lvlXpNext">—</span>
+            </div>
+          </div>
+          <div class="level-bar-track">
+            <div class="level-bar-fill" id="lvlBarFill" style="width:0%"></div>
+            <span class="level-bar-pct" id="lvlBarPct">0%</span>
+          </div>
+        </div>
+
+        <!-- Stats + Quests Row -->
+        <div class="top-row">
+          <div class="stat-card">
+            <div class="stat-card-icon"><i class="fas fa-fire"></i></div>
+            <div class="stat-card-value" id="sgStreak">0</div>
+            <div class="stat-card-label">Day Streak</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon" id="sgCheckIcon"><i class="fas fa-gem" style="color:var(--purple)"></i></div>
+            <div class="stat-card-value" id="sgTodayGems">0</div>
+            <div class="stat-card-label">Gems Today</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon"><i class="fas fa-book-open"></i></div>
+            <div class="stat-card-value" id="sgLessons">0/0</div>
+            <div class="stat-card-label">Lessons</div>
+          </div>
+
+          <!-- Compact Quests -->
+          <div class="quests-card" id="questsCard">
+            <div class="quests-card-header">
+              <span><i class="fas fa-clipboard-list"></i> Daily Quests</span>
+              <span class="quests-card-reset" id="questsCardReset"></span>
+            </div>
+            <div class="quests-card-list" id="questsCardList"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Loading -->
+      <div class="learn-loading" id="learnLoading">
+        <i class="fas fa-spinner fa-spin"></i> Loading your courses...
+      </div>
+
+      <!-- Auth prompt -->
+      <div class="auth-message" id="authMessage" style="display:none;">
+        <div class="auth-card">
+          <div class="auth-card-icon"><i class="fas fa-graduation-cap"></i></div>
+          <div class="auth-card-title">Ready to become a debater?</div>
+          <div class="auth-card-desc">Sign in to track your progress, earn Gems, and unlock achievements.</div>
+          <div class="auth-card-actions">
+            <a href="auth.html?tab=signin" class="auth-btn primary"><i class="fas fa-arrow-right-to-bracket"></i> Sign In</a>
+            <a href="auth.html?tab=signup" class="auth-btn secondary">Create Account <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resources & Guides (visible to everyone, no auth required) -->
+      <div class="resources-section" id="resourcesSection">
+        <div class="resources-header">
+          <i class="fas fa-book-open"></i>
+          <h2>MUN & Debate Guides</h2>
+        </div>
+        <div class="resources-grid" id="resourcesGrid">
+          <a href="guides/position-paper.html" class="resource-card">
+            <div class="resource-icon"><i class="fas fa-file-alt"></i></div>
+            <h3>Position Paper</h3>
+            <p>How to write a winning position paper for any MUN committee</p>
+            <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+          </a>
+          <a href="guides/opening-speech.html" class="resource-card">
+            <div class="resource-icon"><i class="fas fa-microphone"></i></div>
+            <h3>Opening Speech</h3>
+            <p>Craft a compelling opening that sets the tone for your committee</p>
+            <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+          </a>
+          <a href="guides/moderated-caucus.html" class="resource-card">
+            <div class="resource-icon"><i class="fas fa-comments"></i></div>
+            <h3>Moderated Caucus</h3>
+            <p>Deliver effective speeches during formal debate sessions</p>
+            <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+          </a>
+          <a href="guides/unmoderated-caucus.html" class="resource-card">
+            <div class="resource-icon"><i class="fas fa-handshake"></i></div>
+            <h3>Unmoderated Caucus</h3>
+            <p>Build blocs, negotiate, and form alliances during informal time</p>
+            <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+          </a>
+          <a href="guides/winning-resolution.html" class="resource-card">
+            <div class="resource-icon"><i class="fas fa-scroll"></i></div>
+            <h3>Winning Resolution</h3>
+            <p>Write resolutions with proper preambulatory and operative clauses</p>
+            <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+          </a>
+          <a href="guides/consultation-of-the-whole.html" class="resource-card">
+            <div class="resource-icon"><i class="fas fa-users"></i></div>
+            <h3>Consultation of the Whole</h3>
+            <p>Understand this procedural tool for gauging committee consensus</p>
+            <span class="card-arrow"><i class="fas fa-arrow-right"></i></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Course Path -->
+      <div id="coursePath" style="display:none;"></div>
+
+      <!-- Badges -->
+      <div class="badges-section" id="badgesSection">
+        <div class="badges-header">
+          <i class="fas fa-shield-halved"></i>
+          <h2>Badges</h2>
+          <span id="badgesCount"></span>
+        </div>
+        <div class="badges-grid" id="badgesGrid"></div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Lesson Modal -->
+  <div class="lesson-modal" id="lessonModal">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-card">
+      <div class="modal-head">
+        <div class="modal-head-left">
+          <span class="modal-head-dot"></span>
+          <div>
+            <div class="modal-head-title" id="modalLessonTitle"></div>
+            <div class="modal-head-unit" id="modalLessonUnit"></div>
+          </div>
+        </div>
+        <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-section-indicator" id="phaseIndicator"></div>
+      <div class="modal-body" id="modalBody"></div>
+      <div class="modal-foot">
+        <div class="modal-dots" id="modalDots"></div>
+        <button class="btn-next" id="btnNext">Continue <i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="assets/images/footerpng.webp" width="160" height="40" alt="Deb8er - Global MUN & Debate Platform">
+        <p>Deb8er is a global online platform where anyone from ages 10-18 can participate in debates and MUNs.</p>
+      </div>
+      <div class="footer-links two-col">
+        <div class="footer-column">
+          <h4>Platform</h4>
+          <a href="about.html">About</a>
+          <a href="conferences.html">Conferences</a>
+          <a href="learn.html">Learn</a>
+          <a href="leaderboard.html">Leaderboard</a>
+          <a href="team.html">Team</a>
+        </div>
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <a href="https://www.instagram.com/deb8er_official" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://discord.gg/7dWD7Xebsj" target="_blank" rel="noopener noreferrer">Discord</a>
+          <a href="https://www.tiktok.com/@deb8er4" target="_blank" rel="noopener noreferrer">TikTok</a>
+          <a href="https://www.youtube.com/@Deb8er_official" target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a href="#" id="copy-email">Email</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Deb8er. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script src="assets/share-card.js" defer></script>
+  <script type="module" src="navbar-auth.js"></script>
+
+  <script type="module" src="assets/learn-main.js"></script>
+</body>
+</html>
