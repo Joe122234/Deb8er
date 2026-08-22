@@ -1,0 +1,101 @@
+{
+  "title": "Eradicating Filler Words",
+  "unit": "voice-modulation",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "Why We Use Fillers",
+      "content": "Filler words — 'um', 'uh', 'like', 'you know' — are verbal crutches. They occur when our brain is processing what to say next but our mouth keeps going. The pause feels uncomfortable, so we fill it with sound.",
+      "bullets": [
+        "Fillers signal uncertainty and reduce your perceived authority",
+        "The pause that feels like an eternity to you is barely noticeable to the audience",
+        "Silent pauses project confidence; verbal fillers project nervousness"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "The Replacement Strategy",
+      "content": "Instead of trying to eliminate fillers through willpower alone, practice the replacement strategy: when you feel the urge to say 'um', simply pause silently.",
+      "bullets": [
+        "Step 1: Become aware — record yourself and count your fillers",
+        "Step 2: Catch the urge — notice when you are about to use a filler",
+        "Step 3: Replace — use a silent pause instead",
+        "Step 4: Practice — this gets easier with repetition"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "With and Without Fillers",
+      "content": "Compare these two versions of the same statement:",
+      "good": "'The evidence — (pause) — clearly shows that climate change is accelerating.'",
+      "bad": "'Um, the evidence, like, clearly shows that, you know, climate change is basically accelerating.'",
+      "explanation": "The clean version is shorter, clearer, and sounds more confident."
+    },
+    {
+      "type": "practice",
+      "instruction": "What is the most effective replacement for filler words?",
+      "options": [
+        "Speaking faster so you have less time to use fillers",
+        "A silent pause",
+        "Coughing to cover the gap",
+        "Using different filler words"
+      ],
+      "correct": 1,
+      "feedback": "A silent pause is the only replacement that eliminates fillers while actually improving your delivery.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "q": "Why does a silent pause project more confidence than a filler word?",
+      "options": [
+        "It makes you look like you forgot your lines",
+        "It signals that you are thinking deliberately rather than grasping for words",
+        "It confuses the audience",
+        "It is louder than a filler word"
+      ],
+      "correct": 1,
+      "explain": "A deliberate pause signals composure and thoughtfulness. Fillers signal that your brain is racing to catch up with your mouth.",
+      "timeLimit": 30
+    },
+    {
+      "type": "true-false",
+      "statement": "Using filler words occasionally is fine and does not affect how audiences perceive you.",
+      "answer": false,
+      "feedback": "Research shows that even occasional filler words reduce perceived competence and credibility.",
+      "timeLimit": 30
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "The best replacement for filler words is a silent {0}.",
+      "answers": [
+        "pause"
+      ],
+      "distractors": [
+        "pause",
+        "breath",
+        "cough",
+        "word"
+      ],
+      "instruction": "Fill in the replacement.",
+      "feedback": "Replace the urge to say 'um' with a silent pause."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "quiz",
+          "q": "What is the first step in the filler word replacement strategy?",
+          "options": [
+            "Eliminate all pauses from your speech",
+            "Become aware by recording yourself and counting your fillers",
+            "Memorize your entire speech word-for-word",
+            "Speak slower"
+          ],
+          "correct": 1,
+          "feedback": "Awareness is the first step — you cannot fix what you do not notice."
+        }
+      ]
+    }
+  ]
+}

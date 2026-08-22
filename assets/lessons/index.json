@@ -1,0 +1,180 @@
+{
+  "tracks": [
+    {
+      "id": "public-speaking",
+      "title": "Public Speaking & Vocal Mastery",
+      "subtitle": "Overcome stage fright, master body language, voice control, and stage presence",
+      "icon": "<i class=\"fas fa-microphone\"></i>",
+      "color": "#3ABEFF",
+      "units": [
+        {
+          "id": "speaking-confidently",
+          "title": "Speaking Confidently",
+          "subtitle": "Tame stage fright and think on your feet",
+          "color": "#60A5FA",
+          "lessons": [
+            { "id": "taming-stage-fright", "title": "Taming Stage Fright", "xp": 20, "sections": 7, "duration": "6 min" },
+            { "id": "prep-framework", "title": "The PREP Impromptu Framework", "xp": 20, "sections": 8, "duration": "8 min" }
+          ]
+        },
+        {
+          "id": "voice-modulation",
+          "title": "Voice Modulation",
+          "subtitle": "Pitch, pace, pauses — make your voice command attention",
+          "color": "#22d3ee",
+          "lessons": [
+            { "id": "pitch-pace-pauses", "title": "Pitch, Pace, and Pauses", "xp": 20, "sections": 8, "duration": "7 min" },
+            { "id": "eradicating-filler-words", "title": "Eradicating Filler Words", "xp": 20, "sections": 7, "duration": "6 min" }
+          ]
+        },
+        {
+          "id": "body-language",
+          "title": "Body Language & Stage Presence",
+          "subtitle": "Let your physical presence amplify your message",
+          "color": "#34D399",
+          "lessons": [
+            { "id": "open-gestures", "title": "Open Gestures vs. Closed Armor", "xp": 20, "sections": 7, "duration": "6 min" },
+            { "id": "command-the-floor", "title": "Command the Floor", "xp": 20, "sections": 8, "duration": "7 min" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "debating",
+      "title": "Competitive Debating",
+      "subtitle": "Structure arguments, deliver rebuttals, and think critically under pressure",
+      "icon": "<i class=\"fas fa-gavel\"></i>",
+      "color": "#a68af9",
+      "units": [
+        {
+          "id": "building-arguments",
+          "title": "Building Arguments",
+          "subtitle": "Master the anatomy of a persuasive argument",
+          "color": "#C084FC",
+          "lessons": [
+            { "id": "arest-structure", "title": "The AREST Structure", "xp": 20, "sections": 8, "duration": "8 min" },
+            { "id": "impact-weighing", "title": "Impact Weighing", "xp": 20, "sections": 7, "duration": "7 min" }
+          ]
+        },
+        {
+          "id": "rebuttals",
+          "title": "Rebuttals",
+          "subtitle": "Counter, dismantle, and turn the argument",
+          "color": "#F472B6",
+          "lessons": [
+            { "id": "four-step-rebuttal", "title": "The 4-Step Rebuttal Formula", "xp": 25, "sections": 8, "duration": "8 min" },
+            { "id": "link-vs-impact-turns", "title": "Link Turns vs. Impact Turns", "xp": 20, "sections": 7, "duration": "7 min" }
+          ]
+        },
+        {
+          "id": "fallacies",
+          "title": "Cross Examination & Fallacies",
+          "subtitle": "Trap questions and logical flaws",
+          "color": "#FB923C",
+          "lessons": [
+            { "id": "socratic-traps", "title": "Socratic Questioning Traps", "xp": 20, "sections": 7, "duration": "7 min" },
+            { "id": "fallacies-part1", "title": "Spotting Fallacies — Part 1", "xp": 20, "sections": 8, "duration": "8 min" },
+            { "id": "fallacies-part2", "title": "Spotting Fallacies — Part 2", "xp": 20, "sections": 8, "duration": "8 min" }
+          ]
+        },
+        {
+          "id": "evidence-research",
+          "title": "Evidence & Research",
+          "subtitle": "Find, evaluate, and deploy credible evidence",
+          "color": "#2DD4BF",
+          "lessons": [
+            { "id": "source-hierarchy", "title": "Source Hierarchy", "xp": 20, "sections": 7, "duration": "6 min" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mun",
+      "title": "Model United Nations",
+      "subtitle": "Master MUN procedure, diplomacy, and resolution-writing",
+      "icon": "<i class=\"fas fa-globe\"></i>",
+      "color": "#22d3ee",
+      "units": [
+        {
+          "id": "what-is-mun",
+          "title": "What is MUN & Foreign Policy",
+          "subtitle": "Understand committee structure and representing a nation",
+          "color": "#67E8F9",
+          "lessons": [
+            { "id": "committee-mechanics", "title": "MUN Committee Mechanics", "xp": 20, "sections": 7, "duration": "7 min" },
+            { "id": "country-persona", "title": "Country Persona vs. Personal Bias", "xp": 20, "sections": 7, "duration": "7 min" }
+          ]
+        },
+        {
+          "id": "rop-pois",
+          "title": "Rules of Procedure & Points",
+          "subtitle": "Navigate motions, points, and the speaking list",
+          "color": "#2DD4BF",
+          "lessons": [
+            { "id": "points-motions", "title": "Points and Motions", "xp": 25, "sections": 8, "duration": "8 min" },
+            { "id": "pois", "title": "Points of Information", "xp": 20, "sections": 9, "duration": "8 min" }
+          ]
+        },
+        {
+          "id": "speeches-papers",
+          "title": "Speeches & Position Papers",
+          "subtitle": "Write and deliver powerful committee speeches",
+          "color": "#FBBF24",
+          "lessons": [
+            { "id": "gsl-speech", "title": "The 60-Second GSL Speech", "xp": 20, "sections": 8, "duration": "8 min" },
+            { "id": "position-paper", "title": "Structuring a Position Paper", "xp": 20, "sections": 9, "duration": "9 min" }
+          ]
+        },
+        {
+          "id": "draft-resolutions",
+          "title": "Draft Resolutions",
+          "subtitle": "Write clauses that solve global problems",
+          "color": "#34D399",
+          "lessons": [
+            { "id": "preambulatory-clauses", "title": "Preambulatory Clauses", "xp": 20, "sections": 7, "duration": "7 min" },
+            { "id": "operative-clauses", "title": "Operative Clauses", "xp": 20, "sections": 8, "duration": "8 min" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "critical-thinking",
+      "title": "Critical Thinking",
+      "subtitle": "Spot misinformation, understand bias, and reason from first principles",
+      "icon": "<i class=\"fas fa-brain\"></i>",
+      "color": "#34D399",
+      "units": [
+        {
+          "id": "fake-news",
+          "title": "Media Literacy",
+          "subtitle": "Verify sources and distinguish fact from manipulation",
+          "color": "#F87171",
+          "lessons": [
+            { "id": "sift-method", "title": "The SIFT Verification Method", "xp": 20, "sections": 7, "duration": "7 min" },
+            { "id": "misinfo-disinfo", "title": "Misinformation vs. Disinformation", "xp": 20, "sections": 7, "duration": "7 min" }
+          ]
+        },
+        {
+          "id": "biases",
+          "title": "Understanding Biases",
+          "subtitle": "See how your brain distorts reality",
+          "color": "#FBBF24",
+          "lessons": [
+            { "id": "confirmation-bias", "title": "Confirmation & Availability Bias", "xp": 20, "sections": 7, "duration": "7 min" },
+            { "id": "framing-effects", "title": "Framing and Priming Effects", "xp": 20, "sections": 9, "duration": "8 min" }
+          ]
+        },
+        {
+          "id": "reasoning",
+          "title": "Logical Reasoning & Decision Making",
+          "subtitle": "Think from first principles and anticipate consequences",
+          "color": "#818CF8",
+          "lessons": [
+            { "id": "first-principles", "title": "First-Principles Thinking", "xp": 20, "sections": 7, "duration": "7 min" },
+            { "id": "second-order", "title": "Second-Order Decision Making", "xp": 20, "sections": 7, "duration": "7 min" }
+          ]
+        }
+      ]
+    }
+  ]
+}

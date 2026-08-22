@@ -1,0 +1,112 @@
+{
+  "title": "The SIFT Verification Method",
+  "unit": "fake-news",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "Why Verification Matters",
+      "content": "We encounter more information in a single day than our grandparents encountered in a year. Not all of it is true. The SIFT method, developed by digital literacy researcher Mike Caulfield, gives you a four-step process for quickly evaluating any claim you encounter online.",
+      "bullets": [
+        "Misinformation spreads six times faster than truth on social media",
+        "Your first emotional reaction to a headline is exactly what manipulators exploit",
+        "SIFT takes less than 60 seconds and can prevent you from sharing falsehoods"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "The Four SIFT Moves",
+      "content": "SIFT stands for Stop, Investigate the Source, Find Better Coverage, Trace Claims.",
+      "bullets": [
+        "S — Stop: Before sharing or reacting, pause. Ask: 'Do I actually know this is true?'",
+        "I — Investigate the Source: Who created this? What is their expertise? What is their agenda?",
+        "F — Find Better Coverage: Look for trusted sources that report the same claim",
+        "T — Trace Claims: Go back to the original context — quotes, studies, and statistics are often stripped of context"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "SIFT in Action",
+      "content": "Let's apply SIFT to a viral headline: 'Scientists Discover That Chocolate Cures Cancer.'",
+      "good": "Stop: This sounds too good to be true.\nInvestigate: The source is 'ChocolateLoversDaily.com' — not a scientific journal.\nFind Better Coverage: A quick search shows no major news outlets or medical journals reporting this.\nTrace: The 'study' cited is actually a 5-person pilot study funded by a chocolate company, not a large-scale clinical trial.",
+      "explanation": "In 60 seconds, SIFT revealed the claim is misleading. The 'study' exists but is wildly exaggerated by an unreliable source with a commercial agenda."
+    },
+    {
+      "type": "practice",
+      "instruction": "What is the immediate first step when encountering a sensational news headline?",
+      "options": [
+        "Share it to warn others",
+        "Stop and ask if you know it is true",
+        "Comment to express your opinion",
+        "Search for the original source"
+      ],
+      "correct": 1,
+      "feedback": "The first step is always Stop — pause before reacting or sharing. This breaks the impulse to share emotionally charged content.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "timeLimit": 30,
+      "q": "What does the 'T' in SIFT stand for?",
+      "options": [
+        "Tell someone",
+        "Trace claims to original context",
+        "Trust the source",
+        "Take a screenshot"
+      ],
+      "correct": 1,
+      "explain": "Trace means going back to the original study, quote, or report to check if the claim accurately represents the source."
+    },
+    {
+      "type": "true-false",
+      "statement": "If a news story matches your existing beliefs, it is probably accurate and does not need verification.",
+      "answer": false,
+      "feedback": "Emotionally comfortable information is often the most dangerous — confirmation bias makes us less likely to verify claims that align with our views.",
+      "timeLimit": 30
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "In the SIFT method, '{0}' means checking who created the content and what their agenda might be.",
+      "answers": [
+        "Investigate"
+      ],
+      "distractors": [
+        "Investigate",
+        "Stop",
+        "Find",
+        "Trace",
+        "Verify"
+      ],
+      "instruction": "Fill in the correct SIFT step.",
+      "feedback": "Investigating the source helps you assess credibility before engaging with the content."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "order",
+          "instruction": "Put the four SIFT steps in the correct order.",
+          "steps": [
+            "Stop",
+            "Investigate the Source",
+            "Find Better Coverage",
+            "Trace Claims"
+          ],
+          "feedback": "S-I-F-T — Stop first, then Investigate, Find, and Trace."
+        },
+        {
+          "type": "quiz",
+          "q": "Why is 'Find Better Coverage' an important step even if the source seems credible?",
+          "options": [
+            "It gives you more arguments to use in a debate",
+            "Multiple trusted sources reporting the same claim is stronger evidence than a single source",
+            "You need at least three sources to cite in academic work",
+            "It makes the story more shareable"
+          ],
+          "correct": 1,
+          "feedback": "Corroboration from multiple independent, trusted sources is a hallmark of reliable information."
+        }
+      ]
+    }
+  ]
+}

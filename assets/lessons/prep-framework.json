@@ -1,0 +1,124 @@
+{
+  "title": "The PREP Impromptu Framework",
+  "unit": "speaking-confidently",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "What is the PREP Framework?",
+      "content": "PREP stands for Point, Reason, Example, Point. It is a simple four-step structure for answering impromptu questions quickly and coherently. Whether you are in a Q&A session, a job interview, or a debate cross-examination, PREP ensures you sound organized and confident.",
+      "bullets": [
+        "P — Point: State your answer in one clear sentence",
+        "R — Reason: Explain WHY that is your answer",
+        "E — Example: Give a concrete example that illustrates your reasoning",
+        "P — Point: Restate your original point to close the loop"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "Why PREP Works",
+      "content": "PREP works because it mirrors how human memory and persuasion function. The opening point tells the audience what to expect. The reason provides logic. The example creates an emotional anchor. The closing point reinforces the message.",
+      "bullets": [
+        "Open and close with the same point — this bookends your message",
+        "The example is what audiences remember most vividly",
+        "Practice PREP with random questions to build the habit"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "PREP in Action",
+      "content": "Question: 'Should schools ban smartphones?'",
+      "good": "Point: Yes, schools should ban smartphones during class hours.\nReason: Smartphones are the primary source of distraction for students — studies show it takes 23 minutes to refocus after checking a notification.\nExample: A 2023 study in the UK found that schools with phone bans saw a 6.4% improvement in test scores, with the biggest gains among struggling students.\nPoint: That is why banning smartphones in schools would significantly improve learning outcomes.",
+      "explanation": "The response is complete, structured, and persuasive in under 60 seconds. The listener knows the position, understands the logic, and remembers the concrete example."
+    },
+    {
+      "type": "practice",
+      "instruction": "In the PREP framework, which step creates the most memorable and persuasive element?",
+      "options": [
+        "Point — because it states your position",
+        "Reason — because it provides logic",
+        "Example — because it creates a vivid, concrete anchor",
+        "Restated Point — because it closes the loop"
+      ],
+      "correct": 2,
+      "feedback": "The Example is what audiences remember most. Abstract reasoning fades, but concrete stories and examples stick.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "q": "What is the purpose of restating your point at the end of PREP?",
+      "options": [
+        "To fill time",
+        "To bookend your message and reinforce your main argument",
+        "To correct any mistakes from earlier",
+        "To signal that you are done speaking"
+      ],
+      "correct": 1,
+      "explain": "Restating the point closes the loop — the audience leaves with your main message fresh in their mind.",
+      "timeLimit": 30
+    },
+    {
+      "type": "scenario",
+      "scenario": "You are in a job interview and the interviewer asks: 'Why do you think you are a good fit for this role?' You have 30 seconds to answer using the PREP framework.",
+      "question": "Which of these responses best follows the PREP structure?",
+      "options": [
+        "I am a great fit because I have the skills, experience, and motivation to succeed in this role.",
+        "Point: I am a strong fit for this role. Reason: My background in project management directly aligns with your needs. Example: At my last company, I led a cross-functional team that delivered a $2M project under budget. Point: That is why I am confident I can deliver results here.",
+        "My last company had a project I led… actually, it was a team effort, but I contributed significantly to the project management side. So I think I would be a good fit.",
+        "I have 5 years of experience, a degree in business, and I am a hard worker."
+      ],
+      "correct": 1,
+      "feedback": "This follows the full PREP structure: Point → Reason → Example → Restated Point. Concise, structured, and persuasive."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "The PREP framework stands for {0}, {1}, {2}, and {3}.",
+      "answers": [
+        "Point",
+        "Reason",
+        "Example",
+        "Point"
+      ],
+      "distractors": [
+        "Point",
+        "Reason",
+        "Example",
+        "Position",
+        "Argument",
+        "Evidence",
+        "Conclusion"
+      ],
+      "instruction": "Fill in the four components in order.",
+      "feedback": "Point → Reason → Example → Point. Notice that Point repeats — you open and close with your main claim."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "order",
+          "instruction": "Put the four PREP steps in the correct order.",
+          "steps": [
+            "Point",
+            "Reason",
+            "Example",
+            "Point"
+          ],
+          "feedback": "Point → Reason → Example → Restated Point"
+        },
+        {
+          "type": "quiz",
+          "q": "Why does the Example step come before the final Point in PREP?",
+          "options": [
+            "Examples are less important than the point",
+            "The example creates emotional weight that makes the final point land harder",
+            "It is alphabetical order",
+            "The example replaces the reason"
+          ],
+          "correct": 1,
+          "feedback": "The concrete example builds emotional resonance, making the restated point more impactful.",
+          "timeLimit": 30
+        }
+      ]
+    }
+  ]
+}

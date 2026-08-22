@@ -1,0 +1,127 @@
+{
+  "title": "Points and Motions",
+  "unit": "rop-pois",
+  "xp": 25,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "Understanding MUN Procedure",
+      "content": "MUN committees run on a set of formal procedures known as the Rules of Procedure (RoP). These rules govern how delegates speak, when they can interrupt, how voting works, and how the committee progresses. Mastering the key points and motions is essential for effective participation.",
+      "bullets": [
+        "Points are used to address immediate needs or raise procedural concerns",
+        "Motions are used to change the flow of the committee",
+        "Knowing when to use each tool makes you a more effective delegate"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "The Three Points",
+      "content": "There are three main points used in most MUN committees:",
+      "bullets": [
+        "Point of Personal Privilege — Used when personal comfort affects your participation (can't hear the speaker, room is too hot, etc.)",
+        "Point of Order — Used when a procedural mistake has been made (incorrect voting procedure, out-of-order speech)",
+        "Point of Parliamentary Inquiry — Used to ask the chair a question about the rules or procedure"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "When to Use Each Point",
+      "content": "Here is how points and motions are used in a real committee session."
+    },
+    {
+      "type": "practice",
+      "instruction": "You cannot hear the speaker because delegates behind you are whispering. Which point should you raise?",
+      "options": [
+        "Point of Order",
+        "Point of Personal Privilege",
+        "Point of Parliamentary Inquiry",
+        "Motion to Adjourn"
+      ],
+      "correct": 1,
+      "feedback": "A Point of Personal Privilege addresses any issue affecting your ability to participate, including hearing the speaker.",
+      "timeLimit": 30
+    },
+    {
+      "type": "match",
+      "instruction": "Match each point or motion to its correct purpose.",
+      "pairs": [
+        {
+          "id": "pp",
+          "left": "Point of Personal Privilege",
+          "right": "Address personal comfort or ability to hear"
+        },
+        {
+          "id": "po",
+          "left": "Point of Order",
+          "right": "Correct a procedural mistake by the chair"
+        },
+        {
+          "id": "pi",
+          "left": "Point of Parliamentary Inquiry",
+          "right": "Ask a question about the rules"
+        },
+        {
+          "id": "cd",
+          "left": "Motion to Close Debate",
+          "right": "End discussion and move to voting"
+        }
+      ],
+      "feedback": "Each point and motion has a specific purpose — using the right one at the right time shows procedural fluency."
+    },
+    {
+      "type": "quiz",
+      "q": "A delegate makes a speech that attacks another country's leader personally. What point should you raise?",
+      "options": [
+        "Point of Personal Privilege",
+        "Point of Order",
+        "Point of Parliamentary Inquiry",
+        "Right of Reply"
+      ],
+      "correct": 3,
+      "explain": "A Right of Reply is used when a delegate feels personally insulted by another delegate's remarks.",
+      "timeLimit": 30
+    },
+    {
+      "type": "true-false",
+      "statement": "A Point of Parliamentary Inquiry can be used to challenge another delegate's argument.",
+      "answer": false,
+      "feedback": "Points of Parliamentary Inquiry are questions about procedure directed at the chair, not challenges to other delegates' arguments.",
+      "timeLimit": 30
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "fill-blank",
+          "sentence": "The '{0} of {1}' is used to correct a procedural mistake made by the chair.",
+          "answers": [
+            "Point",
+            "Order"
+          ],
+          "distractors": [
+            "Point",
+            "Order",
+            "Personal",
+            "Privilege",
+            "Parliamentary",
+            "Inquiry"
+          ],
+          "instruction": "Fill in the two-word name of this point.",
+          "feedback": "A Point of Order addresses violations of procedure."
+        },
+        {
+          "type": "quiz",
+          "q": "What is the purpose of a Motion to Close Debate?",
+          "options": [
+            "To take a break for lunch",
+            "To end discussion on a topic and move immediately to voting",
+            "To change the speaking time",
+            "To remove a delegate from the room"
+          ],
+          "correct": 1,
+          "feedback": "A Motion to Close Debate ends the speaking phase and moves the committee directly to voting procedures."
+        }
+      ]
+    }
+  ]
+}

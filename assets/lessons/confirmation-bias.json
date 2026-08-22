@@ -1,0 +1,110 @@
+{
+  "title": "Confirmation & Availability Bias",
+  "unit": "biases",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "What is Confirmation Bias?",
+      "content": "Confirmation bias is the tendency to search for, interpret, and remember information in a way that confirms your pre-existing beliefs. It is one of the most powerful and pervasive cognitive biases affecting human reasoning.",
+      "bullets": [
+        "You notice evidence that supports your views more readily than evidence that challenges them",
+        "You interpret ambiguous information as supporting your position",
+        "You remember confirming examples more easily than disconfirming ones"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "Availability Bias",
+      "content": "Availability bias is the tendency to overestimate the likelihood of events that are easily recalled. If something comes to mind quickly, we assume it is more common or important than it really is.",
+      "bullets": [
+        "Dramatic events (plane crashes, shark attacks) seem more common than they are",
+        "Recent events feel more significant than distant ones",
+        "Vivid, emotional examples outweigh statistical data in our judgment"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "Biases in Action",
+      "content": "Consider two people viewing the same unemployment statistics chart. One believes the government is doing a good job and sees the slight downward trend as evidence of success. The other believes the government is failing and focuses on the still-high number — both interpreting the exact same data differently.",
+      "explanation": "Both viewers are affected by confirmation bias — they selectively focus on the parts of the data that support their existing views. The data itself is neutral; the bias is in how it is perceived."
+    },
+    {
+      "type": "practice",
+      "instruction": "After watching a news segment about a single house fire, people overestimate the risk of house fires nationally. This is an example of:",
+      "options": [
+        "Confirmation Bias",
+        "Availability Bias",
+        "Framing Effect",
+        "Hindsight Bias"
+      ],
+      "correct": 1,
+      "feedback": "Availability bias causes us to overestimate the frequency of dramatic, easily recalled events like house fires.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "timeLimit": 30,
+      "q": "A student is researching a debate topic and only saves articles that support their assigned position. This is:",
+      "options": [
+        "Good research methodology",
+        "Confirmation bias",
+        "Availability bias",
+        "Cognitive dissonance"
+      ],
+      "correct": 1,
+      "explain": "Seeking only confirming evidence is the classic definition of confirmation bias. Good research requires engaging with opposing viewpoints."
+    },
+    {
+      "type": "true-false",
+      "statement": "Availability bias is useful because vivid examples are usually the most statistically significant.",
+      "answer": false,
+      "feedback": "Vividness does not equal statistical significance. Availability bias leads us to overestimate rare events and underestimate common ones.",
+      "timeLimit": 30
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "{0} bias is the tendency to overestimate the likelihood of events that are easily recalled.",
+      "answers": [
+        "Availability"
+      ],
+      "distractors": [
+        "Availability",
+        "Confirmation",
+        "Framing",
+        "Anchoring"
+      ],
+      "instruction": "Fill in the type of bias.",
+      "feedback": "Availability bias substitutes ease of recall for actual probability."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "spot-mistake",
+          "argument": "'I know vaccination is dangerous because my cousin's friend got sick after a vaccine.' Identify the bias:",
+          "options": [
+            "Confirmation bias",
+            "Availability bias",
+            "Framing effect",
+            "No bias present"
+          ],
+          "correct": 1,
+          "feedback": "A single vivid personal story is being used to assess risk — classic availability bias, which overweights memorable anecdotes over statistical data."
+        },
+        {
+          "type": "quiz",
+          "q": "How can a debater minimize confirmation bias when preparing for a debate?",
+          "options": [
+            "Only read sources that support their side",
+            "Actively seek out and engage with the strongest arguments from the opposing side",
+            "Ignore the opposing case entirely",
+            "Practice their speech more"
+          ],
+          "correct": 1,
+          "feedback": "Actively engaging with opposing arguments is the best antidote to confirmation bias — it prepares you for rebuttals and strengthens your own case."
+        }
+      ]
+    }
+  ]
+}

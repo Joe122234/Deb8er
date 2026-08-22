@@ -1,0 +1,109 @@
+{
+  "title": "Taming Stage Fright",
+  "unit": "speaking-confidently",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "What is Stage Fright?",
+      "content": "Stage fright — also called performance anxiety — is your body's natural response to perceived threat. When you step in front of an audience, your brain activates the same fight-or-flight response triggered by physical danger. Your heart races, palms sweat, and your stomach knots up.",
+      "bullets": [
+        "Stage fright is NOT a sign of weakness — it is a biological response",
+        "The same adrenaline that causes nerves also sharpens your focus",
+        "Every great speaker feels it; the difference is how they channel it"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "Reframing Anxiety as Excitement",
+      "content": "Research from Harvard Business School shows that simply telling yourself 'I am excited' instead of 'I am nervous' dramatically improves performance. Both states feel identical in the body — racing heart, butterflies, heightened alertness. The only difference is how you label it.",
+      "bullets": [
+        "Anxiety and excitement produce the same physiological arousal",
+        "Saying 'I am excited' repositions the energy as fuel, not friction",
+        "Practice this reframe every time you feel pre-speech jitters"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "Adrenaline on a Roller Coaster",
+      "content": "Think about the last time you rode a roller coaster. Your heart pounded, your palms sweated, your breath quickened — the exact same sensations as stage fright. Yet on the coaster, you call it excitement. On stage, you call it fear. The body doesn't know the difference — your interpretation is everything.",
+      "good": "Before a speech: 'My heart is racing. This is my body getting ready to perform at my best.'",
+      "bad": "Before a speech: 'My heart is racing. Something is wrong. I'm going to mess up.'",
+      "explanation": "The same physical sensation produces completely different outcomes based on how you label it. Reframing turns anxiety into a performance-enhancing tool."
+    },
+    {
+      "type": "practice",
+      "instruction": "When your palms sweat before a speech, what is your body actually doing?",
+      "options": [
+        "Telling you that you are not ready",
+        "Preparing you for high performance by releasing adrenaline",
+        "Signaling that you should avoid the situation",
+        "Indicating a medical condition"
+      ],
+      "correct": 1,
+      "feedback": "Palms sweating is a sign of adrenaline release — your body is preparing for peak performance, not warning you to flee.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "timeLimit": 30,
+      "q": "What is the most effective mental technique for managing stage fright?",
+      "options": [
+        "Memorizing your speech word-for-word",
+        "Reframing anxiety as excitement",
+        "Avoiding eye contact with the audience",
+        "Taking deep breaths only"
+      ],
+      "correct": 1,
+      "explain": "Reframing anxiety as excitement leverages the identical physiological response and redirects it positively. Deep breathing helps, but reframing changes your mindset."
+    },
+    {
+      "type": "true-false",
+      "statement": "Great public speakers are born without stage fright — they never feel nervous.",
+      "answer": false,
+      "feedback": "Every great speaker feels nervous. The difference is they have learned to channel that energy into their performance rather than fighting it.",
+      "timeLimit": 30
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "The technique of re-labeling nervousness as excitement is called {0} {1}.",
+      "answers": [
+        "cognitive",
+        "reframing"
+      ],
+      "distractors": [
+        "cognitive",
+        "reframing",
+        "emotional",
+        "suppression",
+        "avoidance",
+        "distraction"
+      ],
+      "instruction": "Fill in the two-word psychological term.",
+      "feedback": "Cognitive reframing means changing your interpretation of a sensation without changing the sensation itself."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "true-false",
+          "statement": "Stage fright and excitement produce identical physical sensations in the body.",
+          "answer": true,
+          "feedback": "Both trigger the same fight-or-flight response — racing heart, sweating, heightened alertness."
+        },
+        {
+          "type": "quiz",
+          "q": "Why does reframing anxiety as excitement improve performance?",
+          "options": [
+            "It eliminates the physical symptoms entirely",
+            "It repositions nervous energy as fuel rather than friction",
+            "It tricks the audience into thinking you are confident",
+            "It lowers your heart rate"
+          ],
+          "correct": 1,
+          "feedback": "Reframing doesn't change the physical response — it changes how you use that energy."
+        }
+      ]
+    }
+  ]
+}

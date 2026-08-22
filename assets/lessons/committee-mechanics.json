@@ -1,0 +1,113 @@
+{
+  "title": "MUN Committee Mechanics",
+  "unit": "what-is-mun",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "Types of MUN Committees",
+      "content": "MUN committees fall into three main types: General Assembly (GA) bodies with broad participation, Security Council (SC) with limited membership and veto power, and Crisis Committees that respond to fast-moving scenarios.",
+      "bullets": [
+        "General Assembly: Large, all member states, two-thirds vote for resolutions",
+        "Security Council: 15 members, 5 permanent with veto power",
+        "Crisis: Small, fast-paced, responds to evolving situations"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "Committee Flow",
+      "content": "A typical committee session flows through: Opening of session, Roll call, General Speakers List (GSL), Formal debate, Moderated/Unmoderated caucuses, Introduction of draft resolutions, Voting procedure, and Closing.",
+      "bullets": [
+        "GSL comes first — delegates state their country's position",
+        "Caucuses follow — moderated for specific topics, unmoderated for negotiation",
+        "Draft resolutions are submitted, debated, amended, and voted on"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "Committee Flow Chart",
+      "content": "Roll Call → GSL Speeches → Moderated Caucus → Unmoderated Caucus → Draft Resolutions → Amendments → Voting → Closing",
+      "explanation": "This is the typical flow. Each stage has specific rules and purposes. Knowing the flow helps you plan when to speak and when to negotiate."
+    },
+    {
+      "type": "practice",
+      "instruction": "Which MUN body has permanent members with veto power?",
+      "options": [
+        "General Assembly",
+        "Security Council",
+        "Economic and Social Council",
+        "International Court of Justice"
+      ],
+      "correct": 1,
+      "feedback": "The Security Council has 5 permanent members (P5) who can veto substantive resolutions.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "q": "What is the purpose of the General Speakers List (GSL)?",
+      "options": [
+        "To vote on resolutions",
+        "To allow delegates to state their country's position at the start of committee",
+        "To introduce draft resolutions",
+        "To elect committee chairs"
+      ],
+      "correct": 1,
+      "explain": "GSL gives each delegate time to outline their country's stance on the topic. It opens the substantive portion of committee.",
+      "timeLimit": 30
+    },
+    {
+      "type": "true-false",
+      "statement": "Amendments to draft resolutions can only be proposed during unmoderated caucus.",
+      "answer": false,
+      "feedback": "Amendments can be proposed during formal debate, usually after the resolution has been introduced.",
+      "timeLimit": 30
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "The {0} {1} is the main debating body where all member states participate and each has one vote.",
+      "answers": [
+        "General",
+        "Assembly"
+      ],
+      "distractors": [
+        "General",
+        "Assembly",
+        "Security",
+        "Council",
+        "Crisis"
+      ],
+      "instruction": "Fill in the two-word name of this MUN body.",
+      "feedback": "The General Assembly includes all member states with equal voting power."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "order",
+          "instruction": "Put these committee stages in the correct order.",
+          "steps": [
+            "Roll Call",
+            "GSL Speeches",
+            "Moderated Caucus",
+            "Unmoderated Caucus",
+            "Draft Resolutions",
+            "Voting"
+          ],
+          "feedback": "Roll Call → Speeches → Caucuses → Resolutions → Voting"
+        },
+        {
+          "type": "quiz",
+          "q": "What is the main difference between GA and SC in MUN?",
+          "options": [
+            "GA is larger but SC has veto power",
+            "GA elects the Secretary General",
+            "SC has more delegates",
+            "There is no difference"
+          ],
+          "correct": 0,
+          "feedback": "GA includes all members with equal votes; SC has 15 members with P5 veto power."
+        }
+      ]
+    }
+  ]
+}

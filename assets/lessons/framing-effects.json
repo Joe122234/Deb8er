@@ -1,0 +1,110 @@
+{
+  "title": "Framing and Priming Effects",
+  "unit": "biases",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "What is Framing?",
+      "content": "Framing is the way information is presented, which influences how people interpret it. The same fact framed differently can produce opposite reactions. '95% fat-free' sounds healthier than '5% fat' — same fact, different frame.",
+      "bullets": [
+        "Framing changes perception without changing facts",
+        "Positive frames ('save lives') are more persuasive than negative ones ('let people die')",
+        "Emotional frames are more memorable than neutral ones"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "The Priming Effect",
+      "content": "Priming occurs when exposure to one stimulus influences response to a subsequent stimulus. In debate, the order and framing of your arguments can prime the judge to view later arguments more favorably.",
+      "bullets": [
+        "Priming activates certain associations in the listener's mind",
+        "Setting the frame early gives you control over how arguments are evaluated",
+        "Example: Framing a tax debate as 'fairness' primes the judge to evaluate based on fairness"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "Framing in Headlines",
+      "content": "Same event, different frames:"
+    },
+    {
+      "type": "practice",
+      "instruction": "Which headline uses framing to create a more negative impression?",
+      "options": [
+        "'Unemployment drops to 4%'",
+        "'4% of workers still jobless despite recovery'",
+        "'Job market improving'",
+        "'More Americans employed'"
+      ],
+      "correct": 1,
+      "feedback": "'4% of workers still jobless' frames the same statistic negatively.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "q": "In debate, why is it important to set the framing early?",
+      "options": [
+        "It fills time",
+        "It controls how the judge evaluates subsequent arguments",
+        "The rules require it",
+        "It confuses the opponent"
+      ],
+      "correct": 1,
+      "explain": "Early framing sets the lens through which everything else is viewed. The side that controls the frame often wins.",
+      "timeLimit": 30
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "{0} occurs when exposure to one idea influences how you respond to a later idea.",
+      "answers": [
+        "Priming"
+      ],
+      "distractors": [
+        "Priming",
+        "Framing",
+        "Anchoring",
+        "Biasing"
+      ],
+      "instruction": "Fill in the effect.",
+      "feedback": "Priming activates associations that shape later responses."
+    },
+    {
+      "type": "true-false",
+      "statement": "Framing changes the underlying facts of an argument.",
+      "answer": false,
+      "feedback": "Framing changes the presentation and perception, not the facts themselves.",
+      "timeLimit": 30
+    },
+    {
+      "type": "spot-mistake",
+      "instruction": "What type of cognitive effect is being demonstrated here?",
+      "argument": "Before a debate on healthcare, the first speaker says: 'Today we must decide whether healthcare is a human right or a privilege for those who can afford it.' The entire debate then focuses on whether healthcare is a right, ignoring alternative funding models entirely.",
+      "options": [
+        "Confirmation bias",
+        "Framing effect — the speaker set the lens through which the debate would be evaluated",
+        "Availability bias",
+        "Anchoring heuristic"
+      ],
+      "correct": 1,
+      "feedback": "By framing the choice as 'right vs. privilege,' the speaker controlled the entire debate's frame. That is framing at work."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "quiz",
+          "q": "How can a debater use framing strategically?",
+          "options": [
+            "By lying about the facts",
+            "By choosing words and context that make their arguments appear more favorable",
+            "By speaking louder",
+            "By ignoring the opponent's case"
+          ],
+          "correct": 1,
+          "feedback": "Strategic framing selects the lens through which you want the judge to evaluate arguments."
+        }
+      ]
+    }
+  ]
+}

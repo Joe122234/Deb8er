@@ -1,0 +1,138 @@
+{
+  "title": "Spotting Fallacies — Part 1",
+  "unit": "fallacies",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "What Are Logical Fallacies?",
+      "content": "Logical fallacies are errors in reasoning that make an argument invalid, misleading, or unsound. They are common in everyday arguments, media, and even formal debates. Learning to spot them gives you a powerful advantage: you can avoid making them yourself and expose them when your opponent uses them.",
+      "bullets": [
+        "Fallacies are flaws in the structure of reasoning, not just false facts",
+        "Some fallacies are intentional; most are accidental",
+        "Calling out a fallacy forces your opponent to rebuild their argument"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "Four Key Fallacies",
+      "content": "Let's examine four of the most common fallacies you will encounter in debates.",
+      "bullets": [
+        "Ad Hominem — Attacking the person instead of the argument ('You can't trust his climate policy — he drives a gas car')",
+        "Straw Man — Misrepresenting an opponent's position to make it easier to attack ('My opponent wants to ban all cars' — when they actually proposed better public transit)",
+        "Red Herring — Introducing an irrelevant point to distract from the main issue",
+        "False Dilemma — Presenting only two options when more exist ('Either we cut funding or the program fails')"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "Spotting Fallacies in Action",
+      "content": "Read each statement and identify the fallacy.",
+      "good": "Statement: 'My opponent claims we need stricter gun laws, but he has never even held a firearm.' — This is Ad Hominem. The argument attacks the person, not the policy.",
+      "explanation": "The speaker's experience with firearms is irrelevant to whether stricter laws would reduce violence. Attack the argument, not the person."
+    },
+    {
+      "type": "practice",
+      "instruction": "Identify the fallacy: 'If we allow students to use calculators in exams, soon they will be using phones, then laptops, and eventually they won't learn anything at all.'",
+      "options": [
+        "Ad Hominem",
+        "Straw Man",
+        "Slippery Slope",
+        "False Dilemma"
+      ],
+      "correct": 2,
+      "feedback": "This is a Slippery Slope — it assumes one small change will inevitably lead to extreme consequences without evidence.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "timeLimit": 30,
+      "q": "A debater says: 'My opponent believes we should reduce military spending, which means he wants to leave our country defenseless.' This is an example of:",
+      "options": [
+        "Ad Hominem",
+        "Straw Man",
+        "Red Herring",
+        "False Dilemma"
+      ],
+      "correct": 1,
+      "explain": "This is a Straw Man — the debater misrepresents 'reduce spending' as 'leave defenseless,' which is an extreme and inaccurate version of the original position."
+    },
+    {
+      "type": "match",
+      "instruction": "Match each fallacy to its example.",
+      "pairs": [
+        {
+          "id": "ah",
+          "left": "Ad Hominem",
+          "right": "You can't trust her economic plan — she went to an Ivy League school"
+        },
+        {
+          "id": "sm",
+          "left": "Straw Man",
+          "right": "The opposition wants to abolish all police — they just suggested reform"
+        },
+        {
+          "id": "rh",
+          "left": "Red Herring",
+          "right": "We may have a budget deficit, but what about the sports team's winning season?"
+        },
+        {
+          "id": "fd",
+          "left": "False Dilemma",
+          "right": "Either we build the highway or the economy collapses"
+        }
+      ],
+      "feedback": "Each fallacy distorts reasoning in a different way. Spotting them helps you respond precisely."
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "The {0} {1} fallacy occurs when someone misrepresents an opponent's argument to make it easier to attack.",
+      "answers": [
+        "Straw",
+        "Man"
+      ],
+      "distractors": [
+        "Straw",
+        "Man",
+        "Red",
+        "Herring",
+        "Ad",
+        "Hominem",
+        "False",
+        "Dilemma"
+      ],
+      "instruction": "Fill in the two-word name of this fallacy.",
+      "feedback": "A Straw Man replaces the real argument with a weaker, distorted version."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "quiz",
+          "q": "What makes a False Dilemma logically flawed?",
+          "options": [
+            "It uses emotions instead of facts",
+            "It artificially limits options when more exist",
+            "It attacks the person instead of the argument",
+            "It distracts from the main issue"
+          ],
+          "correct": 1,
+          "feedback": "A False Dilemma presents only two choices as if they are the only possibilities, hiding more nuanced alternatives.",
+          "timeLimit": 30
+        },
+        {
+          "type": "spot-mistake",
+          "argument": "'We cannot trust the WHO's pandemic guidelines because the organization has made mistakes in the past.' Identify the fallacy:",
+          "options": [
+            "Ad Hominem",
+            "Straw Man",
+            "Red Herring",
+            "False Dilemma"
+          ],
+          "correct": 0,
+          "feedback": "This attacks the organization's credibility based on past errors rather than addressing the validity of the current guidelines."
+        }
+      ]
+    }
+  ]
+}

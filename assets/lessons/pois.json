@@ -1,0 +1,110 @@
+{
+  "title": "Points of Information",
+  "unit": "rop-pois",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "What are POIs?",
+      "content": "A Point of Information (POI) is a question or short statement directed at the speaker during their speech. POIs are a key tool for engaging with opponents, testing their arguments, and showing your command of the topic.",
+      "bullets": [
+        "POIs must be concise — usually 15 seconds max",
+        "They are offered during GSL speeches, not during caucus",
+        "A strong POI can derail a weak speaker's entire argument"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "How to Offer a POI",
+      "content": "To offer a POI, stand up or raise your placard when the speaker invites POIs. The chair will recognize you. Keep your POI focused and direct.",
+      "bullets": [
+        "Ask a single, precise question",
+        "Do not make a speech disguised as a question",
+        "Reference something the speaker just said to show you are listening"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "Weak vs. Strong POI",
+      "content": "Compare these POIs responding to a speech on renewable energy:"
+    },
+    {
+      "type": "practice",
+      "instruction": "What makes a POI effective?",
+      "options": [
+        "Length and complexity",
+        "Conciseness and direct relevance to the speaker's argument",
+        "Emotional language",
+        "Personal attacks on the speaker"
+      ],
+      "correct": 1,
+      "feedback": "Effective POIs are short, relevant, and force the speaker to respond to a specific weakness.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "q": "When during a committee session can POIs be offered?",
+      "options": [
+        "During unmoderated caucus",
+        "During GSL speeches when the speaker accepts them",
+        "At any time by standing up",
+        "Only during voting procedure"
+      ],
+      "correct": 1,
+      "explain": "POIs are offered during GSL speeches. The speaker decides whether to accept or decline.",
+      "timeLimit": 30
+    },
+    {
+      "type": "true-false",
+      "statement": "A POI should be a short speech presenting your own argument.",
+      "answer": false,
+      "feedback": "A POI is a question or short challenge, not a speech. Making a speech disguised as a POI is against procedure.",
+      "timeLimit": 30
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "A POI stands for Point of {0}.",
+      "answers": [
+        "Information"
+      ],
+      "distractors": [
+        "Information",
+        "Inquiry",
+        "Interest",
+        "Intervention"
+      ],
+      "instruction": "Fill in the missing word.",
+      "feedback": "POI = Point of Information"
+    },
+    {
+      "type": "spot-mistake",
+      "instruction": "What is wrong with this POI?",
+      "argument": "During a speech about climate change policy, a delegate stands up and says: 'Actually, I would like to point out that our country has done more than yours — we signed the Paris Agreement, we reduced emissions, we invested in renewables, and we are currently leading the global transition. Your entire argument is wrong.'",
+      "options": [
+        "The POI is too long — it is a speech, not a question",
+        "The POI attacks the speaker personally",
+        "The POI does not reference climate change",
+        "There is nothing wrong with it"
+      ],
+      "correct": 0,
+      "feedback": "This is a speech disguised as a POI. A POI should be a concise question or short challenge (under 15 seconds), not a full counter-speech."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "quiz",
+          "q": "What should you do if you receive a strong POI you cannot answer?",
+          "options": [
+            "Ignore it and continue",
+            "Acknowledge it honestly and pivot to your main argument",
+            "Ask the chair to rule it out of order",
+            "Apologize"
+          ],
+          "correct": 1,
+          "feedback": "Acknowledge the point briefly and pivot. Judges respect honesty over evasion."
+        }
+      ]
+    }
+  ]
+}

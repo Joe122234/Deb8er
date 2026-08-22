@@ -1,0 +1,115 @@
+{
+  "title": "Impact Weighing",
+  "unit": "building-arguments",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "Why Impact Weighing Matters",
+      "content": "In a debate, both sides will present arguments with real consequences. The judge doesn't just count arguments — they decide which arguments matter more. Impact weighing is the skill of proving why your argument's consequences outweigh your opponent's.",
+      "bullets": [
+        "Judges use impact weighing to decide close rounds",
+        "Three criteria: Magnitude, Probability, and Scope",
+        "You must explicitly compare your impacts to your opponent's — not just list them"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "The Three Criteria",
+      "content": "When weighing impacts, judges consider three factors:",
+      "bullets": [
+        "Magnitude — How severe is the impact? (Death > injury > discomfort)",
+        "Probability — How likely is it to happen? (Certain > probable > possible)",
+        "Scope — How many people are affected? (Global > national > local)"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "Weighing Two Impacts",
+      "content": "Motion: 'This house would ban gasoline cars.'",
+      "good": "Affirmative: 'Banning gas cars prevents millions of asthma cases in children (scope + magnitude).' This outweighs the Negative's argument about job losses in the oil industry because health impacts affect more people more severely.",
+      "explanation": "The affirmative wins by comparing: health impacts affect children (vulnerable population), involve serious harm (magnitude), and affect millions (scope). The negative's job loss impact, while real, is smaller in both magnitude and scope."
+    },
+    {
+      "type": "practice",
+      "instruction": "Which of the following demonstrates the strongest impact?",
+      "options": [
+        "A policy that might save one person $100",
+        "A policy that will certainly prevent 10,000 hospitalizations per year",
+        "A policy that could potentially create 50 jobs",
+        "A policy that may slightly improve test scores in one school"
+      ],
+      "correct": 1,
+      "feedback": "Certain prevention of 10,000 hospitalizations has high probability (certain), high magnitude (hospitalization), and significant scope (10,000 people).",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "q": "What is the difference between Magnitude and Scope when weighing impacts?",
+      "options": [
+        "They are the same concept",
+        "Magnitude is severity; Scope is how many are affected",
+        "Magnitude is global; Scope is local",
+        "Magnitude is probability; Scope is severity"
+      ],
+      "correct": 1,
+      "explain": "Magnitude asks 'how bad?' — Scope asks 'how many?' Both matter, and a strong argument scores high on both.",
+      "timeLimit": 30
+    },
+    {
+      "type": "true-false",
+      "statement": "When weighing impacts, you should only focus on your own arguments and ignore your opponent's.",
+      "answer": false,
+      "feedback": "Effective impact weighing requires comparison — you must show why YOUR impacts are larger, more likely, or broader than your opponent's.",
+      "timeLimit": 30
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "The three criteria for weighing impacts are {0}, {1}, and Scope.",
+      "answers": [
+        "Magnitude",
+        "Probability"
+      ],
+      "distractors": [
+        "Magnitude",
+        "Probability",
+        "Scope",
+        "Severity",
+        "Likelihood",
+        "Reach"
+      ],
+      "instruction": "Fill in the two missing criteria.",
+      "feedback": "Magnitude (how severe), Probability (how likely), and Scope (how many affected)."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "quiz",
+          "q": "Which impact weighing criterion asks 'How many people does this affect?'",
+          "options": [
+            "Magnitude",
+            "Probability",
+            "Scope",
+            "Severity"
+          ],
+          "correct": 2,
+          "feedback": "Scope measures the breadth of the impact — from local to global."
+        },
+        {
+          "type": "scenario",
+          "scenario": "In a debate about banning single-use plastics, the affirmative argues it will save marine life. The negative argues it will cost jobs in the plastics industry.",
+          "question": "How should the affirmative weigh their impact against the negative's?",
+          "options": [
+            "Ignore the negative's argument and focus only on marine life",
+            "Argue that environmental collapse affects everyone permanently (higher scope + magnitude) while job losses can be managed through retraining",
+            "Concede that both impacts are equal",
+            "Switch to a different argument"
+          ],
+          "correct": 1,
+          "feedback": "The affirmative compares: environmental damage is irreversible and affects all life on Earth (higher magnitude and scope) vs. manageable economic transition."
+        }
+      ]
+    }
+  ]
+}

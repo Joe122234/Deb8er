@@ -1,0 +1,96 @@
+{
+  "title": "Socratic Questioning Traps",
+  "unit": "fallacies",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "The Power of Questions",
+      "content": "Socratic questioning uses a sequence of designed questions to lead your opponent to contradict themselves.",
+      "bullets": [
+        "Closed questions force a Yes/No commitment",
+        "Leading questions suggest the desired answer",
+        "A 3-question trap can dismantle a complex argument"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "Building a Question Trap",
+      "content": "Establish common ground, Apply the principle, Reveal the contradiction.",
+      "bullets": [
+        "Step 1: 'Would you agree that protecting children is a government priority?' (Yes)",
+        "Step 2: 'Would you agree that social media algorithms expose children to harm?' (Yes)",
+        "Step 3: 'Then why oppose regulating those algorithms?' (Contradiction)"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "A 3-Question Trap",
+      "content": "Debate about animal testing:",
+      "good": "Q1: 'Do you agree minimizing unnecessary suffering is a moral obligation?' (Yes)\nQ2: 'Do you agree alternatives exist?' (Yes)\nQ3: 'Then why allow testing when alternatives exist?'",
+      "explanation": "Each question builds on the previous. By Q3, the opponent's position contradicts their own values."
+    },
+    {
+      "type": "practice",
+      "instruction": "Which question type forces a simple 'Yes' or 'No'?",
+      "options": [
+        "Open-ended",
+        "Closed",
+        "Rhetorical",
+        "Hypothetical"
+      ],
+      "correct": 1,
+      "feedback": "Closed questions limit the opponent to Yes or No.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "q": "What is the purpose of the first question in a Socratic trap?",
+      "options": [
+        "To confuse the opponent",
+        "To establish a general principle the opponent will agree with",
+        "To attack directly",
+        "To introduce evidence"
+      ],
+      "correct": 1,
+      "explain": "The first question establishes common ground. Once agreed, apply it to the debate.",
+      "timeLimit": 30
+    },
+    {
+      "type": "true-false",
+      "statement": "Socratic questioning is manipulative and should not be used in fair debate.",
+      "answer": false,
+      "feedback": "It is a legitimate logical tool that exposes inconsistencies in reasoning.",
+      "timeLimit": 30
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "A {0} question forces 'Yes' or 'No' without qualification.",
+      "answers": [
+        "closed"
+      ],
+      "distractors": [
+        "closed",
+        "open",
+        "leading"
+      ],
+      "instruction": "Fill in the type of question.",
+      "feedback": "Closed questions limit response options."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "order",
+          "instruction": "Put the three steps of a Socratic trap in order.",
+          "steps": [
+            "Establish common ground",
+            "Apply the principle",
+            "Reveal the contradiction"
+          ],
+          "feedback": "Agree → Apply → Reveal"
+        }
+      ]
+    }
+  ]
+}

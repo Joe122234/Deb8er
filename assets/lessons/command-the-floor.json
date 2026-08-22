@@ -1,0 +1,107 @@
+{
+  "title": "Command the Floor",
+  "unit": "body-language",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "Purposeful Movement",
+      "content": "How you move on stage is as important as what you say. Nervous pacing distracts the audience. Purposeful movement anchors your arguments physically and keeps the audience engaged.",
+      "bullets": [
+        "Nervous pacing = rocking, shifting weight, walking in circles",
+        "Purposeful movement = stepping deliberately to a new spot for a new idea",
+        "Your physical position should mark transitions in your speech"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "The 3-Point Anchor System",
+      "content": "For a three-argument speech, use three positions on stage: left for argument 1, center for argument 2, right for argument 3. Return to center for conclusion.",
+      "bullets": [
+        "Position 1 (left): Open with your first argument",
+        "Position 2 (center): Transition to your second argument",
+        "Position 3 (right): Deliver your third argument",
+        "Return to center: Conclude and summarize"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "Stage Map",
+      "content": "A stage map for a three-point debate speech:",
+      "good": "[Left] Argument 1: Economic impact\n[Center] Argument 2: Social impact\n[Right] Argument 3: Environmental impact\n[Center] Conclusion",
+      "explanation": "Each movement marks a clear transition. Return to center for closure."
+    },
+    {
+      "type": "practice",
+      "instruction": "When is the best time to physically step to a new position on stage?",
+      "options": [
+        "In the middle of a sentence for emphasis",
+        "When transitioning to a new argument or main point",
+        "As often as possible to show energy",
+        "Never — stand still"
+      ],
+      "correct": 1,
+      "feedback": "Move when you transition to a new point. This signals a content shift visually.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "q": "Why does the 3-Point Anchor System make a speech more memorable?",
+      "options": [
+        "It gives the audience exercise",
+        "It creates a physical map that reinforces your argument structure",
+        "It makes the speech longer",
+        "It distracts from weak arguments"
+      ],
+      "correct": 1,
+      "explain": "Linking each argument to a physical position creates spatial memory for the audience.",
+      "timeLimit": 30
+    },
+    {
+      "type": "true-false",
+      "statement": "Standing perfectly still during your entire speech projects the most confidence.",
+      "answer": false,
+      "feedback": "Complete stillness can look frozen. Controlled movement shows you own the space.",
+      "timeLimit": 30
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "The {0}-Point Anchor System uses different stage positions for each main argument.",
+      "answers": [
+        "3"
+      ],
+      "distractors": [
+        "3",
+        "2",
+        "4",
+        "5"
+      ],
+      "instruction": "Fill in the number of anchor positions.",
+      "feedback": "A three-position system works naturally for three-argument speeches."
+    },
+    {
+      "type": "scenario",
+      "scenario": "You are delivering a 5-minute speech with three main arguments. The room is large, and the audience seems distracted. You notice people checking their phones during your first argument.",
+      "question": "What should you do to regain the audience's attention?",
+      "options": [
+        "Speak louder and faster to push through the content",
+        "Use the 3-Point Anchor System: step to a new position for your second argument, pause, and make eye contact before continuing",
+        "Ignore the distractions and keep going as planned",
+        "Ask the audience to pay attention"
+      ],
+      "correct": 1,
+      "feedback": "Purposeful movement to a new position signals a transition. Combined with a pause and eye contact, it forces the audience to refocus on you."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "true-false",
+          "statement": "Return to center stage for your conclusion after using the 3-Point Anchor System.",
+          "answer": true,
+          "feedback": "Returning to center signals the end of the journey and creates closure."
+        }
+      ]
+    }
+  ]
+}

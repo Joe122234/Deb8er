@@ -1,0 +1,107 @@
+{
+  "title": "Pitch, Pace, and Pauses",
+  "unit": "voice-modulation",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "Why Voice Matters",
+      "content": "Your voice is the instrument that delivers your arguments. Even the best content falls flat if delivered in a monotone. Pitch, pace, and pauses are the three dials you can adjust to keep your audience engaged and emphasize your most important points.",
+      "bullets": [
+        "Monotone delivery makes the best arguments sound boring",
+        "Vocal variety signals confidence and authority",
+        "You can practice these skills in under 5 minutes a day"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "The Three Dials",
+      "content": "Pitch refers to the highness or lowness of your voice — vary it to avoid monotony. Pace is your speaking speed. Pauses are the most underrated tool — a well-placed silence creates anticipation and emphasizes what comes next.",
+      "bullets": [
+        "Pitch: Raise pitch for questions and excitement; lower for serious statements",
+        "Pace: Speak at 150-160 words per minute normally; slow to 100-120 for key points",
+        "Pauses: A 2-second pause before a key claim makes it feel more important"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "The Power of the Pause",
+      "content": "Compare these two deliveries of the same line:",
+      "good": "'The evidence is clear… (2-second pause) …we must act now.' The pause creates anticipation and signals that what follows is important.",
+      "bad": "'The evidence is clear we must act now.' The rushed delivery blends everything together — nothing stands out.",
+      "explanation": "That brief silence before the key message signals to the audience: 'Pay attention — this matters.'"
+    },
+    {
+      "type": "practice",
+      "instruction": "In which part of a speech should you introduce a deliberate pause?",
+      "options": [
+        "At the very beginning, before you say anything",
+        "Right before your most important claim or statistic",
+        "In the middle of every sentence",
+        "Only at the end of the speech"
+      ],
+      "correct": 1,
+      "feedback": "A pause right before a key point signals importance and creates anticipation.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "q": "What is the ideal speaking pace for delivering a key argument in a debate?",
+      "options": [
+        "As fast as possible to fit more content",
+        "150-160 words per minute — the normal conversational pace",
+        "Slower — 100-120 words per minute — to emphasize importance",
+        "It does not matter as long as the content is good"
+      ],
+      "correct": 2,
+      "explain": "Slowing down to 100-120 WPM for key arguments signals to the audience that this part matters.",
+      "timeLimit": 30
+    },
+    {
+      "type": "true-false",
+      "statement": "Speaking in a consistent, even tone throughout your speech projects the most authority.",
+      "answer": false,
+      "feedback": "Consistent monotone does not project authority — it puts the audience to sleep. Vocal variety signals passion, confidence, and control.",
+      "timeLimit": 30
+    },
+    {
+      "type": "fill-blank",
+      "sentence": "A well-placed {0}-second pause before a key claim creates anticipation and emphasis.",
+      "answers": [
+        "2"
+      ],
+      "distractors": [
+        "2",
+        "5",
+        "10",
+        "1"
+      ],
+      "instruction": "Fill in the recommended pause duration in seconds.",
+      "feedback": "A 2-second pause is long enough to create anticipation but short enough to maintain flow."
+    },
+    {
+      "type": "scenario",
+      "scenario": "You are delivering the closing statement in a debate round. The judges have been listening for six hours and look tired. You have one minute to make your final impact statement persuasive and memorable.",
+      "question": "Which vocal approach is most effective for this situation?",
+      "options": [
+        "Speak at a fast, energetic pace to wake the judges up",
+        "Use a flat, even tone to sound professional",
+        "Start at a conversational pace (150 WPM), then slow to 100 WPM with a 2-second pause before your key statistic, and raise your pitch for the final call to action",
+        "Whisper the entire speech to create intimacy"
+      ],
+      "correct": 2,
+      "feedback": "Varying all three dials — pace (slow for emphasis), pause (before the key stat), and pitch (rise for the call to action) — keeps a tired audience engaged and signals what matters most."
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "true-false",
+          "statement": "You should speak at the same pace throughout your entire speech for consistency.",
+          "answer": false,
+          "feedback": "Varying your pace keeps the audience engaged. Slow down for key points, speed up for narrative transitions."
+        }
+      ]
+    }
+  ]
+}

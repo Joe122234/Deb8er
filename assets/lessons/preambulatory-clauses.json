@@ -1,0 +1,110 @@
+{
+  "title": "Preambulatory Clauses",
+  "unit": "draft-resolutions",
+  "xp": 20,
+  "sections": [
+    {
+      "type": "learn",
+      "title": "What Are Preambulatory Clauses?",
+      "content": "Preambulatory clauses form the introduction of a MUN resolution. They cite previous UN actions, define the problem, and establish the legal and moral basis for the action that follows. Each clause begins with a specific phrase ending in a comma.",
+      "bullets": [
+        "They set the context and justification for the resolution",
+        "They cite past UN resolutions, treaties, and charter articles",
+        "Common starters: Recalling, Affirming, Noting, Concerned by, Recognizing"
+      ]
+    },
+    {
+      "type": "learn",
+      "title": "Writing Preambulatory Clauses",
+      "content": "Each preambulatory clause should reference a specific document, event, or principle. The best clauses show deep research and connect the current topic to broader UN frameworks.",
+      "bullets": [
+        "Start with an approved preambulatory phrase like 'Recalling' or 'Expressing concern'",
+        "Reference specific UN resolutions (e.g., A/RES/70/1)",
+        "Establish why the UN must act on this issue"
+      ]
+    },
+    {
+      "type": "example",
+      "title": "Preambulatory Clause Example",
+      "content": "'Recalling the Paris Agreement of 2015, which established a global framework for addressing climate change through nationally determined contributions,'",
+      "explanation": "This clause references a specific agreement, establishes prior UN action, and sets up the need for further action in the operative clauses."
+    },
+    {
+      "type": "practice",
+      "instruction": "Select the correct preambulatory phrase to begin a clause about past UN actions.",
+      "options": [
+        "Decides",
+        "Urges",
+        "Recalling",
+        "Hereby"
+      ],
+      "correct": 2,
+      "feedback": "'Recalling' is a preambulatory phrase used to reference past actions or agreements.",
+      "timeLimit": 30
+    },
+    {
+      "type": "quiz",
+      "q": "How do preambulatory clauses end grammatically?",
+      "options": [
+        "With a period",
+        "With a semicolon",
+        "With a comma",
+        "With 'therefore'"
+      ],
+      "correct": 2,
+      "explain": "Each preambulatory clause ends with a comma (or semicolon in some committees) to show that more context follows.",
+      "timeLimit": 30
+    },
+    {
+      "type": "match",
+      "instruction": "Match each preambulatory phrase to its use.",
+      "pairs": [
+        {
+          "id": "re",
+          "left": "Recalling",
+          "right": "Reference past resolutions or events"
+        },
+        {
+          "id": "af",
+          "left": "Affirming",
+          "right": "Reinforce commitment to principles"
+        },
+        {
+          "id": "no",
+          "left": "Noting",
+          "right": "Acknowledge a fact or report"
+        },
+        {
+          "id": "co",
+          "left": "Concerned by",
+          "right": "Express worry about a situation"
+        }
+      ],
+      "feedback": "Each phrase signals a different type of justification."
+    },
+    {
+      "type": "true-false",
+      "statement": "Preambulatory clauses contain the actionable solutions of a resolution.",
+      "answer": false,
+      "feedback": "Preambulatory clauses set context. The actionable solutions go in operative clauses.",
+      "timeLimit": 30
+    },
+    {
+      "type": "recap",
+      "questions": [
+        {
+          "type": "quiz",
+          "q": "What is the purpose of preambulatory clauses?",
+          "options": [
+            "To propose specific actions",
+            "To establish the justification and context for the resolution",
+            "To list the sponsors",
+            "To summarize the debate"
+          ],
+          "correct": 1,
+          "feedback": "Preambulatory clauses set the stage — they explain WHY action is needed."
+        }
+      ]
+    }
+  ]
+}
