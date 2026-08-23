@@ -236,6 +236,7 @@ document.getElementById("signup-form").addEventListener("submit", async e => {
 
   try {
     // Sign in anonymously (no permanent account yet)
+    signingUp = true;
     const anonCred = await signInAnonymously(auth);
     const anonUid = anonCred.user.uid;
 

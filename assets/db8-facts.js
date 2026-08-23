@@ -44,7 +44,7 @@
 
   var team = [
     { name: "Sadhana S", nickname: "Sana", role: "CEO & Co-Founder", country: "India" },
-    { name: "Avyukta Jaggi", nickname: "Avu", role: "CXO & Co-Founder", country: "India" },
+    { name: "Avyukta Jaggi", nickname: "Avu", role: "Founder & Co-Founder", country: "India" },
     { name: "Soe Aung Myint Myat", nickname: "Henry", role: "CTO & Co-Founder", country: "Myanmar" }
   ];
 

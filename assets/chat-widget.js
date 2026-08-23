@@ -157,7 +157,7 @@
   fab.type = "button";
   fab.setAttribute("aria-label", "Open Deb8er Assistant");
   fab.innerHTML =
-    '<svg class="db8-fab-chat" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.02 2 11c0 2.6 1.21 4.94 3.16 6.58-.06 1.06-.4 2.57-1.66 3.9 0 0 2.19-.35 3.74-1.26.83.25 1.73.39 2.66.39H11c.04 1.1.92 2 2.02 2h3.48l.23 2 1.27-1.73c.98-1.34 2-3.19 2-5.1V11c0-4.98-4.48-9-10-9z"/></svg>' +
+    '<i class="fas fa-comment db8-fab-chat" style="font-size:24px;color:#fff;"></i>' +
     '<svg class="db8-fab-close" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
 
   root.appendChild(fab);

@@ -1009,6 +1009,23 @@ window.saveProfile = async function() {
       .split(" ").map(w => w[0]).join("").toUpperCase().slice(0, 2);
     document.getElementById("profile-avatar").textContent = initials;
 
+    // Update localStorage cache so navbar picks up new name on other pages
+    try {
+      const PROFILE_CACHE_KEY = 'deb8er_profile_' + currentUID;
+      const cached = JSON.parse(localStorage.getItem(PROFILE_CACHE_KEY) || '{}');
+      Object.assign(cached, data);
+      localStorage.setItem(PROFILE_CACHE_KEY, JSON.stringify(cached));
+    } catch (_) {}
+
+    // Sync name change to leaderboard
+    try {
+      const dSnap = await getDoc(doc(db, "users", currentUID));
+      if (dSnap.exists()) syncLeaderboard(db, currentUID, dSnap.data()).catch(() => {});
+    } catch (_) {}
+
+    // Notify navbar to re-render on the same page
+    window.dispatchEvent(new CustomEvent('deb8er-profile-updated', { detail: data }));
+
     msgEl.textContent  = "Profile saved!";
     msgEl.className    = "auth-message success";
   } catch (err) {

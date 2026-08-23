@@ -42,10 +42,8 @@
   box-shadow: 0 12px 30px rgba(58, 190, 255, 0.5), 0 6px 16px rgba(0, 0, 0, 0.4);
 }
 #db8-chat-fab .db8-fab-chat {
-  width: 30px;
-  height: 30px;
-  fill: #fff;
   display: block;
+  line-height: 1;
 }
 #db8-chat-fab .db8-fab-close {
   width: 28px;
