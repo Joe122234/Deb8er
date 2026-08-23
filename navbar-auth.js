@@ -290,6 +290,59 @@ async function ensureDb() {
         });
       }
     });
+
+    // Listen for profile updates from dashboard to re-render name without page reload
+    window.addEventListener('deb8er-profile-updated', () => {
+      try {
+        const user = a.currentUser;
+        if (!user || !navItem) return;
+        const PROFILE_CACHE_KEY = 'deb8er_profile_' + user.uid;
+        const cached = JSON.parse(localStorage.getItem(PROFILE_CACHE_KEY) || '{}');
+        const name = cached.nickName || cached.fullName || "My Account";
+        const email = cached.email || user.email || "";
+
+        navItem.innerHTML = `
+          <div class="nav-auth-wrap">
+            <a href="#" class="nav-account-btn" id="nav-account-toggle">
+              <i class="fas fa-user"></i> ${esc(name.split(" ")[0])}
+            </a>
+            <div class="nav-dropdown-menu">
+              <div class="nav-dropdown-header">
+                <span class="nav-dropdown-name">${esc(name)}</span>
+                <span class="nav-dropdown-email">${esc(email)}</span>
+              </div>
+              <div class="nav-dropdown-divider"></div>
+              <a href="dashboard.html" class="nav-dropdown-item">
+                <i class="fas fa-user"></i> My Account
+              </a>
+              <a href="#" class="nav-dropdown-item sign-out" id="nav-sign-out">
+                <i class="fas fa-sign-out-alt"></i> Sign Out
+              </a>
+            </div>
+          </div>
+        `;
+
+        const signOutBtn = document.getElementById("nav-sign-out");
+        if (signOutBtn) {
+          signOutBtn.addEventListener("click", async (e) => {
+            e.preventDefault();
+            try { localStorage.removeItem(PROFILE_CACHE_KEY); } catch (_) {}
+            await signOut(a);
+            window.location.href = "index.html";
+          });
+        }
+        const toggleBtn = document.getElementById("nav-account-toggle");
+        if (toggleBtn) {
+          toggleBtn.addEventListener("click", (e) => {
+            if (window.innerWidth <= 768) {
+              e.preventDefault();
+              const menu = navItem.querySelector(".nav-dropdown-menu");
+              if (menu) menu.classList.toggle("show");
+            }
+          });
+        }
+      } catch (_) {}
+    });
   } catch (e) {
     console.warn("Firebase auth init failed (nav stays as Sign Up):", e);
   }
