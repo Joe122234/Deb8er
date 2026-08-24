@@ -110,6 +110,19 @@ function getSectionSummary(sections) {
   return parts.join('');
 }
 
+const DAILY_LESSON_LIMIT = 3;
+
+function getLocalToday() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
+function getDailyLessonsLeft() {
+  const today = getLocalToday();
+  if (state.lastLessonDate !== today) return DAILY_LESSON_LIMIT;
+  return Math.max(0, DAILY_LESSON_LIMIT - (state.dailyLessonsCompleted || 0));
+}
+
 // ─── Curriculum loaded from JSON files ───
 let UNITS = [];
 let ALL_LESSON_IDS = [];
@@ -118,6 +131,7 @@ let LESSONS = {};
 let loadedUnits = new Set();
 let loadingUnits = new Set();
 let completedLessonSet = new Set();
+let sectionAnswers = {};
 
 async function loadCurriculum() {
   try {
@@ -276,6 +290,10 @@ async function loadState() {
       state.timedQuizzes = state.timedQuizzes || [];
       state.quests = getOrGenerateQuests(state);
       completedLessonSet = new Set(state.completedLessons);
+      if (state.lastLessonDate !== today) {
+        state.dailyLessonsCompleted = 0;
+        state.lastLessonDate = today;
+      }
       userConferences = d.conferences || [];
       userAwards = d.awards || [];
       userPointHistory = d.pointHistory || [];
@@ -303,7 +321,10 @@ function defaultState() {
     achievements: [],
     dailyLessonDone: false,
     quests: null,
-    activityPoints: 0
+    activityPoints: 0,
+    currentLesson: null,
+    dailyLessonsCompleted: 0,
+    lastLessonDate: null
   };
   base.quests = getOrGenerateQuests(base);
   return base;
@@ -312,7 +333,7 @@ function defaultState() {
 async function saveState(pointHistoryEntries = [], extra = {}) {
   try {
     const data = {
-      learning: state,
+      learning: { ...state, currentLesson: state.currentLesson || null },
       activityPoints: state.activityPoints,
       ...extra
     };
@@ -397,12 +418,15 @@ function getPerfectScoreAchievement(lessonId) {
 }
 
 function updateStreak() {
-  const today = new Date().toISOString().split('T')[0];
+  const now = new Date();
+  const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
   if (state.lastActivity === today) {
     state.dailyLessonDone = true;
     return;
   }
-  const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0];
+  const yesterdayDate = new Date(now);
+  yesterdayDate.setDate(yesterdayDate.getDate() - 1);
+  const yesterday = `${yesterdayDate.getFullYear()}-${String(yesterdayDate.getMonth() + 1).padStart(2, '0')}-${String(yesterdayDate.getDate()).padStart(2, '0')}`;
   if (state.lastActivity === yesterday) {
     state.streak = (state.streak || 0) + 1;
   } else if (state.lastActivity && state.lastActivity !== today) {
@@ -470,7 +494,14 @@ function renderTopSection() {
 
   // Stats cards
   document.getElementById('sgStreak').textContent = streak;
-  document.getElementById('sgLessons').textContent = `${completed}/${total}`;
+  const dailyCompleted = state.dailyLessonsCompleted || 0;
+  const dailyEl = document.getElementById('sgDaily');
+  if (dailyEl) {
+    dailyEl.textContent = `${Math.min(dailyCompleted, DAILY_LESSON_LIMIT)}/${DAILY_LESSON_LIMIT}`;
+    if (dailyCompleted >= DAILY_LESSON_LIMIT) {
+      dailyEl.style.color = '#34D399';
+    }
+  }
 
   const gemsToday = computeGemsToday(userPointHistory);
   const gemsEl = document.getElementById('sgTodayGems');
@@ -562,35 +593,46 @@ function renderCourse(firstLoad) {
 
 function renderUnitLessons(chain, unit) {
   let html = '';
+  const dailyLeft = getDailyLessonsLeft();
   for (const lessonId of unit.lessonIds) {
     const lesson = LESSONS[lessonId];
     const completed = isLessonCompleted(lessonId);
     const unlocked = isLessonUnlocked(lessonId);
     const isCurrent = !completed && unlocked;
+    const dailyLimited = isCurrent && dailyLeft <= 0;
     const score = state.lessonScores[lessonId];
     const stepHtml = lesson ? getSectionSummary(lesson.sections) : '';
     const durationText = lesson ? getLessonDuration(lesson.sections).text : '';
 
     const cls = 'lesson-row'
       + (completed ? ' completed' : '')
-      + (isCurrent && !completed ? ' active' : '')
+      + (isCurrent && !completed && !dailyLimited ? ' active' : '')
+      + (dailyLimited ? ' daily-limited' : '')
       + (!unlocked ? ' locked' : '');
 
     const dotHtml = completed
-      ? '<i class="fas fa-check" style="font-size:0.45rem;"></i>'
-      : !unlocked
-        ? '<i class="fas fa-lock" style="font-size:0.5rem;"></i>'
-        : isCurrent && !completed
-          ? '<i class="fas fa-play" style="font-size:0.45rem;"></i>'
-          : '';
+      ? '<i class="fas fa-redo" style="font-size:0.4rem;"></i>'
+      : dailyLimited
+        ? '<i class="fas fa-clock" style="font-size:0.4rem;"></i>'
+        : !unlocked
+          ? '<i class="fas fa-lock" style="font-size:0.5rem;"></i>'
+          : isCurrent && !completed
+            ? '<i class="fas fa-play" style="font-size:0.45rem;"></i>'
+            : '';
 
     const metaHtml = !unlocked
       ? '<span>Locked</span>'
-      : (completed && score)
-        ? `<span class="lesson-score">${score.correct}/${score.total}</span>`
-        : (lesson ? `<span>${durationText}</span>` : '<span>Loading...</span>');
+      : dailyLimited
+        ? '<span class="lesson-daily-limit">Come back tomorrow</span>'
+        : (completed && score)
+          ? `<span class="lesson-score">${score.correct}/${score.total}</span>`
+          : (lesson ? `<span>${durationText}</span>` : '<span>Loading...</span>');
 
-    const xpHtml = lesson && unlocked && !completed ? `<span class="lesson-xp">+${lesson.xp} <span class="gem-icon gem-icon--sm"></span></span>` : '';
+    const hasProgress = !completed && state.currentLesson && state.currentLesson.id === lessonId;
+    const resumeHtml = hasProgress ? '<span class="lesson-resume-tag">Resume</span>' : '';
+    const reviewHtml = completed ? '<span class="lesson-review-tag">Review</span>' : '';
+
+    const xpHtml = lesson && unlocked && !completed && !dailyLimited ? `<span class="lesson-xp">+${lesson.xp} <span class="gem-icon gem-icon--sm"></span></span>` : '';
 
     html += `
       <div class="${cls}" data-lesson-id="${lessonId}">
@@ -599,6 +641,8 @@ function renderUnitLessons(chain, unit) {
           <div class="lesson-name">${lesson ? lesson.title : lessonId}</div>
           <div class="lesson-meta">
             ${metaHtml}
+            ${resumeHtml}
+            ${reviewHtml}
             ${stepHtml ? `<span class="lesson-steps">${stepHtml}</span>` : ''}
             ${xpHtml}
           </div>
@@ -781,6 +825,11 @@ function getLessonDuration(sections) {
    ═══════════════════════════════════════════════ */
 
 async function openLesson(lessonId) {
+  if (!completedLessonSet.has(lessonId) && getDailyLessonsLeft() <= 0) {
+    showToast('Daily limit reached! Come back tomorrow for more lessons.', 'xp');
+    return;
+  }
+
   let lesson = LESSONS[lessonId];
 
   if (!lesson) {
@@ -812,6 +861,21 @@ async function openLesson(lessonId) {
   quizStreak = 0;
   practiceCorrect = 0;
   answerLocked = false;
+  sectionAnswers = {};
+
+  if (completedLessonSet.has(lessonId) && state.currentLesson && state.currentLesson.id === lessonId) {
+    clearLessonProgress();
+  }
+
+  const saved = state.currentLesson;
+  if (saved && saved.id === lessonId && saved.sectionIndex > 0) {
+    sectionAnswers = saved.answers || {};
+    quizCorrect = saved.quizCorrect || 0;
+    quizTotal = saved.quizTotal || 0;
+    quizStreak = saved.quizStreak || 0;
+    practiceCorrect = saved.practiceCorrect || 0;
+    fastForwardToSection(saved.sectionIndex);
+  }
 
   document.getElementById('modalLessonTitle').textContent = lesson.title;
   const unit = UNITS.find(u => u.id === lesson.unit);
@@ -1113,6 +1177,7 @@ function checkFillBlank(slots, correct, section, isLast) {
   answerLocked = true;
   const userAnswers = Array.from(slots).map(s => s.textContent.trim().toLowerCase());
   const isCorrect = userAnswers.every((a, i) => a === correct[i].toLowerCase());
+  recordSectionAnswer(activeSectionIndex, 'fill-blank', { filled: userAnswers, isCorrect });
 
   slots.forEach((s, i) => {
     s.classList.add(userAnswers[i] === correct[i].toLowerCase() ? 'correct' : 'wrong');
@@ -1177,6 +1242,7 @@ function renderMatchPairs(section, body, isLast) {
         if (matched >= total) {
           answerLocked = true;
           recordAnswer(true);
+          recordSectionAnswer(activeSectionIndex, 'match', { isCorrect: true });
           document.getElementById('matchFeedback').innerHTML =
             `<div class="p-feedback correct"><i class="fas fa-check-circle"></i> ${section.feedback || 'All matched correctly!'}</div>`;
           showContinue(isLast);
@@ -1223,6 +1289,7 @@ function renderOrderSteps(section, body, isLast) {
     if (user.every((t, i) => t === correct[i])) {
       answerLocked = true;
       recordAnswer(true);
+      recordSectionAnswer(activeSectionIndex, 'order', { isCorrect: true });
       Array.from(list.children).forEach(el => {
         el.classList.add('correct');
         el.draggable = false;
@@ -1308,6 +1375,7 @@ function renderSpotMistake(section, body, isLast) {
       if (answerLocked) return;
       answerLocked = true;
       const isCorrect = parseInt(btn.dataset.idx) === section.correct;
+      recordSectionAnswer(activeSectionIndex, 'spot-mistake', { selected: parseInt(btn.dataset.idx), isCorrect });
       body.querySelectorAll('.spot-opt').forEach((b, i) => {
         b.disabled = true;
         if (i === section.correct) b.classList.add('correct');
@@ -1346,6 +1414,7 @@ function renderHighlight(section, body, isLast) {
       body.querySelectorAll('.hl-segment').forEach(s => s.style.pointerEvents = 'none');
       if (isCorrect) {
         recordAnswer(true);
+        recordSectionAnswer(activeSectionIndex, 'highlight', { selected: el.dataset.idx, isCorrect: true });
         el.classList.add('hl-correct');
         document.getElementById('highlightFeedback').innerHTML =
           `<div class="p-feedback correct"><i class="fas fa-check-circle"></i> ${section.feedback || 'Correct!'}</div>`;
@@ -1444,6 +1513,7 @@ function checkBuildComplete(body, section, isLast) {
 
   const allCorrect = correct === (section.cards || []).length;
   recordAnswer(allCorrect);
+  recordSectionAnswer(activeSectionIndex, 'build-argument', { isCorrect: allCorrect });
   document.getElementById('buildFeedback').innerHTML =
     `<div class="p-feedback ${allCorrect ? 'correct' : 'wrong'}"><i class="fas ${allCorrect ? 'fa-check-circle' : 'fa-times-circle'}"></i> ${section.feedback || (allCorrect ? 'Perfect!' : 'Some are in the wrong category.')}</div>`;
   showContinue(isLast);
@@ -1501,6 +1571,7 @@ function renderTrueFalse(section, body, isLast) {
       answerLocked = true;
       clearInterval(window.__quizTimer);
       const isCorrect = btn.dataset.answer === String(section.answer);
+      recordSectionAnswer(activeSectionIndex, 'true-false', { selected: btn.dataset.answer === 'true', isCorrect });
       const hadTimer = timeLimit > 0;
       if (hadTimer) {
         if (!state.timedQuizzes) state.timedQuizzes = [];
@@ -1541,6 +1612,7 @@ function renderScenario(section, body, isLast) {
       if (answerLocked) return;
       answerLocked = true;
       const isCorrect = parseInt(btn.dataset.idx) === section.correct;
+      recordSectionAnswer(activeSectionIndex, 'scenario', { selected: parseInt(btn.dataset.idx), isCorrect });
       body.querySelectorAll('.scenario-opt').forEach((b, i) => {
         b.disabled = true;
         if (i === section.correct) b.classList.add('correct');
@@ -1724,6 +1796,7 @@ function handleRecapAnswer(isCorrect, body, section, isLast) {
   answerLocked = true;
   recapCorrect += isCorrect ? 1 : 0;
   recordAnswer(isCorrect);
+  recordSectionAnswer(activeSectionIndex, 'recap', { recapIndex, isCorrect });
 
   showMascot();
   if (isCorrect) {
@@ -1756,6 +1829,60 @@ function recordAnswer(isCorrect) {
   if (isCorrect) quizCorrect++;
 }
 
+function recordSectionAnswer(sectionIndex, type, answerData) {
+  sectionAnswers[sectionIndex] = { type, ...answerData };
+}
+
+function saveLessonProgress() {
+  if (!activeLesson) return;
+  state.currentLesson = {
+    id: activeLesson,
+    sectionIndex: activeSectionIndex,
+    quizCorrect,
+    quizTotal,
+    quizStreak,
+    practiceCorrect,
+    answers: { ...sectionAnswers }
+  };
+  saveState();
+}
+
+function clearLessonProgress() {
+  state.currentLesson = null;
+  sectionAnswers = {};
+}
+
+function fastForwardToSection(targetIndex) {
+  const lesson = LESSONS[activeLesson];
+  if (!lesson) return;
+  while (activeSectionIndex < targetIndex) {
+    const section = lesson.sections[activeSectionIndex];
+    const saved = sectionAnswers[activeSectionIndex];
+    if (isExerciseType(section.type) && saved) {
+      quizTotal++;
+      if (section.type === 'quiz' || section.type === 'practice' ||
+          section.type === 'true-false' || section.type === 'scenario' ||
+          section.type === 'spot-mistake' || section.type === 'highlight') {
+        const isCorrect = saved.selected === section.correct;
+        if (isCorrect) quizCorrect++;
+        if (section.type === 'practice') {
+          if (isCorrect) practiceCorrect++;
+        }
+        if (section.timeLimit) {
+          state.timedQuizzes = state.timedQuizzes || [];
+          state.timedQuizzes.push({ lessonId: activeLesson, correct: isCorrect ? 1 : 0, total: 1, expired: false });
+        }
+      } else if (section.type === 'fill-blank' || section.type === 'match' ||
+                 section.type === 'order' || section.type === 'build-argument') {
+        if (saved.isCorrect) quizCorrect++;
+      }
+    } else if (section.type === 'recap') {
+      /* recap sections are skipped on resume — too complex to replay multi-question recap */
+    }
+    activeSectionIndex++;
+  }
+}
+
 function showRetry() {
   const nextBtn = document.getElementById('btnNext');
   nextBtn.style.display = 'inline-flex';
@@ -1784,6 +1911,7 @@ function handlePractice(idx, section) {
   clearInterval(window.__quizTimer);
 
   const isCorrect = idx === section.correct;
+  recordSectionAnswer(activeSectionIndex, 'practice', { selected: idx, isCorrect });
   const hadTimer = (section.timeLimit || 0) > 0;
   if (hadTimer) {
     if (!state.timedQuizzes) state.timedQuizzes = [];
@@ -1830,6 +1958,7 @@ function handleQuizTimeout(section) {
   if (answerLocked) return;
   answerLocked = true;
   clearInterval(window.__quizTimer);
+  recordSectionAnswer(activeSectionIndex, 'quiz', { selected: -1, isCorrect: false });
   if (!state.timedQuizzes) state.timedQuizzes = [];
   state.timedQuizzes.push({ lessonId: activeLesson, correct: 0, total: 1, expired: true });
   const opts = document.querySelectorAll('.q-opt');
@@ -1847,6 +1976,7 @@ function handlePracticeTimeout(section) {
   if (answerLocked) return;
   answerLocked = true;
   clearInterval(window.__quizTimer);
+  recordSectionAnswer(activeSectionIndex, 'practice', { selected: -1, isCorrect: false });
   if (!state.timedQuizzes) state.timedQuizzes = [];
   state.timedQuizzes.push({ lessonId: activeLesson, correct: 0, total: 1, expired: true });
   const opts = document.querySelectorAll('.p-opt');
@@ -1865,6 +1995,7 @@ function handleTrueFalseTimeout(section) {
   if (answerLocked) return;
   answerLocked = true;
   clearInterval(window.__quizTimer);
+  recordSectionAnswer(activeSectionIndex, 'true-false', { selected: null, isCorrect: false });
   if (!state.timedQuizzes) state.timedQuizzes = [];
   state.timedQuizzes.push({ lessonId: activeLesson, correct: 0, total: 1, expired: true });
   document.getElementById('tfFeedback').innerHTML =
@@ -1882,6 +2013,7 @@ function handleQuiz(idx, section) {
   clearInterval(window.__quizTimer);
 
   const isCorrect = idx === section.correct;
+  recordSectionAnswer(activeSectionIndex, 'quiz', { selected: idx, isCorrect });
   const hadTimer = (section.timeLimit || 0) > 0;
   if (hadTimer) {
     if (!state.timedQuizzes) state.timedQuizzes = [];
@@ -1960,6 +2092,8 @@ function renderDots() {
 async function showCompletion() {
   const lesson = LESSONS[activeLesson];
   if (!lesson) return;
+  const savedAnswers = { ...sectionAnswers };
+  clearLessonProgress();
   showMascot();
 
   const totalQ = quizTotal;
@@ -1972,6 +2106,9 @@ async function showCompletion() {
     state.totalXP = (state.totalXP || 0) + xpEarned;
     state.completedLessons.push(activeLesson);
     completedLessonSet.add(activeLesson);
+    const today = getLocalToday();
+    state.dailyLessonsCompleted = (state.dailyLessonsCompleted || 0) + 1;
+    state.lastLessonDate = today;
     state.lessonScores[activeLesson] = { correct: quizCorrect, total: totalQ, xp: xpEarned };
     state.todayXP = (state.todayXP || 0) + xpEarned;
     const ptsEarned = ACTIVITY_POINTS.lesson + ACTIVITY_POINTS.quiz;
@@ -2015,49 +2152,117 @@ async function showCompletion() {
       }, 600);
     }
   } else {
-    const prevScore = state.lessonScores[activeLesson];
-    if (!prevScore || quizCorrect > prevScore.correct) {
-      const xpDiff = Math.round((quizCorrect / totalQ) * lesson.xp) - (prevScore ? prevScore.xp : 0);
-      if (xpDiff > 0) {
-        state.totalXP = (state.totalXP || 0) + xpDiff;
-        state.lessonScores[activeLesson] = { correct: quizCorrect, total: totalQ, xp: xpEarned };
-        xpAwarded = xpDiff;
-        await saveState();
-        showToast(`+${xpDiff} <span class="gem-icon gem-icon--sm"></span> (improved)`, 'xp');
-        fireConfetti();
-      } else {
-        xpAwarded = 0;
-      }
-    } else {
-      xpAwarded = 0;
-    }
+    xpAwarded = 0;
   }
 
   const totalSections = (LESSONS[activeLesson]?.sections || []).length;
   const totalCorrect = quizCorrect + practiceCorrect;
   const wasPerfect = quizTotal > 0 && quizCorrect === quizTotal;
 
-  updateQuestProgress('lesson-completed', 0);
-  updateQuestProgress('xp-earned', xpAwarded);
-  if (state.streak >= 1) updateQuestProgress('maintain-streak', 1);
-  updateQuestProgress('streak-3-lessons', 1);
-  if (wasPerfect) updateQuestProgress('perfect-quiz', 0);
-  if (wasPerfect) updateQuestProgress('perfect-lesson', 0);
-  if (totalSections >= 6) updateQuestProgress('section-count-6', 0);
-  if (totalSections >= 8) updateQuestProgress('three-sections', 0);
-  if (totalSections >= 10) updateQuestProgress('section-count-10', 0);
-  if (!wasAlreadyDone) updateQuestProgress('first-completion', 0);
-  updateQuestProgress('two-practices', practiceCorrect);
-  updateQuestProgress('six-practices', practiceCorrect);
-  updateQuestProgress('correct-6', totalCorrect);
-  updateQuestProgress('correct-15', totalCorrect);
-  updateQuestProgress('correct-25', totalCorrect);
-  await saveState();
+  if (!wasAlreadyDone) {
+    updateQuestProgress('lesson-completed', 0);
+    updateQuestProgress('xp-earned', xpAwarded);
+    if (state.streak >= 1) updateQuestProgress('maintain-streak', 1);
+    updateQuestProgress('streak-3-lessons', 1);
+    if (wasPerfect) updateQuestProgress('perfect-quiz', 0);
+    if (wasPerfect) updateQuestProgress('perfect-lesson', 0);
+    if (totalSections >= 6) updateQuestProgress('section-count-6', 0);
+    if (totalSections >= 8) updateQuestProgress('three-sections', 0);
+    if (totalSections >= 10) updateQuestProgress('section-count-10', 0);
+    updateQuestProgress('first-completion', 0);
+    updateQuestProgress('two-practices', practiceCorrect);
+    updateQuestProgress('six-practices', practiceCorrect);
+    updateQuestProgress('correct-6', totalCorrect);
+    updateQuestProgress('correct-15', totalCorrect);
+    updateQuestProgress('correct-25', totalCorrect);
+    await saveState();
+  }
 
-  setTimeout(() => renderCompletionScreen(xpAwarded, quizCorrect, totalQ, newAchievements, wasAlreadyDone), 0);
+  setTimeout(() => renderCompletionScreen(xpAwarded, quizCorrect, totalQ, newAchievements, wasAlreadyDone, savedAnswers), 0);
 }
 
-function renderCompletionScreen(xpEarned, correct, total, newAchievements, wasRepeat) {
+function buildWrongAnswers(lesson, answers) {
+  if (!lesson || !answers) return [];
+  const wrong = [];
+  lesson.sections.forEach((section, i) => {
+    const answer = answers[i];
+    if (!answer || answer.isCorrect) return;
+    if (!EXERCISE_TYPES.includes(section.type) && section.type !== 'recap') return;
+    let questionText = '';
+    let userAnswerText = '';
+    let correctAnswerText = '';
+    let explanation = '';
+    const options = section.options || [];
+    switch (section.type) {
+      case 'quiz':
+        questionText = section.q || '';
+        userAnswerText = options[answer.selected] || `Option ${answer.selected + 1}`;
+        correctAnswerText = options[section.correct] || `Option ${section.correct + 1}`;
+        explanation = section.explain || section.feedback || '';
+        break;
+      case 'practice':
+        questionText = section.instruction || section.q || '';
+        userAnswerText = options[answer.selected] || `Option ${answer.selected + 1}`;
+        correctAnswerText = options[section.correct] || `Option ${section.correct + 1}`;
+        explanation = section.feedback || '';
+        break;
+      case 'true-false':
+        questionText = section.statement || '';
+        userAnswerText = answer.selected === true ? 'True' : answer.selected === false ? 'False' : 'Timed out';
+        correctAnswerText = section.answer ? 'True' : 'False';
+        explanation = section.feedback || '';
+        break;
+      case 'scenario':
+        questionText = (section.scenario || '') + ' ' + (section.question || '');
+        userAnswerText = options[answer.selected] || `Option ${answer.selected + 1}`;
+        correctAnswerText = options[section.correct] || `Option ${section.correct + 1}`;
+        explanation = section.feedback || '';
+        break;
+      case 'spot-mistake':
+        questionText = section.instruction || 'Spot the mistake:';
+        userAnswerText = options[answer.selected] || `Option ${answer.selected + 1}`;
+        correctAnswerText = options[section.correct] || `Option ${section.correct + 1}`;
+        explanation = section.feedback || '';
+        break;
+      case 'highlight':
+        questionText = section.instruction || 'Highlight the correct part:';
+        userAnswerText = 'Wrong segment selected';
+        correctAnswerText = 'Correct segment';
+        explanation = section.feedback || '';
+        break;
+      case 'fill-blank':
+        questionText = section.sentence || section.instruction || '';
+        userAnswerText = (answer.filled || []).join(', ');
+        correctAnswerText = (section.answers || []).join(', ');
+        explanation = section.feedback || '';
+        break;
+      case 'match':
+        questionText = 'Match the pairs';
+        userAnswerText = 'Some pairs were incorrect';
+        correctAnswerText = 'All pairs matched correctly';
+        explanation = section.feedback || '';
+        break;
+      case 'order':
+        questionText = 'Put the steps in order';
+        userAnswerText = 'Incorrect order';
+        correctAnswerText = 'Correct order shown in lesson';
+        explanation = section.feedback || '';
+        break;
+      case 'build-argument':
+        questionText = 'Build the argument';
+        userAnswerText = 'Some cards in wrong category';
+        correctAnswerText = 'All cards in correct categories';
+        explanation = section.feedback || '';
+        break;
+      default:
+        return;
+    }
+    wrong.push({ questionText, userAnswerText, correctAnswerText, explanation, type: section.type });
+  });
+  return wrong;
+}
+
+function renderCompletionScreen(xpEarned, correct, total, newAchievements, wasRepeat, savedAnswers) {
   const pct = total > 0 ? Math.round(correct / total * 100) : 100;
   const lesson = LESSONS[activeLesson];
 
@@ -2125,7 +2330,7 @@ function renderCompletionScreen(xpEarned, correct, total, newAchievements, wasRe
         ` : '<div class="comp-score-num">&#10003;<div class="comp-score-label">completed</div></div>'}
       </div>
 
-      ${xpEarned > 0 ? `
+      ${!wasRepeat && xpEarned > 0 ? `
         <div class="comp-xp-display" id="comp-xp-display">
           <span class="comp-xp-num" id="comp-xp-num">0</span>
           <span class="comp-xp-label">XP earned</span>
@@ -2134,8 +2339,47 @@ function renderCompletionScreen(xpEarned, correct, total, newAchievements, wasRe
 
       ${updatesHtml ? `<div class="comp-chips">${updatesHtml}</div>` : ''}
 
+      ${(() => {
+        const wrongAnswers = buildWrongAnswers(lesson, savedAnswers);
+        if (wrongAnswers.length === 0) return '';
+        return `
+        <div class="review-section">
+          <button class="review-toggle" id="reviewToggle">
+            <i class="fas fa-clipboard-list"></i> Review Wrong Answers (${wrongAnswers.length})
+            <i class="fas fa-chevron-down review-chevron"></i>
+          </button>
+          <div class="review-list" id="reviewList" style="display:none;">
+            ${wrongAnswers.map((w, i) => `
+              <div class="review-card">
+                <div class="review-card-header">
+                  <span class="review-type-badge">${esc(w.type.replace('-', ' '))}</span>
+                  <span class="review-q-num">Q${i + 1}</span>
+                </div>
+                <div class="review-question">${esc(w.questionText)}</div>
+                <div class="review-answers">
+                  <div class="review-answer-row review-user-wrong">
+                    <i class="fas fa-times-circle"></i>
+                    <span>Your answer: <strong>${esc(w.userAnswerText)}</strong></span>
+                  </div>
+                  <div class="review-answer-row review-correct">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Correct: <strong>${esc(w.correctAnswerText)}</strong></span>
+                  </div>
+                </div>
+                ${w.explanation ? `<div class="review-explanation"><i class="fas fa-lightbulb"></i> ${esc(w.explanation)}</div>` : ''}
+              </div>
+            `).join('')}
+          </div>
+        </div>`;
+      })()}
+
       <div class="comp-actions">
         ${hasNext && lesson && !wasRepeat ? `<button class="btn-next-lesson" id="btnNextLesson"><i class="fas fa-arrow-right"></i> Next Lesson</button>` : ''}
+        ${(() => {
+          const wrongAnswers = buildWrongAnswers(lesson, savedAnswers);
+          if (wrongAnswers.length === 0) return '';
+          return `<button class="btn-review-page" id="btnReviewPage"><i class="fas fa-clipboard-list"></i> Full Review</button>`;
+        })()}
         <button class="btn-continue" id="btnContinue">${hasNext ? 'Back to Course' : 'Finish'}</button>
       </div>
     </div>
@@ -2167,6 +2411,37 @@ function renderCompletionScreen(xpEarned, correct, total, newAchievements, wasRe
         closeModal();
         setTimeout(() => openLesson(nextId), 300);
       }
+    });
+  }
+
+  // Review toggle
+  const reviewToggle = document.getElementById('reviewToggle');
+  const reviewList = document.getElementById('reviewList');
+  if (reviewToggle && reviewList) {
+    reviewToggle.addEventListener('click', () => {
+      const isOpen = reviewList.style.display !== 'none';
+      reviewList.style.display = isOpen ? 'none' : 'block';
+      const chevron = reviewToggle.querySelector('.review-chevron');
+      if (chevron) chevron.style.transform = isOpen ? '' : 'rotate(180deg)';
+    });
+  }
+
+  // Full Review button — save wrong answers to localStorage then navigate
+  const reviewPageBtn = document.getElementById('btnReviewPage');
+  if (reviewPageBtn) {
+    reviewPageBtn.addEventListener('click', () => {
+      try {
+        const wrongAnswers = buildWrongAnswers(lesson, savedAnswers);
+        localStorage.setItem('deb8er_lesson_review', JSON.stringify({
+          lessonTitle: lesson.title,
+          correct,
+          total,
+          xpEarned,
+          wrongAnswers,
+          timestamp: Date.now()
+        }));
+      } catch (_) {}
+      window.location.href = 'review.html';
     });
   }
 
@@ -2207,6 +2482,9 @@ function fireConfetti() {
 function closeModal() {
   clearInterval(window.__quizTimer);
   stopTips();
+  if (activeLesson && !completedLessonSet.has(activeLesson)) {
+    saveLessonProgress();
+  }
   document.getElementById('lessonModal').classList.remove('open');
   document.body.style.overflow = '';
   document.getElementById('phaseIndicator').innerHTML = '';
@@ -2216,6 +2494,7 @@ function closeModal() {
   quizTotal = 0;
   quizStreak = 0;
   practiceCorrect = 0;
+  sectionAnswers = {};
   render();
 }
 window.closeModal = closeModal;

@@ -544,13 +544,10 @@ async function loadProfile(user) {
     }
   }
 
-  // Referral: backfill code + show link immediately, credit referrals in background
+  // Referral: backfill code + show link immediately, credit referrals before proceeding
   const referralCode = await ensureReferralCode(d, currentUID);
   showReferralLink(referralCode, d.referrals, d.pointHistory);
-  creditReferrals(d, currentUID, referralCode).catch(() => {});
-
-  // Refresh points count in case referrals were just credited
-  document.getElementById("profile-points").textContent = computeTotalPoints(d) || 0;
+  await creditReferrals(d, currentUID, referralCode).catch(() => {});
 
   // Edit fields
   document.getElementById("edit-fullname").value = d.fullName  || "";
@@ -564,6 +561,7 @@ async function loadProfile(user) {
   let allAwards = d.awards || [];
 
   // Points — unified system (conferences + awards + activityPoints)
+  // Read after creditReferrals so d.activityPoints is up-to-date
   let ap = d.activityPoints || 0;
 
   // One-time migration: fold old learningPoints into activityPoints
@@ -599,9 +597,6 @@ async function loadProfile(user) {
     }
   }
 
-  // Sync to public leaderboard collection
-  syncLeaderboard(db, currentUID, dMigrated).catch(() => {});
-
   // First Login bonus — checks if this is the first time ever
   if (!d._firstLoginBonus && !user.isAnonymous) {
     const newAp = ap + ACTIVITY_POINTS.firstLogin;
@@ -615,9 +610,13 @@ async function loadProfile(user) {
       showToast(`+${ACTIVITY_POINTS.firstLogin} <span class="gem-icon gem-icon--sm"></span> — First Login Bonus!`, "success");
       if (!d.pointHistory) d.pointHistory = [];
       d.pointHistory.push(fbEntry);
-      syncLeaderboard(db, currentUID, { ...dMigrated, activityPoints: newAp, pointHistory: d.pointHistory }).catch(() => {});
+      d.activityPoints = newAp;
+      syncLeaderboard(db, currentUID, { ...d, activityPoints: newAp, pointHistory: d.pointHistory }).catch(() => {});
     }).catch(() => {});
   }
+
+  // Sync to public leaderboard collection (after creditReferrals + first login bonus)
+  syncLeaderboard(db, currentUID, dMigrated).catch(() => {});
 
   // ---- Learning stats ----
   const learning = d.learning || {};
