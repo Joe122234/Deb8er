@@ -220,17 +220,25 @@ const ACHIEVEMENT_MAP = BADGE_MAP;
 
 onAuthStateChanged(auth, async user => {
   if (!user) {
-    document.getElementById('learnLoading').style.display = 'none';
-    document.getElementById('authMessage').style.display = 'flex';
-    document.getElementById('topSection').style.display = 'none';
-    document.getElementById('coursePath').style.display = 'none';
-    document.getElementById('learnHeader').style.display = 'none';
-    document.getElementById('badgesSection').style.display = 'none';
+    const elLoading = document.getElementById('learnLoading');
+    const elAuth = document.getElementById('authMessage');
+    const elTop = document.getElementById('topSection');
+    const elCourse = document.getElementById('coursePath');
+    const elHeader = document.getElementById('learnHeader');
+    const elBadges = document.getElementById('badgesSection');
+    if (elLoading) elLoading.style.display = 'none';
+    if (elAuth) elAuth.style.display = 'flex';
+    if (elTop) elTop.style.display = 'none';
+    if (elCourse) elCourse.style.display = 'none';
+    if (elHeader) elHeader.style.display = 'none';
+    if (elBadges) elBadges.style.display = 'none';
     return;
   }
   currentUser = user;
-  document.getElementById('learnHeader').style.display = '';
-  document.getElementById('badgesSection').style.display = '';
+  const elHeader = document.getElementById('learnHeader');
+  const elBadges = document.getElementById('badgesSection');
+  if (elHeader) elHeader.style.display = '';
+  if (elBadges) elBadges.style.display = '';
 
   await Promise.all([loadCurriculum(), loadState()]);
   TOTAL_UNITS = UNITS.length;
@@ -300,11 +308,15 @@ async function loadState() {
     } else {
       state = defaultState();
     }
-    document.getElementById('learnLoading').style.display = 'none';
-    document.getElementById('topSection').style.display = 'block';
-    document.getElementById('coursePath').style.display = 'block';
+    const elLoading = document.getElementById('learnLoading');
+    const elTop = document.getElementById('topSection');
+    const elCourse = document.getElementById('coursePath');
+    if (elLoading) elLoading.style.display = 'none';
+    if (elTop) elTop.style.display = 'block';
+    if (elCourse) elCourse.style.display = 'block';
   } catch (err) {
-    document.getElementById('learnLoading').innerHTML =
+    const elLoading = document.getElementById('learnLoading');
+    if (elLoading) elLoading.innerHTML =
       '<span style="color:#f87171;">Failed to load. <a href="learn.html" style="color:#3ABEFF;">Reload</a></span>';
   }
 }
@@ -518,6 +530,7 @@ function renderTopSection() {
 
 function renderCourse(firstLoad) {
   const container = document.getElementById('coursePath');
+  if (!container) return;
   container.innerHTML = '';
 
   // Find first incomplete unit to auto-expand on desktop
@@ -748,6 +761,7 @@ function renderBadges() {
   const earnedIds = new Set(state.achievements || []);
   const grid = document.getElementById('badgesGrid');
   const countEl = document.getElementById('badgesCount');
+  if (!grid || !countEl) return;
   const earned = BADGES.filter(b => earnedIds.has(b.id)).length;
 
   countEl.textContent = `${earned} / ${BADGES.length} earned`;
