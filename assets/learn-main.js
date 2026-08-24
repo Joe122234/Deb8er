@@ -481,19 +481,27 @@ function renderTopSection() {
   const dailyDone = state.dailyLessonDone;
 
   // Subtitle
-  document.getElementById('learnSubtitle').textContent =
+  const subtitleEl = document.getElementById('learnSubtitle');
+  if (subtitleEl) subtitleEl.textContent =
     completed > 0 ? `${completed} of ${total} lessons · ${title}` : 'Master debate, MUN, and public speaking';
 
   // Level card
-  document.getElementById('lvlNumber').textContent = level;
-  document.getElementById('lvlTitle').textContent = title;
-  document.getElementById('lvlXpCurrent').innerHTML = `${totalPts} <span class="gem-icon gem-icon--sm"></span>`;
-  document.getElementById('lvlXpNext').innerHTML = `${toNext} <span class="gem-icon gem-icon--sm"></span> to Level ${level + 1}`;
-  document.getElementById('lvlBarFill').style.width = inLevel + '%';
-  document.getElementById('lvlBarPct').textContent = inLevel + '%';
+  const lvlNumEl = document.getElementById('lvlNumber');
+  const lvlTitleEl = document.getElementById('lvlTitle');
+  const lvlXpCurrentEl = document.getElementById('lvlXpCurrent');
+  const lvlXpNextEl = document.getElementById('lvlXpNext');
+  const lvlBarFillEl = document.getElementById('lvlBarFill');
+  const lvlBarPctEl = document.getElementById('lvlBarPct');
+  if (lvlNumEl) lvlNumEl.textContent = level;
+  if (lvlTitleEl) lvlTitleEl.textContent = title;
+  if (lvlXpCurrentEl) lvlXpCurrentEl.innerHTML = `${totalPts} <span class="gem-icon gem-icon--sm"></span>`;
+  if (lvlXpNextEl) lvlXpNextEl.innerHTML = `${toNext} <span class="gem-icon gem-icon--sm"></span> to Level ${level + 1}`;
+  if (lvlBarFillEl) lvlBarFillEl.style.width = inLevel + '%';
+  if (lvlBarPctEl) lvlBarPctEl.textContent = inLevel + '%';
 
   // Stats cards
-  document.getElementById('sgStreak').textContent = streak;
+  const streakEl = document.getElementById('sgStreak');
+  if (streakEl) streakEl.textContent = streak;
   const dailyCompleted = state.dailyLessonsCompleted || 0;
   const dailyEl = document.getElementById('sgDaily');
   if (dailyEl) {
