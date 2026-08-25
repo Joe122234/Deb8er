@@ -34,6 +34,11 @@
   <link rel="canonical" href="https://deb8erglobal.com/form.html">
   <link rel="stylesheet" href="assets/aos/aos.css" media="print" onload="this.media='all'">
   <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon1.png" />
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0B0E14">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
@@ -534,6 +539,11 @@
 
 
 
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js');
+    }
+  </script>
 </body>
 
 </html>
