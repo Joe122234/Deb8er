@@ -27,7 +27,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.min.css">
     <link rel="stylesheet" href="assets/chat-widget.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/aos/aos.css" media="print" onload="this.media='all'">
     <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon1.png" />
     <link rel="stylesheet" href="assets/team.css">
     <link rel="canonical" href="https://deb8erglobal.com/team.html">
@@ -185,16 +185,16 @@
       <script src="script.min.js" defer></script>
       <script type="module" src="navbar-auth.js"></script>
       <script src="assets/ui-effects.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      <script src="assets/aos/aos.js" defer></script>
       <script>
-        AOS.init({
-          duration: 900,
-          easing: "ease-out-cubic",
-          once: true,
-          offset: 120
-        });
-
         document.addEventListener("DOMContentLoaded", () => {
+          AOS.init({
+            duration: 900,
+            easing: "ease-out-cubic",
+            once: true,
+            offset: 120
+          });
+
           const emailLink = document.getElementById("copy-email");
           if (!emailLink) return;
           emailLink.addEventListener("click", (e) => {
