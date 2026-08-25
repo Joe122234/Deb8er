@@ -28,12 +28,34 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
-  <link rel="stylesheet" href="assets/conferences.css">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Unbounded:wght@200..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.min.css">
-  <link rel="stylesheet" href="assets/chat-widget.css">
+  <link rel="preload" as="image" href="assets/images/Deb9erfinallogo.webp">
+  <style>
+    :root{--heading-font:"Unbounded",sans-serif;--text-font:"Montserrat",system-ui;--black:#0B0E14;--mid-night:#111827;--button-1:#a68af9;--button-2:#3ABEFF;--cyan:#22d3ee;--white:#E5E7EB;--gray:#9CA3AF;--detail-text:14px}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:var(--text-font);background:var(--black);color:var(--white);overflow-x:hidden}
+    .navbar{position:fixed;top:0;left:0;width:100%;height:100px;background:rgba(11,14,20,0.85);backdrop-filter:blur(10px);border-bottom:1px solid #1F2937;z-index:1000}
+    .navbar-container{max-width:1200px;height:100%;margin:0 auto;padding:0 14px;display:flex;justify-content:space-between;align-items:center;width:100%;box-sizing:border-box}
+    .logo{text-decoration:none;display:flex;align-items:center;flex-shrink:0}
+    .logo img{height:60px;width:auto;object-fit:contain}
+    main{position:relative;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 50% 30%,rgba(58,190,255,0.10) 0%,transparent 60%),radial-gradient(ellipse 60% 50% at 30% 70%,rgba(166,138,249,0.07) 0%,transparent 50%),radial-gradient(ellipse 50% 40% at 70% 80%,rgba(34,211,238,0.05) 0%,transparent 50%),var(--black);margin-bottom:105px}
+    .conf-header{padding:160px 8% 50px;text-align:center}
+    .conf-header h1{font-family:var(--heading-font);font-size:3rem;margin-bottom:16px}
+    .conf-header h1 span{background:linear-gradient(135deg,#3ABEFF,#a68af9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .conf-header p{max-width:640px;margin:0 auto;color:var(--gray);font-size:0.95rem;line-height:1.7}
+    .conf-header-badge{display:inline-block;margin-bottom:16px;padding:6px 18px;font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;background:linear-gradient(135deg,rgba(58,190,255,0.12),rgba(166,138,249,0.12));border:1px solid rgba(58,190,255,0.15);border-radius:999px;color:rgba(255,255,255,0.6)}
+    .site-footer{position:relative;background:#0B0E14;padding:80px 6% 30px;overflow:hidden}
+    .footer-container{position:relative;z-index:1;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1.5fr;gap:80px}
+    .footer-brand{display:flex;flex-direction:column;gap:20px;max-width:fit-content}
+    .footer-brand img{height:70px;width:auto;max-width:250px;object-fit:contain}
+    .footer-brand p{color:var(--gray);font-size:15px;max-width:380px;line-height:1.6;margin:0}
+    .footer-bottom{position:relative;z-index:1;margin-top:60px;padding-top:20px;border-top:1px solid rgba(255,255,255,0.08);text-align:center;color:var(--gray);font-size:13px}
+  </style>
+  <link rel="stylesheet" href="assets/conferences.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="assets/style.min.css" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="assets/chat-widget.css" media="print" onload="this.media='all'">
   <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon1.png" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/aos/aos.css" media="print" onload="this.media='all'">
   <link rel="canonical" href="https://deb8erglobal.com/conferences.html">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     crossorigin="anonymous" referrerpolicy="no-referrer" media="print" onload="this.media='all'" />
@@ -57,7 +79,7 @@
   <nav class="navbar">
     <div class="navbar-container">
       <a href="index.html" class="logo">
-        <img src="assets/images/Deb9erfinallogo.webp" width="200" height="auto"
+        <img src="assets/images/Deb9erfinallogo.webp" width="60" height="60"
           alt="Deb8er - Global MUN & Debate Platform">
       </a>
       <div class="nav-toggle" id="navToggle" role="button" tabindex="0" aria-label="Toggle navigation">
@@ -138,7 +160,7 @@
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-brand">
-        <img src="assets/images/footerpng.webp" width="160" height="40" alt="Deb8er - Global MUN & Debate Platform">
+        <img src="assets/images/footerpng.webp" width="160" height="71" alt="Deb8er - Global MUN & Debate Platform">
         <p>
           Deb8er is a global online platform where anyone from ages 10-18 can participate in debates and MUNs.
         </p>
@@ -170,16 +192,16 @@
   <script src="conferences.js" defer></script>
   <script src="script.min.js" defer></script>
   <script type="module" src="navbar-auth.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="assets/aos/aos.js" defer></script>
   <script>
-    AOS.init({
-      duration: 900,
-      easing: "ease-out-cubic",
-      once: true,
-      offset: 120
-    });
-
     document.addEventListener("DOMContentLoaded", () => {
+      AOS.init({
+        duration: 900,
+        easing: "ease-out-cubic",
+        once: true,
+        offset: 120
+      });
+
       const emailLink = document.getElementById("copy-email");
       if (!emailLink) return;
       emailLink.addEventListener("click", (e) => {
