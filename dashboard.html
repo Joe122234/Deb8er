@@ -29,6 +29,11 @@
   <link rel="stylesheet" href="assets/style.min.css">
   <link rel="stylesheet" href="assets/auth.css">
   <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon1.png" />
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0B0E14">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="canonical" href="https://deb8erglobal.com/dashboard.html">
 
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
@@ -690,5 +695,10 @@
       <button class="lvlup-btn" onclick="document.getElementById('lvlup-modal').style.display='none'">Continue</button>
     </div>
   </div>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js');
+    }
+  </script>
 </body>
 </html>
