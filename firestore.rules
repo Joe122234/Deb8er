@@ -39,6 +39,14 @@ service cloud.firestore {
         && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
     }
 
+    match /analytics/{docId} {
+      // Anyone can create (page view tracking)
+      allow create: if true;
+      // Only admins can read, update, delete
+      allow read, update, delete: if request.auth != null
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
+    }
+
     match /leaderboard_champions/{weekId} {
       // Public read — anyone can see past champions
       allow read: if true;
