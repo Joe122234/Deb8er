@@ -1373,6 +1373,80 @@ function renderOrderSteps(section, body, isLast) {
     list.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
     checkOrder();
   });
+
+  // ─── Touch drag support for mobile ───
+  let touchDragEl = null;
+  let touchClone = null;
+  let touchOffsetY = 0;
+  let touchTarget = null;
+
+  list.addEventListener('touchstart', e => {
+    if (answerLocked) return;
+    const item = e.target.closest('.order-item');
+    if (!item) return;
+    touchDragEl = item;
+    const touch = e.touches[0];
+    const rect = item.getBoundingClientRect();
+    touchOffsetY = touch.clientY - rect.top;
+
+    touchClone = item.cloneNode(true);
+    touchClone.classList.add('touch-clone');
+    touchClone.style.cssText = 'position:fixed;z-index:10000;pointer-events:none;transition:none;transform:scale(1.03);box-shadow:0 8px 32px rgba(0,0,0,0.3);opacity:0.95;width:' + rect.width + 'px;left:' + rect.left + 'px;top:' + rect.top + 'px;';
+    document.body.appendChild(touchClone);
+
+    touchDragEl.classList.add('dragging');
+    e.preventDefault();
+  }, { passive: false });
+
+  list.addEventListener('touchmove', e => {
+    if (!touchDragEl || !touchClone) return;
+    e.preventDefault();
+    const touch = e.touches[0];
+    touchClone.style.top = (touch.clientY - touchOffsetY) + 'px';
+
+    const items = Array.from(list.querySelectorAll('.order-item'));
+    list.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
+    touchTarget = null;
+
+    for (const item of items) {
+      if (item === touchDragEl) continue;
+      const rect = item.getBoundingClientRect();
+      if (touch.clientY >= rect.top && touch.clientY <= rect.bottom) {
+        touchTarget = item;
+        item.classList.add('drag-over');
+        break;
+      }
+    }
+  }, { passive: false });
+
+  list.addEventListener('touchend', e => {
+    if (!touchDragEl || !touchClone) return;
+
+    if (touchTarget && touchTarget !== touchDragEl) {
+      const rect = touchTarget.getBoundingClientRect();
+      const midY = rect.top + rect.height / 2;
+      const touch = e.changedTouches[0];
+      if (touch.clientY > midY) {
+        touchTarget.parentNode.insertBefore(touchDragEl, touchTarget.nextSibling);
+      } else {
+        touchTarget.parentNode.insertBefore(touchDragEl, touchTarget);
+      }
+      checkOrder();
+    }
+
+    touchDragEl.classList.remove('dragging');
+    list.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
+
+    const clone = touchClone;
+    clone.style.transition = 'all 0.2s cubic-bezier(0.16,1,0.3,1)';
+    clone.style.transform = 'scale(1)';
+    clone.style.opacity = '0';
+    setTimeout(() => { if (clone.parentNode) clone.remove(); }, 200);
+
+    touchDragEl = null;
+    touchClone = null;
+    touchTarget = null;
+  });
 }
 
 // ─── Spot the Mistake ───
@@ -1808,6 +1882,80 @@ function renderRecapQuestion(section, body, isLast, wasWrong) {
         }
         list.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
         checkRecapOrder();
+      });
+
+      // Touch drag support for mobile
+      let touchDragEl = null;
+      let touchClone = null;
+      let touchOffsetY = 0;
+      let touchTarget = null;
+
+      list.addEventListener('touchstart', e => {
+        if (answerLocked) return;
+        const item = e.target.closest('.order-item');
+        if (!item) return;
+        touchDragEl = item;
+        const touch = e.touches[0];
+        const rect = item.getBoundingClientRect();
+        touchOffsetY = touch.clientY - rect.top;
+
+        touchClone = item.cloneNode(true);
+        touchClone.classList.add('touch-clone');
+        touchClone.style.cssText = 'position:fixed;z-index:10000;pointer-events:none;transition:none;transform:scale(1.03);box-shadow:0 8px 32px rgba(0,0,0,0.3);opacity:0.95;width:' + rect.width + 'px;left:' + rect.left + 'px;top:' + rect.top + 'px;';
+        document.body.appendChild(touchClone);
+
+        touchDragEl.classList.add('dragging');
+        e.preventDefault();
+      }, { passive: false });
+
+      list.addEventListener('touchmove', e => {
+        if (!touchDragEl || !touchClone) return;
+        e.preventDefault();
+        const touch = e.touches[0];
+        touchClone.style.top = (touch.clientY - touchOffsetY) + 'px';
+
+        const items = Array.from(list.querySelectorAll('.order-item'));
+        list.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
+        touchTarget = null;
+
+        for (const item of items) {
+          if (item === touchDragEl) continue;
+          const rect = item.getBoundingClientRect();
+          if (touch.clientY >= rect.top && touch.clientY <= rect.bottom) {
+            touchTarget = item;
+            item.classList.add('drag-over');
+            break;
+          }
+        }
+      }, { passive: false });
+
+      list.addEventListener('touchend', e => {
+        if (!touchDragEl || !touchClone) return;
+
+        if (touchTarget && touchTarget !== touchDragEl) {
+          const rect = touchTarget.getBoundingClientRect();
+          const midY = rect.top + rect.height / 2;
+          const touch = e.changedTouches[0];
+          if (touch.clientY > midY) {
+            touchTarget.parentNode.insertBefore(touchDragEl, touchTarget.nextSibling);
+          } else {
+            touchTarget.parentNode.insertBefore(touchDragEl, touchTarget);
+          }
+          checkRecapOrder();
+        }
+
+        touchDragEl.classList.remove('dragging');
+        list.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
+
+        const clone = touchClone;
+        clone.style.transition = 'all 0.2s cubic-bezier(0.16,1,0.3,1)';
+        clone.style.transform = 'scale(1)';
+        clone.style.opacity = '0';
+        setTimeout(() => { if (clone.parentNode) clone.remove(); }, 200);
+
+        touchDragEl = null;
+        touchClone = null;
+        touchTarget = null;
       });
     }
   }

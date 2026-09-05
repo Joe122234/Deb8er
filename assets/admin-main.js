@@ -711,4 +711,275 @@ onAuthStateChanged(auth, async user => {
     document.getElementById("admin-loading").innerHTML = '<span style="color:#f87171;">Failed to load users: ' + err.message + '</span>';
   }
 });
-  
+
+// ---- ANALYTICS ----
+window.loadAnalytics = async function() {
+  const loadingEl = document.getElementById("analytics-loading");
+  const contentEl = document.getElementById("analytics-content");
+
+  let events = [];
+  try {
+    // Fetch analytics docs (max 2000 most recent)
+    // This will fail if firestore.rules hasn't been deployed yet
+    const snap = await getDocs(query(collection(db, "analytics"), limit(2000)));
+    snap.forEach(d => events.push(d.data()));
+  } catch (err) {
+    console.warn("Analytics fetch failed (rules may not be deployed yet):", err);
+    // Continue with empty events — backfill data from allUsers still works
+  }
+
+  try {
+
+    // --- Backfill from allUsers (signup timeline, countries, engagement) ---
+    const now = Date.now();
+    const DAY = 86400000;
+    const todayStart = new Date(); todayStart.setHours(0,0,0,0);
+    const weekAgo = now - 7 * DAY;
+
+    // Signup timeline (last 30 days)
+    const signupsByDay = {};
+    for (let i = 29; i >= 0; i--) {
+      const d = new Date(now - i * DAY);
+      const key = d.toISOString().split("T")[0];
+      signupsByDay[key] = 0;
+    }
+    allUsers.forEach(u => {
+      if (!u.createdAt) return;
+      const d = new Date(u.createdAt).toISOString().split("T")[0];
+      if (signupsByDay[d] !== undefined) signupsByDay[d]++;
+    });
+
+    // Country breakdown from user profiles
+    const countryCounts = {};
+    allUsers.forEach(u => {
+      const c = (u.country || "").trim();
+      if (c) countryCounts[c] = (countryCounts[c] || 0) + 1;
+    });
+
+    // Signups this week
+    const signupsWeek = allUsers.filter(u => u.createdAt && u.createdAt >= weekAgo).length;
+
+    // Engagement metrics
+    let totalStreak = 0, totalLessons = 0, totalGems = 0, engagedCount = 0;
+    allUsers.forEach(u => {
+      if (u.role === "admin") return;
+      const l = u.learning || {};
+      totalStreak += (l.streak || 0);
+      totalLessons += (l.completedLessons || []).length;
+      const pts = computePoints(u.conferences, u.awards, (u.activityPoints || 0) + (u.learningPoints || 0));
+      totalGems += pts;
+      if ((l.streak || 0) > 0 || (l.completedLessons || []).length > 0) engagedCount++;
+    });
+
+    // --- Process analytics events ---
+    let totalViews = events.length;
+    let uniqueUIDs = new Set();
+    let viewsToday = 0;
+    const deviceCounts = {};
+    const browserCounts = {};
+    const osCounts = {};
+    const referrerCounts = {};
+    const pageCounts = {};
+
+    events.forEach(e => {
+      if (e.uid) uniqueUIDs.add(e.uid);
+      if (e.timestamp && e.timestamp >= todayStart.getTime()) viewsToday++;
+
+      deviceCounts[e.device || "Other"] = (deviceCounts[e.device || "Other"] || 0) + 1;
+      browserCounts[e.browser || "Other"] = (browserCounts[e.browser || "Other"] || 0) + 1;
+      osCounts[e.os || "Other"] = (osCounts[e.os || "Other"] || 0) + 1;
+      pageCounts[e.page || "/"] = (pageCounts[e.page || "/"] || 0) + 1;
+
+      const ref = e.referrer || "";
+      if (ref) {
+        try {
+          const host = new URL(ref).hostname.replace("www.", "");
+          referrerCounts[host] = (referrerCounts[host] || 0) + 1;
+        } catch {
+          referrerCounts[ref] = (referrerCounts[ref] || 0) + 1;
+        }
+      }
+    });
+
+    // --- Populate metric cards ---
+    document.getElementById("a-pageviews").textContent = totalViews.toLocaleString();
+    document.getElementById("a-visitors").textContent = uniqueUIDs.size.toLocaleString();
+    document.getElementById("a-today").textContent = viewsToday.toLocaleString();
+    document.getElementById("a-signups-week").textContent = signupsWeek.toLocaleString();
+
+    // --- Helper: top N + Other ---
+    function topN(counts, n) {
+      const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+      const top = sorted.slice(0, n);
+      const rest = sorted.slice(n);
+      if (rest.length) {
+        const otherSum = rest.reduce((s, e) => s + e[1], 0);
+        top.push(["Other", otherSum]);
+      }
+      return top;
+    }
+
+    const COLORS = ["#3ABEFF", "#a68af9", "#34D399", "#FBBF24", "#F87171", "#60A5FA", "#F472B6", "#A3E635"];
+
+    // --- Chart defaults ---
+    const chartDefaults = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          labels: { color: "#9CA3AF", font: { size: 11, family: "Inter" }, boxWidth: 12, padding: 10 }
+        }
+      }
+    };
+
+    function barDefaults() {
+      return {
+        ...chartDefaults,
+        indexAxis: "y",
+        plugins: {
+          ...chartDefaults.plugins,
+          legend: { display: false }
+        },
+        scales: {
+          x: {
+            grid: { color: "rgba(255,255,255,0.04)" },
+            ticks: { color: "#6B7280", font: { size: 11 } }
+          },
+          y: {
+            grid: { display: false },
+            ticks: { color: "#D1D5DB", font: { size: 11 } }
+          }
+        }
+      };
+    }
+
+    // --- Render charts (lazy — only when Chart.js is loaded) ---
+    function waitForChart(cb) {
+      if (typeof Chart !== "undefined") return cb();
+      let tries = 0;
+      const iv = setInterval(() => {
+        if (typeof Chart !== "undefined" || ++tries > 50) { clearInterval(iv); if (typeof Chart !== "undefined") cb(); }
+      }, 100);
+    }
+
+    waitForChart(() => {
+      // Devices — doughnut
+      const devData = topN(deviceCounts, 3);
+      new Chart(document.getElementById("chart-devices"), {
+        type: "doughnut",
+        data: {
+          labels: devData.map(d => d[0]),
+          datasets: [{ data: devData.map(d => d[1]), backgroundColor: COLORS, borderWidth: 0, spacing: 2 }]
+        },
+        options: { ...chartDefaults, cutout: "65%" }
+      });
+
+      // Browsers — horizontal bar
+      const brData = topN(browserCounts, 5);
+      new Chart(document.getElementById("chart-browsers"), {
+        type: "bar",
+        data: {
+          labels: brData.map(d => d[0]),
+          datasets: [{ data: brData.map(d => d[1]), backgroundColor: COLORS.slice(0, brData.length), borderRadius: 4, barThickness: 18 }]
+        },
+        options: barDefaults()
+      });
+
+      // OS — horizontal bar
+      const osData = topN(osCounts, 5);
+      new Chart(document.getElementById("chart-os"), {
+        type: "bar",
+        data: {
+          labels: osData.map(d => d[0]),
+          datasets: [{ data: osData.map(d => d[1]), backgroundColor: COLORS.slice(0, osData.length), borderRadius: 4, barThickness: 18 }]
+        },
+        options: barDefaults()
+      });
+
+      // Countries — horizontal bar
+      const countryData = topN(countryCounts, 8);
+      new Chart(document.getElementById("chart-countries"), {
+        type: "bar",
+        data: {
+          labels: countryData.map(d => d[0]),
+          datasets: [{ data: countryData.map(d => d[1]), backgroundColor: COLORS.slice(0, countryData.length), borderRadius: 4, barThickness: 18 }]
+        },
+        options: barDefaults()
+      });
+
+      // Signups over time — line
+      const signupLabels = Object.keys(signupsByDay);
+      const signupValues = Object.values(signupsByDay);
+      new Chart(document.getElementById("chart-signups"), {
+        type: "line",
+        data: {
+          labels: signupLabels.map(d => d.slice(5)), // MM-DD
+          datasets: [{
+            label: "Signups",
+            data: signupValues,
+            borderColor: "#3ABEFF",
+            backgroundColor: "rgba(58,190,255,0.08)",
+            fill: true,
+            tension: 0.35,
+            pointRadius: 3,
+            pointBackgroundColor: "#3ABEFF",
+            borderWidth: 2
+          }]
+        },
+        options: {
+          ...chartDefaults,
+          plugins: { ...chartDefaults.plugins, legend: { display: false } },
+          scales: {
+            x: { grid: { color: "rgba(255,255,255,0.04)" }, ticks: { color: "#6B7280", font: { size: 10 }, maxRotation: 0 } },
+            y: { grid: { color: "rgba(255,255,255,0.04)" }, ticks: { color: "#6B7280", font: { size: 11 }, stepSize: 1 }, beginAtZero: true }
+          }
+        }
+      });
+    });
+
+    // --- Referrer table ---
+    const refSorted = Object.entries(referrerCounts).sort((a, b) => b[1] - a[1]).slice(0, 10);
+    const maxRef = refSorted.length ? refSorted[0][1] : 1;
+    const refWrap = document.getElementById("referrer-table-wrap");
+    if (refSorted.length) {
+      refWrap.innerHTML = `<table class="referrer-table">
+        <thead><tr><th>Source</th><th>Visits</th><th style="width:120px;"></th></tr></thead>
+        <tbody>${refSorted.map(([src, count]) =>
+          `<tr><td>${esc(src)}</td><td>${count}</td><td class="bar-cell"><div class="referrer-bar"><div class="referrer-bar-fill" style="width:${Math.round(count/maxRef*100)}%"></div></div></td></tr>`
+        ).join("")}</tbody></table>`;
+    } else {
+      refWrap.innerHTML = '<div style="color:#6B7280;font-size:13px;padding:20px 0;text-align:center;">No referrer data yet.</div>';
+    }
+
+    // --- Engagement metrics ---
+    const avgStreak = allUsers.length ? (totalStreak / allUsers.length).toFixed(1) : "0";
+    const avgLessons = allUsers.length ? (totalLessons / allUsers.length).toFixed(1) : "0";
+    const avgGems = allUsers.length ? Math.round(totalGems / allUsers.length) : 0;
+    const engagedPct = allUsers.length ? Math.round(engagedCount / allUsers.length * 100) : 0;
+
+    document.getElementById("engagement-metrics").innerHTML = `
+      <div class="analytics-metric">
+        <div class="analytics-metric-icon blue"><i class="fas fa-fire"></i></div>
+        <div><div class="num">${avgStreak}</div><div class="label">Avg Daily Streak</div></div>
+      </div>
+      <div class="analytics-metric">
+        <div class="analytics-metric-icon purple"><i class="fas fa-book-open"></i></div>
+        <div><div class="num">${avgLessons}</div><div class="label">Avg Lessons Completed</div></div>
+      </div>
+      <div class="analytics-metric">
+        <div class="analytics-metric-icon green"><i class="fas fa-coins"></i></div>
+        <div><div class="num">${avgGems}</div><div class="label">Avg Gems per User</div></div>
+      </div>
+      <div class="analytics-metric">
+        <div class="analytics-metric-icon yellow"><i class="fas fa-users"></i></div>
+        <div><div class="num">${engagedPct}%</div><div class="label">Active Learners</div></div>
+      </div>`;
+
+    // Show content, hide loading
+    loadingEl.style.display = "none";
+    contentEl.style.display = "block";
+
+  } catch (err) {
+    loadingEl.innerHTML = '<span style="color:#f87171;">Failed to load analytics: ' + err.message + '</span>';
+  }
+};
