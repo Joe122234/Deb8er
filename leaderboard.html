@@ -125,19 +125,6 @@
           </div>
         </div>
 
-        <div class="lb-toolbar">
-          <div class="lb-pagesize">
-            <i class="fas fa-list"></i>
-            <select id="lb-pagesize" onchange="LB.setPageSize(this.value)">
-              <option value="25">25</option>
-              <option value="50" selected>50</option>
-              <option value="100">100</option>
-              <option value="0">All</option>
-            </select>
-          </div>
-          <span class="lb-page-info" id="lb-page-info"></span>
-        </div>
-
         <div id="lb-tab-weekly" class="lb-tab-content">
           <p class="lb-tab-subtitle"><span class="gem-icon gem-icon--sm gem-icon--inline"></span> reset every Monday. Fresh competition, every week.</p>
 
@@ -189,11 +176,11 @@
           <div class="lb-controls">
             <div class="lb-search">
               <i class="fas fa-search"></i>
-              <input type="text" id="lb-search-input" placeholder="Search by name or country..." oninput="LB.filter()">
+              <input type="text" id="lb-search-input" placeholder="Search by name or country..." oninput="LB.resetAndFilter()">
             </div>
             <div class="lb-filter">
               <i class="fas fa-globe"></i>
-              <select id="lb-country-filter" onchange="LB.filter()">
+              <select id="lb-country-filter" onchange="LB.resetAndFilter()">
                 <option value="">All Countries</option>
               </select>
             </div>
@@ -217,10 +204,9 @@
               <tbody id="lb-body"></tbody>
             </table>
           </div>
-          <div class="lb-pagination" id="lb-pagination-w" style="display:none;">
-            <button class="lb-page-btn" onclick="LB.goToPage(currentPage - 1)"><i class="fas fa-chevron-left"></i></button>
-            <div class="lb-page-numbers" id="lb-page-numbers-w"></div>
-            <button class="lb-page-btn" onclick="LB.goToPage(currentPage + 1)"><i class="fas fa-chevron-right"></i></button>
+          <div class="lb-load-more" id="lb-load-more-w" style="display:none;">
+            <button class="lb-load-more-btn" onclick="LB.loadMore()"><i class="fas fa-chevron-down"></i></button>
+            <span class="lb-load-more-text" id="lb-load-more-text-w"></span>
           </div>
 
           <div id="lb-empty" class="lb-empty" style="display:none;">
@@ -281,11 +267,11 @@
           <div class="lb-controls">
             <div class="lb-search">
               <i class="fas fa-search"></i>
-              <input type="text" id="lb-search-alltime" placeholder="Search by name or country..." oninput="LB.filter()">
+              <input type="text" id="lb-search-alltime" placeholder="Search by name or country..." oninput="LB.resetAndFilter()">
             </div>
             <div class="lb-filter">
               <i class="fas fa-globe"></i>
-              <select id="lb-country-filter-at" onchange="LB.filter()">
+              <select id="lb-country-filter-at" onchange="LB.resetAndFilter()">
                 <option value="">All Countries</option>
               </select>
             </div>
@@ -308,10 +294,9 @@
               <tbody id="lb-body-alltime"></tbody>
             </table>
           </div>
-          <div class="lb-pagination" id="lb-pagination-at" style="display:none;">
-            <button class="lb-page-btn" onclick="LB.goToPage(currentPage - 1)"><i class="fas fa-chevron-left"></i></button>
-            <div class="lb-page-numbers" id="lb-page-numbers-at"></div>
-            <button class="lb-page-btn" onclick="LB.goToPage(currentPage + 1)"><i class="fas fa-chevron-right"></i></button>
+          <div class="lb-load-more" id="lb-load-more-at" style="display:none;">
+            <button class="lb-load-more-btn" onclick="LB.loadMore()"><i class="fas fa-chevron-down"></i></button>
+            <span class="lb-load-more-text" id="lb-load-more-text-at"></span>
           </div>
         </div>
 
@@ -337,27 +322,37 @@
         <div class="profile-modal-error" id="pm-error" style="display:none;"></div>
         <div class="profile-modal-body" id="pm-body" style="display:none;">
           <div class="pm-hero">
-            <div class="pm-avatar" id="pm-avatar">?</div>
+            <div class="pm-avatar-wrap">
+              <div class="pm-avatar" id="pm-avatar">?</div>
+              <div class="pm-avatar-ring"></div>
+            </div>
             <div class="pm-info">
               <h2 class="pm-name" id="pm-name">—</h2>
               <div class="pm-nick" id="pm-nick"></div>
               <div class="pm-country" id="pm-country"></div>
             </div>
-            <div class="pm-points">
+            <div class="pm-gem-pill">
               <span class="pm-points-num" id="pm-points">0</span>
               <span class="pm-points-label"><span class="gem-icon gem-icon--sm"></span></span>
             </div>
           </div>
-          <div class="pm-stats">
-            <div class="pm-stat"><i class="fas fa-crown"></i><span class="pm-stat-val" id="pm-level">—</span><span class="pm-stat-lbl">Level</span></div>
-            <div class="pm-stat"><i class="fas fa-calendar-check"></i><span class="pm-stat-val" id="pm-confs">0</span><span class="pm-stat-lbl">Confs</span></div>
-            <div class="pm-stat"><i class="fas fa-medal"></i><span class="pm-stat-val" id="pm-awards">0</span><span class="pm-stat-lbl">Awards</span></div>
-            <div class="pm-stat"><i class="fas fa-fire"></i><span class="pm-stat-val" id="pm-streak">0</span><span class="pm-stat-lbl">Streak</span></div>
-            <div class="pm-stat"><i class="fas fa-book-open"></i><span class="pm-stat-val" id="pm-lessons">0</span><span class="pm-stat-lbl">Lessons</span></div>
-          </div>
-          <div class="pm-badges" id="pm-badges" style="display:none;">
-            <div class="pm-badges-header"><i class="fas fa-shield-halved"></i> Badges</div>
-            <div class="pm-badges-grid" id="pm-badges-grid"></div>
+          <div class="pm-stats-section">
+            <div class="pm-stats-top">
+              <div class="pm-level-hero">
+                <div class="pm-level-num" id="pm-level">—</div>
+                <div class="pm-level-name"></div>
+              </div>
+              <div class="pm-stats-grid">
+                <div class="pm-stat-item"><i class="fas fa-calendar-check"></i><span id="pm-confs">0</span></div>
+                <div class="pm-stat-item"><i class="fas fa-medal"></i><span id="pm-awards">0</span></div>
+                <div class="pm-stat-item"><i class="fas fa-fire"></i><span id="pm-streak">0</span></div>
+                <div class="pm-stat-item"><i class="fas fa-book-open"></i><span id="pm-lessons">0</span></div>
+              </div>
+            </div>
+            <div class="pm-badges" id="pm-badges" style="display:none;">
+              <div class="pm-badges-divider"></div>
+              <div class="pm-badges-row" id="pm-badges-grid"></div>
+            </div>
           </div>
         </div>
       </div>
