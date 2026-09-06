@@ -43,8 +43,27 @@ const MEDALS = [null, "\u{1F947}", "\u{1F948}", "\u{1F949}"];
 
 const WEEKLY = "weekly", ALLTIME = "alltime", CHAMPIONS = "champions";
 let activeTab = ALLTIME;
-let pageSize = 50;
-let currentPage = 1;
+const INITIAL_VISIBLE = 15;
+let visibleCountW = INITIAL_VISIBLE;
+let visibleCountAT = INITIAL_VISIBLE;
+let rankChanges = new Map();
+
+function computeRankChanges() {
+  const prevRanked = sortByField(allPlayers.filter(p => p.lastWeekPoints > 0), "lastWeekPoints");
+  const prevRankMap = new Map();
+  prevRanked.forEach((p, i) => prevRankMap.set(p.uid, i + 1));
+  const currRanked = sortByField(allPlayers, "points");
+  rankChanges.clear();
+  currRanked.forEach((p, i) => {
+    const currRank = i + 1;
+    const prevRank = prevRankMap.get(p.uid) || null;
+    let direction = "same";
+    if (prevRank === null) direction = "new";
+    else if (prevRank > currRank) direction = "up";
+    else if (prevRank < currRank) direction = "down";
+    rankChanges.set(p.uid, { direction, prevRank });
+  });
+}
 
 const BADGE_DEFS = [
   { id: "perfect-score", name: "Perfect Score", icon: "fa-check-circle" },
@@ -288,12 +307,12 @@ async function loadLeaderboard() {
       contentEl.style.display = "block";
       document.getElementById("lb-player-count").textContent = "0";
       document.getElementById("lb-player-count-at").textContent = "0";
-      document.getElementById("lb-page-info").textContent = "";
       return;
     }
 
     window.__champions = champions;
     window.__allPlayers = allPlayers;
+    computeRankChanges();
     renderAll();
     updateCommunityGems();
     contentEl.style.display = "block";
@@ -312,6 +331,7 @@ async function loadLeaderboard() {
             player.gemsToday = (data.gemsTodayDate === today) ? (data.gemsToday || 0) : 0;
           }
         });
+        computeRankChanges();
         renderAll();
         updateCommunityGems();
       } catch (_) {}
@@ -383,44 +403,24 @@ function renderTable(bodyId, emptyId, countId, field, filtered) {
   countEl.textContent = total;
 
   const suffix = bodyId === "lb-body" ? "w" : "at";
-  const paginationEl = document.getElementById(`lb-pagination-${suffix}`);
-  const numbersEl = document.getElementById(`lb-page-numbers-${suffix}`);
-
-  const actualPageSize = pageSize === 0 ? total : pageSize;
-  const maxPage = Math.ceil(total / actualPageSize) || 1;
-  currentPage = Math.max(1, Math.min(currentPage, maxPage));
-
-  const start = (currentPage - 1) * actualPageSize;
-  const end = Math.min(start + actualPageSize, total);
-  const pageItems = actualPageSize >= total ? sorted : sorted.slice(start, end);
-
-  const pageInfoEl = document.getElementById("lb-page-info");
-  if (pageInfoEl) {
-    pageInfoEl.textContent = total > 0 ? `${start + 1}\u2013${end} of ${total}` : "";
-  }
-
-  if (paginationEl) {
-    paginationEl.style.display = (total > actualPageSize && pageSize !== 0) ? "flex" : "none";
-    if (numbersEl && total > actualPageSize && pageSize !== 0) {
-      let html = "";
-      for (let i = 1; i <= maxPage; i++) {
-        html += `<button class="lb-page-num${i === currentPage ? ' active' : ''}" onclick="LB.goToPage(${i})">${i}</button>`;
-      }
-      numbersEl.innerHTML = html;
-    }
-  }
+  const loadMoreEl = document.getElementById(`lb-load-more-${suffix}`);
+  const loadMoreText = document.getElementById(`lb-load-more-text-${suffix}`);
+  const visibleCount = suffix === "w" ? visibleCountW : visibleCountAT;
+  const prevCount = body.children.length;
+  const pageItems = sorted.slice(0, visibleCount);
 
   if (total === 0) {
     body.innerHTML = "";
     if (empty) empty.style.display = "block";
+    if (loadMoreEl) loadMoreEl.style.display = "none";
     return;
   }
   if (empty) empty.style.display = "none";
 
   body.innerHTML = pageItems.map((p, i) => {
-    const rank = start + i + 1;
+    const rank = i + 1;
     return `<tr class="lb-row${p.uid === currentUserUid ? " lb-row--me" : ""}">
-      <td class="c-rank" data-label="Rank">${getMedalOrRank(rank)}</td>
+      <td class="c-rank" data-label="Rank">${getMedalOrRank(rank)}${getRankChangeHTML(p.uid)}</td>
       <td class="c-player" data-label="Player">
         <div class="p-info">
           <div class="p-avatar" style="${rank <= 3 ? `border-color: ${['#fbbf24','#9ca3af','#d97706'][rank-1]}` : ''}">${INITIALS(p.fullName)}</div>
@@ -439,11 +439,41 @@ function renderTable(bodyId, emptyId, countId, field, filtered) {
       <td class="c-pts" data-label="Gems"><span class="pts-pill">${p[field] || 0}</span></td>
     </tr>`;
   }).join("");
+
+  // Animate newly added rows
+  if (prevCount > 0) {
+    const rows = body.querySelectorAll(".lb-row");
+    for (let i = prevCount; i < rows.length; i++) {
+      rows[i].classList.add("lb-row--new");
+    }
+  }
+
+  // Load more button
+  if (loadMoreEl) {
+    if (visibleCount >= total) {
+      loadMoreEl.style.display = "none";
+    } else {
+      loadMoreEl.style.display = "flex";
+      if (loadMoreText) loadMoreText.textContent = `Showing ${visibleCount} of ${total}`;
+    }
+  }
 }
 
 function getMedalOrRank(rank) {
   if (rank <= 3) return `<span class="medal-cell">${MEDALS[rank]} <span class="rank-val">${rank}</span></span>`;
   return `<span class="rank-val rank-val--plain">${rank}</span>`;
+}
+
+function getRankChangeHTML(uid) {
+  if (activeTab !== WEEKLY) return "";
+  const rc = rankChanges.get(uid);
+  if (!rc) return "";
+  switch (rc.direction) {
+    case "up":   return `<span class="rank-change rank-up"><i class="fas fa-arrow-up"></i></span>`;
+    case "down": return `<span class="rank-change rank-down"><i class="fas fa-arrow-down"></i></span>`;
+    case "new":  return `<span class="rank-change rank-new">NEW</span>`;
+    default:     return `<span class="rank-change rank-same">&mdash;</span>`;
+  }
 }
 
 function renderWeekly() {
@@ -605,6 +635,8 @@ function renderChampions() {
 
 function switchTab(tab) {
   activeTab = tab;
+  visibleCountW = INITIAL_VISIBLE;
+  visibleCountAT = INITIAL_VISIBLE;
   document.querySelectorAll(".lb-tab").forEach(t => t.classList.toggle("active", t.dataset.tab === tab));
   document.querySelectorAll(".lb-tab-content").forEach(c => c.classList.toggle("active", c.id === `lb-tab-${tab}`));
   if (tab === CHAMPIONS) {
@@ -663,7 +695,9 @@ async function openProfileModal(uid) {
     document.getElementById("pm-nick").textContent = d.nickName ? `@${d.nickName}` : "";
     document.getElementById("pm-country").textContent = d.country || "";
     document.getElementById("pm-points").textContent = d.allTimePoints ?? d.points ?? 0;
-    document.getElementById("pm-level").innerHTML = `<span>${lvl}</span><span style="font-size:0.5rem;color:#6B7280;font-weight:400;display:block;text-transform:uppercase;letter-spacing:0.03em;">${lvlName}</span>`;
+    document.getElementById("pm-level").textContent = lvl;
+    const pmLevelName = document.querySelector(".pm-level-name");
+    if (pmLevelName) pmLevelName.textContent = lvlName;
     document.getElementById("pm-confs").textContent = d.conferenceCount ?? 0;
     document.getElementById("pm-awards").textContent = d.awardCount ?? 0;
     document.getElementById("pm-streak").textContent = d.streak ?? 0;
@@ -672,9 +706,9 @@ async function openProfileModal(uid) {
     const earnedIds = new Set(d.achievements || []);
     if (earnedIds.size > 0) {
       badgesGrid.innerHTML = BADGE_DEFS.filter(b => earnedIds.has(b.id)).map(b =>
-        `<div class="badge-item earned" data-tip="${ESC(b.name)}">
-          <div class="badge-item-icon"><i class="fas ${b.icon}"></i></div>
-          <div class="badge-item-label">${ESC(b.name)}</div>
+        `<div class="pm-badge-chip earned" data-tip="${ESC(b.name)}">
+          <div class="pm-badge-chip-icon"><i class="fas ${b.icon}"></i></div>
+          <div class="pm-badge-chip-name">${ESC(b.name)}</div>
         </div>`
       ).join("");
       badgesSection.style.display = "block";
@@ -696,27 +730,23 @@ window.LB = {
     const field = getPtsField();
     const isWeekly = activeTab === WEEKLY;
     const bodyId = isWeekly ? "lb-body" : "lb-body-alltime";
-    const suffix = isWeekly ? "w" : "at";
     const emptyId = isWeekly ? "lb-empty" : null;
     const countId = isWeekly ? "lb-player-count" : "lb-player-count-at";
-    currentPage = 1;
     renderTable(bodyId, emptyId, countId, field, getFiltered(field));
+    const suffix = isWeekly ? "w" : "at";
     const pf = isWeekly ? "points" : "allTimePoints";
     renderPodium(getFiltered(field), pf, suffix);
     renderRankCard(allPlayers, pf, suffix);
   },
-  setPageSize(size) {
-    pageSize = parseInt(size);
-    currentPage = 1;
-    document.getElementById("lb-pagesize").value = size;
+  resetAndFilter() {
+    visibleCountW = INITIAL_VISIBLE;
+    visibleCountAT = INITIAL_VISIBLE;
     LB.filter();
   },
-  goToPage(page) {
-    const field = getPtsField();
-    const sorted = sortByField(getFiltered(field), field);
-    const actualPageSize = pageSize === 0 ? sorted.length : pageSize;
-    const maxPage = Math.ceil(sorted.length / actualPageSize) || 1;
-    currentPage = Math.max(1, Math.min(page, maxPage));
+  loadMore() {
+    const isWeekly = activeTab === WEEKLY;
+    if (isWeekly) visibleCountW += 5;
+    else visibleCountAT += 5;
     LB.filter();
   }
 };
