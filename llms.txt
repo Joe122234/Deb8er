@@ -1,0 +1,34 @@
+# Deb8er — Global MUN & Debate Platform
+
+> Deb8er is a global online platform for MUN and debate practice, open to students ages 10-18. Build debate skills, compete in Model UN conferences, earn awards, and climb the leaderboard.
+
+## About
+
+Deb8er makes debating and Model UN accessible, fun, and gamified for students worldwide. Students earn gems through conference participation, awards, and lesson completion. The platform features a weekly resetting leaderboard, achievement badges, and structured lessons covering public speaking, research, and parliamentary procedure.
+
+## Key Pages
+
+- Home: https://deb8erglobal.com/
+- About: https://deb8erglobal.com/about.html
+- Learn (debate lessons): https://deb8erglobal.com/learn.html
+- Leaderboard: https://deb8erglobal.com/leaderboard.html
+- Conferences: https://deb8erglobal.com/conferences.html
+- Certificate Verification: https://deb8erglobal.com/verification.html
+- Team: https://deb8erglobal.com/team.html
+
+## Debate Guides
+
+- Position Papers: https://deb8erglobal.com/guides/position-paper.html
+- Opening Speeches: https://deb8erglobal.com/guides/opening-speech.html
+- Moderated Caucus: https://deb8erglobal.com/guides/moderated-caucus.html
+- Unmoderated Caucus: https://deb8erglobal.com/guides/unmoderated-caucus.html
+- Consultation of the Whole: https://deb8erglobal.com/guides/consultation-of-the-whole.html
+- Winning Resolutions: https://deb8erglobal.com/guides/winning-resolution.html
+
+## Contact
+
+- Email: hello.deb8er@gmail.com
+- Instagram: https://www.instagram.com/deb8er_official
+- TikTok: https://www.tiktok.com/@deb8er4
+- YouTube: https://www.youtube.com/@Deb8er_official
+- Discord: https://discord.gg/7dWD7Xebsj
